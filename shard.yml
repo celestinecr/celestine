@@ -1,0 +1,13 @@
+name: celestine
+version: 0.1.0
+
+authors:
+  - Ian Rash <ian@0x42424242.in>
+
+targets:
+  sandbox:
+    main: src/sandbox/sandbox.cr
+    
+crystal: 0.33.0
+
+license: MIT

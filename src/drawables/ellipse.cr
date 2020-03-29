@@ -1,0 +1,2 @@
+class Celestine::Ellipse
+end

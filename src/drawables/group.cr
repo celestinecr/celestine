@@ -1,0 +1,2 @@
+class Celestine::Group
+end
