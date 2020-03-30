@@ -32,7 +32,7 @@ Celestine.draw do |ctx|
     circle.fill = "none"
     circle.radius = 10
 
-    # Want to specify in css units? Try these fun patch methods
+    # Want to specify in css units? Try these handy patch methods
     circle.radius = 10.px
     circle.x = 10.percent
     circle.y = 10.vmax
@@ -57,13 +57,66 @@ Celestine.draw do |ctx|
     end
 
     # Animate elements
+    rect.animate do |anim|
+      anim.duration = 10.s
+      # Select attribute names with these constants
+      anim.attribute = Celestine::Rectangle::Attrs::RADIUS_X
+      anim.values << 0
+      anim.values << 10
+      anim.values << 0
+    end
+
+    rect.animate_motion do |anim|
+      anim.duration = 10.s
+      anim.mpath do |path|
+        path.a_move 0,0
+        path.r_line 10,0
+        path.r_line 10,10
+        path.close
+      end
+    end
   end
+
+  # Add things to defs to use them later or multiple times
+  our_group = ctx.group(define: true) do |x|
+    group.id = "our-group"
+
+    # We use the groups context methods
+    group.circle do |circle|
+      circle.x = 10
+      circle.y = 20
+      circle.radius = 20
+      circle.fill = "red"
+    end
+
+    group.circle do |circle|
+      circle.x = 10
+      circle.y = 20
+      circle.radius = 10
+      circle.fill = "blue"
+    end
+  end
+
+  # We can then use the item multiple times
+  ctx.use(our_group) # Draw in the predetermined location
+  ctx.use("our_group") # Draw in the predetermined location
+  ctx.use(our_group) # Draw in the predetermined location
+  
+  ctx.use(our_group) do |use|
+    use.x = 20
+    use.y = 20
+
+    # Can use transform on whole groups
+    use.transform {|t| t.rotate(10, 0, 0)}
+  end
+
+
 end
 ```
 
 ## Development
 
-TODO: Write development instructions here
+HMU via issues
 
 ## Contributing
 

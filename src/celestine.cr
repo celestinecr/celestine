@@ -90,7 +90,11 @@ module Celestine::Meta
       group
     end
 
-    def use(&block : Proc(Celestine::Use, Nil))
+    def use(drawable)
+      self.use(drawable) {|g|}
+    end
+
+    def use(&block : Celestine::Use -> Nil)
       use = Celestine::Use.new
       yield use
       @objects << use

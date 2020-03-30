@@ -7,7 +7,6 @@ class Celestine::Group < Celestine::Drawable
 
   @objects = [] of Celestine::Drawable
 
-
   property? override_stroke_fill = false
   def circle(&block : Proc(Celestine::Circle, Nil))
     circle = Celestine::Circle.new
@@ -44,11 +43,8 @@ class Celestine::Group < Celestine::Drawable
     group
   end
 
-  def use(&block : Proc(Celestine::Use, Nil))
-    use = Celestine::Use.new
-    yield use
-    @objects << use
-    use
+  def use(drawable : Celestine::Drawable)
+    self.use(drawable) {|g|}
   end
 
   def use(drawable : Celestine::Drawable, &block : Proc(Celestine::Use, Nil))
