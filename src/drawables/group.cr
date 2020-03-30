@@ -1,6 +1,9 @@
 class Celestine::Group < Celestine::Drawable
   include Celestine::Modules::Transform
   include Celestine::Modules::StrokeFill
+  include Celestine::Modules::Animate
+  include Celestine::Modules::Animate::Motion
+  
 
   @objects = [] of Celestine::Drawable
 
@@ -41,6 +44,37 @@ class Celestine::Group < Celestine::Drawable
     group
   end
 
+  def use(&block : Proc(Celestine::Use, Nil))
+    use = Celestine::Use.new
+    yield use
+    @objects << use
+    use
+  end
+
+  def use(drawable : Celestine::Drawable, &block : Proc(Celestine::Use, Nil))
+    use = Celestine::Use.new
+    if drawable.id
+      use.target_id = drawable.id.to_s
+      yield use
+      @objects << use
+      use
+    else
+      raise "Reused objects must have an id assigned"
+    end
+  end
+
+  def use(id : String, &block : Proc(Celestine::Use, Nil))
+    use = Celestine::Use.new
+    if drawable.id
+      use.target_id = id
+      yield use
+      @objects << use
+      use
+    else
+      raise "Reused objects must have an id assigned"
+    end
+  end
+
   def draw
     s = String::Builder.new
     options = [] of String
@@ -48,7 +82,15 @@ class Celestine::Group < Celestine::Drawable
     options << id_options unless id_options.empty?
     options << stroke_fill_options unless stroke_fill_options.empty?
     options << transform_options unless transform_options.empty?
+    options << style_options unless style_options.empty?
+
+    
     s << %Q[<g #{options.join(" ")}>]
+    s << animate_tags
+    s << animate_motion_tags
+
+
+
     @objects.each do |drawable|
       s << drawable.draw
     end

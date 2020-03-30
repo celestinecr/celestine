@@ -1,7 +1,9 @@
 class Celestine::Path < Celestine::Drawable
   include Celestine::Modules::StrokeFill
   include Celestine::Modules::Transform
-
+  include Celestine::Modules::Animate
+  include Celestine::Modules::Animate::Motion
+  
   @code_points = String::Builder.new
   @code = ""
 
@@ -92,6 +94,17 @@ class Celestine::Path < Celestine::Drawable
     options << id_options unless id_options.empty?
     options << stroke_fill_options unless stroke_fill_options.empty?
     options << transform_options unless transform_options.empty?
-    %Q[<path d="#{code}" #{options.join(" ")} />]
+    options << style_options unless style_options.empty?
+
+
+    inner_tags = String::Builder.new
+    inner_tags << animate_tags
+    inner_tags << animate_motion_tags
+    tags = inner_tags.to_s
+    if tags.empty?
+      %Q[<path d="#{code}" #{options.join(" ")} />]
+    else
+      %Q[<path d="#{code}" #{options.join(" ")}>#{tags}</path>]
+    end
   end
 end

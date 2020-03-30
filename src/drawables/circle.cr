@@ -1,5 +1,5 @@
 class Celestine::Circle < Celestine::Drawable
-  include Celestine::Modules::Position
+  include Celestine::Modules::CPosition
   include Celestine::Modules::StrokeFill
   include Celestine::Modules::Transform
   include Celestine::Modules::Animate
@@ -15,31 +15,20 @@ class Celestine::Circle < Celestine::Drawable
     options << position_options unless position_options.empty?
     options << stroke_fill_options unless stroke_fill_options.empty?
     options << transform_options unless transform_options.empty?
+    options << style_options unless style_options.empty?
 
     inner_tags = String::Builder.new
-    anim_tags = animate_tags
-    anim_motion_tags = animate_motion_tags
-
-    inner_tags << anim_tags if anim_tags
-    inner_tags << anim_motion_tags if anim_motion_tags
-
-    if inner_tags
-      %Q[<circle r="#{radius}" #{options.join(" ")}>#{inner_tags.to_s}</circle>]
-    else
+    inner_tags << animate_tags
+    inner_tags << animate_motion_tags
+    tags = inner_tags.to_s
+    if tags.empty?
       %Q[<circle r="#{radius}" #{options.join(" ")} />]
+    else
+      %Q[<circle r="#{radius}" #{options.join(" ")}>#{tags}</circle>]
     end
   end
 
   module Attrs
-    X = "cx"
-    Y = "cy"
     RADIUS = "r"
-    STROKE = "stroke"
-    FILL = "fill"
-    STROKE_WIDTH = "stroke-width"
-    FILL_OPACITY = "fill-opacity"
-    STROKE_OPACITY = "stroke-opacity"
-    OPACITY = "opacity"
-    FILL_RULE = "fill-rule"
   end
 end

@@ -31,4 +31,20 @@ module Celestine::Modules::StrokeFill
     options << %Q[opacity="#{opacity}"] unless !opacity || opacity == 1 || opacity == 1.0
     options.join(" ")
   end
+
+  macro included
+    Celestine::Modules::StrokeFill.make_attrs
+  end
+
+  macro make_attrs
+    module Attrs
+      STROKE = "stroke"
+      FILL = "fill"
+      STROKE_WIDTH = "stroke-width"
+      FILL_OPACITY = "fill-opacity"
+      STROKE_OPACITY = "stroke-opacity"
+      OPACITY = "opacity"
+      FILL_RULE = "fill-rule"
+    end
+  end
 end

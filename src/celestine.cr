@@ -8,6 +8,7 @@ require "./drawables/rectangle"
 require "./drawables/path"
 require "./drawables/ellipse"
 require "./drawables/group"
+require "./drawables/use"
 
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
@@ -87,6 +88,37 @@ module Celestine::Meta
         @objects << group
       end
       group
+    end
+
+    def use(&block : Proc(Celestine::Use, Nil))
+      use = Celestine::Use.new
+      yield use
+      @objects << use
+      use
+    end
+
+    def use(drawable : Celestine::Drawable, &block : Proc(Celestine::Use, Nil))
+      use = Celestine::Use.new
+      if drawable.id
+        use.target_id = drawable.id.to_s
+        yield use
+        @objects << use
+        use
+      else
+        raise "Reused objects must have an id assigned"
+      end
+    end
+
+    def use(id : String, &block : Proc(Celestine::Use, Nil))
+      use = Celestine::Use.new
+      if drawable.id
+        use.target_id = id
+        yield use
+        @objects << use
+        use
+      else
+        raise "Reused objects must have an id assigned"
+      end
     end
 
     def render

@@ -1,9 +1,10 @@
 module Celestine::Modules::Animate
-  @animate_tags = String::Builder.new
+  @animate_builder = String::Builder.new
+  @animate_tags = ""
 
   def animate_tags
-    @tags = @animate_tags.to_s if @tags.empty?
-    @tags
+    @animate_tags = @animate_builder.to_s if @animate_tags.empty?
+    @animate_tags
   end
 
   def animate(&block : Proc(Celestine::Animate, Nil))
@@ -28,7 +29,7 @@ module Celestine::Modules::Animate
       options << %Q[additive="sum"]                                if animate.additive?
       options << %Q[fill="freeze"]                                 if animate.freeze?
 
-      @animate_tags << %Q[<animate #{options.join(" ")} />]
+      @animate_builder << %Q[<animate #{options.join(" ")} />]
     end
   end
 end

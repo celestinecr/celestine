@@ -1,11 +1,12 @@
 module Celestine::Modules::Animate::Motion
-  @animate_motion_tags = String::Builder.new
-  @tags = ""
+  @animate_motion_builder = String::Builder.new
+  @animate_motion_tags = ""
 
   def animate_motion_tags
-    @tags = @animate_motion_tags.to_s if @tags.empty?
-    @tags
+    @animate_motion_tags = @animate_motion_builder.to_s if @animate_motion_tags.empty?
+    @animate_motion_tags
   end
+
 
   def animate_motion(&block : Proc(Celestine::Animate::Motion, Nil))
     animate = Celestine::Animate::Motion.new
@@ -13,7 +14,7 @@ module Celestine::Modules::Animate::Motion
     options = [] of String
     unless animate.mpath.empty?
       options << %Q[path="#{animate.mpath}"]
-      options << %Q[attributeType="XML"]
+      options << %Q[rotate="#{animate.rotate}"]                    unless animate.rotate == "none"
       options << %Q[repeatCount="#{animate.repeat_count}"]         if animate.repeat_count
       options << %Q[repeatDur="#{animate.repeat_duration}"]        if animate.repeat_duration
       options << %Q[dur="#{animate.duration}"]                     if animate.duration
@@ -31,12 +32,11 @@ module Celestine::Modules::Animate::Motion
       options << %Q[fill="freeze"]                                 if animate.freeze?
 
       if animate.mpath =~ /^#/
-        @animate_motion_tags << %Q[<animateMotion #{options.join(" ")}>]
-        @animate_motion_tags << %Q[<mpath xlink:href="#{animate.mpath}"/>]
-        @animate_motion_tags << %Q[</animateMotion>]
-
+        @animate_motion_builder << %Q[<animateMotion #{options.join(" ")}>]
+        @animate_motion_builder << %Q[<mpath xlink:href="#{animate.mpath}"/>]
+        @animate_motion_builder << %Q[</animateMotion>]
       else
-        @animate_motion_tags << %Q[<animateMotion #{options.join(" ")} />]
+        @animate_motion_builder << %Q[<animateMotion #{options.join(" ")} />]
       end
     end
   end

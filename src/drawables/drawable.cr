@@ -2,7 +2,7 @@ abstract class Celestine::Drawable
   class Transform
     @objects = [] of String
     def matrix(a : SIFNumber, b : SIFNumber, c : SIFNumber, d : SIFNumber, e : SIFNumber, f : SIFNumber)
-      @objects << "matrix(#{a}, #{b}, #{c}, #{d}, #{e}, #{f})"
+      @objects << "matrix(#{a} #{b} #{c} #{d} #{e} #{f})"
     end
 
     def skew_x(x)
@@ -14,15 +14,15 @@ abstract class Celestine::Drawable
     end
 
     def translate(x, y)
-      @objects << "translate(#{x}, #{y})"
+      @objects << "translate(#{x},#{y})"
     end
 
     def rotate(degrees, origin_x, origin_y)
-      @objects << "rotate(#{degrees}, #{origin_x}, #{origin_y})"
+      @objects << "rotate(#{degrees} #{origin_x} #{origin_y})"
     end
 
     def scale(x, y)
-      @objects << "scale(#{x}, #{y})"
+      @objects << "scale(#{x},#{y})"
     end
 
     def to_s
@@ -53,6 +53,21 @@ abstract class Celestine::Drawable
       %Q[class="#{classes.join(" ")}" ]
     end
   end
+
+  property style = {} of String => String
+  def style_options
+    styles = [] of String
+    style.each do |k, v|
+      styles << "#{k}:#{v}"
+    end
+
+    if styles.empty?
+      ""
+    else
+      %Q[style="#{styles.join(";")}"]
+    end
+  end
+
 
   abstract def draw : String
 end
