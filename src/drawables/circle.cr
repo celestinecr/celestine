@@ -3,7 +3,7 @@ class Celestine::Circle < Celestine::Drawable
   include Celestine::Modules::StrokeFill
   include Celestine::Modules::Transform
   include Celestine::Modules::Animate
-
+  include Celestine::Modules::Animate::Motion
   
   property radius : SIFNumber = 0
 
@@ -15,9 +15,16 @@ class Celestine::Circle < Celestine::Drawable
     options << position_options unless position_options.empty?
     options << stroke_fill_options unless stroke_fill_options.empty?
     options << transform_options unless transform_options.empty?
-    if anim_tags = animate_tags
-      %Q[<circle r="#{radius}" #{options.join(" ")}>#{anim_tags}</circle>]
 
+    inner_tags = String::Builder.new
+    anim_tags = animate_tags
+    anim_motion_tags = animate_motion_tags
+
+    inner_tags << anim_tags if anim_tags
+    inner_tags << anim_motion_tags if anim_motion_tags
+
+    if inner_tags
+      %Q[<circle r="#{radius}" #{options.join(" ")}>#{inner_tags.to_s}</circle>]
     else
       %Q[<circle r="#{radius}" #{options.join(" ")} />]
     end

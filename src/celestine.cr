@@ -10,6 +10,8 @@ require "./drawables/ellipse"
 require "./drawables/group"
 
 require "./effects/animation/animate"
+require "./effects/animation/animate_motion"
+
 
 alias IFNumber = (Float64 | Int32)
 alias SIFNumber = (IFNumber | String)
@@ -101,6 +103,9 @@ module Celestine::Meta
 
       
       s << %Q[<defs>]
+        self.defines.each do |obj|
+          s << obj.draw
+        end
       s << %Q[</defs>]
 
       self.objects.each do |obj|

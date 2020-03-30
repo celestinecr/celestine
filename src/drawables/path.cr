@@ -3,6 +3,7 @@ class Celestine::Path < Celestine::Drawable
   include Celestine::Modules::Transform
 
   @code_points = String::Builder.new
+  @code = ""
 
   def a_move(x, y)
     @code_points << "M#{x},#{y}"
@@ -80,12 +81,17 @@ class Celestine::Path < Celestine::Drawable
     @code_points << "z"
   end
 
+  def code
+    @code = @code_points.to_s if @code.empty?
+    @code
+  end
+
   def draw
     options = [] of String
     options << class_options unless class_options.empty?
     options << id_options unless id_options.empty?
     options << stroke_fill_options unless stroke_fill_options.empty?
     options << transform_options unless transform_options.empty?
-    %Q[<path d="#{@code_points.to_s}" #{options.join(" ")} />]
+    %Q[<path d="#{code}" #{options.join(" ")} />]
   end
 end
