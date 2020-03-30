@@ -1,33 +1,32 @@
 abstract class Celestine::Drawable
   class Transform
-    @objects = String::Builder.new
-
+    @objects = [] of String
     def matrix(a : SIFNumber, b : SIFNumber, c : SIFNumber, d : SIFNumber, e : SIFNumber, f : SIFNumber)
-      @objects << "matrix(#{a}, #{b}, #{c}, #{d}, #{e}, #{f}) "
+      @objects << "matrix(#{a}, #{b}, #{c}, #{d}, #{e}, #{f})"
     end
 
     def skew_x(x)
-      @objects << "skewX(#{x}) "
+      @objects << "skewX(#{x})"
     end
 
     def skew_y(y)
-      @objects << "skewY(#{y}) "
+      @objects << "skewY(#{y})"
     end
 
     def translate(x, y)
-      @objects << "translate(#{x}, #{y}) "
+      @objects << "translate(#{x}, #{y})"
     end
 
     def rotate(degrees, origin_x, origin_y)
-      @objects << "rotate(#{degrees}, #{origin_x}, #{origin_y}) "
+      @objects << "rotate(#{degrees}, #{origin_x}, #{origin_y})"
     end
 
     def scale(x, y)
-      @objects << "scale(#{x}, #{y}) "
+      @objects << "scale(#{x}, #{y})"
     end
 
     def to_s
-      @objects.to_s
+      @objects.join(" ")
     end
 
     def empty?
@@ -35,16 +34,25 @@ abstract class Celestine::Drawable
     end
   end
 
-  abstract def draw : String
+  property id : String? = nil
 
-  getter transform_options : String? = nil
-
-  def transform(&block : Proc(Celestine::Drawable::Transform, Nil))
-    meta = Celestine::Drawable::Transform.new
-    yield meta
-
-    if !meta.empty?
-      @transform_options = %Q[transform="#{meta.to_s}"]
+  def id_options
+    if id 
+      %Q[id="#{id}" ]
+    else
+      ""
     end
   end
+
+  property classes : Array(String) = [] of String
+
+  def class_options
+    if classes.empty?
+      ""
+    else
+      %Q[class="#{classes.join(" ")}" ]
+    end
+  end
+
+  abstract def draw : String
 end

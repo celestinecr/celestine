@@ -1,6 +1,6 @@
 class Celestine::Path < Celestine::Drawable
-  property stroke = "none"
-  property fill = "none"
+  include Celestine::Modules::StrokeFill
+  include Celestine::Modules::Transform
 
   @code_points = String::Builder.new
 
@@ -81,6 +81,11 @@ class Celestine::Path < Celestine::Drawable
   end
 
   def draw
-    %Q[<path d="#{@code_points.to_s}" stroke="#{stroke}" fill="#{fill}" #{transform_options} />]
+    options = [] of String
+    options << class_options unless class_options.empty?
+    options << id_options unless id_options.empty?
+    options << stroke_fill_options unless stroke_fill_options.empty?
+    options << transform_options unless transform_options.empty?
+    %Q[<path d="#{@code_points.to_s}" #{options.join(" ")} />]
   end
 end

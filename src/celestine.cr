@@ -1,10 +1,15 @@
 require "./patches/number.cr"
+
+require "./modules/*"
+
 require "./drawables/drawable"
 require "./drawables/circle"
 require "./drawables/rectangle"
 require "./drawables/path"
+require "./drawables/ellipse"
+require "./drawables/group"
 
-
+require "./effects/animation/animate"
 
 alias IFNumber = (Float64 | Int32)
 alias SIFNumber = (IFNumber | String)
@@ -60,6 +65,27 @@ module Celestine::Meta
       path
     end
 
+    def ellipse(define = false, &block : Proc(Celestine::Ellipse, Nil))
+      ellipse = Celestine::Ellipse.new
+      yield ellipse
+      if define
+        @defines << ellipse
+      else
+        @objects << ellipse
+      end
+      ellipse
+    end
+
+    def group(define = false, &block : Proc(Celestine::Group, Nil))
+      group = Celestine::Group.new
+      yield group
+      if define
+        @defines << group
+      else
+        @objects << group
+      end
+      group
+    end
 
     def render
       s = String::Builder.new

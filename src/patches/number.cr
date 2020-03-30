@@ -25,4 +25,10 @@ struct Number
   make_unit "vh"
   make_unit "vmin"
   make_unit "vmax"
+
+  #time units
+  make_unit "s"
+  make_unit "min"
+  make_unit "ms"
+  make_unit "h"
 end
