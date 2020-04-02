@@ -27,103 +27,95 @@ module Celestine
 end
 
 module Celestine::Meta
+  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group]
+
   class Context
+
     alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
     getter objects : Array(Celestine::Drawable) = [] of Celestine::Drawable
     getter defines : Array(Celestine::Drawable) = [] of Celestine::Drawable
     property view_box : ViewBox? = nil
     property width = "100%"
     property height = "100%"
-
-    def circle(define = false, &block : Proc(Celestine::Circle, Nil))
-      circle = Celestine::Circle.new
-      yield circle
-      if define
-        @defines << circle
-      else
-        @objects << circle
+    
+    module Methods
+      macro included
+        {% if @type == Celestine::Meta::Context %}
+          {% for klass in Celestine::Meta::CLASSES %}
+              make_context_method({{ klass.id }})
+          {% end %}
+        {% else %}
+          {% for klass in Celestine::Meta::CLASSES %}
+              make_non_context_method({{ klass.id }})
+          {% end %}
+        {% end %}
       end
-      circle
-    end
 
-    def rectangle(define = false, &block : Proc(Celestine::Rectangle, Nil))
-      rectangle = Celestine::Rectangle.new
-      yield rectangle
-      if define
-        @defines << rectangle
-      else
-        @objects << rectangle
+      # Makes context methods specifically for Celestine::Meta::Context
+      private macro make_context_method(klass)
+        def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : Proc({{klass.id}}, Nil))
+          {{ klass.stringify.split("::").last.downcase.id }} = {{klass.id}}.new
+          yield {{ klass.stringify.split("::").last.downcase.id }}
+          if define
+            @defines << {{ klass.stringify.split("::").last.downcase.id }}
+          else
+            @objects << {{ klass.stringify.split("::").last.downcase.id }}
+          end
+          {{ klass.stringify.split("::").last.downcase.id }}
+        end
       end
-      rectangle
-    end
 
-    def path(define = false, &block : Proc(Celestine::Path, Nil))
-      path = Celestine::Path.new
-      yield path
-      if define
-        @defines << path
-      else
-        @objects << path
+      private macro make_non_context_method(klass)
+        def {{ klass.stringify.split("::").last.downcase.id }}(&block : Proc({{klass.id}}, Nil))
+          {{ klass.stringify.split("::").last.downcase.id }} = {{klass.id}}.new
+          yield {{ klass.stringify.split("::").last.downcase.id }}
+          @objects << {{ klass.stringify.split("::").last.downcase.id }}
+          {{ klass.stringify.split("::").last.downcase.id }}
+        end
       end
-      path
-    end
 
-    def ellipse(define = false, &block : Proc(Celestine::Ellipse, Nil))
-      ellipse = Celestine::Ellipse.new
-      yield ellipse
-      if define
-        @defines << ellipse
-      else
-        @objects << ellipse
+      def use(drawable)
+        self.use(drawable) {|g|}
       end
-      ellipse
-    end
 
-    def group(define = false, &block : Proc(Celestine::Group, Nil))
-      group = Celestine::Group.new
-      yield group
-      if define
-        @defines << group
-      else
-        @objects << group
-      end
-      group
-    end
-
-    def use(drawable)
-      self.use(drawable) {|g|}
-    end
-
-    def use(&block : Celestine::Use -> Nil)
-      use = Celestine::Use.new
-      yield use
-      @objects << use
-      use
-    end
-
-    def use(drawable : Celestine::Drawable, &block : Proc(Celestine::Use, Nil))
-      use = Celestine::Use.new
-      if drawable.id
-        use.target_id = drawable.id.to_s
+      def use(&block : Celestine::Use -> Nil)
+        use = Celestine::Use.new
         yield use
         @objects << use
         use
-      else
-        raise "Reused objects must have an id assigned"
+      end
+
+      def use(drawable : Celestine::Drawable, &block : Proc(Celestine::Use, Nil))
+        use = Celestine::Use.new
+        if drawable.id
+          use.target_id = drawable.id.to_s
+          yield use
+          @objects << use
+          use
+        else
+          raise "Reused objects must have an id assigned"
+        end
+      end
+
+      def use(id : String, &block : Proc(Celestine::Use, Nil))
+        use = Celestine::Use.new
+        if drawable.id
+          use.target_id = id
+          yield use
+          @objects << use
+          use
+        else
+          raise "Reused objects must have an id assigned"
+        end
+      end
+
+      def <<(drawable : Celestine::Drawable)
+        @objects << drawable
+        drawable
       end
     end
 
-    def use(id : String, &block : Proc(Celestine::Use, Nil))
-      use = Celestine::Use.new
-      if drawable.id
-        use.target_id = id
-        yield use
-        @objects << use
-        use
-      else
-        raise "Reused objects must have an id assigned"
-      end
-    end
+    include Methods
 
     def render
       s = String::Builder.new
@@ -151,5 +143,9 @@ module Celestine::Meta
       s << %Q[</svg>]
       s.to_s
     end
+  end
+
+  class ::Celestine::Group
+    include Celestine::Meta::Context::Methods
   end
 end

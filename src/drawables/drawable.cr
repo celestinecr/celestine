@@ -35,7 +35,6 @@ abstract class Celestine::Drawable
   end
 
   property id : String? = nil
-
   def id_options
     if id 
       %Q[id="#{id}" ]
@@ -45,7 +44,6 @@ abstract class Celestine::Drawable
   end
 
   property classes : Array(String) = [] of String
-
   def class_options
     if classes.empty?
       ""
