@@ -4,6 +4,7 @@ class Celestine::Ellipse < Celestine::Drawable
   include Celestine::Modules::StrokeFill
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
+  include Celestine::Modules::Mask
   
   property radius_x : SIFNumber = 0
   property radius_y : SIFNumber = 0
@@ -16,6 +17,7 @@ class Celestine::Ellipse < Celestine::Drawable
     options << stroke_fill_options unless stroke_fill_options.empty?
     options << transform_options unless transform_options.empty?
     options << style_options unless style_options.empty?
+    options << mask_options unless mask_options.empty?
 
     inner_tags = String::Builder.new
     inner_tags << animate_tags

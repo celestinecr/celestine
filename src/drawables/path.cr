@@ -3,6 +3,7 @@ class Celestine::Path < Celestine::Drawable
   include Celestine::Modules::Transform
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
+  include Celestine::Modules::Mask
   
   @code_points = String::Builder.new
   @code = ""
@@ -95,6 +96,7 @@ class Celestine::Path < Celestine::Drawable
     options << stroke_fill_options unless stroke_fill_options.empty?
     options << transform_options unless transform_options.empty?
     options << style_options unless style_options.empty?
+    options << mask_options unless mask_options.empty?
 
 
     inner_tags = String::Builder.new

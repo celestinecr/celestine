@@ -13,15 +13,15 @@ module Celestine::Modules::StrokeFill
     
     # Only draw this if group agrees to override
     if self.is_a?(Celestine::Group) && self.override_stroke_fill?
-      options << %Q[stroke="#{stroke}"] if stroke && stroke != "none"
-      options << %Q[fill="#{fill}"] if fill && fill != "black"
+      options << %Q[stroke="#{stroke}"] if stroke
+      options << %Q[fill="#{fill}"] if fill
       options << %Q[stroke-width="#{stroke_width}"] unless !stroke_width || stroke_width == 1 || stroke_width == 1.0 
       options << %Q[fill-opacity="#{fill_opacity}"] unless !fill_opacity || fill_opacity == 1 || fill_opacity == 1.0
       options << %Q[stroke-opacity="#{stroke_opacity}"] unless !stroke_opacity || stroke_opacity == 1 || stroke_opacity == 1.0
       options << %Q[fill-rule="evenodd"] if fill_rule
     else
-      options << %Q[stroke="#{stroke}"] if stroke && stroke != "none"
-      options << %Q[fill="#{fill}"] if fill && fill != "black"
+      options << %Q[stroke="#{stroke}"] if stroke
+      options << %Q[fill="#{fill}"] if fill
       options << %Q[stroke-width="#{stroke_width}"] unless !stroke_width || stroke_width == 1 || stroke_width == 1.0 
       options << %Q[fill-opacity="#{fill_opacity}"] unless !fill_opacity || fill_opacity == 1 || fill_opacity == 1.0
       options << %Q[stroke-opacity="#{stroke_opacity}"] unless !stroke_opacity || stroke_opacity == 1 || stroke_opacity == 1.0
@@ -33,10 +33,10 @@ module Celestine::Modules::StrokeFill
   end
 
   macro included
-    Celestine::Modules::StrokeFill.make_attrs
+    make_attrs
   end
 
-  macro make_attrs
+  private macro make_attrs
     module Attrs
       STROKE = "stroke"
       FILL = "fill"

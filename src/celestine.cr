@@ -12,13 +12,17 @@ require "./drawables/use"
 
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
+require "./effects/mask"
 
 
+# Special alias for HTML attribute parameters. Since many attributes can be either FLOAT or INT
 alias IFNumber = (Float64 | Int32)
+# Special alias for HTML attribute parameters. Some attributes take numbers or strings, such as 10, 100%, or 100px
 alias SIFNumber = (IFNumber | String)
 
+# Main module for Celestine
 module Celestine
-
+  # Main draw function for DSL
   def self.draw(&block : Proc(Celestine::Meta::Context, Nil))
     ctx = Celestine::Meta::Context.new
     yield ctx
@@ -26,24 +30,46 @@ module Celestine
   end
 end
 
+# Modules where all DSL and Meta code is held
 module Celestine::Meta
+  # List of classes we want context methods for (such as circle, rectangle, etc)
   CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group]
 
+  # Hold context information for the DSL
   class Context
 
+    # Alias for the viewBox SVG parameter
     alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
+    # Objects to be drawn to the scene
     getter objects : Array(Celestine::Drawable) = [] of Celestine::Drawable
+    # Objects in the defs section, which can be used by ID
     getter defines : Array(Celestine::Drawable) = [] of Celestine::Drawable
+    # The viewBox of the SVG scene
     property view_box : ViewBox? = nil
     property width = "100%"
     property height = "100%"
     
+    # Holds all the context methods to be included in DSL classes like Context, Group, and Mask
     module Methods
       macro included
+        # Only add these methods if this is a Context
         {% if @type == Celestine::Meta::Context %}
           {% for klass in Celestine::Meta::CLASSES %}
               make_context_method({{ klass.id }})
           {% end %}
+
+          def define(drawable : Celestine::Drawable)
+            @defines << drawable
+            drawable
+          end
+
+          def mask(&block : Celestine::Mask -> Nil)
+            mask = Celestine::Mask.new
+            yield mask
+            @defines << mask
+            mask
+          end
+        # Adds methods without the define parameter.
         {% else %}
           {% for klass in Celestine::Meta::CLASSES %}
               make_non_context_method({{ klass.id }})
@@ -65,6 +91,7 @@ module Celestine::Meta
         end
       end
 
+      # Makes context methods for classes without a defs collection.
       private macro make_non_context_method(klass)
         def {{ klass.stringify.split("::").last.downcase.id }}(&block : Proc({{klass.id}}, Nil))
           {{ klass.stringify.split("::").last.downcase.id }} = {{klass.id}}.new
@@ -73,6 +100,7 @@ module Celestine::Meta
           {{ klass.stringify.split("::").last.downcase.id }}
         end
       end
+
 
       def use(drawable)
         self.use(drawable) {|g|}
@@ -146,6 +174,10 @@ module Celestine::Meta
   end
 
   class ::Celestine::Group
+    include Celestine::Meta::Context::Methods
+  end
+
+  class ::Celestine::Mask
     include Celestine::Meta::Context::Methods
   end
 end
