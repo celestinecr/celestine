@@ -101,8 +101,11 @@ module Celestine::Meta
         end
       end
 
+      def use(id : String)
+        self.use(id) {|g|}
+      end
 
-      def use(drawable)
+      def use(drawable : Celestine::Drawable)
         self.use(drawable) {|g|}
       end
 
@@ -127,14 +130,10 @@ module Celestine::Meta
 
       def use(id : String, &block : Proc(Celestine::Use, Nil))
         use = Celestine::Use.new
-        if drawable.id
-          use.target_id = id
-          yield use
-          @objects << use
-          use
-        else
-          raise "Reused objects must have an id assigned"
-        end
+        use.target_id = id
+        yield use
+        @objects << use
+        use
       end
 
       def <<(drawable : Celestine::Drawable)
