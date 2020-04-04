@@ -1,6 +1,8 @@
 require "./patches/number.cr"
 
+require "./modules/position"
 require "./modules/*"
+
 
 require "./drawables/drawable"
 require "./drawables/circle"
@@ -13,6 +15,8 @@ require "./drawables/use"
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
 require "./effects/mask"
+
+require "./collision/helpers"
 
 
 # Special alias for HTML attribute parameters. Since many attributes can be either FLOAT or INT
@@ -33,7 +37,7 @@ end
 # Modules where all DSL and Meta code is held
 module Celestine::Meta
   # List of classes we want context methods for (such as circle, rectangle, etc)
-  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group]
+  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image]
 
   # Hold context information for the DSL
   class Context
@@ -79,7 +83,7 @@ module Celestine::Meta
 
       # Makes context methods specifically for Celestine::Meta::Context
       private macro make_context_method(klass)
-        def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : Proc({{klass.id}}, Nil))
+        def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : Proc({{klass.id}}, Nil)) : {{klass.id}}
           {{ klass.stringify.split("::").last.downcase.id }} = {{klass.id}}.new
           yield {{ klass.stringify.split("::").last.downcase.id }}
           if define
@@ -93,7 +97,7 @@ module Celestine::Meta
 
       # Makes context methods for classes without a defs collection.
       private macro make_non_context_method(klass)
-        def {{ klass.stringify.split("::").last.downcase.id }}(&block : Proc({{klass.id}}, Nil))
+        def {{ klass.stringify.split("::").last.downcase.id }}(&block : Proc({{klass.id}}, Nil)) : {{klass.id}}
           {{ klass.stringify.split("::").last.downcase.id }} = {{klass.id}}.new
           yield {{ klass.stringify.split("::").last.downcase.id }}
           @objects << {{ klass.stringify.split("::").last.downcase.id }}

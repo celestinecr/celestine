@@ -9,6 +9,9 @@ class Celestine::Circle < Celestine::Drawable
   
   property radius : SIFNumber = 0
 
+  def diameter
+    radius * 2
+  end
 
   def draw
     options = [] of String
