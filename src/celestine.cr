@@ -52,6 +52,8 @@ module Celestine::Meta
     property view_box : ViewBox? = nil
     property width = "100%"
     property height = "100%"
+
+    property shape_rendering = "auto"
     
     # Holds all the context methods to be included in DSL classes like Context, Group, and Mask
     module Methods
@@ -155,7 +157,7 @@ module Celestine::Meta
       if self.view_box
         vb = self.view_box.as(ViewBox)
         view_box_option = %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
-        s << %Q[<svg #{view_box_option} height="100%" width="100%" #{xmlns}>]
+        s << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} height="100%" width="100%" #{xmlns}>]
       else
         s << %Q[<svg width="#{width}" height="#{height}" #{xmlns}>]
       end
