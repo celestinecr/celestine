@@ -8,9 +8,8 @@ module Celestine::Modules::Animate::Motion
   end
 
 
-  def animate_motion(&block : Proc(Celestine::Animate::Motion, Nil))
-    animate = Celestine::Animate::Motion.new
-    yield animate
+  def animate_motion(&block : Celestine::Animate::Motion -> Celestine::Animate::Motion)
+    animate = yield Celestine::Animate::Motion.new
     options = [] of String
     unless animate.mpath.empty?
       options << %Q[path="#{animate.mpath}"]

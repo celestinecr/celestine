@@ -1,4 +1,4 @@
-class Celestine::Ellipse < Celestine::Drawable 
+struct Celestine::Ellipse < Celestine::Drawable 
   include Celestine::Modules::Transform
   include Celestine::Modules::CPosition
   include Celestine::Modules::StrokeFill

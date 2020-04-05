@@ -1,4 +1,4 @@
-class Celestine::Animate
+struct Celestine::Animate
   property attribute : String?  = nil
   property repeat_count : SIFNumber? = nil
   property duration : SIFNumber? = nil

@@ -8,8 +8,7 @@ module Celestine::Modules::Animate
   end
 
   def animate(&block : Proc(Celestine::Animate, Nil))
-    animate = Celestine::Animate.new
-    yield animate
+    animate = yield Celestine::Animate.new
     options = [] of String
     if animate.attribute
       options << %Q[attributeName="#{animate.attribute}"]

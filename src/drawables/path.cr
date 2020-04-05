@@ -1,4 +1,4 @@
-class Celestine::Path < Celestine::Drawable
+struct Celestine::Path < Celestine::Drawable
   include Celestine::Modules::StrokeFill
   include Celestine::Modules::Transform
   include Celestine::Modules::Animate

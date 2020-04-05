@@ -1,4 +1,4 @@
-class Celestine::Use < Celestine::Drawable
+struct Celestine::Use < Celestine::Drawable
   include Celestine::Modules::Position
   include Celestine::Modules::Body
   include Celestine::Modules::StrokeFill
@@ -30,9 +30,4 @@ class Celestine::Use < Celestine::Drawable
       %Q[<use href="##{target_id}" #{options.join(" ")}>#{tags}</use>]
     end
   end
-
-
-
-
-
 end

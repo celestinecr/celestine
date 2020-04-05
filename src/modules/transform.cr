@@ -1,9 +1,8 @@
 module Celestine::Modules::Transform
   getter transform_options : String = ""
 
-  def transform(&block : Proc(Celestine::Drawable::Transform, Nil))
-    meta = Celestine::Drawable::Transform.new
-    yield meta
+  def transform(&block : Celestine::Drawable::Transform -> Celestine::Drawable::Transform)
+    meta = yield Celestine::Drawable::Transform.new
 
     if !meta.empty?
       @transform_options = %Q[transform="#{meta.to_s}"]

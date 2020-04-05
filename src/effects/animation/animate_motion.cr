@@ -1,4 +1,4 @@
-class Celestine::Animate::Motion
+struct Celestine::Animate::Motion
   property rotate = "none"
   property key_points = [] of SIFNumber
   getter mpath = ""
@@ -24,12 +24,11 @@ class Celestine::Animate::Motion
   property? freeze = false
 
   def mpath(&block : Proc(Celestine::Path, Nil))
-    path = Celestine::Path.new
-    yield path
+    path = yield Celestine::Path.new
     @mpath = path.code
   end
 
-  def set_mpath(path : Celestine::Path)
+  def mpath=(path : Celestine::Path)
     @mpath = path.code
   end
 

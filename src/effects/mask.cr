@@ -1,4 +1,4 @@
-class Celestine::Mask < Celestine::Drawable
+struct Celestine::Mask < Celestine::Drawable
   include Celestine::Modules::Transform
   include Celestine::Modules::StrokeFill
   include Celestine::Modules::Animate

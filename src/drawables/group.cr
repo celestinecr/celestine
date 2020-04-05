@@ -1,4 +1,4 @@
-class Celestine::Group < Celestine::Drawable
+struct Celestine::Group < Celestine::Drawable
   include Celestine::Modules::Transform
   include Celestine::Modules::StrokeFill
   include Celestine::Modules::Animate

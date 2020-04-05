@@ -1,5 +1,5 @@
-abstract class Celestine::Drawable
-  class Transform
+abstract struct Celestine::Drawable
+  struct Transform
     @objects = [] of String
     def matrix(a : SIFNumber, b : SIFNumber, c : SIFNumber, d : SIFNumber, e : SIFNumber, f : SIFNumber)
       @objects << "matrix(#{a} #{b} #{c} #{d} #{e} #{f})"

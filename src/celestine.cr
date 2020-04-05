@@ -69,9 +69,8 @@ module Celestine::Meta
             drawable
           end
 
-          def mask(&block : Celestine::Mask -> Nil)
-            mask = Celestine::Mask.new
-            yield mask
+          def mask(&block : Celestine::Mask -> Celestine::Mask)
+            mask = yield Celestine::Mask.new
             @defines << mask
             mask
           end
@@ -85,9 +84,8 @@ module Celestine::Meta
 
       # Makes context methods specifically for Celestine::Meta::Context
       private macro make_context_method(klass)
-        def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : Proc({{klass.id}}, Nil)) : {{klass.id}}
-          {{ klass.stringify.split("::").last.downcase.id }} = {{klass.id}}.new
-          yield {{ klass.stringify.split("::").last.downcase.id }}
+        def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
+          {{ klass.stringify.split("::").last.downcase.id }} = yield {{klass.id}}.new
           if define
             @defines << {{ klass.stringify.split("::").last.downcase.id }}
           else
@@ -99,34 +97,33 @@ module Celestine::Meta
 
       # Makes context methods for classes without a defs collection.
       private macro make_non_context_method(klass)
-        def {{ klass.stringify.split("::").last.downcase.id }}(&block : Proc({{klass.id}}, Nil)) : {{klass.id}}
-          {{ klass.stringify.split("::").last.downcase.id }} = {{klass.id}}.new
-          yield {{ klass.stringify.split("::").last.downcase.id }}
+        def {{ klass.stringify.split("::").last.downcase.id }}(&block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
+          {{ klass.stringify.split("::").last.downcase.id }} = yield {{klass.id}}.new
           @objects << {{ klass.stringify.split("::").last.downcase.id }}
           {{ klass.stringify.split("::").last.downcase.id }}
         end
       end
 
       def use(id : String)
-        self.use(id) {|g|}
+        self.use(id) {|g| g }
       end
 
       def use(drawable : Celestine::Drawable)
-        self.use(drawable) {|g|}
+        self.use(drawable) {|g| g }
       end
 
-      def use(&block : Celestine::Use -> Nil)
+      def use(&block : Celestine::Use -> Celestine::Use)
         use = Celestine::Use.new
-        yield use
+        use = yield use
         @objects << use
         use
       end
 
-      def use(drawable : Celestine::Drawable, &block : Proc(Celestine::Use, Nil))
+      def use(drawable : Celestine::Drawable, &block : Celestine::Use -> Celestine::Use)
         use = Celestine::Use.new
         if drawable.id
           use.target_id = drawable.id.to_s
-          yield use
+          use = yield use
           @objects << use
           use
         else
@@ -134,10 +131,10 @@ module Celestine::Meta
         end
       end
 
-      def use(id : String, &block : Proc(Celestine::Use, Nil))
+      def use(id : String, &block : Celestine::Use -> Celestine::Use)
         use = Celestine::Use.new
         use.target_id = id
-        yield use
+        use = yield use
         @objects << use
         use
       end
@@ -178,11 +175,11 @@ module Celestine::Meta
     end
   end
 
-  class ::Celestine::Group
+  struct ::Celestine::Group
     include Celestine::Meta::Context::Methods
   end
 
-  class ::Celestine::Mask
+  struct ::Celestine::Mask
     include Celestine::Meta::Context::Methods
   end
 end
