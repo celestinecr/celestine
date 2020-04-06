@@ -16,6 +16,11 @@ require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
 require "./effects/mask"
 
+
+require "vectormath"
+require "./3d/render"
+
+
 require "./math/**"
 require "./collision/helpers"
 
