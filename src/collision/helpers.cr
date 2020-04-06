@@ -1,4 +1,3 @@
-require "./point"
 module Celestine::Collision
   def self.check?(obj : Celestine::Drawable, point : Celestine::Point) : Bool
     if obj.is_a?(Celestine::Rectangle)

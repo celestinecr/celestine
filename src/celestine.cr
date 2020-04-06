@@ -16,6 +16,7 @@ require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
 require "./effects/mask"
 
+require "./math/**"
 require "./collision/helpers"
 
 

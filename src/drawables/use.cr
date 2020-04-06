@@ -8,6 +8,21 @@ struct Celestine::Use < Celestine::Drawable
   include Celestine::Modules::Mask
 
   property target_id : String = ""
+
+  def initialize()
+  end
+
+  def initialize(@target_id : Sting)
+  end
+
+  def initialize(target : Celestine::Drawable)
+    if target.id
+      @target_id = target.id.as(String)
+    else
+      raise "No id on use"
+    end
+  end
+  
   
   def draw
     options = [] of String
