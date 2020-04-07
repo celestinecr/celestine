@@ -5,6 +5,8 @@ require "./mesh"
 struct Celestine::Three::TestRender
   getter fov = 90.0
 
+  getter camera = VM::Vec3d.zero
+
   property z_far = 1000.0
   property z_near = 0.1
 
@@ -41,7 +43,7 @@ struct Celestine::Three::TestRender
     x_rot[3, 3] = 1
 
     output = Celestine::Group.new
-    projected_triangles = [] of Celestine::Three::ProjectedTriangle
+    projected_triangles = [] of Celestine::Three::Triangle
     mesh.triangles.each do |triangle|
 
       triangle.p1 = (z_rot * triangle.p1.to_vec4).to_vec3
@@ -56,33 +58,57 @@ struct Celestine::Three::TestRender
       triangle.p2.z += 3.0
       triangle.p3.z += 3.0
 
-      p_triangle = Celestine::Three::ProjectedTriangle.new  
-      p_triangle.color = triangle.color
+      # line1 = triangle.p2 - triangle.p1
+      # line2 = triangle.p3 - triangle.p1
 
-      p_triangle.p1 = (projection_matrix * triangle.p1.to_vec4).to_vec2
-      p_triangle.p2 = (projection_matrix * triangle.p2.to_vec4).to_vec2
-      p_triangle.p3 = (projection_matrix * triangle.p3.to_vec4).to_vec2
+      # normal = VM::Vec3d.zero
+      # normal.x = line1.y * line2.z - line1.z * line2.y
+      # normal.y = line1.z * line2.x - line1.x * line2.z
+      # normal.z = line1.x * line2.y - line1.y * line2.x
 
-      p_triangle.p1.x += 1.0
-      p_triangle.p1.y += 1.0
+      # dot = ::Math.sqrt(normal.dot(normal))
+      # normal = VM::Vec3d.new(normal.x/dot, normal.y/dot, normal.z/dot)
+      # normal_sum_v = VM::Vec3d.zero
+      # normal_sum_v.x = normal.x * (triangle.p1.x - camera.x)
+      # normal_sum_v.y = normal.y * (triangle.p1.y - camera.y)
+      # normal_sum_v.z = normal.z * (triangle.p1.z - camera.z)
 
-      p_triangle.p2.x += 1.0
-      p_triangle.p2.y += 1.0
+      # if (normal_sum_v.x + normal_sum_v.y + normal_sum_v.z) < 0.0
+        p_triangle = Celestine::Three::Triangle.new  
+        p_triangle.color = triangle.color
 
-      p_triangle.p3.x += 1.0
-      p_triangle.p3.y += 1.0
+        p_triangle.p1 = (projection_matrix * triangle.p1.to_vec4).to_vec3
+        p_triangle.p2 = (projection_matrix * triangle.p2.to_vec4).to_vec3
+        p_triangle.p3 = (projection_matrix * triangle.p3.to_vec4).to_vec3
 
-      p_triangle.p1.x *= 0.5 * width
-      p_triangle.p1.y *= 0.5 * height
+        p_triangle.p1.x += 1.0
+        p_triangle.p1.y += 1.0
 
-      p_triangle.p2.x *= 0.5 * width
-      p_triangle.p2.y *= 0.5 * height
+        p_triangle.p2.x += 1.0
+        p_triangle.p2.y += 1.0
 
-      p_triangle.p3.x *= 0.5 * width
-      p_triangle.p3.y *= 0.5 * height
+        p_triangle.p3.x += 1.0
+        p_triangle.p3.y += 1.0
 
-      projected_triangles << p_triangle
+        p_triangle.p1.x *= 0.5 * width
+        p_triangle.p1.y *= 0.5 * height
+
+        p_triangle.p2.x *= 0.5 * width
+        p_triangle.p2.y *= 0.5 * height
+
+        p_triangle.p3.x *= 0.5 * width
+        p_triangle.p3.y *= 0.5 * height
+
+        projected_triangles << p_triangle
+      # end
     end
+
+    projected_triangles.sort! do |t1, t2|
+      z1 = (t1.p1.z + t1.p2.z + t1.p3.z)/3.0
+      z2 = (t2.p1.z + t2.p2.z + t2.p3.z)/3.0
+      z1 <=> z2
+    end
+
     projected_triangles.each do |triangle|
       output.path do |path|
         path.a_move(triangle.p1.x, triangle.p1.y)
