@@ -36,6 +36,7 @@ Celestine.draw do |ctx|
     circle.radius = 10.px
     circle.x = 10.percent
     circle.y = 10.vmax
+    circle
   end
 
   # draw a rectangle
@@ -54,6 +55,7 @@ Celestine.draw do |ctx|
       t.translate(10, 10)
       # rotate it by an origin point (absolute)
       t.rotate(40, 0, 0)
+      t
     end
 
     # Animate elements
@@ -64,6 +66,7 @@ Celestine.draw do |ctx|
       anim.values << 0
       anim.values << 10
       anim.values << 0
+      anim
     end
 
     rect.animate_motion do |anim|
@@ -73,8 +76,11 @@ Celestine.draw do |ctx|
         path.r_line 10,0
         path.r_line 10,10
         path.close
+        path
       end
     end
+    
+    rect
   end
 
   # Add things to defs to use them later or multiple times
@@ -87,6 +93,7 @@ Celestine.draw do |ctx|
       circle.y = 20
       circle.radius = 20
       circle.fill = "red"
+      circle
     end
 
     group.circle do |circle|
@@ -94,7 +101,9 @@ Celestine.draw do |ctx|
       circle.y = 20
       circle.radius = 10
       circle.fill = "blue"
+      circle
     end
+    group
   end
 
   # We can then use the item multiple times
@@ -108,9 +117,8 @@ Celestine.draw do |ctx|
 
     # Can use transform on whole groups
     use.transform {|t| t.rotate(10, 0, 0)}
+    use
   end
-
-
 end
 ```
 
