@@ -29,15 +29,15 @@ struct Celestine::Path < Celestine::Drawable
   end
 
   def r_h_line(x)
-    @code_points << "H#{x}"
+    @code_points << "h#{x}"
   end
 
   def a_v_line(y)
-    @code_points << "H#{y}"
+    @code_points << "V#{y}"
   end
 
   def r_v_line(y)
-    @code_points << "H#{y}"
+    @code_points << "v#{y}"
   end
 
   def a_bcurve(cx1, cy1, cx2, cy2, x, y)
