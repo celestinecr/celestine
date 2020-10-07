@@ -88,6 +88,10 @@ struct Celestine::Path < Celestine::Drawable
     @code = @code_points.to_s if @code.empty?
     @code
   end
+  
+  def code=(other : String)
+    @code = other
+  end
 
   def draw
     options = [] of String
