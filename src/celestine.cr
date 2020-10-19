@@ -1,4 +1,5 @@
-require "./patches/number.cr"
+require "./patches/number"
+require "./macros/include_options"
 
 require "./modules/position"
 require "./modules/*"
@@ -17,11 +18,6 @@ require "./drawables/text"
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
 require "./effects/mask"
-
-
-require "vectormath"
-require "./3d/render"
-
 
 require "./math/**"
 require "./collision/helpers"
@@ -113,14 +109,17 @@ module Celestine::Meta
         end
       end
 
+      # Reuses an element defined using `define: true` by id
       def use(id : String)
         self.use(id) {|g| g }
       end
 
+      # Reuses an element defined using `define: true`
       def use(drawable : Celestine::Drawable)
         self.use(drawable) {|g| g }
       end
 
+      # Reuses an element defined using `define: true` and then opens a block with that object for configuring
       def use(&block : Celestine::Use -> Celestine::Use)
         use = Celestine::Use.new
         use = yield use
@@ -128,6 +127,7 @@ module Celestine::Meta
         use
       end
 
+      # Reuses an element defined using `define: true` and then opens a block with that object for configuring
       def use(drawable : Celestine::Drawable, &block : Celestine::Use -> Celestine::Use)
         use = Celestine::Use.new
         if drawable.id
@@ -140,6 +140,7 @@ module Celestine::Meta
         end
       end
 
+      # Reuses an element defined using `define: true` by id and then opens a block with that object for configuring
       def use(id : String, &block : Celestine::Use -> Celestine::Use)
         use = Celestine::Use.new
         use.target_id = id
@@ -148,6 +149,7 @@ module Celestine::Meta
         use
       end
 
+      # Adds a new drawable to this context's objects
       def <<(drawable : Celestine::Drawable)
         @objects << drawable
         drawable
@@ -184,7 +186,7 @@ module Celestine::Meta
       s.to_s
     end
   end
-
+  
   struct ::Celestine::Group
     include Celestine::Meta::Context::Methods
   end

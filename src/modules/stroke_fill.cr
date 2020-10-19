@@ -32,19 +32,13 @@ module Celestine::Modules::StrokeFill
     options.join(" ")
   end
 
-  macro included
-    make_attrs
-  end
-
-  private macro make_attrs
-    module Attrs
-      STROKE = "stroke"
-      FILL = "fill"
-      STROKE_WIDTH = "stroke-width"
-      FILL_OPACITY = "fill-opacity"
-      STROKE_OPACITY = "stroke-opacity"
-      OPACITY = "opacity"
-      FILL_RULE = "fill-rule"
-    end
+  module Attrs
+    STROKE = "stroke"
+    FILL = "fill"
+    STROKE_WIDTH = "stroke-width"
+    FILL_OPACITY = "fill-opacity"
+    STROKE_OPACITY = "stroke-opacity"
+    OPACITY = "opacity"
+    FILL_RULE = "fill-rule"
   end
 end

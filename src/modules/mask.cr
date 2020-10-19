@@ -16,13 +16,7 @@ module Celestine::Modules::Mask
     end
   end
 
-  macro included
-    make_attrs
-  end
-
-  private macro make_attrs
-    module Attrs
-      MASK = "mask"
-    end
+  module Attrs
+    MASK = "mask"
   end
 end

@@ -36,14 +36,8 @@ module Celestine::Modules::Body
     end
   end
 
-  macro included
-    make_attrs
-  end
-
-  private macro make_attrs
-    module Attrs
-      WIDTH = "width"
-      HEIGHT = "height"
-    end
+  module Attrs
+    WIDTH = "width"
+    HEIGHT = "height"
   end
 end

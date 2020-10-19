@@ -1,4 +1,6 @@
+# Basic SVG drawable, inheritted by stuff like circles, rectangles, etc. 
 abstract struct Celestine::Drawable
+  # A transform struct used to interact with the `transform` attribute
   struct Transform
     @objects = [] of String
     def matrix(a : SIFNumber, b : SIFNumber, c : SIFNumber, d : SIFNumber, e : SIFNumber, f : SIFNumber)
@@ -34,7 +36,10 @@ abstract struct Celestine::Drawable
     end
   end
 
+  # ID of this object
   property id : String? = nil
+
+  # Render ID options
   def id_options
     if id 
       %Q[id="#{id}" ]
@@ -43,7 +48,10 @@ abstract struct Celestine::Drawable
     end
   end
 
+  # A list of the classes for this object
   property classes : Array(String) = [] of String
+
+  # Rendered class options
   def class_options
     if classes.empty?
       ""
@@ -52,7 +60,10 @@ abstract struct Celestine::Drawable
     end
   end
 
+  # A list of the style options
   property style = {} of String => String
+
+  # Rendered style options
   def style_options
     styles = [] of String
     style.each do |k, v|
@@ -66,6 +77,18 @@ abstract struct Celestine::Drawable
     end
   end
 
+  # A list of custom attributes
+  property custom_attrs = {} of String => String
+
+  
+  # Rendered custom attributes
+  def custom_options
+    attrs = [] of String
+    custom_attrs.each do |k ,v|
+      attrs << %Q[#{k}="#{v}"]
+    end
+    attrs.join(" ")
+  end
 
   abstract def draw : String
 end

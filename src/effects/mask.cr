@@ -1,8 +1,8 @@
 struct Celestine::Mask < Celestine::Drawable
-  include Celestine::Modules::Transform
-  include Celestine::Modules::StrokeFill
-  include Celestine::Modules::Animate
-  include Celestine::Modules::Animate::Motion
+  include_options Celestine::Modules::Transform
+  include_options Celestine::Modules::StrokeFill
+  include_options Celestine::Modules::Animate
+  include_options Celestine::Modules::Animate::Motion
   
 
   @objects = [] of Celestine::Drawable

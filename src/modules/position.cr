@@ -14,15 +14,9 @@ module Celestine::Modules::Position
     end
   end
 
-  macro included
-    make_attrs
-  end
-
-  private macro make_attrs
-    module Attrs
-      X = "x"
-      Y = "y"
-    end
+  module Attrs
+    X = "x"
+    Y = "y"
   end
 end
 
@@ -41,15 +35,9 @@ module Celestine::Modules::CPosition
       ""
     end
   end
-
-  macro included
-    make_attrs
-  end
-
-  private macro make_attrs
-    module Attrs
-      X = "cx"
-      Y = "cy"
-    end
+  
+  module Attrs
+    X = "cx"
+    Y = "cy"
   end
 end

@@ -10,4 +10,8 @@ module Celestine::Modules::Transform
       @transform_options = ""
     end
   end
+
+  module Attrs
+    TRANSFORM = "transform"
+  end
 end

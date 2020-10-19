@@ -1,10 +1,10 @@
 struct Celestine::Rectangle < Celestine::Drawable
-  include Celestine::Modules::Body
-  include Celestine::Modules::StrokeFill
-  include Celestine::Modules::Transform
-  include Celestine::Modules::Animate
-  include Celestine::Modules::Animate::Motion
-  include Celestine::Modules::Mask
+  include_options Celestine::Modules::Body
+  include_options Celestine::Modules::StrokeFill
+  include_options Celestine::Modules::Transform
+  include_options Celestine::Modules::Animate
+  include_options Celestine::Modules::Animate::Motion
+  include_options Celestine::Modules::Mask
   
   def draw
     options = [] of String
@@ -15,7 +15,8 @@ struct Celestine::Rectangle < Celestine::Drawable
     options << transform_options unless transform_options.empty?
     options << style_options unless style_options.empty?
     options << mask_options unless mask_options.empty?
-
+    options << custom_options unless custom_options.empty?
+    
     inner_tags = String::Builder.new
     inner_tags << animate_tags
     inner_tags << animate_motion_tags
