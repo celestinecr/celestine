@@ -11,6 +11,8 @@ require "./drawables/path"
 require "./drawables/ellipse"
 require "./drawables/group"
 require "./drawables/use"
+require "./drawables/text"
+
 
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
@@ -42,12 +44,11 @@ end
 
 # Modules where all DSL and Meta code is held
 module Celestine::Meta
-  # List of classes we want context methods for (such as circle, rectangle, etc)
-  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image]
+  # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you mnust add it here as well.
+  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text]
 
   # Hold context information for the DSL
   class Context
-
     # Alias for the viewBox SVG parameter
     alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
     # Objects to be drawn to the scene
@@ -56,16 +57,18 @@ module Celestine::Meta
     getter defines : Array(Celestine::Drawable) = [] of Celestine::Drawable
     # The viewBox of the SVG scene
     property view_box : ViewBox? = nil
-    property width = "100%"
-    property height = "100%"
+    property width : SIFNumber = "100%"
+    property height : SIFNumber = "100%"
 
     property shape_rendering = "auto"
     
-    # Holds all the context methods to be included in DSL classes like Context, Group, and Mask
+    # Holds all the context methods to be included in DSL classes like Context, Group, and Mask.
+    # This creates all the methods that can be used inside the draw block, like `circle` or `group` or `use`.
     module Methods
       macro included
         # Only add these methods if this is a Context
         {% if @type == Celestine::Meta::Context %}
+          # Go through each class in CLASSES and lowercase the last part to make a method name.
           {% for klass in Celestine::Meta::CLASSES %}
               make_context_method({{ klass.id }})
           {% end %}
@@ -153,6 +156,7 @@ module Celestine::Meta
 
     include Methods
 
+    # Takes all the objects and renders them to a string SVG
     def render
       s = String::Builder.new
       xmlns = %Q[xmlns="http://www.w3.org/2000/svg"]      
@@ -160,7 +164,7 @@ module Celestine::Meta
       if self.view_box
         vb = self.view_box.as(ViewBox)
         view_box_option = %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
-        s << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} height="100%" width="100%" #{xmlns}>]
+        s << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} width="#{width}" height="#{height}" #{xmlns}>]
       else
         s << %Q[<svg width="#{width}" height="#{height}" #{xmlns}>]
       end

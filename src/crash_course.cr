@@ -1,26 +1,4 @@
-# Celestine
-
-A neat library and DSL for creating graphics using SVG
-
-## Installation
-
-Add to shards.yml
-
-```yml
-dependencies:
-  celestine:
-    github: redcodefinal/celestine
-```
-
-## Usage
-
-Here's a quick and dirty intro to features.
-
-First, all drawing is done through `Celestine.draw` this returns a string SVG element. You can easily embed this into webpages for dynamic server side drawing of assets.
-
-```crystal
-require "celestine"
-
+require "./celestine"
 File.open("./bin/test.svg", "w+") do |f|
   f.puts(Celestine.draw do |ctx|
     # ctx.height = 100
@@ -154,27 +132,3 @@ File.open("./bin/test.svg", "w+") do |f|
     end
   end)
 end
-```
-
-Real world examples made with Celestine
-
-https://www.sol.vin/art/live/inward/
-https://www.sol.vin/art/live/mineshift/
-
-
-
-## Development
-
-HMU via issues
-
-## Contributing
-
-1. Fork it (<https://github.com/your-github-user/celestine/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
-
-## Contributors
-
-- [Ian Rash](https://github.com/your-github-user) - creator and maintainer

@@ -5,8 +5,8 @@ authors:
   - Ian Rash <ian@0x42424242.in>
 
 targets:
-  sandbox:
-    main: src/sandbox/sandbox.cr
+  crash_course:
+    main: src/crash_course.cr
 
 dependencies:
   vectormath:

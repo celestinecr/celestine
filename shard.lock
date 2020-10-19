@@ -1,6 +1,6 @@
-version: 1.0
+version: 2.0
 shards:
   vectormath:
-    github: mathalaxy/vectormath
+    git: https://github.com/mathalaxy/vectormath.git
     version: 0.1.5
 

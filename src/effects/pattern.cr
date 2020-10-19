@@ -1,2 +1,0 @@
-class Celestine::Pattern
-end

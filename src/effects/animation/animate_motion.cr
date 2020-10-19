@@ -1,4 +1,8 @@
 struct Celestine::Animate::Motion
+  
+  module Attrs
+  end
+  
   property rotate = "none"
   property key_points = [] of SIFNumber
   getter mpath = ""
