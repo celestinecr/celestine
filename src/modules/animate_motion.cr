@@ -32,6 +32,7 @@ module Celestine::Modules::Animate::Motion
     animate = yield Celestine::Animate::Motion.new
     options = [] of String
     unless animate.mpath.empty?
+      options << %Q[id="#{animate.id}"]                       if animate.id
       options << %Q[path="#{animate.mpath}"]
       options << %Q[rotate="#{animate.rotate}"]                    unless animate.rotate == "none"
       options << %Q[repeatCount="#{animate.repeat_count}"]         if animate.repeat_count

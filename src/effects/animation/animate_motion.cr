@@ -11,7 +11,8 @@ struct Celestine::Animate::Motion
     end
     attrs.join(" ")
   end
-
+  
+  property id : String? = nil
   property rotate = "none"
   property key_points = [] of SIFNumber
   getter mpath = ""

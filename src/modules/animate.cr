@@ -31,6 +31,7 @@ module Celestine::Modules::Animate
     animate = yield Celestine::Animate.new
     options = [] of String
     if animate.attribute
+      options << %Q[id="#{animate.id}"]                       if animate.id
       options << %Q[attributeName="#{animate.attribute}"]
       options << %Q[attributeType="XML"]
       options << %Q[repeatCount="#{animate.repeat_count}"]         if animate.repeat_count

@@ -12,6 +12,7 @@ struct Celestine::Animate
     attrs.join(" ")
   end
 
+  property id : String? = nil
   property attribute : String?  = nil
   property repeat_count : SIFNumber? = nil
   property duration : SIFNumber? = nil
