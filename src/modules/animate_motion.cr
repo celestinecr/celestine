@@ -49,6 +49,7 @@ module Celestine::Modules::Animate::Motion
       options << %Q[accumulate="sum"]                              if animate.accumulate?
       options << %Q[additive="sum"]                                if animate.additive?
       options << %Q[fill="freeze"]                                 if animate.freeze?
+      options << animate.custom_options
 
       if animate.mpath =~ /^#/
         @animate_motion_builder << %Q[<animateMotion #{options.join(" ")}>]

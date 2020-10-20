@@ -1,4 +1,16 @@
 struct Celestine::Animate::Motion
+  # A list of custom attributes
+  property custom_attrs = {} of String => String
+
+
+  # Rendered custom attributes
+  def custom_options
+    attrs = [] of String
+    custom_attrs.each do |k ,v|
+      attrs << %Q[#{k}="#{v}"]
+    end
+    attrs.join(" ")
+  end
 
   property rotate = "none"
   property key_points = [] of SIFNumber

@@ -2,6 +2,19 @@ module Celestine::Modules::Animate
   @animate_builder = String::Builder.new
   @animate_tags = ""
 
+  # A list of custom attributes
+  property custom_attrs = {} of String => String
+
+
+  # Rendered custom attributes
+  def custom_options
+    attrs = [] of String
+    custom_attrs.each do |k ,v|
+      attrs << %Q[#{k}="#{v}"]
+    end
+    attrs.join(" ")
+  end
+
   def animate_tags
     @animate_tags = @animate_builder.to_s if @animate_tags.empty?
     @animate_tags
@@ -47,7 +60,7 @@ module Celestine::Modules::Animate
       options << %Q[accumulate="sum"]                              if animate.accumulate?
       options << %Q[additive="sum"]                                if animate.additive?
       options << %Q[fill="freeze"]                                 if animate.freeze?
-
+      options << custom_options
       @animate_builder << %Q[<animate #{options.join(" ")} />]
     end
   end
