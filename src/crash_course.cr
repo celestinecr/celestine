@@ -130,5 +130,15 @@ File.open("./bin/test.svg", "w+") do |f|
       end
       path
     end
+
+    ctx.text do |text|
+      text.text = "Hello Celestine!"
+      text.style["font-size"] = 5.px
+      text.length = 50
+      text.x = 50-25
+      text.y = 50
+      text.fill = "white"
+      text
+    end
   end)
 end

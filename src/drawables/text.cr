@@ -8,6 +8,13 @@ struct Celestine::Text < Celestine::Drawable
 
   property text : String = ""
 
+  property dx : SIFNumber?
+  property dy : SIFNumber?
+
+  property rotate : SIFNumber?
+  property length : SIFNumber?
+  property length_adjust : SIFNumber?
+
   def draw
     options = [] of String
     options << class_options unless class_options.empty?
@@ -18,7 +25,13 @@ struct Celestine::Text < Celestine::Drawable
     options << style_options unless style_options.empty?
     options << mask_options unless mask_options.empty?
     options << custom_options unless custom_options.empty?
-    
+
+    options << %Q[dx="#{dx}"]                               if dx
+    options << %Q[dy="#{dy}"]                               if dy
+    options << %Q[rotate="#{rotate}"]                       if rotate
+    options << %Q[textLength="#{length}"]                   if length
+    options << %Q[lengthAdjust="#{length_adjust}"]          if length_adjust
+
     inner_tags = String::Builder.new
     inner_tags << animate_tags
     inner_tags << animate_motion_tags
@@ -29,5 +42,13 @@ struct Celestine::Text < Celestine::Drawable
     else
       %Q[<text #{options.join(" ")}>#{tags}</text>]
     end
+  end
+
+  module Attrs
+    DX = "dx"
+    DY = "dy"
+    ROTATE = "rotate"
+    LENGTH = "textLength"
+    LENGTH_ADJUST = "lengthAdjust"
   end
 end
