@@ -5,7 +5,8 @@ struct Celestine::Rectangle < Celestine::Drawable
   include_options Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
   include_options Celestine::Modules::Mask
-  
+  property radius_x : SIFNumber? = nil
+
   def draw
     options = [] of String
     options << class_options unless class_options.empty?
@@ -16,6 +17,7 @@ struct Celestine::Rectangle < Celestine::Drawable
     options << style_options unless style_options.empty?
     options << mask_options unless mask_options.empty?
     options << custom_options unless custom_options.empty?
+    options << %Q[rx="#{radius_x}"] if radius_x
     
     inner_tags = String::Builder.new
     inner_tags << animate_tags
