@@ -47,7 +47,7 @@ module Celestine::Meta
   # Hold context information for the DSL
   class Context
     # Alias for the viewBox SVG parameter
-    alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
+    alias ViewBox = NamedTuple(x: SIFNumber, y: SIFNumber, w: SIFNumber, h: SIFNumber)
     # Objects to be drawn to the scene
     getter objects : Array(Celestine::Drawable) = [] of Celestine::Drawable
     # Objects in the defs section, which can be used by ID
