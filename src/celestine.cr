@@ -13,6 +13,7 @@ require "./drawables/ellipse"
 require "./drawables/group"
 require "./drawables/use"
 require "./drawables/text"
+require "./drawables/image"
 
 
 require "./effects/animation/animate"
