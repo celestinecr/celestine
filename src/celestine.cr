@@ -32,10 +32,16 @@ alias SIFNumber = (IFNumber | String)
 # Main module for Celestine
 module Celestine
   # Main draw function for DSL
-  def self.draw(&block : Proc(Celestine::Meta::Context, Nil))
+  def self.draw(&block : Proc(Celestine::Meta::Context, Nil)) : String
+    String.build do |io|
+      self.draw io, &block
+    end
+  end
+
+  def self.draw(io : IO, &block : Proc(Celestine::Meta::Context, Nil)) : IO
     ctx = Celestine::Meta::Context.new
     yield ctx
-    ctx.render
+    ctx.render(io)
   end
 end
 
@@ -160,31 +166,29 @@ module Celestine::Meta
     include Methods
 
     # Takes all the objects and renders them to a string SVG
-    def render
-      s = String::Builder.new
+    def render(io : IO)
       xmlns = %Q[xmlns="http://www.w3.org/2000/svg"]      
       view_box_option = ""
       if self.view_box
         vb = self.view_box.as(ViewBox)
         view_box_option = %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
-        s << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} width="#{width}" height="#{height}" #{xmlns}>]
+        io << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} width="#{width}" height="#{height}" #{xmlns}>]
       else
-        s << %Q[<svg width="#{width}" height="#{height}" #{xmlns}>]
+        io << %Q[<svg width="#{width}" height="#{height}" #{xmlns}>]
       end
 
       
-      s << %Q[<defs>]
+      io << %Q[<defs>]
         self.defines.each do |obj|
-          s << obj.draw
+          io << obj.draw
         end
-      s << %Q[</defs>]
+      io << %Q[</defs>]
 
       self.objects.each do |obj|
-        s << obj.draw
+        io << obj.draw
       end
 
-      s << %Q[</svg>]
-      s.to_s
+      io << %Q[</svg>]
     end
   end
   

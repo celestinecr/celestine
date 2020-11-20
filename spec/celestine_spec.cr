@@ -6,6 +6,6 @@ end
 
 describe Celestine do
   it "should generate a blank SVG document" do
-    Celestine.draw { |ctx| }.should eq(Celestine::Test::BLANK_SVG)
+    (Celestine.draw { |ctx| }).should eq(Celestine::Test::BLANK_SVG)
   end
 end
