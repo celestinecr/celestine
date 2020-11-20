@@ -9,7 +9,7 @@ struct Celestine::Ellipse < Celestine::Drawable
   property radius_x : SIFNumber = 0
   property radius_y : SIFNumber = 0
 
-  def draw
+  def draw : String
     options = [] of String
     options << class_options unless class_options.empty?
     options << id_options unless id_options.empty?

@@ -7,7 +7,7 @@ struct Celestine::Mask < Celestine::Drawable
 
   @objects = [] of Celestine::Drawable
 
-  def draw
+  def draw : String
     s = String::Builder.new
     options = [] of String
     options << class_options unless class_options.empty?

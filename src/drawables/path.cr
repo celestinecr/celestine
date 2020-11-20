@@ -93,7 +93,7 @@ struct Celestine::Path < Celestine::Drawable
     @code = other
   end
 
-  def draw
+  def draw : String
     options = [] of String
     options << class_options unless class_options.empty?
     options << id_options unless id_options.empty?

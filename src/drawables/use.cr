@@ -24,7 +24,7 @@ struct Celestine::Use < Celestine::Drawable
   end
   
   
-  def draw
+  def draw : String
     options = [] of String
     options << class_options unless class_options.empty?
     options << id_options unless id_options.empty?

@@ -15,7 +15,7 @@ struct Celestine::Text < Celestine::Drawable
   property length : SIFNumber?
   property length_adjust : SIFNumber?
 
-  def draw
+  def draw : String
     options = [] of String
     options << class_options unless class_options.empty?
     options << id_options unless id_options.empty?

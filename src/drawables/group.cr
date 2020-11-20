@@ -10,7 +10,7 @@ struct Celestine::Group < Celestine::Drawable
 
   property? override_stroke_fill = false
 
-  def draw
+  def draw : String
     s = String::Builder.new
     options = [] of String
     options << class_options unless class_options.empty?

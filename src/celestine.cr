@@ -55,9 +55,9 @@ module Celestine::Meta
     # Alias for the viewBox SVG parameter
     alias ViewBox = NamedTuple(x: SIFNumber, y: SIFNumber, w: SIFNumber, h: SIFNumber)
     # Objects to be drawn to the scene
-    getter objects : Array(Celestine::Drawable) = [] of Celestine::Drawable
+    getter objects_io : IO = IO::Memory.new
     # Objects in the defs section, which can be used by ID
-    getter defines : Array(Celestine::Drawable) = [] of Celestine::Drawable
+    getter defines_io : IO = IO::Memory.new
     # The viewBox of the SVG scene
     property view_box : ViewBox? = nil
     property width : SIFNumber = "100%"
@@ -77,13 +77,13 @@ module Celestine::Meta
           {% end %}
 
           def define(drawable : Celestine::Drawable)
-            @defines << drawable
+            @defines_io << drawable.draw
             drawable
           end
 
           def mask(&block : Celestine::Mask -> Celestine::Mask)
             mask = yield Celestine::Mask.new
-            @defines << mask
+            @defines_io << mask.draw
             mask
           end
         # Adds methods without the define parameter.
@@ -99,9 +99,9 @@ module Celestine::Meta
         def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
           {{ klass.stringify.split("::").last.downcase.id }} = yield {{klass.id}}.new
           if define
-            @defines << {{ klass.stringify.split("::").last.downcase.id }}
+            @defines_io << {{ klass.stringify.split("::").last.downcase.id }}.draw
           else
-            @objects << {{ klass.stringify.split("::").last.downcase.id }}
+            @objects_io << {{ klass.stringify.split("::").last.downcase.id }}.draw
           end
           {{ klass.stringify.split("::").last.downcase.id }}
         end
@@ -111,7 +111,7 @@ module Celestine::Meta
       private macro make_non_context_method(klass)
         def {{ klass.stringify.split("::").last.downcase.id }}(&block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
           {{ klass.stringify.split("::").last.downcase.id }} = yield {{klass.id}}.new
-          @objects << {{ klass.stringify.split("::").last.downcase.id }}
+          @objects_io << {{ klass.stringify.split("::").last.downcase.id }}.draw
           {{ klass.stringify.split("::").last.downcase.id }}
         end
       end
@@ -130,7 +130,7 @@ module Celestine::Meta
       def use(&block : Celestine::Use -> Celestine::Use)
         use = Celestine::Use.new
         use = yield use
-        @objects << use
+        @objects_io << use.draw
         use
       end
 
@@ -140,7 +140,7 @@ module Celestine::Meta
         if drawable.id
           use.target_id = drawable.id.to_s
           use = yield use
-          @objects << use
+          @objects_io << use.draw
           use
         else
           raise "Reused objects must have an id assigned"
@@ -152,13 +152,13 @@ module Celestine::Meta
         use = Celestine::Use.new
         use.target_id = id
         use = yield use
-        @objects << use
+        @objects_io << use.draw
         use
       end
 
       # Adds a new drawable to this context's objects
       def <<(drawable : Celestine::Drawable)
-        @objects << drawable
+        @objects_io << drawable.draw
         drawable
       end
     end
@@ -179,14 +179,10 @@ module Celestine::Meta
 
       
       io << %Q[<defs>]
-        self.defines.each do |obj|
-          io << obj.draw
-        end
+      io << @defines_io
       io << %Q[</defs>]
-
-      self.objects.each do |obj|
-        io << obj.draw
-      end
+      io << @objects_io
+      
 
       io << %Q[</svg>]
     end

@@ -7,7 +7,7 @@ struct Celestine::Rectangle < Celestine::Drawable
   include_options Celestine::Modules::Mask
   property radius_x : SIFNumber? = nil
 
-  def draw
+  def draw : String
     options = [] of String
     options << class_options unless class_options.empty?
     options << id_options unless id_options.empty?

@@ -7,7 +7,7 @@ struct Celestine::Image < Celestine::Drawable
 
   property url : String = ""
   
-  def draw
+  def draw : String
     options = [] of String
     options << class_options unless class_options.empty?
     options << id_options unless id_options.empty?
