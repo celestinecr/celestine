@@ -76,7 +76,7 @@ struct Celestine::Path < Celestine::Drawable
     @code_points << "A#{rx},#{ry},#{rotation},#{large ? 1 : 0},#{flip ? 1 : 0},#{x},#{y}"
   end
 
-  def r_arc(x, y, rx, ry, rotation = 0, large = false, sweep = false)
+  def r_arc(x, y, rx, ry, rotation = 0, large = false, flip = false)
     @code_points << "a#{rx},#{ry},#{rotation},#{large ? 1 : 0},#{flip ? 1 : 0},#{x},#{y}"
   end
 

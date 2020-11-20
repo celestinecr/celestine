@@ -19,6 +19,7 @@ struct Celestine::Text < Celestine::Drawable
     io << %Q[<text ]
     class_attribute(io)
     id_attribute(io)
+    position_attribute(io)
     stroke_fill_attribute(io)
     transform_attribute(io)
     style_attribute(io)
@@ -31,6 +32,7 @@ struct Celestine::Text < Celestine::Drawable
     io << %Q[textLength="#{length}" ]                   if length
     io << %Q[lengthAdjust="#{length_adjust}" ]          if length_adjust
 
+    inner_elements << text unless text.empty?
     if inner_elements.empty?
       io << %Q[/>]
     else
