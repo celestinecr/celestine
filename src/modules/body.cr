@@ -24,15 +24,14 @@ module Celestine::Modules::Body
     top + height.to_i
   end
 
-  def body_options
+  def body_attribute(io)
+    position_attribute(io)
     if width != 0 && height != 0
-      %Q[width="#{width}" height="#{height}" #{position_options}]
+      io << %Q[width="#{width}" height="#{height}" ]
     elsif width != 0
-      %Q[width="#{width}" #{position_options}]
+      io << %Q[width="#{width}" ]
     elsif height != 0
-      %Q[height="#{height}" #{position_options}]
-    else
-      ""
+      io << %Q[height="#{height}" ]
     end
   end
 

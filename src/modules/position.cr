@@ -2,15 +2,13 @@ module Celestine::Modules::Position
   property x : SIFNumber = 0
   property y : SIFNumber = 0
 
-  def position_options
+  def position_attribute(io : IO)
     if x != 0 && y != 0
-      %Q[x="#{x}" y="#{y}"]
+      io << %Q[x="#{x}" y="#{y}" ] 
     elsif x != 0
-      %Q[x="#{x}"]
+      io << %Q[x="#{x}" ]
     elsif y != 0
-      %Q[y="#{y}"]
-    else
-      ""
+      io << %Q[y="#{y}" ]
     end
   end
 
@@ -24,15 +22,13 @@ module Celestine::Modules::CPosition
   property x : SIFNumber = 0
   property y : SIFNumber = 0
 
-  def position_options
+  def position_attribute(io : IO)
     if x != 0 && y != 0
-      %Q[cx="#{x}" cy="#{y}"]
+      io << %Q[cx="#{x}" cy="#{y}" ]
     elsif x != 0
-      %Q[cx="#{x}"]
+      io << %Q[cx="#{x}" ]
     elsif y != 0
-      %Q[cy="#{y}"]
-    else
-      ""
+      io << %Q[cy="#{y}" ]
     end
   end
   

@@ -7,24 +7,26 @@ struct Celestine::Image < Celestine::Drawable
 
   property url : String = ""
   
-  def draw : String
-    options = [] of String
-    options << class_options unless class_options.empty?
-    options << id_options unless id_options.empty?
-    options << body_options unless body_options.empty?
-    options << transform_options unless transform_options.empty?
-    options << style_options unless style_options.empty?
-    options << mask_options unless mask_options.empty?
-    options << custom_options unless custom_options.empty?
-    
-    inner_tags = String::Builder.new
-    inner_tags << animate_tags
-    inner_tags << animate_motion_tags
-    tags = inner_tags.to_s
-    if tags.empty?
-      %Q[<image href="#{url}" #{options.join(" ")} />]
+  def draw(io : IO) : Nil
+    io << %Q[<image ]
+    # Puncuate attributes with a space 
+    class_attribute(io)
+    id_attribute(io)
+    position_attribute(io)
+    body_attribute(io)
+    transform_attribute(io)
+    style_attribute(io)
+    mask_attribute(io) 
+    custom_attribute(io)
+
+    io << %Q[href="#{url}" ]
+
+    if inner_elements.empty?
+      io << %Q[/>]
     else
-      %Q[<image href="#{url}" #{options.join(" ")}>#{tags}</image>]
+      io << ">"
+      io << inner_elements
+      io << "</image>"
     end
   end
 end  

@@ -1,0 +1,6 @@
+version: 2.0
+shards:
+  perlin_noise:
+    git: https://github.com/redcodefinal/perlin_noise.git
+    version: 0.1.0+git.commit.79c452d46884382c8f15625e0ea37ce3e867b360
+

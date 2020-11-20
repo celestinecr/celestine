@@ -6,33 +6,28 @@ struct Celestine::Group < Celestine::Drawable
   include_options Celestine::Modules::Mask
   
 
-  @objects = [] of Celestine::Drawable
+  @objects_io = IO::Memory.new
 
   property? override_stroke_fill = false
 
-  def draw : String
-    s = String::Builder.new
-    options = [] of String
-    options << class_options unless class_options.empty?
-    options << id_options unless id_options.empty?
-    options << stroke_fill_options unless stroke_fill_options.empty?
-    options << transform_options unless transform_options.empty?
-    options << style_options unless style_options.empty?
-    options << mask_options unless mask_options.empty?
-    options << custom_options unless custom_options.empty?
-    
-    
-    s << %Q[<g #{options.join(" ")}>]
-    s << animate_tags
-    s << animate_motion_tags
+  def draw(io : IO) : Nil
+    io << %Q[<g ]
+    class_attribute(io)
+    id_attribute(io)
+    stroke_fill_attribute(io)
+    transform_attribute(io)
+    style_attribute(io)
+    mask_attribute(io)     
+    custom_attribute(io)
 
-
-
-    @objects.each do |drawable|
-      s << drawable.draw
+    if !@objects_io.empty? || !inner_elements.empty?
+      io << %Q[>]
+      io << @objects_io
+      io << inner_elements
+      io << %Q[</g>]
+    else
+      io << %Q[/>]
     end
-    s << %Q[</g>]
 
-    s.to_s
   end
 end

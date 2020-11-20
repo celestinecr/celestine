@@ -21,7 +21,15 @@ describe Celestine do
   {% for type, tag in Celestine::Test::SVG_TAGS_SIMPLE %}
 
   it "should generate a {{type.id}}" do
-    (!!(Celestine.draw { |ctx| ctx.{{type.id}} {|r| r} } =~ /\<{{tag.id}}/)).should eq(true)
+    (!!(Celestine.draw { |ctx| ctx.{{type.id}} {|r| r} } =~ /\<{{tag.id}}.*\>/)).should eq(true)
+  end
+
+  it "{{type.id}} should use inline element when there are no inner elements" do
+    (!!(Celestine.draw { |ctx| ctx.{{type.id}} {|r| r} } =~ /\<{{tag.id}}.*\/\>/)).should eq(true)
+  end
+
+  it "{{type.id}} should not use inline tags when there are inner elements" do
+    (!!(Celestine.draw { |ctx| ctx.{{type.id}} {|r| r.animate {|a| a}; r} } =~ /\<\/{{tag.id}}.*\>/)).should eq(true)
   end
 
   {% end %}

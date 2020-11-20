@@ -93,25 +93,24 @@ struct Celestine::Path < Celestine::Drawable
     @code = other
   end
 
-  def draw : String
-    options = [] of String
-    options << class_options unless class_options.empty?
-    options << id_options unless id_options.empty?
-    options << stroke_fill_options unless stroke_fill_options.empty?
-    options << transform_options unless transform_options.empty?
-    options << style_options unless style_options.empty?
-    options << mask_options unless mask_options.empty?
-    options << custom_options unless custom_options.empty?
-    
+  def draw(io : IO) : Nil
+    io << %Q[<path ]
 
-    inner_tags = String::Builder.new
-    inner_tags << animate_tags
-    inner_tags << animate_motion_tags
-    tags = inner_tags.to_s
-    if tags.empty?
-      %Q[<path d="#{code}" #{options.join(" ")} />]
+    class_attribute(io)
+    id_attribute(io)
+    stroke_fill_attribute(io)
+    transform_attribute(io)
+    style_attribute(io)
+    mask_attribute(io)     
+    custom_attribute(io)
+    io << %Q[d="#{code}" ]
+    
+    if inner_elements.empty?
+      io << %Q[/>]
     else
-      %Q[<path d="#{code}" #{options.join(" ")}>#{tags}</path>]
+      io << ">"
+      io << inner_elements
+      io << "</path>"
     end
   end
 end

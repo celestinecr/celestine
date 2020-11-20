@@ -13,25 +13,24 @@ struct Celestine::Circle < Celestine::Drawable
     radius * 2
   end
 
-  def draw : String
-    options = [] of String
-    options << class_options unless class_options.empty?
-    options << id_options unless id_options.empty?
-    options << position_options unless position_options.empty?
-    options << stroke_fill_options unless stroke_fill_options.empty?
-    options << transform_options unless transform_options.empty?
-    options << style_options unless style_options.empty?
-    options << mask_options unless mask_options.empty?
-    options << custom_options unless custom_options.empty?
+  def draw(io : IO) : Nil
+    io << %Q[<circle ]
+    class_attribute(io)
+    id_attribute(io)
+    position_attribute(io)
+    stroke_fill_attribute(io)
+    transform_attribute(io)
+    style_attribute(io)
+    mask_attribute(io) 
+    custom_attribute(io)
 
-    inner_tags = String::Builder.new
-    inner_tags << animate_tags
-    inner_tags << animate_motion_tags
-    tags = inner_tags.to_s
-    if tags.empty?
-      %Q[<circle r="#{radius}" #{options.join(" ")} />]
+    io << %Q[r="#{radius}" ]
+    if inner_elements.empty?
+      io << %Q[/>]
     else
-      %Q[<circle r="#{radius}" #{options.join(" ")}>#{tags}</circle>]
+      io << ">"
+      io << inner_elements
+      io << "</circle>"
     end
   end
 

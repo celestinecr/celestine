@@ -3,31 +3,23 @@ struct Celestine::Mask < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
-  
 
-  @objects = [] of Celestine::Drawable
+  @objects_io = IO::Memory.new
 
-  def draw : String
-    s = String::Builder.new
-    options = [] of String
-    options << class_options unless class_options.empty?
-    options << id_options unless id_options.empty?
-    options << stroke_fill_options unless stroke_fill_options.empty?
-    options << transform_options unless transform_options.empty?
-    options << style_options unless style_options.empty?
-
-    
-    s << %Q[<mask #{options.join(" ")}>]
-    s << animate_tags
-    s << animate_motion_tags
-
-
-
-    @objects.each do |drawable|
-      s << drawable.draw
+  def draw(io : IO) : Nil
+    io << %Q[<mask ]
+    class_attribute(io)
+    id_attribute(io)
+    stroke_fill_attribute(io)
+    transform_attribute(io)
+    style_attribute(io)
+    inner_elements << @objects_io
+    if inner_elements.empty?
+      io << %Q[/>]
+    else
+      io << ">"
+      io << inner_elements
+      io << "</mask>"
     end
-    s << %Q[</mask>]
-
-    s.to_s
   end
 end

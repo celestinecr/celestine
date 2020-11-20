@@ -1,16 +1,20 @@
 module Celestine::Modules::Transform
-  getter transform_options : String = ""
-
+  @transform_meta = Celestine::Drawable::Transform.new
   def transform(&block : Celestine::Drawable::Transform -> Celestine::Drawable::Transform)
     meta = yield Celestine::Drawable::Transform.new
-
-    if !meta.empty?
-      @transform_options = %Q[transform="#{meta.to_s}"]
-    else
-      @transform_options = ""
+    unless meta.empty?
+      @transform_meta = meta
     end
   end
 
+  def transform_attribute(io : IO)
+    unless @transform_meta.empty?
+      io << %Q[transform="]
+      io << @transform_meta.objects_io
+      io << %Q[" ]
+    end
+  end
+  
   module Attrs
     TRANSFORM = "transform"
   end

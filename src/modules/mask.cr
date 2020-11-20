@@ -8,11 +8,9 @@ module Celestine::Modules::Mask
     set_mask(mask.id.to_s)
   end
 
-  def mask_options
+  def mask_attribute(io : IO)
     if @mask_id
-      %Q[mask="url('##{@mask_id}')"]
-    else
-      ""
+      io << %Q[mask="url('##{@mask_id}')" ]
     end
   end
 

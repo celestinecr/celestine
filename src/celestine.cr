@@ -77,13 +77,13 @@ module Celestine::Meta
           {% end %}
 
           def define(drawable : Celestine::Drawable)
-            @defines_io << drawable.draw
+            drawable.draw(@defines_io)
             drawable
           end
 
           def mask(&block : Celestine::Mask -> Celestine::Mask)
             mask = yield Celestine::Mask.new
-            @defines_io << mask.draw
+            define(mask)
             mask
           end
         # Adds methods without the define parameter.
@@ -99,9 +99,9 @@ module Celestine::Meta
         def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
           {{ klass.stringify.split("::").last.downcase.id }} = yield {{klass.id}}.new
           if define
-            @defines_io << {{ klass.stringify.split("::").last.downcase.id }}.draw
+            define({{ klass.stringify.split("::").last.downcase.id }})
           else
-            @objects_io << {{ klass.stringify.split("::").last.downcase.id }}.draw
+            self << {{ klass.stringify.split("::").last.downcase.id }}
           end
           {{ klass.stringify.split("::").last.downcase.id }}
         end
@@ -111,7 +111,7 @@ module Celestine::Meta
       private macro make_non_context_method(klass)
         def {{ klass.stringify.split("::").last.downcase.id }}(&block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
           {{ klass.stringify.split("::").last.downcase.id }} = yield {{klass.id}}.new
-          @objects_io << {{ klass.stringify.split("::").last.downcase.id }}.draw
+          self << {{ klass.stringify.split("::").last.downcase.id }}
           {{ klass.stringify.split("::").last.downcase.id }}
         end
       end
@@ -130,7 +130,7 @@ module Celestine::Meta
       def use(&block : Celestine::Use -> Celestine::Use)
         use = Celestine::Use.new
         use = yield use
-        @objects_io << use.draw
+        self << use
         use
       end
 
@@ -140,7 +140,7 @@ module Celestine::Meta
         if drawable.id
           use.target_id = drawable.id.to_s
           use = yield use
-          @objects_io << use.draw
+          self << use
           use
         else
           raise "Reused objects must have an id assigned"
@@ -152,13 +152,13 @@ module Celestine::Meta
         use = Celestine::Use.new
         use.target_id = id
         use = yield use
-        @objects_io << use.draw
+        self << use
         use
       end
 
       # Adds a new drawable to this context's objects
       def <<(drawable : Celestine::Drawable)
-        @objects_io << drawable.draw
+        drawable.draw(@objects_io)
         drawable
       end
     end

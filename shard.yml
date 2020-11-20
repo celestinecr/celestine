@@ -4,6 +4,10 @@ version: 0.1.0
 authors:
   - Ian Rash <ian@sol.vin>
 
+development_dependencies:
+  perlin_noise:
+    github: redcodefinal/perlin_noise
+
 targets:
   crash_course:
     main: src/crash_course.cr
