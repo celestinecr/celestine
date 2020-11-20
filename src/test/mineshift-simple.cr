@@ -1,4 +1,4 @@
-module Celestine::Test::Mineshift
+module Celestine::Test::Mineshift::Simple
   class_property seed : Int32 = 0
 
   def self.make_img_path(seed)
