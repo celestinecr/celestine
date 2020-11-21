@@ -5,6 +5,8 @@ struct Celestine::Rectangle < Celestine::Drawable
   include_options Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
   include_options Celestine::Modules::Mask
+  include_options Celestine::Modules::Animate::Transform
+
   property radius_x : SIFNumber? = nil
 
   def draw(io : IO) : Nil

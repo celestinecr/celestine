@@ -150,7 +150,7 @@ module Celestine::Test::Mineshift::Simple
       end
 
       MAX_LEVELS.times do |level|
-        mask = ctx.mask do |mask|
+        ctx.mask do |mask|
           mask.id = "lvl#{level}-mask"
 
           mask.use(bg_mask)

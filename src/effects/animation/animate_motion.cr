@@ -60,7 +60,7 @@ struct Celestine::Animate::Motion < Celestine::Drawable
       values.join(io, ";")
       io << %Q[" ] 
     end
-    io << %Q[from="#{from}"]                        if from
+    io << %Q[from="#{from}" ]                        if from
     io << %Q[to="#{to}" ]                           if to
     io << %Q[by="#{by}" ]                           if by
 

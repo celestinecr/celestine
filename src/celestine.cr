@@ -18,6 +18,8 @@ require "./drawables/image"
 
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
+require "./effects/animation/animate_transform"
+
 require "./effects/mask"
 
 require "./math/**"

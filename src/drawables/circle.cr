@@ -6,6 +6,7 @@ struct Celestine::Circle < Celestine::Drawable
 
   include_options Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
+  include_options Celestine::Modules::Animate::Transform
   
   property radius : SIFNumber = 0
 

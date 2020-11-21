@@ -2,9 +2,11 @@ struct Celestine::Ellipse < Celestine::Drawable
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::CPosition
   include_options Celestine::Modules::StrokeFill
+  include_options Celestine::Modules::Mask
+
   include_options Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
-  include_options Celestine::Modules::Mask
+  include_options Celestine::Modules::Animate::Transform
   
   property radius_x : SIFNumber = 0
   property radius_y : SIFNumber = 0
