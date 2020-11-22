@@ -4,6 +4,12 @@ module Celestine::Modules::StrokeFill
   property stroke_width : SIFNumber? = 1
   property fill_opacity : Float64? = 1.0
   property stroke_opacity : Float64? = 1.0
+  property dash_array : Array(SIFNumber) = [] of SIFNumber
+  property dash_offset : Int32 = 0
+  property line_join : String? = nil
+  property miter_limit : Int32? = 4 # Default
+  property line_cap : String? = nil
+
 
   property opacity : Float64? = 1.0
   property fill_rule : Bool = false
@@ -17,6 +23,16 @@ module Celestine::Modules::StrokeFill
       io << %Q[fill-opacity="#{fill_opacity}" ] unless !fill_opacity || fill_opacity == 1 || fill_opacity == 1.0
       io << %Q[stroke-opacity="#{stroke_opacity}" ] unless !stroke_opacity || stroke_opacity == 1 || stroke_opacity == 1.0
       io << %Q[fill-rule="evenodd" ] if fill_rule
+
+      io << %Q[stroke-dasharray="#{dash_array.join(" ")}" ] unless dash_array.empty?
+      io << %Q[stroke-dashoffset="#{dash_offset}" ] unless dash_offset.zero?
+      io << %Q[stroke-linejoin="#{dash_offset}" ] if line_join
+      io << %Q[stroke-linecap="#{line_cap}" ] if line_cap
+      io << %Q[stroke-miterlimit="#{miter_limit}" ] if miter_limit && miter_limit != 4
+
+
+
+
     else
       io << %Q[stroke="#{stroke}" ] if stroke
       io << %Q[fill="#{fill}" ] if fill
@@ -24,6 +40,12 @@ module Celestine::Modules::StrokeFill
       io << %Q[fill-opacity="#{fill_opacity}" ] unless !fill_opacity || fill_opacity == 1 || fill_opacity == 1.0
       io << %Q[stroke-opacity="#{stroke_opacity}" ] unless !stroke_opacity || stroke_opacity == 1 || stroke_opacity == 1.0
       io << %Q[fill-rule="evenodd" ] if fill_rule
+
+      io << %Q[stroke-dasharray="#{dash_array.join(" ")}" ] unless dash_array.empty?
+      io << %Q[stroke-dashoffset="#{dash_offset}" ] unless dash_offset.zero?
+      io << %Q[stroke-linejoin="#{dash_offset}" ] if line_join
+      io << %Q[stroke-linecap="#{line_cap}" ] if line_cap
+      io << %Q[stroke-miterlimit="#{miter_limit}" ] if miter_limit && miter_limit != 4
     end
 
     io << %Q[opacity="#{opacity}" ] unless !opacity || opacity == 1 || opacity == 1.0
