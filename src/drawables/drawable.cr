@@ -82,7 +82,7 @@ abstract struct Celestine::Drawable
   # Rendered custom attributes
   def custom_attribute(io : IO)
     # TODO: Fix this to work with SIFNumber and properly use quotes when appropriate
-    custom_attrs.keys.map { |k| %Q[#{k}="#{custom_attrs[k]}"] }.join(io, " ")
+    "#{custom_attrs.keys.map { |k| %Q[#{k}="#{custom_attrs[k]}"] }.join(io, " ")} "
   end
 
   abstract def draw(io : IO) : Nil 
