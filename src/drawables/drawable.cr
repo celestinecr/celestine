@@ -49,7 +49,12 @@ abstract struct Celestine::Drawable
   end
 
   # A list of the classes for this object
+  # TODO: Fix this by making it a string or struct type
   property classes : Array(String) = [] of String
+
+  # def add_class(new_class)
+  #   classes = "#{classes} #{new_class}"
+  # end
 
   # Rendered class options
   def class_attribute(io : IO)
@@ -61,6 +66,7 @@ abstract struct Celestine::Drawable
   end
 
   # A list of the style options
+  # TODO: Fix this by making it a string or struct type
   property style = {} of String => String
 
   # Rendered style options
@@ -72,19 +78,22 @@ abstract struct Celestine::Drawable
     end
   end
 
+  # The inner elements of this drawable.
+  # TODO: Fix this by making it a string or struct type
   property inner_elements = IO::Memory.new
 
   # A list of custom attributes
   # TODO: Change this to work with Int and Floats? Doesn't this need to be `String => SIFNumber`?
+  # TODO: Fix this by making it a string or struct type
   property custom_attrs = {} of String => String
 
   
   # Rendered custom attributes
   def custom_attribute(io : IO)
-    # TODO: Fix this to work with SIFNumber and properly use quotes when appropriate
     custom_attrs.keys.map { |k| %Q[#{k}="#{custom_attrs[k]}"] }.join(io, " ")
     io << " "
   end
 
-  abstract def draw(io : IO) : Nil 
+  # Main draw method for a drawable. Takes in and interacts with an io.
+  abstract def draw(io : IO) : Nil
 end

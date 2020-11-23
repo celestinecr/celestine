@@ -24,7 +24,6 @@ struct Celestine::Animate < Celestine::Drawable
 
   def draw(io : IO) : Nil
     io << %Q[<animate ]
-    # Puncuate attributes with a space 
     class_attribute(io)
     id_attribute(io)
     custom_attribute(io)
