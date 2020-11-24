@@ -88,7 +88,7 @@ HMU via issues
 
 ## Contributing
 
-1. Fork it (<https://github.com/your-github-user/celestine/fork>)
+1. Fork it (<https://github.com/redcodefinal/celestine/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
@@ -96,4 +96,4 @@ HMU via issues
 
 ## Contributors
 
-- [Ian Rash](https://github.com/your-github-user) - creator and maintainer
+- [Ian Rash](https://github.com/redcodefinal) - creator and maintainer
