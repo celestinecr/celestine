@@ -25,6 +25,13 @@ describe {{drawable_class.id}} do
 
   make_color_attribute_test({{drawable_class.id}}, "stroke")
   make_color_attribute_test({{drawable_class.id}}, "fill")
+  make_number_attribute_test({{drawable_class.id}}, "stroke-width", "stroke_width")
+  make_number_attribute_test({{drawable_class.id}}, "fill-opacity", "fill_opacity")
+  make_number_attribute_test({{drawable_class.id}}, "stroke-opacity", "stroke_opacity")
+  make_number_attribute_test({{drawable_class.id}}, "opacity")
+  make_number_attribute_test({{drawable_class.id}}, "stroke-dashoffset", "dash_offset")
+  make_number_attribute_test({{drawable_class.id}}, "stroke-miterlimit", "miter_limit")
+
 
   {% end %}
 end

@@ -11,7 +11,7 @@ module Celestine::Modules::Animate::Transform
     BY = "by"
   end
 
-
+  # Adds a `Celestine::Animate::Transform` to the calling drawable's inner elements.
   def animate_transform(&block : Proc(Celestine::Animate::Transform, Nil))
     animate = yield Celestine::Animate::Transform.new
     animate.draw(inner_elements)

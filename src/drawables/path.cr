@@ -1,4 +1,4 @@
-# A struct which represents an SVG path.
+# A struct which represents an SVG path. Methods starting with a_ use absolute coordinates, while r_ methods require relative coordinates. 
 struct Celestine::Path < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform
@@ -12,34 +12,42 @@ struct Celestine::Path < Celestine::Drawable
   @code_points = String::Builder.new
   @code = ""
 
+  # Moves to an absolute point
   def a_move(x, y)
     @code_points << "M#{x},#{y}"
   end
 
+  # Moves to a relative point
   def r_move(x, y)
     @code_points << "m#{x},#{y}"
   end
 
+  # Draws a line to an absolute point
   def a_line(x, y)
     @code_points << "L#{x},#{y}"
   end
 
+  # Draws a line to a relative point
   def r_line(x, y)
     @code_points << "l#{x},#{y}"
   end
 
+  # Draws a horizontal line to an absolute point
   def a_h_line(x)
     @code_points << "H#{x}"
   end
 
+  # Draws a horizontal line to a relative point
   def r_h_line(x)
     @code_points << "h#{x}"
   end
 
+  # Draws a vertical line to an absolute point
   def a_v_line(y)
     @code_points << "V#{y}"
   end
 
+  # Draws a vertical line to a relative point
   def r_v_line(y)
     @code_points << "v#{y}"
   end
@@ -84,6 +92,7 @@ struct Celestine::Path < Celestine::Drawable
     @code_points << "a#{rx},#{ry},#{rotation},#{large ? 1 : 0},#{flip ? 1 : 0},#{x},#{y}"
   end
 
+  # Closes the path.
   def close
     @code_points << "z"
   end

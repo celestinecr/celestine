@@ -19,7 +19,7 @@ module Celestine::Modules::Animate::Motion
     FILL = "fill"
   end
 
-
+  # Adds a `Celestine::Animate::Motion` to the calling drawable's inner elements.
   def animate_motion(&block : Celestine::Animate::Motion -> Celestine::Animate::Motion)
     animate = yield Celestine::Animate::Motion.new
     animate.draw(inner_elements)

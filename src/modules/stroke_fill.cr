@@ -2,16 +2,16 @@ module Celestine::Modules::StrokeFill
   property stroke : String?  = nil
   property fill : String? = nil
   property stroke_width : SIFNumber? = 1
-  property fill_opacity : Float64? = 1.0
-  property stroke_opacity : Float64? = 1.0
+  property fill_opacity : SIFNumber? = 1
+  property stroke_opacity : SIFNumber? = 1
   property dash_array : Array(SIFNumber) = [] of SIFNumber
-  property dash_offset : Int32 = 0
+  property dash_offset : SIFNumber = 0
   property line_join : String? = nil
-  property miter_limit : Int32? = 4 # Default
+  property miter_limit : SIFNumber? = 4 # Default
   property line_cap : String? = nil
 
 
-  property opacity : Float64? = 1.0
+  property opacity : SIFNumber? = 1
   property fill_rule : Bool = false
   
   def stroke_fill_attribute(io : IO)
@@ -25,8 +25,8 @@ module Celestine::Modules::StrokeFill
       io << %Q[fill-rule="evenodd" ] if fill_rule
 
       io << %Q[stroke-dasharray="#{dash_array.join(" ")}" ] unless dash_array.empty?
-      io << %Q[stroke-dashoffset="#{dash_offset}" ] unless dash_offset.zero?
-      io << %Q[stroke-linejoin="#{dash_offset}" ] if line_join
+      io << %Q[stroke-dashoffset="#{dash_offset}" ] unless dash_offset == 0 || dash_offset == "0"
+      io << %Q[stroke-linejoin="#{line_join}" ] if line_join
       io << %Q[stroke-linecap="#{line_cap}" ] if line_cap
       io << %Q[stroke-miterlimit="#{miter_limit}" ] if miter_limit && miter_limit != 4
 
@@ -42,8 +42,8 @@ module Celestine::Modules::StrokeFill
       io << %Q[fill-rule="evenodd" ] if fill_rule
 
       io << %Q[stroke-dasharray="#{dash_array.join(" ")}" ] unless dash_array.empty?
-      io << %Q[stroke-dashoffset="#{dash_offset}" ] unless dash_offset.zero?
-      io << %Q[stroke-linejoin="#{dash_offset}" ] if line_join
+      io << %Q[stroke-dashoffset="#{dash_offset}" ] unless dash_offset == 0 || dash_offset == "0"
+      io << %Q[stroke-linejoin="#{line_join}" ] if line_join
       io << %Q[stroke-linecap="#{line_cap}" ] if line_cap
       io << %Q[stroke-miterlimit="#{miter_limit}" ] if miter_limit && miter_limit != 4
     end
