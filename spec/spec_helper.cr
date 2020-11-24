@@ -11,6 +11,8 @@ macro make_number_attribute_test(drawable_class, attr_name_html, attr_name_cr)
   it "should set attribute {{attr_name_html.id}} via {{attr_name_cr.id}}" do
     (!!(Celestine.draw { |ctx| ctx.{{drawable_class.id.split("::").last.underscore.id}} {|r| r.{{attr_name_cr.id}} = 100; r} } =~ /#{{{attr_name_html}}}\=\"100\"/)).should eq(true)
     (!!(Celestine.draw { |ctx| ctx.{{drawable_class.id.split("::").last.underscore.id}} {|r| r.{{attr_name_cr.id}} = -100; r} } =~ /#{{{attr_name_html}}}\=\"-100\"/)).should eq(true)
+    (!!(Celestine.draw { |ctx| ctx.{{drawable_class.id.split("::").last.underscore.id}} {|r| r.{{attr_name_cr.id}} = 0.22; r} } =~ /#{{{attr_name_html}}}\=\"0\.22\"/)).should eq(true)
+    (!!(Celestine.draw { |ctx| ctx.{{drawable_class.id.split("::").last.underscore.id}} {|r| r.{{attr_name_cr.id}} = -0.22; r} } =~ /#{{{attr_name_html}}}\=\"-0\.22\"/)).should eq(true)
   end
 end
 
