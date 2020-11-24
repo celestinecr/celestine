@@ -50,10 +50,10 @@ Here are some more intricate examples.
 
 Real world examples made with Celestine. All of these are flat SVG files with no JS inside, using only functions built into Celestine.
 
- * [https://www.sol.vin/art/live/inward/](Inward)
- * [https://www.sol.vin/art/live/mineshift/](Mineshift)
- * [https://cdpn.io/redcodefinal/fullpage/ZEOgzXX](Hypnos1)
- * [https://cdpn.io/redcodefinal/fullpage/WNxqYMy](Hypnos2)
+ * [Inward](https://www.sol.vin/art/live/inward/)
+ * [Mineshift](https://www.sol.vin/art/live/mineshift/)
+ * [Hypnos1](https://cdpn.io/redcodefinal/fullpage/ZEOgzXX)
+ * [Hypnos2](https://cdpn.io/redcodefinal/fullpage/WNxqYMy)
 
 ## Development
 
