@@ -52,8 +52,8 @@ Real world examples made with Celestine. All of these are flat SVG files with no
 
  * [https://www.sol.vin/art/live/inward/](Inward)
  * [https://www.sol.vin/art/live/mineshift/](Mineshift)
- * [https://cdpn.io/redcodefinal/fullpage/ZEOgzXX](Hypnos 1)
- * [https://cdpn.io/redcodefinal/fullpage/WNxqYMy](Hypnos 2)
+ * [https://cdpn.io/redcodefinal/fullpage/ZEOgzXX](Hypnos1)
+ * [https://cdpn.io/redcodefinal/fullpage/WNxqYMy](Hypnos2)
 
 ## Development
 
