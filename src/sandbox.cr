@@ -5,5 +5,5 @@ require "./celestine"
 require "./test/**"
 
 File.open("./bin/test/test.svg", "w+") do |f|
-  f.puts Celestine::Test::Hypnos.make
+  f.puts ProceduralArt::Hypnos.make
 end

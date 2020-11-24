@@ -5,8 +5,8 @@ authors:
   - Ian Rash <ian@sol.vin>
 
 development_dependencies:
-  perlin_noise:
-    github: redcodefinal/perlin_noise
+  procedural_art:
+    github: redcodefinal/procedural_art
 
 targets:
   crash_course:

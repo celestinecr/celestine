@@ -4,7 +4,6 @@ require "./macros/include_options"
 require "./modules/position"
 require "./modules/*"
 
-
 require "./drawables/drawable"
 require "./drawables/circle"
 require "./drawables/rectangle"
@@ -15,7 +14,6 @@ require "./drawables/use"
 require "./drawables/text"
 require "./drawables/image"
 
-
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
 require "./effects/animation/animate_transform"
@@ -24,7 +22,6 @@ require "./effects/mask"
 
 require "./math/**"
 require "./collision/helpers"
-
 
 # Special alias for HTML attribute parameters. Since many attributes can be either FLOAT or INT
 alias IFNumber = (Float64 | Int32)
@@ -49,8 +46,8 @@ end
 
 # Modules where all DSL and Meta code is held
 module Celestine::Meta
-  # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you mnust add it here as well.
-  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text]
+  # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you must add it here as well.
+  CLASSES =  [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text]
 
   # Hold context information for the DSL
   class Context
@@ -66,7 +63,7 @@ module Celestine::Meta
     property height : SIFNumber = "100%"
 
     property shape_rendering = "auto"
-    
+
     # Holds all the context methods to be included in DSL classes like Context, Group, and Mask.
     # This creates all the methods that can be used inside the draw block, like `circle` or `group` or `use`.
     module Methods
@@ -120,12 +117,12 @@ module Celestine::Meta
 
       # Reuses an element defined using `define: true` by id
       def use(id : String)
-        self.use(id) {|g| g }
+        self.use(id) { |g| g }
       end
 
       # Reuses an element defined using `define: true`
       def use(drawable : Celestine::Drawable)
-        self.use(drawable) {|g| g }
+        self.use(drawable) { |g| g }
       end
 
       # Reuses an element defined using `define: true` and then opens a block with that object for configuring
@@ -169,7 +166,7 @@ module Celestine::Meta
 
     # Takes all the objects and renders them to a string SVG
     def render(io : IO)
-      xmlns = %Q[xmlns="http://www.w3.org/2000/svg"]      
+      xmlns = %Q[xmlns="http://www.w3.org/2000/svg"]
       view_box_option = ""
       if self.view_box
         vb = self.view_box.as(ViewBox)
@@ -179,17 +176,15 @@ module Celestine::Meta
         io << %Q[<svg width="#{width}" height="#{height}" #{xmlns}>]
       end
 
-      
       io << %Q[<defs>]
       io << @defines_io
       io << %Q[</defs>]
       io << @objects_io
-      
 
       io << %Q[</svg>]
     end
   end
-  
+
   struct ::Celestine::Group
     include Celestine::Meta::Context::Methods
   end
