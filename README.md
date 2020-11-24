@@ -41,6 +41,33 @@ dependencies:
 
 First, all drawing is done through `Celestine.draw` this returns a string SVG element, or works on an `IO`. You can easily embed this into webpages for dynamic server side drawing of assets.
 
+`Celestine.draw` takes a block which takes a `Celestine::Meta::Context`, the basis of all DSL calls in Celestine.
+
+```crystal
+Celestine.draw do |ctx|
+end
+```
+
+You can create objects to be drawn with one of two methods.
+
+```crystal
+Celestine.draw do |ctx|
+  # use this context's DSL methods
+  ctx.rectangle do |r|
+    r.x = 10
+    r.y = 100
+    r.fill = "black"
+    r # You must return the drawable item at the end of the DSL method.
+  end
+
+  # Create the object and add it manually
+  r = Celestine::Rectangle.new
+  r.x = 10
+  r.y = 100
+  r.fill = "black"
+  ctx << r
+end
+```
 
 Here's a quick and dirty intro to features.
 [crash_course](https://github.com/redcodefinal/celestine/blob/master/src/crash_course.cr)
