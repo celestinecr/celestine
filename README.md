@@ -69,6 +69,20 @@ Celestine.draw do |ctx|
 end
 ```
 
+A list of the Celestine types and their DSL methods
+
+ * Celestine::Rectangle -> rectangle
+ * Celestine::Circle -> circle
+ * Celestine::Ellipse -> ellipse
+ * Celestine::Path -> path
+ * Celestine::Mask -> mask
+ * Celestine::Text -> text
+ * Celestine::Group -> group
+ * Celestine::Image -> image
+ * Celestine::Use -> use
+
+
+
 Here's a quick and dirty intro to features.
 [crash_course](https://github.com/redcodefinal/celestine/blob/master/src/crash_course.cr)
 
