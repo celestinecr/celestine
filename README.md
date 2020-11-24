@@ -1,7 +1,7 @@
-# Celestine ![Crystal CI](https://github.com/redcodefinal/celestine/workflows/Crystal%20CI/badge.svg)
+# Celestine ![Crystal CI](https://github.com/redcodefinal/celestine/workflows/Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://redcodefinal.github.io/celestine/)
 
 
-![Crystal CI](https://github.com/redcodefinal/celestine/blob/master/logo/logo.svg)
+![Celestine Logo](https://github.com/redcodefinal/celestine/blob/master/logo/logo.svg)
 
 A neat library and DSL for creating graphics using SVG
 
@@ -98,7 +98,7 @@ Real world examples made with Celestine. All of these are flat SVG files with no
 
 ## Development
 
-HMU via issues
+HMU via issues or make a pull request or something I don't know.
 
 ## Contributing
 

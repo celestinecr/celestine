@@ -4,9 +4,11 @@ struct Celestine::Ellipse < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Mask
 
-  include_options Celestine::Modules::Animate
-  include_options Celestine::Modules::Animate::Motion
-  include_options Celestine::Modules::Animate::Transform
+
+  # Do not allow these to add their ATTRS since they are their own elements
+  include Celestine::Modules::Animate
+  include Celestine::Modules::Animate::Motion
+  include Celestine::Modules::Animate::Transform
   
   property radius_x : SIFNumber = 0
   property radius_y : SIFNumber = 0

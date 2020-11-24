@@ -1,7 +1,6 @@
 require "spec"
 require "../src/celestine"
 require "file_utils"
-require "perlin_noise"
 require "procedural_art"
 
 macro make_number_attribute_test(drawable_class, attr_name)

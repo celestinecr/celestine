@@ -68,18 +68,19 @@ module Celestine::Meta
     # This creates all the methods that can be used inside the draw block, like `circle` or `group` or `use`.
     module Methods
       macro included
-        # Only add these methods if this is a Context
         {% if @type == Celestine::Meta::Context %}
           # Go through each class in CLASSES and lowercase the last part to make a method name.
           {% for klass in Celestine::Meta::CLASSES %}
               make_context_method({{ klass.id }})
           {% end %}
 
+          # Add `drawable` to this `Celestine::Meta::Context`'s definitions, allowing it to be `use`d later.
           def define(drawable : Celestine::Drawable)
             drawable.draw(@defines_io)
             drawable
           end
 
+          # Create a mask object and add it to this `Celestine::Meta::Context`
           def mask(&block : Celestine::Mask -> Celestine::Mask)
             mask = yield Celestine::Mask.new
             define(mask)
@@ -95,6 +96,7 @@ module Celestine::Meta
 
       # Makes context methods specifically for Celestine::Meta::Context
       private macro make_context_method(klass)
+        # Allows a `{{klass.id}}` to be made using a DSL call. Can be defined, which adds the drawable to the main context's definitions, and not to the main document itself.
         def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
           {{ klass.stringify.split("::").last.downcase.id }} = yield {{klass.id}}.new
           if define
@@ -108,6 +110,7 @@ module Celestine::Meta
 
       # Makes context methods for classes without a defs collection.
       private macro make_non_context_method(klass)
+        # Allows a `{{klass.id}}` to be made using a DSL call, and added to this drawables items.
         def {{ klass.stringify.split("::").last.downcase.id }}(&block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
           {{ klass.stringify.split("::").last.downcase.id }} = yield {{klass.id}}.new
           self << {{ klass.stringify.split("::").last.downcase.id }}
