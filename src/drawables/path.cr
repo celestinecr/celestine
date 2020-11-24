@@ -1,5 +1,5 @@
-# A struct which represents an SVG path. Methods starting with a_ use absolute coordinates, while r_ methods require relative coordinates. 
-struct Celestine::Path < Celestine::Drawable
+# A class which represents an SVG path. Methods starting with a_ use absolute coordinates, while r_ methods require relative coordinates. 
+class Celestine::Path < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Mask

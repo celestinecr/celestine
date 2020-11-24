@@ -1,4 +1,4 @@
-struct Celestine::Group < Celestine::Drawable
+class Celestine::Group < Celestine::Drawable
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Mask

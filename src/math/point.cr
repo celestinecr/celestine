@@ -1,4 +1,4 @@
-struct Celestine::Point
+class Celestine::Point
   property x : Int32, y : Int32
 
   OPERATIONS = [:+, :-, :/, :*, :**, :&, :|, :^, :<<, :>>, :%]
@@ -20,7 +20,7 @@ struct Celestine::Point
 end
 
 
-struct Celestine::FPoint
+class Celestine::FPoint
   property x : Float64, y : Float64
 
   OPERATIONS = [:+, :-, :/, :*]

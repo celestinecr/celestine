@@ -1,4 +1,4 @@
-struct Celestine::Animate < Celestine::Drawable
+class Celestine::Animate < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property attribute : String?  = nil

@@ -1,4 +1,4 @@
-struct Celestine::Rectangle < Celestine::Drawable
+class Celestine::Rectangle < Celestine::Drawable
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform
