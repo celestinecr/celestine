@@ -20,6 +20,8 @@ jobs:
       run: shards install
     - name: Run tests
       run: crystal spec
+    - name: Build docs
+      run: crystal docs
     - name: Deploy docs
       uses: crazy-max/ghaction-github-pages@v1.2.5
       with:
