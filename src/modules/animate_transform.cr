@@ -15,5 +15,6 @@ module Celestine::Modules::Animate::Transform
   def animate_transform(&block : Proc(Celestine::Animate::Transform, Nil))
     animate = yield Celestine::Animate::Transform.new
     animate.draw(inner_elements)
+    animate
   end
 end

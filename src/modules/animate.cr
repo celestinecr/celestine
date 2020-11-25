@@ -22,5 +22,6 @@ module Celestine::Modules::Animate
   def animate(&block : Proc(Celestine::Animate, Nil))
     animate = yield Celestine::Animate.new
     animate.draw(inner_elements)
+    animate
   end
 end

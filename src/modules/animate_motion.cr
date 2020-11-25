@@ -23,5 +23,6 @@ module Celestine::Modules::Animate::Motion
   def animate_motion(&block : Celestine::Animate::Motion -> Celestine::Animate::Motion)
     animate = yield Celestine::Animate::Motion.new
     animate.draw(inner_elements)
+    animate
   end
 end
