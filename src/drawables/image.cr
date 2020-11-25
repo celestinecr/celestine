@@ -9,7 +9,7 @@ class Celestine::Image < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  property url : String = ""
+  property url : String? = nil
   
   def draw(io : IO) : Nil
     io << %Q[<image ]
@@ -24,7 +24,7 @@ class Celestine::Image < Celestine::Drawable
     filter_attribute(io) 
     custom_attribute(io)
 
-    io << %Q[href="#{url}" ]
+    io << %Q[href="#{url}" ] if url
 
     if inner_elements.empty?
       io << %Q[/>]

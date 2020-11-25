@@ -1,3 +1,5 @@
+require "myhtml"
+
 require "./patches/number"
 require "./macros/include_options"
 
@@ -32,6 +34,15 @@ alias SIFNumber = (IFNumber | String)
 
 # Main module for Celestine
 module Celestine
+  
+  def self.parse(io : IO)
+    Myhtml::Parser.new(io)
+  end
+
+  def self.parse(string : String)
+    Myhtml::Parser.new(string)
+  end
+
   # Main draw function for DSL
   def self.draw(&block : Proc(Celestine::Meta::Context, Nil)) : String
     String.build do |io|
@@ -51,14 +62,15 @@ module Celestine::Meta
   # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you must add it here as well.
   CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text]
 
+
   # Hold context information for the DSL
   class Context
     # Alias for the viewBox SVG parameter
     alias ViewBox = NamedTuple(x: SIFNumber, y: SIFNumber, w: SIFNumber, h: SIFNumber)
     # Objects to be drawn to the scene
-    getter objects_io : IO = IO::Memory.new
+    getter objects_io = IO::Memory.new
     # Objects in the defs section, which can be used by ID
-    getter defines_io : IO = IO::Memory.new
+    getter defines_io = IO::Memory.new
     # The viewBox of the SVG scene
     property view_box : ViewBox? = nil
     property width : SIFNumber = "100%"
@@ -184,9 +196,11 @@ module Celestine::Meta
         io << %Q[<svg width="#{width}" height="#{height}" #{xmlns}>]
       end
 
-      io << %Q[<defs>]
-      io << @defines_io
-      io << %Q[</defs>]
+      unless @defines_io.empty?
+        io << %Q[<defs>]
+        io << @defines_io
+        io << %Q[</defs>]
+      end
       io << @objects_io
 
       io << %Q[</svg>]

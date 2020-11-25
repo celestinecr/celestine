@@ -8,6 +8,10 @@ development_dependencies:
   procedural_art:
     github: redcodefinal/procedural_art
 
+dependencies:
+  myhtml:
+    github: kostya/myhtml
+
 targets:
   crash_course:
     main: src/crash_course.cr

@@ -10,7 +10,7 @@ class Celestine::Circle < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
   
-  property radius : SIFNumber = 0
+  property radius : SIFNumber? = nil
 
   def diameter
     radius * 2
@@ -28,7 +28,7 @@ class Celestine::Circle < Celestine::Drawable
     filter_attribute(io) 
     custom_attribute(io)
 
-    io << %Q[r="#{radius}" ]
+    io << %Q[r="#{radius}" ] if radius
     if inner_elements.empty?
       io << %Q[/>]
     else

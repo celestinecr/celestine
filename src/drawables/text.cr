@@ -10,7 +10,7 @@ class Celestine::Text < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  property text : String = ""
+  property text : String? = nil
 
   property dx : SIFNumber?
   property dy : SIFNumber?
@@ -37,7 +37,7 @@ class Celestine::Text < Celestine::Drawable
     io << %Q[textLength="#{length}" ]                   if length
     io << %Q[lengthAdjust="#{length_adjust}" ]          if length_adjust
 
-    inner_elements << text unless text.empty?
+    inner_elements << text if text
     if inner_elements.empty?
       io << %Q[/>]
     else

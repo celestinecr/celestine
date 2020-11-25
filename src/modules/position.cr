@@ -1,15 +1,10 @@
 module Celestine::Modules::Position
-  property x : SIFNumber = 0
-  property y : SIFNumber = 0
+  property x : SIFNumber? = nil
+  property y : SIFNumber? = nil
 
   def position_attribute(io : IO)
-    if x != 0 && y != 0
-      io << %Q[x="#{x}" y="#{y}" ] 
-    elsif x != 0
-      io << %Q[x="#{x}" ]
-    elsif y != 0
-      io << %Q[y="#{y}" ]
-    end
+    io << %Q[x="#{x}" ] if x
+    io << %Q[y="#{y}" ] if y
   end
 
   module Attrs
@@ -19,17 +14,13 @@ module Celestine::Modules::Position
 end
 
 module Celestine::Modules::CPosition
-  property x : SIFNumber = 0
-  property y : SIFNumber = 0
+  property x : SIFNumber? = nil
+  property y : SIFNumber? = nil
 
   def position_attribute(io : IO)
-    if x != 0 && y != 0
-      io << %Q[cx="#{x}" cy="#{y}" ]
-    elsif x != 0
-      io << %Q[cx="#{x}" ]
-    elsif y != 0
-      io << %Q[cy="#{y}" ]
-    end
+   
+    io << %Q[cx="#{x}" ] if x
+    io << %Q[cy="#{y}" ] if y
   end
   
   module Attrs
