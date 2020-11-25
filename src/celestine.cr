@@ -19,6 +19,8 @@ require "./effects/animation/animate_motion"
 require "./effects/animation/animate_transform"
 
 require "./effects/mask"
+require "./effects/filter"
+require "./effects/filters/**"
 
 require "./math/**"
 require "./collision/helpers"
@@ -47,7 +49,7 @@ end
 # Modules where all DSL and Meta code is held
 module Celestine::Meta
   # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you must add it here as well.
-  CLASSES =  [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text]
+  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text]
 
   # Hold context information for the DSL
   class Context
@@ -86,6 +88,9 @@ module Celestine::Meta
             define(mask)
             mask
           end
+
+          make_context_method(Celestine::Filter)
+
         # Adds methods without the define parameter.
         {% else %}
           {% for klass in Celestine::Meta::CLASSES %}
@@ -188,10 +193,12 @@ module Celestine::Meta
     end
   end
 
+  # Group class which can group multiple drawables together.
   class ::Celestine::Group
     include Celestine::Meta::Context::Methods
   end
 
+  # Class which acts like a group, but applies masking to another drawable.
   class ::Celestine::Mask
     include Celestine::Meta::Context::Methods
   end
