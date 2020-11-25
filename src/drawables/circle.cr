@@ -1,4 +1,4 @@
-struct Celestine::Circle < Celestine::Drawable
+class Celestine::Circle < Celestine::Drawable
   include_options Celestine::Modules::CPosition
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform

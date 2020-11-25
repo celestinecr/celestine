@@ -1,4 +1,4 @@
-struct Celestine::Animate::Transform < Celestine::Drawable
+class Celestine::Animate::Transform < Celestine::Drawable
   property type : String?  = nil
   property repeat_count : SIFNumber? = nil
   property duration : SIFNumber? = nil

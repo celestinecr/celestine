@@ -1,7 +1,7 @@
 # Basic SVG drawable, inheritted by stuff like circles, rectangles, etc. 
-abstract struct Celestine::Drawable
-  # A transform struct used to interact with the `transform` attribute
-  struct Transform
+abstract class Celestine::Drawable
+  # A transform class used to interact with the `transform` attribute
+  class Transform
     getter objects_io = IO::Memory.new
     def matrix(a : SIFNumber, b : SIFNumber, c : SIFNumber, d : SIFNumber, e : SIFNumber, f : SIFNumber)
       @objects_io << "matrix(#{a} #{b} #{c} #{d} #{e} #{f}) "
@@ -49,7 +49,7 @@ abstract struct Celestine::Drawable
   end
 
   # A list of the classes for this object
-  # TODO: Fix this by making it a string or struct type
+  # TODO: Fix this by making it a string or class type
   property classes : Array(String) = [] of String
 
   # def add_class(new_class)
@@ -66,7 +66,7 @@ abstract struct Celestine::Drawable
   end
 
   # A list of the style options
-  # TODO: Fix this by making it a string or struct type
+  # TODO: Fix this by making it a string or class type
   property style = {} of String => String
 
   # Rendered style options
@@ -79,12 +79,12 @@ abstract struct Celestine::Drawable
   end
 
   # The inner elements of this drawable.
-  # TODO: Fix this by making it a string or struct type
+  # TODO: Fix this by making it a string or class type
   property inner_elements = IO::Memory.new
 
   # A list of custom attributes
   # TODO: Change this to work with Int and Floats? Doesn't this need to be `String => SIFNumber`?
-  # TODO: Fix this by making it a string or struct type
+  # TODO: Fix this by making it a string or class type
   property custom_attrs = {} of String => String
 
   

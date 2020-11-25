@@ -43,7 +43,7 @@ File.open("./bin/test.svg", "w+") do |f|
 
             #Want to specify css units? You can with these patches
             rect.stroke_width = 1.px # em, rem, vmax, vh, vw, etc
-            # Pass it back when you are done. (it's a struct)
+            # Pass it back when you are done. (it's a class)
             rect
           end
         end

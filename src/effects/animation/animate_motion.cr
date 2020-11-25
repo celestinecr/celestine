@@ -1,4 +1,4 @@
-struct Celestine::Animate::Motion < Celestine::Drawable
+class Celestine::Animate::Motion < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property rotate = "none"

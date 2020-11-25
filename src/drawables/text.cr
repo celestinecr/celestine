@@ -1,4 +1,4 @@
-struct Celestine::Text < Celestine::Drawable 
+class Celestine::Text < Celestine::Drawable 
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Position
   include_options Celestine::Modules::StrokeFill

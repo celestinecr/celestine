@@ -188,11 +188,11 @@ module Celestine::Meta
     end
   end
 
-  struct ::Celestine::Group
+  class ::Celestine::Group
     include Celestine::Meta::Context::Methods
   end
 
-  struct ::Celestine::Mask
+  class ::Celestine::Mask
     include Celestine::Meta::Context::Methods
   end
 end
