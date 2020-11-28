@@ -3,6 +3,7 @@ class Celestine::Filter::Morphology < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property input : String? = nil
+  property result : String? = nil
 
   make_units radius
   property operator : String?
@@ -12,6 +13,7 @@ class Celestine::Filter::Morphology < Celestine::Drawable
     class_attribute(io)
     id_attribute(io)
     io << %Q[in="#{input}" ] if input
+    io << %Q[result="#{result}" ] if result
     io << %Q[radius="#{radius}#{radius_units}" ] if radius
     io << %Q[operator="#{operator}" ] if operator
 

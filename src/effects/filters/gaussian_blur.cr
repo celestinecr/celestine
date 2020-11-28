@@ -3,6 +3,7 @@ class Celestine::Filter::Blur < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property input : String? = nil
+  property result : String? = nil
   make_units standard_deviation
   property edge_mode : String? = nil
 
@@ -11,6 +12,7 @@ class Celestine::Filter::Blur < Celestine::Drawable
     class_attribute(io)
     id_attribute(io)
     io << %Q[in="#{input}" ] if input
+    io << %Q[result="#{result}" ] if result
     io << %Q[stdDeviation="#{standard_deviation}#{standard_deviation_units}" ] if standard_deviation
     io << %Q[edgeMode="#{edge_mode}" ] if edge_mode
 

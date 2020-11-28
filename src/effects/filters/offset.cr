@@ -3,6 +3,7 @@ class Celestine::Filter::Offset < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property input : String? = nil
+  property result : String? = nil
   make_units dx
   make_units dy
 
@@ -11,6 +12,7 @@ class Celestine::Filter::Offset < Celestine::Drawable
     class_attribute(io)
     id_attribute(io)
     io << %Q[in="#{input}" ] if input
+    io << %Q[result="#{result}" ] if result
     io << %Q[dx="#{dx}#{dx_units}" ] if dx
     io << %Q[dy="#{dy}#{dy_units}" ] if dy
 

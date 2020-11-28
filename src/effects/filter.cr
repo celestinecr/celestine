@@ -26,11 +26,18 @@ class Celestine::Filter < Celestine::Drawable
   end
 
   # Adds a `Celestine::Filter::Morphology` to the calling filter's inner elements.
-    def morphology(&block : Celestine::Filter::Morphology -> Celestine::Filter::Morphology)
-      morphology_filter = yield Celestine::Filter::Morphology.new
-      morphology_filter.draw(inner_elements)
-      morphology_filter
-    end
+  def morphology(&block : Celestine::Filter::Morphology -> Celestine::Filter::Morphology)
+    morphology_filter = yield Celestine::Filter::Morphology.new
+    morphology_filter.draw(inner_elements)
+    morphology_filter
+  end
+
+  # Adds a `Celestine::Filter::Merge` to the calling filter's inner elements.
+  def merge(&block : Celestine::Filter::Merge -> Celestine::Filter::Merge)
+    merge_filter = yield Celestine::Filter::Merge.new
+    merge_filter.draw(inner_elements)
+    merge_filter
+  end
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
