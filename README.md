@@ -82,6 +82,145 @@ A list of the Celestine types and their DSL methods
  * Celestine::Use -> use
 
 
+### Transform
+Most drawables can use the `transform` method to move, rotate, scale, and skew drawables.
+
+```crystal
+Celestine.draw do |ctx|
+  ctx.rectangle do |r|
+    # Set r's x, y, width, height and other attributes here
+    r.transform do |t|
+      t.rotate(60, 0, 0) # Rotate by 60 degrees, at origin 0, 0
+      t.translate(50, 60) # Move by 50, 60
+      t.scale(100, 100) # Scale up 100x
+      t
+    end
+    r
+  end
+end
+```
+
+### Masking
+You can use masks to make complicated shapes.
+
+```crystal
+Celestine.draw do |ctx|
+  our_mask = ctx.mask do |mask|
+    mask.id = "our-mask" # YOU MUST SET A UNIQUE ID FOR THE MASK!
+    mask.rectangle do |r| # Works just like a group
+      # Set r's x, y, width, height and other attributes here
+      r.fill = "black" # Will make everything under it invisibile and transparent
+      r.fill = "white" # Will make everything under it visible
+      r
+    end
+    mask
+  end
+
+  ctx.circle do |c|
+    # Set c's x, y, radius and other attributes here
+    c.set_mask our_mask # Set with the mask object directly
+    c.set_mask "our-mask" # Set via string id
+    c
+  end
+end
+```
+
+### Filters
+You can use filters to make things impossible with primitive shapes alone.
+
+```crystal
+Celestine.draw do |ctx|
+  our_filter = ctx.filter do |filter|
+    filter.id = "our-filter" # YOU MUST SET A UNIQUE ID FOR THE MASK!
+    # Use the filters DSL methods blur, offset, morphology, etc
+    filter.blur do |blur_filter|
+      blur_filter.standard_deviation = 5
+      blur_filter
+    end
+    filter
+  end
+
+  ctx.circle do |c|
+    c.set_filter our_filter # Set with the mask object directly
+    c.set_filter "our-filter" # Set via string id
+    c
+  end
+end
+```
+
+Filters available
+ * Celestine::Filter::Blur -> blur
+ * Celestine::Filter::Offset -> offset
+ * Celestine::Filter::Morphology -> morphology
+ * Celestine::Filter::Merge -> merge
+
+### Animate
+You can animate some simpler SVG attributes using `animate`.
+```crystal
+Celestine.draw do |ctx|
+  ctx.circle do |c|
+    # IF ANIMATING AN ATTRIBUTE DO NOT SET IT IN ANY WAY, IT WILL OVERRIDE THE ANIMATION, BLAME SVG NOT ME
+    # EX:
+    #     Using `c.radius = 100` will ruin the animation.
+    c.animate do |a|
+      a.attribute = "r" # Choose it directly
+      a.attribute = Celestine::Circle::Attrs::RADIUS # Choose it using the predefined constants
+      a.from = 100
+      a.to = 200
+      a.duration = 10
+      a.repeat_count = "indefinite"
+      a
+    end
+    c
+  end
+end
+```
+
+### AnimateMotion
+You can animate movement along paths using `animateMotion`.
+
+```crystal
+Celestine.draw do |ctx|
+  ctx.circle do |c|
+    c.animate_motion do |a|
+      # Make the path the animateMotion element will follow.
+      a.mpath do |path|
+        path.a_move(200, 200)
+        path.r_line(20, 20)
+        path.r_line(-20, 20)
+        path.r_line(-20, -20)
+        path.r_line(20, -20)
+        path
+      end
+      a.duration = 10
+      a.repeat_count = "indefinite"
+      a
+    end
+    c
+  end
+end
+```
+
+### AnimateTransform
+You can animate transform elements using `animateTransform`.
+
+Only rotate is supported right now.
+```crystal
+Celestine.draw do |ctx|
+  ctx.circle do |c|
+    c.animate_transform_rotate do |a|
+      a.from_angle = 0
+      a.to_angle = 360
+      a.from_origin_x = a.from_origin_y = a.to_origin_x = a.to_origin_y = 0
+      a.duration = 10
+      a.repeat_count = "indefinite"
+      a
+    end
+    c
+  end
+end
+```
+
 
 Here's a quick and dirty intro to features.
 [crash_course](https://github.com/redcodefinal/celestine/blob/master/src/crash_course.cr)
