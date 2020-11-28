@@ -10,7 +10,7 @@ shards:
 
   kemal:
     git: https://github.com/kemalcr/kemal.git
-    version: 0.26.1+git.commit.a819d4792bbc63d993d6dd2b15f9af5efb0c2d8c
+    version: 0.27.0+git.commit.bf9f627ac789d2ebe573629904f02beb9e4089d5
 
   kilt:
     git: https://github.com/jeromegn/kilt.git
@@ -26,7 +26,7 @@ shards:
 
   procedural_art:
     git: https://github.com/redcodefinal/procedural_art.git
-    version: 0.1.0+git.commit.9e79ac90351f70521ba6b7a2783d11361815e96c
+    version: 0.1.0+git.commit.25601756560d86a82ffcc9f16b73222c6ddde1b2
 
   radix:
     git: https://github.com/luislavena/radix.git
