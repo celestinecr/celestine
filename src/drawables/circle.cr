@@ -10,8 +10,7 @@ class Celestine::Circle < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
   
-  property radius : Float64? = nil
-  property radius_units : String? = nil
+  make_units :radius
 
   def diameter
     radius * 2

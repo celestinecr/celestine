@@ -11,18 +11,15 @@ class Celestine::Text < Celestine::Drawable
   include Celestine::Modules::Animate::Transform
 
   property text : String? = nil
-
-  property dx : Float64? = nil
-  property dx_units : String? = nil
-  property dy : Float64? = nil
-  property dy_units : String? = nil
+  
+  make_units :dx
+  make_units :dy
 
   property rotate : Array(Float64) = [] of Float64
-  property length : Float64? = nil
-  property length_units : String? = nil
 
-  property length_adjust : Float64?
-  property length_adjust_units : String? = nil
+  make_units :length
+  make_units :length_adjust
+
 
 
   def draw(io : IO) : Nil

@@ -1,7 +1,7 @@
 require "myhtml"
 
 require "./patches/number"
-require "./macros/include_options"
+require "./macros/**"
 
 require "./modules/position"
 require "./modules/*"
@@ -27,6 +27,7 @@ require "./effects/filters/**"
 require "./math/**"
 require "./collision/helpers"
 
+alias IFNumber = (Int32 | Float64)
 
 # Main module for Celestine
 module Celestine

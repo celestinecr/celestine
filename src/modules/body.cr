@@ -1,10 +1,9 @@
 module Celestine::Modules::Body
   include Celestine::Modules::Position
 
-  property width : Float64?
-  property width_units : String?
-  property height : Float64?
-  property height_units : String?
+  make_units :width
+  make_units :height
+
   
   # TODO: FIX SHIT LIKE PX, REM, ETC
   def left

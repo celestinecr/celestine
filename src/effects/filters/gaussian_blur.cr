@@ -2,8 +2,7 @@ class Celestine::Filter::Blur < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property input : String? = nil
-  property standard_deviation : Float64? = nil
-  property standard_deviation_units : String? = nil
+  make_units standard_deviation
   property edge_mode : String? = nil
 
   def draw(io : IO) : Nil

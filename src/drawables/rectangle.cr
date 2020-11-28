@@ -9,8 +9,9 @@ class Celestine::Rectangle < Celestine::Drawable
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
-  property radius_x : Float64? = nil
-  property radius_x_units : String? = nil
+
+  make_units :radius_x
+
 
   def draw(io : IO) : Nil
     io << %Q[<rect ]

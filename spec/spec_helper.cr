@@ -11,7 +11,7 @@ end
 # as well as it only has one child element, the `{{drawable_class.id}}`
 macro make_number_attribute_test(drawable_class, attr_name_html, attr_name_cr, units = false)
   it "should set attribute {{attr_name_html.id}} via {{attr_name_cr.id}} and there should be no other attributes set" do
-    positive_values = [0.0, 1.0, 2.0, 4.0, 0.22, 99.0, 60000.0, 99999.9999]
+    positive_values = [0, 1.0, 2, 4, 0.22, 99.0, 60000.0, 99999.9999]
     values = positive_values.clone
     positive_values.each { |v| values << -v }
     

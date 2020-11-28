@@ -1,22 +1,20 @@
 module Celestine::Modules::StrokeFill
   property stroke : String?  = nil
   property fill : String? = nil
-  property stroke_width : Float64? = nil
-  property stroke_width_units : String? = nil
-  property fill_opacity : Float64? = nil
-  property stroke_opacity : Float64? = nil
+  make_units :stroke_width
+  make_field fill_opacity
+  make_field stroke_opacity
   property dash_array : Array(Float64) = [] of Float64
-  property dash_offset : Float64? = nil
-  property dash_offset_units : String? = nil
+  make_units :dash_offset
 
   property line_join : String? = nil
-  property miter_limit : Float64? = nil
-  property miter_limit_units : String? = nil
+  make_units :miter_limit
+
 
   property line_cap : String? = nil
 
 
-  property opacity : Float64?
+  make_field opacity
   property fill_rule : Bool = false
   
   def stroke_fill_attribute(io : IO)

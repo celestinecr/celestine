@@ -1,8 +1,7 @@
 module Celestine::Modules::Position
-  property x : Float64? = nil
-  property x_units : String? = nil
-  property y : Float64? = nil
-  property y_units : String? = nil
+  make_units :x
+  make_units :y
+
 
   def position_attribute(io : IO)
     io << %Q[x="#{x}#{x_units}" ] if x
@@ -16,10 +15,8 @@ module Celestine::Modules::Position
 end
 
 module Celestine::Modules::CPosition
-  property x : Float64? = nil
-  property x_units : String? = nil
-  property y : Float64? = nil
-  property y_units : String? = nil
+  make_units :x
+  make_units :y
 
   def position_attribute(io : IO)
     io << %Q[cx="#{x}#{x_units}" ] if x

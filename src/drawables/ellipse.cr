@@ -11,10 +11,9 @@ class Celestine::Ellipse < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
   
-  property radius_x : Float64? = nil
-  property radius_x_units : String? = nil
-  property radius_y : Float64? = nil
-  property radius_y_units : String? = nil
+  make_units :radius_x
+  make_units :radius_y
+
 
   def draw(io : IO) : Nil
     io << %Q[<ellipse ]
