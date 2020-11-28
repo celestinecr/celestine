@@ -2,7 +2,7 @@ class Celestine::Animate < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property attribute : String?  = nil
-  property repeat_count : Float64? = nil
+  property repeat_count : IFNumber | String? = nil
   property duration : Float64? = nil
   property values = [] of Float64
   property from : Float64? = nil

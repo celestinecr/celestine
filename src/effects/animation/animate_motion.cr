@@ -5,7 +5,7 @@ class Celestine::Animate::Motion < Celestine::Drawable
   property key_points = [] of Float64
   getter mpath = ""
 
-  property repeat_count : Float64? = nil
+  property repeat_count : IFNumber | String? = nil
   property duration : Float64? = nil
   # TODO: Check if incoming unit is s ms or h.
   property duration_units : String? = nil

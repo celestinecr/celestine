@@ -1,6 +1,6 @@
 class Celestine::Animate::Transform < Celestine::Drawable
   property type : String?  = nil
-  property repeat_count : Float64? = nil
+  property repeat_count : IFNumber | String? = nil
   property duration : Float64? = nil
   # TODO: Check if incoming unit is s ms or h.
   property duration_units : Float64? = nil
