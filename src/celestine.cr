@@ -25,7 +25,6 @@ require "./effects/filter"
 require "./effects/filters/**"
 
 require "./math/**"
-require "./collision/helpers"
 
 alias IFNumber = (Int32 | Float64)
 

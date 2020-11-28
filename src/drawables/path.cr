@@ -119,7 +119,7 @@ class Celestine::Path < Celestine::Drawable
     mask_attribute(io)     
     filter_attribute(io) 
     custom_attribute(io)
-    io << %Q[d="#{code}" ] unless @code.empty?
+    io << %Q[d="#{code}" ] unless code.empty?
     
     if inner_elements.empty?
       io << %Q[/>]
