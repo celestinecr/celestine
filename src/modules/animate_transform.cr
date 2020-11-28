@@ -12,8 +12,8 @@ module Celestine::Modules::Animate::Transform
   end
 
   # Adds a `Celestine::Animate::Transform` to the calling drawable's inner elements.
-  def animate_transform(&block : Proc(Celestine::Animate::Transform, Nil))
-    animate = yield Celestine::Animate::Transform.new
+  def animate_transform_rotate(&block : Proc(Celestine::Animate::Transform::Rotate, Nil))
+    animate = yield Celestine::Animate::Transform::Rotate.new
     animate.draw(inner_elements)
     animate
   end

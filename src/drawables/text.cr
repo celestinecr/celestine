@@ -10,14 +10,17 @@ class Celestine::Text < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  property text : String = ""
+  property text : String? = nil
+  
+  make_units :dx
+  make_units :dy
 
-  property dx : SIFNumber?
-  property dy : SIFNumber?
+  property rotate : Array(Float64) = [] of Float64
 
-  property rotate : SIFNumber?
-  property length : SIFNumber?
-  property length_adjust : SIFNumber?
+  make_units :length
+  make_units :length_adjust
+
+
 
   def draw(io : IO) : Nil
     io << %Q[<text ]
@@ -31,13 +34,17 @@ class Celestine::Text < Celestine::Drawable
     filter_attribute(io) 
     custom_attribute(io)
 
-    io << %Q[dx="#{dx}" ]                               if dx
-    io << %Q[dy="#{dy}" ]                               if dy
-    io << %Q[rotate="#{rotate}" ]                       if rotate
-    io << %Q[textLength="#{length}" ]                   if length
-    io << %Q[lengthAdjust="#{length_adjust}" ]          if length_adjust
+    io << %Q[dx="#{dx}#{dx_units}" ]                               if dx
+    io << %Q[dy="#{dy}#{dy_units}" ]                               if dy
+    unless rotate.empty?
+      io << %Q[rotate="]                            
+      rotate.join(io, " ")
+      io << %Q[" ]
+    end
+    io << %Q[textLength="#{length}#{length_units}" ]                   if length
+    io << %Q[lengthAdjust="#{length_adjust}#{length_adjust_units}" ]          if length_adjust
 
-    inner_elements << text unless text.empty?
+    inner_elements << text if text
     if inner_elements.empty?
       io << %Q[/>]
     else

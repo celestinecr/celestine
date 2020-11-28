@@ -2,7 +2,7 @@ class Celestine::Filter::Blur < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property input : String? = nil
-  property standard_deviation : SIFNumber? = nil
+  make_units standard_deviation
   property edge_mode : String? = nil
 
   def draw(io : IO) : Nil
@@ -10,7 +10,7 @@ class Celestine::Filter::Blur < Celestine::Drawable
     class_attribute(io)
     id_attribute(io)
     io << %Q[in="#{input}" ] if input
-    io << %Q[stdDeviation="#{standard_deviation}" ] if standard_deviation
+    io << %Q[stdDeviation="#{standard_deviation}#{standard_deviation_units}" ] if standard_deviation
     io << %Q[edgeMode="#{edge_mode}" ] if edge_mode
 
     if inner_elements.empty?
