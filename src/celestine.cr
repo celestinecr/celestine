@@ -30,6 +30,7 @@ alias IFNumber = (Int32 | Float64)
 
 # Main module for Celestine
 module Celestine
+  VERSION = "0.5.0"
   
   def self.parse(io : IO)
     Myhtml::Parser.new(io)
