@@ -1,4 +1,5 @@
 class Celestine::Mask < Celestine::Drawable
+  TAG = "mask"
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Animate
@@ -7,7 +8,7 @@ class Celestine::Mask < Celestine::Drawable
   @objects_io = IO::Memory.new
 
   def draw(io : IO) : Nil
-    io << %Q[<mask ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     stroke_fill_attribute(io)
@@ -19,7 +20,7 @@ class Celestine::Mask < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</mask>"
+      io << "</#{TAG}>"
     end
   end
 end

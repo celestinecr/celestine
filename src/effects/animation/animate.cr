@@ -1,4 +1,5 @@
 class Celestine::Animate < Celestine::Drawable
+  TAG = "animate"
   include_options Celestine::Modules::Animate
 
   property attribute : String?  = nil
@@ -24,7 +25,7 @@ class Celestine::Animate < Celestine::Drawable
   property? freeze = false
 
   def draw(io : IO) : Nil
-    io << %Q[<animate ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     custom_attribute(io)
@@ -65,7 +66,7 @@ class Celestine::Animate < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</animate>"
+      io << "</#{TAG}>"
     end
 
   end

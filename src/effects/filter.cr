@@ -1,4 +1,5 @@
 class Celestine::Filter < Celestine::Drawable
+  TAG = "filter"
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::Animate
 
@@ -10,15 +11,29 @@ class Celestine::Filter < Celestine::Drawable
   FILL_PAINT = "FillPaint" 
   STROKE_PAINT = "StrokePaint"
 
-  # Adds a `Celestine::Animate::Motion` to the calling drawable's inner elements.
+  # Adds a `Celestine::Filter::Blur` to the calling filter's inner elements.
   def blur(&block : Celestine::Filter::Blur -> Celestine::Filter::Blur)
     blur_filter = yield Celestine::Filter::Blur.new
     blur_filter.draw(inner_elements)
     blur_filter
   end
 
+  # Adds a `Celestine::Filter::Offset` to the calling filter's inner elements.
+  def offset(&block : Celestine::Filter::Offset -> Celestine::Filter::Offset)
+    offset_filter = yield Celestine::Filter::Offset.new
+    offset_filter.draw(inner_elements)
+    offset_filter
+  end
+
+  # Adds a `Celestine::Filter::Morphology` to the calling filter's inner elements.
+    def morphology(&block : Celestine::Filter::Morphology -> Celestine::Filter::Morphology)
+      morphology_filter = yield Celestine::Filter::Morphology.new
+      morphology_filter.draw(inner_elements)
+      morphology_filter
+    end
+
   def draw(io : IO) : Nil
-    io << %Q[<filter ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     body_attribute(io)
@@ -27,7 +42,7 @@ class Celestine::Filter < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</filter>"
+      io << "</#{TAG}>"
     end
   end
 end

@@ -1,4 +1,6 @@
 class Celestine::Group < Celestine::Drawable
+  TAG = "g"
+
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Mask
@@ -14,7 +16,7 @@ class Celestine::Group < Celestine::Drawable
   property? override_stroke_fill = false
 
   def draw(io : IO) : Nil
-    io << %Q[<g ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     stroke_fill_attribute(io)
@@ -28,7 +30,7 @@ class Celestine::Group < Celestine::Drawable
       io << %Q[>]
       io << @objects_io
       io << inner_elements
-      io << %Q[</g>]
+      io << %Q[</#{TAG}>]
     else
       io << %Q[/>]
     end

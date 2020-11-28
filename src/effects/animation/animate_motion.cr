@@ -1,4 +1,5 @@
 class Celestine::Animate::Motion < Celestine::Drawable
+  TAG = "animateMotion"
   include_options Celestine::Modules::Animate
 
   property rotate = "none"
@@ -54,7 +55,7 @@ class Celestine::Animate::Motion < Celestine::Drawable
   end
 
   def draw(io : IO) : Nil
-    io << %Q[<animateMotion ]
+    io << %Q[<#{TAG} ]
     # Puncuate attributes with a space 
     class_attribute(io)
     id_attribute(io)
@@ -100,7 +101,7 @@ class Celestine::Animate::Motion < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</animateMotion>"
+      io << "</#{TAG}>"
     end
 
   end

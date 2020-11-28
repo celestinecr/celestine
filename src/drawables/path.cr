@@ -1,5 +1,7 @@
 # A class which represents an SVG path. Methods starting with a_ use absolute coordinates, while r_ methods require relative coordinates. 
 class Celestine::Path < Celestine::Drawable
+  TAG = "path"
+
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Mask
@@ -109,7 +111,7 @@ class Celestine::Path < Celestine::Drawable
   end
 
   def draw(io : IO) : Nil
-    io << %Q[<path ]
+    io << %Q[<#{TAG} ]
 
     class_attribute(io)
     id_attribute(io)
@@ -126,7 +128,7 @@ class Celestine::Path < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</path>"
+      io << "</#{TAG}>"
     end
   end
 end

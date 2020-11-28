@@ -1,4 +1,5 @@
 class Celestine::Animate::Transform::Rotate < Celestine::Drawable
+  TAG = "animateTransform"
   property repeat_count : IFNumber | String? = nil
   make_units duration
   make_units repeat_duration
@@ -23,7 +24,7 @@ class Celestine::Animate::Transform::Rotate < Celestine::Drawable
   property by_origin_y : Float64? = nil
 
   def draw(io : IO) : Nil
-    io << %Q[<animateTransform ]
+    io << %Q[<#{TAG} ]
     # Puncuate attributes with a space 
     class_attribute(io)
     id_attribute(io)
@@ -43,7 +44,7 @@ class Celestine::Animate::Transform::Rotate < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</animateTransform>"
+      io << "</#{TAG}>"
     end
 
   end

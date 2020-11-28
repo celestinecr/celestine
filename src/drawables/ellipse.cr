@@ -1,4 +1,6 @@
 class Celestine::Ellipse < Celestine::Drawable 
+  TAG = "ellipse"
+
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::CPosition
   include_options Celestine::Modules::StrokeFill
@@ -16,7 +18,7 @@ class Celestine::Ellipse < Celestine::Drawable
 
 
   def draw(io : IO) : Nil
-    io << %Q[<ellipse ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     position_attribute(io)
@@ -35,7 +37,7 @@ class Celestine::Ellipse < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</ellipse>"
+      io << "</#{TAG}>"
     end
   end
 

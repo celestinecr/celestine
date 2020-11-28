@@ -1,4 +1,6 @@
 class Celestine::Rectangle < Celestine::Drawable
+  TAG = "rect"
+
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform
@@ -14,7 +16,7 @@ class Celestine::Rectangle < Celestine::Drawable
 
 
   def draw(io : IO) : Nil
-    io << %Q[<rect ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     body_attribute(io)
@@ -32,7 +34,7 @@ class Celestine::Rectangle < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</rect>"
+      io << "</#{TAG}>"
     end
   end
 

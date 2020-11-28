@@ -1,4 +1,5 @@
 class Celestine::Filter::Blur < Celestine::Drawable
+  TAG = "feGaussianBlur"
   include_options Celestine::Modules::Animate
 
   property input : String? = nil
@@ -6,7 +7,7 @@ class Celestine::Filter::Blur < Celestine::Drawable
   property edge_mode : String? = nil
 
   def draw(io : IO) : Nil
-    io << %Q[<feGaussianBlur ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     io << %Q[in="#{input}" ] if input
@@ -18,7 +19,7 @@ class Celestine::Filter::Blur < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</feGaussianBlur>"
+      io << "</#{TAG}>"
     end
   end
 

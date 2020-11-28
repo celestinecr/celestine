@@ -1,4 +1,6 @@
 class Celestine::Circle < Celestine::Drawable
+  TAG = "circle"
+
   include_options Celestine::Modules::CPosition
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform
@@ -17,7 +19,7 @@ class Celestine::Circle < Celestine::Drawable
   end
 
   def draw(io : IO) : Nil
-    io << %Q[<circle ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     position_attribute(io)
@@ -34,7 +36,7 @@ class Celestine::Circle < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</circle>"
+      io << "</#{TAG}>"
     end
   end
 

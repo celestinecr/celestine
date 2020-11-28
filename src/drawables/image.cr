@@ -1,4 +1,6 @@
 class Celestine::Image < Celestine::Drawable
+  TAG = "image"
+
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::Mask
@@ -12,7 +14,7 @@ class Celestine::Image < Celestine::Drawable
   property url : String? = nil
   
   def draw(io : IO) : Nil
-    io << %Q[<image ]
+    io << %Q[<#{TAG} ]
     # Puncuate attributes with a space 
     class_attribute(io)
     id_attribute(io)
@@ -31,7 +33,7 @@ class Celestine::Image < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</image>"
+      io << "</#{TAG}>"
     end
   end
 end  

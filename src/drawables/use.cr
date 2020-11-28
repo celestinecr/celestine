@@ -1,4 +1,6 @@
 class Celestine::Use < Celestine::Drawable
+  TAG = "use"
+
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform
@@ -28,7 +30,7 @@ class Celestine::Use < Celestine::Drawable
   
   
   def draw(io : IO) : Nil
-    io << %Q[<use ]
+    io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     body_attribute(io)
@@ -46,7 +48,7 @@ class Celestine::Use < Celestine::Drawable
     else
       io << ">"
       io << inner_elements
-      io << "</use>"
+      io << "</#{TAG}>"
     end
   end
 end
