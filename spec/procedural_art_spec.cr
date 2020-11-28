@@ -1,5 +1,5 @@
 describe ProceduralArt do
-  it "should make 100 hypnos images" do
+  it "should make 10 hypnos images" do
     100.times do
       ProceduralArt::Hypnos.make
     end
