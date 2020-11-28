@@ -69,7 +69,7 @@ class Celestine::Animate::Motion < Celestine::Drawable
     end
     io << %Q[from="#{from}#{from_units}" ]                        if from
     io << %Q[to="#{to}#{to_units}" ]                           if to
-    io << %Q[by="#{by}#{units}" ]                           if by
+    io << %Q[by="#{by}#{by_units}" ]                           if by
 
     unless key_times.empty?
       io << %Q[keyTimes="]
@@ -83,8 +83,8 @@ class Celestine::Animate::Motion < Celestine::Drawable
       io << %Q[" ] 
     end
     
-    io << %Q[min="#{min}" ]                         if min
-    io << %Q[min="#{max}" ]                         if max
+    io << %Q[min="#{min}#{min_units}" ]                         if min
+    io << %Q[min="#{max}#{max_units}" ]                         if max
     io << %Q[accumulate="sum" ]                              if accumulate?
     io << %Q[additive="sum" ]                                if additive?
     io << %Q[fill="freeze" ]                                 if freeze?

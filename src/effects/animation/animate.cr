@@ -3,19 +3,20 @@ class Celestine::Animate < Celestine::Drawable
 
   property attribute : String?  = nil
   property repeat_count : IFNumber | String? = nil
-  property duration : Float64? = nil
+  make_units duration
   property values = [] of Float64
-  property from : Float64? = nil
-  property to : Float64? = nil
-  property by : Float64? = nil
+
+  make_units from
+  make_units to
+  make_units by
 
   property key_times = [] of Float64
   property key_splines = [] of Float64
 
-  property min : Float64? = nil
-  property max : Float64? = nil
+  make_units min
+  make_units max
 
-  property repeat_duration : Float64? = nil
+  make_units repeat_duration
 
   property? accumulate = false
   property? additive = false
@@ -30,16 +31,16 @@ class Celestine::Animate < Celestine::Drawable
     io << %Q[attributeName="#{attribute}" ]
     io << %Q[attributeType="XML" ]
     io << %Q[repeatCount="#{repeat_count}" ]         if repeat_count
-    io << %Q[repeatDur="#{repeat_duration}" ]        if repeat_duration
-    io << %Q[dur="#{duration}" ]                     if duration
+    io << %Q[repeatDur="#{repeat_duration}#{duration_units}" ]        if repeat_duration
+    io << %Q[dur="#{duration}#{duration_units}" ]                     if duration
     unless values.empty?
       io << %Q[values="]
       values.join(io, ";")
       io << %Q[" ] 
     end
-    io << %Q[from="#{from}" ]                        if from
-    io << %Q[to="#{to}" ]                           if to
-    io << %Q[by="#{by}" ]                           if by
+    io << %Q[from="#{from}#{from_units}" ]                        if from
+    io << %Q[to="#{to}#{to_units}" ]                           if to
+    io << %Q[by="#{by}#{by_units}" ]                           if by
 
     unless key_times.empty?
       io << %Q[keyTimes="]
@@ -53,8 +54,8 @@ class Celestine::Animate < Celestine::Drawable
       io << %Q[" ] 
     end
 
-    io << %Q[min="#{min }" ]                         if min
-    io << %Q[min="#{max }" ]                         if max
+    io << %Q[min="#{min}#{min_units}" ]                         if min
+    io << %Q[min="#{max}#{max_units}" ]                         if max
     io << %Q[accumulate="sum" ]                              if accumulate?
     io << %Q[additive="sum" ]                                if additive?
     io << %Q[fill="freeze" ]                                 if freeze?
