@@ -12,12 +12,18 @@ class Celestine::Text < Celestine::Drawable
 
   property text : String? = nil
 
-  property dx : SIFNumber?
-  property dy : SIFNumber?
+  property dx : Float64? = nil
+  property dx_units : String? = nil
+  property dy : Float64? = nil
+  property dy_units : String? = nil
 
-  property rotate : SIFNumber?
-  property length : SIFNumber?
-  property length_adjust : SIFNumber?
+  property rotate : Array(Float64) = [] of Float64
+  property length : Float64? = nil
+  property length_units : String? = nil
+
+  property length_adjust : Float64?
+  property length_adjust_units : String? = nil
+
 
   def draw(io : IO) : Nil
     io << %Q[<text ]
@@ -31,11 +37,15 @@ class Celestine::Text < Celestine::Drawable
     filter_attribute(io) 
     custom_attribute(io)
 
-    io << %Q[dx="#{dx}" ]                               if dx
-    io << %Q[dy="#{dy}" ]                               if dy
-    io << %Q[rotate="#{rotate}" ]                       if rotate
-    io << %Q[textLength="#{length}" ]                   if length
-    io << %Q[lengthAdjust="#{length_adjust}" ]          if length_adjust
+    io << %Q[dx="#{dx}#{dx_units}" ]                               if dx
+    io << %Q[dy="#{dy}#{dy_units}" ]                               if dy
+    unless rotate.empty?
+      io << %Q[rotate="]                            
+      rotate.join(io, " ")
+      io << %Q[" ]
+    end
+    io << %Q[textLength="#{length}#{length_units}" ]                   if length
+    io << %Q[lengthAdjust="#{length_adjust}#{length_adjust_units}" ]          if length_adjust
 
     inner_elements << text if text
     if inner_elements.empty?

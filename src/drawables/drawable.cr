@@ -3,7 +3,7 @@ abstract class Celestine::Drawable
   # A transform class used to interact with the `transform` attribute
   class Transform
     getter objects_io = IO::Memory.new
-    def matrix(a : SIFNumber, b : SIFNumber, c : SIFNumber, d : SIFNumber, e : SIFNumber, f : SIFNumber)
+    def matrix(a : Float64, b : Float64, c : Float64, d : Float64, e : Float64, f : Float64)
       @objects_io << "matrix(#{a} #{b} #{c} #{d} #{e} #{f}) "
     end
 
@@ -83,7 +83,7 @@ abstract class Celestine::Drawable
   property inner_elements = IO::Memory.new
 
   # A list of custom attributes
-  # TODO: Change this to work with Int and Floats? Doesn't this need to be `String => SIFNumber`?
+  # TODO: Change this to work with Int and Floats? Doesn't this need to be `String => Float64`?
   # TODO: Fix this by making it a string or class type
   property custom_attrs = {} of String => String
 

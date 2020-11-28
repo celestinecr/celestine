@@ -1,8 +1,10 @@
 module Celestine::Modules::Body
   include Celestine::Modules::Position
 
-  property width : SIFNumber?
-  property height : SIFNumber?
+  property width : Float64?
+  property width_units : String?
+  property height : Float64?
+  property height_units : String?
   
   # TODO: FIX SHIT LIKE PX, REM, ETC
   def left
@@ -26,8 +28,8 @@ module Celestine::Modules::Body
 
   def body_attribute(io)
     position_attribute(io)
-    io << %Q[width="#{width}" ]    if width
-    io << %Q[height="#{height}" ]    if height 
+    io << %Q[width="#{width}#{width_units}" ]    if width
+    io << %Q[height="#{height}#{height_units}" ]    if height 
   end
 
   module Attrs

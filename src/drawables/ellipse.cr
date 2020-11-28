@@ -11,8 +11,10 @@ class Celestine::Ellipse < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
   
-  property radius_x : SIFNumber? = nil
-  property radius_y : SIFNumber? = nil
+  property radius_x : Float64? = nil
+  property radius_x_units : String? = nil
+  property radius_y : Float64? = nil
+  property radius_y_units : String? = nil
 
   def draw(io : IO) : Nil
     io << %Q[<ellipse ]
@@ -26,8 +28,8 @@ class Celestine::Ellipse < Celestine::Drawable
     filter_attribute(io) 
     custom_attribute(io)
 
-    io << %Q[rx="#{radius_x}" ] if radius_x
-    io << %Q[ry="#{radius_y}" ] if radius_y
+    io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x
+    io << %Q[ry="#{radius_y}#{radius_y_units}" ] if radius_y
     
     if inner_elements.empty?
       io << %Q[/>]

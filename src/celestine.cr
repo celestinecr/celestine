@@ -27,10 +27,6 @@ require "./effects/filters/**"
 require "./math/**"
 require "./collision/helpers"
 
-# Special alias for HTML attribute parameters. Since many attributes can be either FLOAT or INT
-alias IFNumber = (Float64 | Int32)
-# Special alias for HTML attribute parameters. Some attributes take numbers or strings, such as 10, 100%, or 100px
-alias SIFNumber = (IFNumber | String)
 
 # Main module for Celestine
 module Celestine
@@ -66,15 +62,17 @@ module Celestine::Meta
   # Hold context information for the DSL
   class Context
     # Alias for the viewBox SVG parameter
-    alias ViewBox = NamedTuple(x: SIFNumber, y: SIFNumber, w: SIFNumber, h: SIFNumber)
+    alias ViewBox = NamedTuple(x: Float64, y: Float64, w: Float64, h: Float64)
     # Objects to be drawn to the scene
     getter objects_io = IO::Memory.new
     # Objects in the defs section, which can be used by ID
     getter defines_io = IO::Memory.new
     # The viewBox of the SVG scene
     property view_box : ViewBox? = nil
-    property width : SIFNumber = "100%"
-    property height : SIFNumber = "100%"
+    property width : Float64 = 100
+    property width_units : String = "%"
+    property height : Float64 = 100
+    property height_units : String = "%"
 
     property shape_rendering = "auto"
 
@@ -191,9 +189,9 @@ module Celestine::Meta
       if self.view_box
         vb = self.view_box.as(ViewBox)
         view_box_option = %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
-        io << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} width="#{width}" height="#{height}" #{xmlns}>]
+        io << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
       else
-        io << %Q[<svg width="#{width}" height="#{height}" #{xmlns}>]
+        io << %Q[<svg width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
       end
 
       unless @defines_io.empty?

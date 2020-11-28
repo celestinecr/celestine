@@ -2,20 +2,20 @@ class Celestine::Animate < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property attribute : String?  = nil
-  property repeat_count : SIFNumber? = nil
-  property duration : SIFNumber? = nil
-  property values = [] of SIFNumber
-  property from : SIFNumber? = nil
-  property to : SIFNumber? = nil
-  property by : SIFNumber? = nil
+  property repeat_count : Float64? = nil
+  property duration : Float64? = nil
+  property values = [] of Float64
+  property from : Float64? = nil
+  property to : Float64? = nil
+  property by : Float64? = nil
 
-  property key_times = [] of SIFNumber
-  property key_splines = [] of SIFNumber
+  property key_times = [] of Float64
+  property key_splines = [] of Float64
 
-  property min : SIFNumber? = nil
-  property max : SIFNumber? = nil
+  property min : Float64? = nil
+  property max : Float64? = nil
 
-  property repeat_duration : SIFNumber? = nil
+  property repeat_duration : Float64? = nil
 
   property? accumulate = false
   property? additive = false
