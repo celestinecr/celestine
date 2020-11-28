@@ -11,8 +11,9 @@ class Celestine::Ellipse < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
   
-  property radius_x : SIFNumber = 0
-  property radius_y : SIFNumber = 0
+  make_units :radius_x
+  make_units :radius_y
+
 
   def draw(io : IO) : Nil
     io << %Q[<ellipse ]
@@ -26,8 +27,8 @@ class Celestine::Ellipse < Celestine::Drawable
     filter_attribute(io) 
     custom_attribute(io)
 
-    io << %Q[rx="#{radius_x}" ]
-    io << %Q[ry="#{radius_y}" ]
+    io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x
+    io << %Q[ry="#{radius_y}#{radius_y_units}" ] if radius_y
     
     if inner_elements.empty?
       io << %Q[/>]

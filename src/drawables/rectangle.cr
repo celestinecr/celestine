@@ -9,7 +9,9 @@ class Celestine::Rectangle < Celestine::Drawable
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
-  property radius_x : SIFNumber? = nil
+
+  make_units :radius_x
+
 
   def draw(io : IO) : Nil
     io << %Q[<rect ]
@@ -23,7 +25,7 @@ class Celestine::Rectangle < Celestine::Drawable
     filter_attribute(io) 
     custom_attribute(io)
 
-    io << %Q[rx="#{radius_x}" ] if radius_x
+    io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x
     
     if inner_elements.empty?
       io << %Q[/>]

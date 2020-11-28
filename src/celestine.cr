@@ -1,5 +1,7 @@
+require "myhtml"
+
 require "./patches/number"
-require "./macros/include_options"
+require "./macros/**"
 
 require "./modules/position"
 require "./modules/*"
@@ -16,22 +18,27 @@ require "./drawables/image"
 
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
-require "./effects/animation/animate_transform"
+require "./effects/animation/transform/rotate"
 
 require "./effects/mask"
 require "./effects/filter"
 require "./effects/filters/**"
 
 require "./math/**"
-require "./collision/helpers"
 
-# Special alias for HTML attribute parameters. Since many attributes can be either FLOAT or INT
-alias IFNumber = (Float64 | Int32)
-# Special alias for HTML attribute parameters. Some attributes take numbers or strings, such as 10, 100%, or 100px
-alias SIFNumber = (IFNumber | String)
+alias IFNumber = (Int32 | Float64)
 
 # Main module for Celestine
 module Celestine
+  
+  def self.parse(io : IO)
+    Myhtml::Parser.new(io)
+  end
+
+  def self.parse(string : String)
+    Myhtml::Parser.new(string)
+  end
+
   # Main draw function for DSL
   def self.draw(&block : Proc(Celestine::Meta::Context, Nil)) : String
     String.build do |io|
@@ -51,18 +58,21 @@ module Celestine::Meta
   # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you must add it here as well.
   CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text]
 
+
   # Hold context information for the DSL
   class Context
     # Alias for the viewBox SVG parameter
-    alias ViewBox = NamedTuple(x: SIFNumber, y: SIFNumber, w: SIFNumber, h: SIFNumber)
+    alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
     # Objects to be drawn to the scene
-    getter objects_io : IO = IO::Memory.new
+    getter objects_io = IO::Memory.new
     # Objects in the defs section, which can be used by ID
-    getter defines_io : IO = IO::Memory.new
+    getter defines_io = IO::Memory.new
     # The viewBox of the SVG scene
     property view_box : ViewBox? = nil
-    property width : SIFNumber = "100%"
-    property height : SIFNumber = "100%"
+    property width : Float64 = 100
+    property width_units : String = "%"
+    property height : Float64 = 100
+    property height_units : String = "%"
 
     property shape_rendering = "auto"
 
@@ -179,14 +189,16 @@ module Celestine::Meta
       if self.view_box
         vb = self.view_box.as(ViewBox)
         view_box_option = %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
-        io << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} width="#{width}" height="#{height}" #{xmlns}>]
+        io << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
       else
-        io << %Q[<svg width="#{width}" height="#{height}" #{xmlns}>]
+        io << %Q[<svg width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
       end
 
-      io << %Q[<defs>]
-      io << @defines_io
-      io << %Q[</defs>]
+      unless @defines_io.empty?
+        io << %Q[<defs>]
+        io << @defines_io
+        io << %Q[</defs>]
+      end
       io << @objects_io
 
       io << %Q[</svg>]

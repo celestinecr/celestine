@@ -1,38 +1,13 @@
 module Celestine::Modules::Body
   include Celestine::Modules::Position
 
-  property width : SIFNumber = 0
-  property height : SIFNumber = 0
-  
-  # TODO: FIX SHIT LIKE PX, REM, ETC
-  def left
-    x.to_i
-  end
-
-  # TODO: FIX SHIT LIKE PX, REM, ETC
-  def right
-    left + width.to_i
-  end
-
-  # TODO: FIX SHIT LIKE PX, REM, ETC
-  def top
-    y.to_i
-  end
-
-  # TODO: FIX SHIT LIKE PX, REM, ETC
-  def bottom
-    top + height.to_i
-  end
+  make_units :width
+  make_units :height
 
   def body_attribute(io)
     position_attribute(io)
-    if width != 0 && height != 0
-      io << %Q[width="#{width}" height="#{height}" ]
-    elsif width != 0
-      io << %Q[width="#{width}" ]
-    elsif height != 0
-      io << %Q[height="#{height}" ]
-    end
+    io << %Q[width="#{width}#{width_units}" ]    if width
+    io << %Q[height="#{height}#{height_units}" ]    if height 
   end
 
   module Attrs

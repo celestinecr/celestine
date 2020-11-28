@@ -2,23 +2,30 @@ class Celestine::Animate::Motion < Celestine::Drawable
   include_options Celestine::Modules::Animate
 
   property rotate = "none"
-  property key_points = [] of SIFNumber
+  property key_points = [] of Float64
   getter mpath = ""
 
-  property repeat_count : SIFNumber? = nil
-  property duration : SIFNumber? = nil
-  property values = [] of SIFNumber
-  property from : SIFNumber? = nil
-  property to : SIFNumber? = nil
-  property by : SIFNumber? = nil
+  property repeat_count : IFNumber | String? = nil
+  property duration : Float64? = nil
+  # TODO: Check if incoming unit is s ms or h.
+  property duration_units : String? = nil
+  property values = [] of Float64
+  property from : Float64? = nil
+  property from_units : String? = nil
+  property to : Float64? = nil
+  property to_units : String? = nil
+  property by : Float64? = nil
+  property by_units : String? = nil
 
-  property key_times = [] of SIFNumber
-  property key_splines = [] of SIFNumber
+  property key_times = [] of Float64
+  property key_splines = [] of Float64
 
-  property min : SIFNumber? = nil
-  property max : SIFNumber? = nil
+  property min : Float64? = nil
+  property min_units : String? = nil
+  property max : Float64? = nil
+  property max_units : String? = nil
 
-  property repeat_duration : SIFNumber? = nil
+  property repeat_duration : Float64? = nil
 
   property? accumulate = false
   property? additive = false
@@ -54,15 +61,15 @@ class Celestine::Animate::Motion < Celestine::Drawable
     custom_attribute(io)
     io << %Q[repeatCount="#{repeat_count}" ]         if repeat_count
     io << %Q[repeatDur="#{repeat_duration}" ]        if repeat_duration
-    io << %Q[dur="#{duration}" ]                     if duration
+    io << %Q[dur="#{duration}#{duration_units}" ]    if duration
     unless values.empty?
       io << %Q[values="]
       values.join(io, ";")
       io << %Q[" ] 
     end
-    io << %Q[from="#{from}" ]                        if from
-    io << %Q[to="#{to}" ]                           if to
-    io << %Q[by="#{by}" ]                           if by
+    io << %Q[from="#{from}#{from_units}" ]                        if from
+    io << %Q[to="#{to}#{to_units}" ]                           if to
+    io << %Q[by="#{by}#{by_units}" ]                           if by
 
     unless key_times.empty?
       io << %Q[keyTimes="]
@@ -76,8 +83,8 @@ class Celestine::Animate::Motion < Celestine::Drawable
       io << %Q[" ] 
     end
     
-    io << %Q[min="#{min}" ]                         if min
-    io << %Q[min="#{max}" ]                         if max
+    io << %Q[min="#{min}#{min_units}" ]                         if min
+    io << %Q[min="#{max}#{max_units}" ]                         if max
     io << %Q[accumulate="sum" ]                              if accumulate?
     io << %Q[additive="sum" ]                                if additive?
     io << %Q[fill="freeze" ]                                 if freeze?

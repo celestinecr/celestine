@@ -10,7 +10,7 @@ describe ProceduralArt do
       ProceduralArt::Inward.make
       ProceduralArt::Inward.seed += 1
     end
-    ProceduralArt::Inward.seed = 0
+    ProceduralArt::Inward.seed = 1
   end
 
   it "should make 10 mineshift-s images" do
@@ -18,14 +18,22 @@ describe ProceduralArt do
       ProceduralArt::Mineshift::Simple.make
       ProceduralArt::Mineshift::Simple.seed += 1
     end
-    ProceduralArt::Mineshift::Simple.seed = 0
+    ProceduralArt::Mineshift::Simple.seed = 1
   end
 
-  it "should make 5 mineshift-c images" do
-    5.times do |x|
-      ProceduralArt::Mineshift::Complex.make
-      ProceduralArt::Mineshift::Complex.seed += 1
+  it "should make 10 chromatic images" do
+    10.times do
+      ProceduralArt::ChromaticAberration.make
+      ProceduralArt::ChromaticAberration.seed += 1
     end
-    ProceduralArt::Mineshift::Complex.seed = 0
+    ProceduralArt::ChromaticAberration.seed = 1
+  end
+
+  it "should make 10 patchwork images" do
+    10.times do
+      ProceduralArt::SemiCirclePatchwork.make
+      ProceduralArt::SemiCirclePatchwork.seed += 1
+    end
+    ProceduralArt::SemiCirclePatchwork.seed = 1
   end
 end
