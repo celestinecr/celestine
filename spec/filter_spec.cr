@@ -26,6 +26,48 @@ describe Celestine::Filter do
   make_filter_test(Celestine::Filter::Offset, offset)
   make_filter_test(Celestine::Filter::Morphology, morphology)
   make_filter_test(Celestine::Filter::Merge, merge)
+  make_filter_test(Celestine::Filter::Blend, blend)
+  make_filter_test(Celestine::Filter::ColorMatrix, color_matrix)
+  make_filter_test(Celestine::Filter::ComponentTransfer, component_transfer)
+
+  {% for char in ["r", "g", "b", "a"] %}
+    it "should add a feFunc{{char.upcase.id}} element to feComponentTransfer" do
+      celestine_svg = Celestine.draw do |ctx| 
+        ctx.filter do |f|
+          f.component_transfer do |ct|
+            ct.func_{{char.downcase.id}}_identity
+            ct
+          end
+          f
+        end
+      end
+      parser = Myhtml::Parser.new celestine_svg
+      if svg_root = parser.nodes(:svg).first
+        svg_root.children.size.should eq(1)
+        if child_element = svg_root.child
+          child_element.is_tag_defs?.should eq true
+          if child_element = child_element.child
+            child_element.is_tag_filter?.should eq true
+            if child_element = child_element.child
+              child_element.is_tag_fecomponenttransfer?.should eq true
+              if child_element = child_element.child
+                child_element.is_tag_fefunc{{char.downcase.id}}?.should eq true
+              else
+                raise "bad child element"
+              end
+            else
+              raise "bad child element"
+            end
+          else
+            raise "bad child element"
+          end
+        else
+          raise "bad child element"
+        end
+      end
+      parser.free
+    end
+  {% end %}
 
   it "should add a merge node filter element" do
     celestine_svg = Celestine.draw do |ctx| 

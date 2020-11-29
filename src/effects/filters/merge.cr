@@ -1,4 +1,4 @@
-class Celestine::Filter::Merge < Celestine::Drawable
+class Celestine::Filter::Merge < Celestine::Filter::Basic
   TAG = "feMerge"
   NODE_TAG = "feMergeNode"
 
@@ -10,6 +10,11 @@ class Celestine::Filter::Merge < Celestine::Drawable
     io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
+    custom_attribute(io)
+    transform_attribute(io)
+    body_attribute(io)
+
+    io << %Q[result="#{result}" ] if result
 
     if inner_elements.empty?
       io << %Q[/>]

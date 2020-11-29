@@ -27,7 +27,7 @@ dependencies:
  * [use](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use)
  * [mask](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask)
  * [animate](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate)
- * [animateTransform](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateTransform) as animate_transform
+ * [animateTransform](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateTransform) as animate_transform_rotate 
  * [animateMotion](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateMotion) as animate_motion
  * [mpath](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mpath) via animate_motion
 

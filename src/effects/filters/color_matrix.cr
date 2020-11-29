@@ -1,11 +1,8 @@
-class Celestine::Filter::Morphology < Celestine::Filter::Basic
-  TAG = "feMorphology"
-
+class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
+  TAG = "feColorMatrix"
   property input : String? = nil
-
-  make_units radius
-  property operator : String?
-
+  property type : String? = nil
+  property values : Array(IFNumber) = [] of IFNumber
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)
@@ -13,12 +10,14 @@ class Celestine::Filter::Morphology < Celestine::Filter::Basic
     custom_attribute(io)
     transform_attribute(io)
     body_attribute(io)
-
     io << %Q[in="#{input}" ] if input
+    io << %Q[type="#{type}" ] if type
     io << %Q[result="#{result}" ] if result
-    io << %Q[radius="#{radius}#{radius_units}" ] if radius
-    io << %Q[operator="#{operator}" ] if operator
-
+    unless values.empty?
+      io << %Q[values="] 
+      values.join(io, " ")
+      io << %Q[" ]
+    end
 
     if inner_elements.empty?
       io << %Q[/>]
@@ -30,7 +29,8 @@ class Celestine::Filter::Morphology < Celestine::Filter::Basic
   end
 
   module Attrs
-    RADIUS = "radius"
-    OPERATOR = "operator"
+    INPUT = "in"
+    TYPE = "type"
+    VALUES = "values"
   end
 end

@@ -3,13 +3,12 @@ class Celestine::Filter < Celestine::Drawable
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::Animate
 
-
-  SOURCE_GRAPHIC = "SourceGraphic"
-  SOURCE_ALPHA = "SourceAlpha"
+  SOURCE_GRAPHIC   = "SourceGraphic"
+  SOURCE_ALPHA     = "SourceAlpha"
   BACKGROUND_IMAGE = "BackgroundImage" # Doesn't work for some reason :(
-  BACKGROUND_ALPHA = "BackgroundAlpha" 
-  FILL_PAINT = "FillPaint" 
-  STROKE_PAINT = "StrokePaint"
+  BACKGROUND_ALPHA = "BackgroundAlpha"
+  FILL_PAINT       = "FillPaint"
+  STROKE_PAINT     = "StrokePaint"
 
   # Adds a `Celestine::Filter::Blur` to the calling filter's inner elements.
   def blur(&block : Celestine::Filter::Blur -> Celestine::Filter::Blur)
@@ -37,6 +36,27 @@ class Celestine::Filter < Celestine::Drawable
     merge_filter = yield Celestine::Filter::Merge.new
     merge_filter.draw(inner_elements)
     merge_filter
+  end
+
+  # Adds a `Celestine::Filter::Blend` to the calling filter's inner elements.
+  def blend(&block : Celestine::Filter::Blend -> Celestine::Filter::Blend)
+    blend_filter = yield Celestine::Filter::Blend.new
+    blend_filter.draw(inner_elements)
+    blend_filter
+  end
+
+  # Adds a `Celestine::Filter::ColorMatrix` to the calling filter's inner elements.
+  def color_matrix(&block : Celestine::Filter::ColorMatrix -> Celestine::Filter::ColorMatrix)
+    color_matrix_filter = yield Celestine::Filter::ColorMatrix.new
+    color_matrix_filter.draw(inner_elements)
+    color_matrix_filter
+  end
+
+  # Adds a `Celestine::Filter::ComponentTransfer` to the calling filter's inner elements.
+  def component_transfer(&block : Celestine::Filter::ComponentTransfer -> Celestine::Filter::ComponentTransfer)
+    component_transfer_filter = yield Celestine::Filter::ComponentTransfer.new
+    component_transfer_filter.draw(inner_elements)
+    component_transfer_filter
   end
 
   def draw(io : IO) : Nil

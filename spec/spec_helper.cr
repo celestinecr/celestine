@@ -85,7 +85,7 @@ macro make_color_attribute_test(drawable_class, attr_name_html, attr_name_cr)
 end
 
 macro make_filter_test(filter_class, filter_method)
-  it "should add a {{filter_method.id}} filter element" do
+  it "should add a {{filter_method.id}} filter element via DSL" do
     celestine_svg = Celestine.draw do |ctx| 
       ctx.filter do |f|
         f.{{filter_method.id}} do |b|

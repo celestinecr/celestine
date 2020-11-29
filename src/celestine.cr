@@ -22,6 +22,7 @@ require "./effects/animation/transform/rotate"
 
 require "./effects/mask"
 require "./effects/filter"
+require "./effects/filters/basic"
 require "./effects/filters/**"
 require "./effects/marker"
 
@@ -31,7 +32,7 @@ alias IFNumber = (Int32 | Float64)
 
 # Main module for Celestine
 module Celestine
-  VERSION = "0.5.0"
+  VERSION = "0.5.0alpha"
   
   def self.parse(io : IO)
     Myhtml::Parser.new(io)
