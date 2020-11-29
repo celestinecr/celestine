@@ -23,6 +23,7 @@ require "./effects/animation/transform/rotate"
 require "./effects/mask"
 require "./effects/filter"
 require "./effects/filters/**"
+require "./effects/marker"
 
 require "./math/**"
 
@@ -100,7 +101,19 @@ module Celestine::Meta
             mask
           end
 
-          make_context_method(Celestine::Filter)
+          # Create a mask object and add it to this `Celestine::Meta::Context`
+          def marker(&block : Celestine::Marker -> Celestine::Marker)
+            marker = yield Celestine::Marker.new
+            define(marker)
+            marker
+          end
+
+          # Create a mask object and add it to this `Celestine::Meta::Context`
+          def filter(&block : Celestine::Filter -> Celestine::Filter)
+            filter = yield Celestine::Filter.new
+            define(filter)
+            filter
+          end
 
         # Adds methods without the define parameter.
         {% else %}
@@ -213,6 +226,11 @@ module Celestine::Meta
 
   # Class which acts like a group, but applies masking to another drawable.
   class ::Celestine::Mask
+    include Celestine::Meta::Context::Methods
+  end
+
+  # Class which acts like a group, but applies masking to another drawable.
+  class ::Celestine::Marker
     include Celestine::Meta::Context::Methods
   end
 end

@@ -6,6 +6,7 @@ class Celestine::Path < Celestine::Drawable
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
+  include_options Celestine::Modules::Marker
   
   # Do not allow these to add their ATTRS since they are their own elements
   include Celestine::Modules::Animate
@@ -76,7 +77,7 @@ class Celestine::Path < Celestine::Drawable
   end
 
   def r_q_bcurve(cx, cy, x, y)
-    @code_points << "q#{cx2},#{cy2} #{x},#{y}"
+    @code_points << "q#{cx},#{cy} #{x},#{y}"
   end
 
   def a_t_bcurve(x, y)
@@ -120,6 +121,7 @@ class Celestine::Path < Celestine::Drawable
     style_attribute(io)
     mask_attribute(io)     
     filter_attribute(io) 
+    marker_attribute(io)
     custom_attribute(io)
     io << %Q[d="#{code}" ] unless code.empty?
     

@@ -1,14 +1,14 @@
 module Celestine::Modules::StrokeFill
   property stroke : String?  = nil
   property fill : String? = nil
-  make_units :stroke_width
+  make_units stroke_width
   make_field fill_opacity
   make_field stroke_opacity
   property dash_array : Array(Float64) = [] of Float64
-  make_units :dash_offset
+  make_units dash_offset
 
   property line_join : String? = nil
-  make_units :miter_limit
+  make_units miter_limit
 
 
   property line_cap : String? = nil
@@ -16,8 +16,19 @@ module Celestine::Modules::StrokeFill
 
   make_field opacity
   property fill_rule : Bool = false
+
+  property color : String? = nil
+  property color_interpolation : String? = nil
+  property color_interpolation_filters : String? = nil
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shape-rendering
+  property shape_rendering : String? = nil
+
   
   def stroke_fill_attribute(io : IO)
+    io << %Q[shape-rendering="#{shape_rendering}" ] if shape_rendering
+    io << %Q[color="#{color}" ] if color
+    io << %Q[color-interpolation="#{color_interpolation}" ] if color_interpolation
+    io << %Q[color-interpolation-filters="#{color_interpolation_filters}" ] if color_interpolation_filters
     io << %Q[stroke="#{stroke}" ] if stroke
     io << %Q[fill="#{fill}" ] if fill
     io << %Q[stroke-width="#{stroke_width}#{stroke_width_units}" ] if stroke_width
@@ -35,6 +46,9 @@ module Celestine::Modules::StrokeFill
   end
 
   module Attrs
+    COLOR = "color"
+    COLOR_INTERPOLATION = "color_interpolation"
+    COLOR_INTERPOLATION_FILTERS = "color_interpolation_filters"
     STROKE = "stroke"
     FILL = "fill"
     STROKE_WIDTH = "stroke-width"
@@ -42,5 +56,10 @@ module Celestine::Modules::StrokeFill
     STROKE_OPACITY = "stroke-opacity"
     OPACITY = "opacity"
     FILL_RULE = "fill-rule"
+    DASH_ARRAY = "stroke-dasharray"
+    DASH_OFFSET = "stroke-dashoffset"
+    LINE_JOIN = "stroke-linejoin"
+    LINE_CAP = "stroke-linecap"
+    MITER_LIMIT = "stroke-miterlimit"
   end
 end

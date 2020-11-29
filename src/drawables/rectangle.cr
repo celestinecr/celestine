@@ -6,13 +6,14 @@ class Celestine::Rectangle < Celestine::Drawable
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
+  include_options Celestine::Modules::Marker
 
   # Do not allow these to add their ATTRS since they are their own elements
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  make_units :radius_x
+  make_units radius_x
 
 
   def draw(io : IO) : Nil
@@ -24,7 +25,8 @@ class Celestine::Rectangle < Celestine::Drawable
     transform_attribute(io)
     style_attribute(io)
     mask_attribute(io)
-    filter_attribute(io) 
+    filter_attribute(io)
+    marker_attribute(io)
     custom_attribute(io)
 
     io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x
@@ -37,9 +39,6 @@ class Celestine::Rectangle < Celestine::Drawable
       io << "</#{TAG}>"
     end
   end
-
-
-
 
   module Attrs
     RADIUS_X = "rx"

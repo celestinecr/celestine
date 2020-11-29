@@ -4,6 +4,7 @@ class Celestine::Mask < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
+  include_options Celestine::Modules::Filter
 
   @objects_io = IO::Memory.new
 
@@ -14,6 +15,8 @@ class Celestine::Mask < Celestine::Drawable
     stroke_fill_attribute(io)
     transform_attribute(io)
     style_attribute(io)
+    filter_attribute(io)
+    custom_attribute(io)
     inner_elements << @objects_io
     if inner_elements.empty?
       io << %Q[/>]

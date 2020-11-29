@@ -6,6 +6,7 @@ class Celestine::Ellipse < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
+  include_options Celestine::Modules::Marker
 
 
   # Do not allow these to add their ATTRS since they are their own elements
@@ -27,6 +28,7 @@ class Celestine::Ellipse < Celestine::Drawable
     style_attribute(io)
     mask_attribute(io) 
     filter_attribute(io) 
+    marker_attribute(io)
     custom_attribute(io)
 
     io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x

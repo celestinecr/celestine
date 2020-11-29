@@ -1,6 +1,9 @@
 class Celestine::Image < Celestine::Drawable
   TAG = "image"
 
+  # TODO: Add these
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering
+
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::Mask
