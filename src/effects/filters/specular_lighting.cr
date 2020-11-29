@@ -46,7 +46,7 @@ class Celestine::Filter::SpecularLighting < Celestine::Filter::Basic
 
     io << %Q[result="#{result}" ] if result
 
-    io << %Q[input="#{input}" ] if input
+    io << %Q[in="#{input}" ] if input
     io << %Q[lighting-color="#{lighting_color}" ] if lighting_color
     io << %Q[surfaceScale="#{surface_scale}" ] if surface_scale
     io << %Q[specularConstant="#{constant}" ] if constant
