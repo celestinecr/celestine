@@ -33,6 +33,8 @@ describe Celestine::Filter do
   make_filter_test(Celestine::Filter::DisplacementMap, displacement_map)
   make_filter_test(Celestine::Filter::SpecularLighting, specular_lighting)
   make_filter_test(Celestine::Filter::Turbulence, turbulence)
+  make_filter_test(Celestine::Filter::Composite, composite)
+
 
 
   {% for char in ["r", "g", "b", "a"] %}

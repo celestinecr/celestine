@@ -80,6 +80,14 @@ class Celestine::Filter < Celestine::Drawable
     turbulence_filter
   end
 
+    # Adds a `Celestine::Filter::Composite` to the calling filter's inner elements.
+    def composite(&block : Celestine::Filter::Composite -> Celestine::Filter::Composite)
+      composite_filter = yield Celestine::Filter::Composite.new
+      composite_filter.draw(inner_elements)
+      composite_filter
+    end
+  
+
   # Adds a `Celestine::Filter::SpecularLighting` to the calling filter's inner elements.
   def specular_lighting(&block : Celestine::Filter::SpecularLighting -> Celestine::Filter::SpecularLighting)
     specular_lighting_filter = yield Celestine::Filter::SpecularLighting.new
