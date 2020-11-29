@@ -15,8 +15,20 @@ class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
     io << %Q[result="#{result}" ] if result
     unless values.empty?
       io << %Q[values="] 
-      values.join(io, " ")
+      if values.size == 20
+        20.times do |x|
+          io << values[x]
+          if x % 5 == 0
+            io << ","
+          else
+            io << " "
+          end          
+        end
+      else
+        values.join(io, " ")
+      end
       io << %Q[" ]
+
     end
 
     if inner_elements.empty?
