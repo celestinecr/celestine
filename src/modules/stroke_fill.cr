@@ -1,27 +1,45 @@
 module Celestine::Modules::StrokeFill
-  property stroke : String?  = nil
-  property fill : String? = nil
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke
+  property stroke : String?
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill
+  property fill : String?
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-width
   make_units stroke_width
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-opacity
   make_field fill_opacity
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-opacity
   make_field stroke_opacity
+
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dasharray
   property dash_array : Array(Float64) = [] of Float64
+
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-dashoffset
   make_units dash_offset
 
-  property line_join : String? = nil
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin
+  property line_join : String?
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-miterlimit
   make_units miter_limit
 
 
-  property line_cap : String? = nil
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap
+  property line_cap : String?
 
-
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/opacity
   make_field opacity
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill-rule
   property fill_rule : Bool = false
 
-  property color : String? = nil
-  property color_interpolation : String? = nil
-  property color_interpolation_filters : String? = nil
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color
+  property color : String?
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation
+  property color_interpolation : String?
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color-interpolation-filters
+  property color_interpolation_filters : String?
   # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/shape-rendering
-  property shape_rendering : String? = nil
+  property shape_rendering : String?
+  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect
+  property vector_effect : String?
 
   
   def stroke_fill_attribute(io : IO)
@@ -41,7 +59,7 @@ module Celestine::Modules::StrokeFill
     io << %Q[stroke-linejoin="#{line_join}" ] if line_join
     io << %Q[stroke-linecap="#{line_cap}" ] if line_cap
     io << %Q[stroke-miterlimit="#{miter_limit}#{miter_limit_units}" ] if miter_limit
-
+    io << %Q[vector-effect="#{vector_effect}" ] if vector_effect
     io << %Q[opacity="#{opacity}" ] if opacity
   end
 
@@ -61,5 +79,6 @@ module Celestine::Modules::StrokeFill
     LINE_JOIN = "stroke-linejoin"
     LINE_CAP = "stroke-linecap"
     MITER_LIMIT = "stroke-miterlimit"
+    VECTOR_EFFECT = "vector-effect"
   end
 end

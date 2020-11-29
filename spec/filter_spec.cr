@@ -29,6 +29,11 @@ describe Celestine::Filter do
   make_filter_test(Celestine::Filter::Blend, blend)
   make_filter_test(Celestine::Filter::ColorMatrix, color_matrix)
   make_filter_test(Celestine::Filter::ComponentTransfer, component_transfer)
+  make_filter_test(Celestine::Filter::Flood, flood)
+  make_filter_test(Celestine::Filter::DisplacementMap, displacement_map)
+  make_filter_test(Celestine::Filter::SpecularLighting, specular_lighting)
+  make_filter_test(Celestine::Filter::Turbulence, turbulence)
+
 
   {% for char in ["r", "g", "b", "a"] %}
     it "should add a feFunc{{char.upcase.id}} element to feComponentTransfer" do
@@ -90,6 +95,117 @@ describe Celestine::Filter do
           child_element.is_tag_femerge?.should eq true
           if child_element = child_element.child
             child_element.is_tag_femergenode?.should eq true
+          else
+            raise "no child"
+          end
+        else
+          raise "no child"
+        end
+        else
+          raise "no child"
+        end
+      else
+        raise "no child"
+      end
+    end
+    parser.free
+  end
+
+  it "should add a point light element to specular lighting" do
+    celestine_svg = Celestine.draw do |ctx| 
+      ctx.filter do |f|
+        f.specular_lighting do |b|
+          b.add_point_light(0, 1, 2)
+          b 
+        end
+        f
+      end
+    end
+    parser = Myhtml::Parser.new celestine_svg
+    if svg_root = parser.nodes(:svg).first
+      svg_root.children.size.should eq(1)
+      if child_element = svg_root.child
+        child_element.is_tag_defs?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_filter?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_fespecularlighting?.should eq true
+          if child_element = child_element.child
+            child_element.is_tag_fepointlight?.should eq true
+          else
+            raise "no child"
+          end
+        else
+          raise "no child"
+        end
+        else
+          raise "no child"
+        end
+      else
+        raise "no child"
+      end
+    end
+    parser.free
+  end
+
+  it "should add a spot light element to specular lighting" do
+    celestine_svg = Celestine.draw do |ctx| 
+      ctx.filter do |f|
+        f.specular_lighting do |b|
+          b.add_spot_light(0, 1, 2, 4, 5, 6, 7)
+          b 
+        end
+        f
+      end
+    end
+    parser = Myhtml::Parser.new celestine_svg
+    if svg_root = parser.nodes(:svg).first
+      svg_root.children.size.should eq(1)
+      if child_element = svg_root.child
+        child_element.is_tag_defs?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_filter?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_fespecularlighting?.should eq true
+          if child_element = child_element.child
+            child_element.is_tag_fespotlight?.should eq true
+          else
+            raise "no child"
+          end
+        else
+          raise "no child"
+        end
+        else
+          raise "no child"
+        end
+      else
+        raise "no child"
+      end
+    end
+    parser.free
+  end
+
+  it "should add a distant light element to specular lighting" do
+    celestine_svg = Celestine.draw do |ctx| 
+      ctx.filter do |f|
+        f.specular_lighting do |b|
+          b.add_distant_light(0, 1)
+          b 
+        end
+        f
+      end
+    end
+    parser = Myhtml::Parser.new celestine_svg
+    if svg_root = parser.nodes(:svg).first
+      svg_root.children.size.should eq(1)
+      if child_element = svg_root.child
+        child_element.is_tag_defs?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_filter?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_fespecularlighting?.should eq true
+          if child_element = child_element.child
+            child_element.is_tag_fedistantlight?.should eq true
           else
             raise "no child"
           end
