@@ -18,7 +18,7 @@ class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
       if values.size == 20
         20.times do |x|
           io << values[x]
-          if x % 5 == 0
+          if x != 0 && x != 20 && x % 5 == 0
             io << ","
           else
             io << " "
