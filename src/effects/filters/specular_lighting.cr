@@ -50,7 +50,6 @@ class Celestine::Filter::SpecularLighting < Celestine::Filter::Basic
     io << %Q[lighting-color="#{lighting_color}" ] if lighting_color
     io << %Q[surfaceScale="#{surface_scale}" ] if surface_scale
     io << %Q[specularConstant="#{constant}" ] if constant
-    io << %Q[specularConstant="#{constant}" ] if constant
     io << %Q[specularExponent="#{exponent}" ] if exponent
     io << %Q[kernelUnitLength="#{kernel_unit_length}" ] if kernel_unit_length
 
