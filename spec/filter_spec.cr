@@ -36,6 +36,44 @@ describe Celestine::Filter do
   make_filter_test(Celestine::Filter::Composite, composite)
 
 
+  it "should properly format color_matrix values" do
+    celestine_svg = Celestine.draw do |ctx| 
+      ctx.filter do |f|
+        f.color_matrix do |f|
+          18.times do 
+            f.values << 0
+          end
+          f.values << 1
+          f.values << 0
+      
+          f
+        end
+        f
+      end
+    end
+    parser = Myhtml::Parser.new celestine_svg
+    if svg_root = parser.nodes(:svg).first
+      svg_root.children.size.should eq(1)
+      if child_element = svg_root.child
+        child_element.is_tag_defs?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_filter?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_fecolormatrix?.should eq true
+          child_element.attribute_by("values").should eq "0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 1 0"
+        else
+          raise "no child"
+        end
+        else
+          raise "no child"
+        end
+      else
+        raise "no child"
+      end
+    end
+    parser.free
+  end
+
 
   {% for char in ["r", "g", "b", "a"] %}
     it "should add a feFunc{{char.upcase.id}} element to feComponentTransfer" do
