@@ -34,17 +34,18 @@ describe Celestine::Filter do
   make_filter_test(Celestine::Filter::SpecularLighting, specular_lighting)
   make_filter_test(Celestine::Filter::Turbulence, turbulence)
   make_filter_test(Celestine::Filter::Composite, composite)
+  make_filter_test(Celestine::Filter::Tile, tile)
+  make_filter_test(Celestine::Filter::Image, image)
 
 
   it "should properly format color_matrix values" do
     celestine_svg = Celestine.draw do |ctx| 
       ctx.filter do |f|
         f.color_matrix do |f|
-          18.times do 
+          10.times do 
             f.values << 0
+            f.values << 1
           end
-          f.values << 1
-          f.values << 0
       
           f
         end
@@ -60,7 +61,7 @@ describe Celestine::Filter do
           child_element.is_tag_filter?.should eq true
         if child_element = child_element.child
           child_element.is_tag_fecolormatrix?.should eq true
-          child_element.attribute_by("values").should eq "0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 1 0"
+          child_element.attribute_by("values").should eq "0 1 0 1 0, 1 0 1 0 1, 0 1 0 1 0, 1 0 1 0 1"
         else
           raise "no child"
         end

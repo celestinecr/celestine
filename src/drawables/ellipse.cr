@@ -1,3 +1,6 @@
+# Draws and holds information for ellipses
+#
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse)
 class Celestine::Ellipse < Celestine::Drawable 
   TAG = "ellipse"
 
@@ -13,11 +16,16 @@ class Celestine::Ellipse < Celestine::Drawable
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
-  
+  # Radius of the x axis
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx)
   make_units :radius_x
+  # Radius of the y axis
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ry)
   make_units :radius_y
 
-
+  # Draws this ellipse to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)

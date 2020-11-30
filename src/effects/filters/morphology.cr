@@ -1,3 +1,4 @@
+# https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feMorphology
 class Celestine::Filter::Morphology < Celestine::Filter::Basic
   TAG = "feMorphology"
 
@@ -11,8 +12,9 @@ class Celestine::Filter::Morphology < Celestine::Filter::Basic
     class_attribute(io)
     id_attribute(io)
     custom_attribute(io)
-    transform_attribute(io)
+    
     body_attribute(io)
+    style_attribute(io)
 
     io << %Q[in="#{input}" ] if input
     io << %Q[result="#{result}" ] if result

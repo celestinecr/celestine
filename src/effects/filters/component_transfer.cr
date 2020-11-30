@@ -1,6 +1,12 @@
+# Transfers color components
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feComponentTransfer)
 class Celestine::Filter::ComponentTransfer < Celestine::Filter::Basic
   TAG = "feComponentTransfer"
 
+  # The input source
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String? = nil
 
   make_component_transfer_funcs("r")
@@ -8,12 +14,13 @@ class Celestine::Filter::ComponentTransfer < Celestine::Filter::Basic
   make_component_transfer_funcs("g")
   make_component_transfer_funcs("a")
 
+  # Draws this component transfer filter to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     custom_attribute(io)
-    transform_attribute(io)
+    style_attribute(io)
     body_attribute(io)
     io << %Q[in="#{input}" ] if input
     io << %Q[result="#{result}" ] if result
@@ -32,6 +39,7 @@ class Celestine::Filter::ComponentTransfer < Celestine::Filter::Basic
   end
 end
 
+# Basic class for `Celestine::Filter::ComponentTransfer` inner elements. Shouldn't be needed to be used for anything else.
 abstract class Celestine::Filter::ComponentTransfer::Func < Celestine::Drawable
   TAG = "WARNING FUNC NOT MEANT TO BE USED!"
 
@@ -48,6 +56,7 @@ abstract class Celestine::Filter::ComponentTransfer::Func < Celestine::Drawable
       io << "<#{TAG} "
       class_attribute(io)
       id_attribute(io)
+      style_attribute(io)
       custom_attribute(io)
 
       io << "type=\"#{type}\" " if type

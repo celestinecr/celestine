@@ -1,8 +1,11 @@
+# Draws and holds information for images
+#
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image)
 class Celestine::Image < Celestine::Drawable
   TAG = "image"
 
   # TODO: Add these
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering
+
 
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Body
@@ -14,8 +17,17 @@ class Celestine::Image < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  property url : String? = nil
+  # The URI for the image
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/href)
+  property href : String? = nil
+  # How the image should be rendered.
+  # 
+  # * Potential values: `auto | optimizeSpeed | optimizeQuality`
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering)
+  property rendering : String? = nil
   
+  # Draws the image to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     # Puncuate attributes with a space 
@@ -29,7 +41,8 @@ class Celestine::Image < Celestine::Drawable
     filter_attribute(io) 
     custom_attribute(io)
 
-    io << %Q[href="#{url}" ] if url
+    io << %Q[href="#{href}" ] if href
+    io << %Q[image-rendering="#{rendering}" ] if rendering
 
     if inner_elements.empty?
       io << %Q[/>]

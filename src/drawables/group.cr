@@ -1,3 +1,6 @@
+# Draws and holds information for groups
+#
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g)
 class Celestine::Group < Celestine::Drawable
   TAG = "g"
 
@@ -11,17 +14,18 @@ class Celestine::Group < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
+  # Holds objects to be written to the group
   @objects_io = IO::Memory.new
 
-  property? override_stroke_fill = false
-
+  # Draws the group to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
+    style_attribute(io)
+
     stroke_fill_attribute(io)
     transform_attribute(io)
-    style_attribute(io)
     mask_attribute(io)  
     filter_attribute(io) 
     custom_attribute(io)

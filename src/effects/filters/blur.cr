@@ -1,16 +1,33 @@
+# Gaussian blurs a source
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feGaussianBlur)
 class Celestine::Filter::Blur < Celestine::Filter::Basic
   TAG = "feGaussianBlur"
+
+  # The input source
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String? = nil
+  # The amount of blurring that should occur
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stdDeviation)
   make_units standard_deviation
+  
+  # How the filter should extend its image size to allow the duplication or wrapping of edge values.
+  # 
+  # * Potential Values: `duplicate | wrap | none`
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/edgeMode)
   property edge_mode : String? = nil
 
+  # Draws this blur filter to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     custom_attribute(io)
     body_attribute(io)
-    transform_attribute(io)
+    
+    style_attribute(io)
 
     io << %Q[in="#{input}" ] if input
     io << %Q[result="#{result}" ] if result

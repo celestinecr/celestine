@@ -1,3 +1,4 @@
+# https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feSpecularLighting
 class Celestine::Filter::SpecularLighting < Celestine::Filter::Basic
   TAG = "feSpecularLighting"
   POINT_NODE_TAG = "fePointLight"
@@ -41,8 +42,9 @@ class Celestine::Filter::SpecularLighting < Celestine::Filter::Basic
     class_attribute(io)
     id_attribute(io)
     custom_attribute(io)
-    transform_attribute(io)
+    
     body_attribute(io)
+    style_attribute(io)
 
     io << %Q[result="#{result}" ] if result
 

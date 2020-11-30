@@ -1,3 +1,6 @@
+# Allows reuse of another drawable by ID
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use)
 class Celestine::Use < Celestine::Drawable
   TAG = "use"
 
@@ -12,6 +15,9 @@ class Celestine::Use < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
+  # The ID to be reused
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/href)
   property target_id : String = ""
 
   def initialize()
@@ -24,11 +30,11 @@ class Celestine::Use < Celestine::Drawable
     if target.id
       @target_id = target.id.as(String)
     else
-      raise "No id on use"
+      raise "No id on target #{target}"
     end
   end
   
-  
+  # Draws this use to the IO
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)

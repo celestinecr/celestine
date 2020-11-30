@@ -1,3 +1,6 @@
+# Draws and holds information for circles
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
 class Celestine::Circle < Celestine::Drawable
   TAG = "circle"
 
@@ -13,12 +16,17 @@ class Celestine::Circle < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
   
+  # Radius of the circle
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r)
   make_units :radius
 
+  # The diameter of the circle
   def diameter
     radius * 2
   end
 
+  # Draws this circle to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)

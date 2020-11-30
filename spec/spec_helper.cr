@@ -115,5 +115,38 @@ macro make_filter_test(filter_class, filter_method)
     end
     parser.free
   end
+
+  it "should add a {{filter_method.id}} filter element via DSL and set result" do
+    celestine_svg = Celestine.draw do |ctx| 
+      ctx.filter do |f|
+        f.{{filter_method.id}} do |b|
+          b.result = "HELLOWORLD"
+          b
+        end
+        f
+      end
+    end
+    parser = Myhtml::Parser.new celestine_svg
+    if svg_root = parser.nodes(:svg).first
+      svg_root.children.size.should eq(1)
+      if child_element = svg_root.child
+        child_element.is_tag_defs?.should eq true
+        if child_element = child_element.child
+          child_element.is_tag_filter?.should eq true
+          if child_element = child_element.child
+            child_element.is_tag_{{filter_class.resolve.constant(:TAG).downcase.id}}?.should eq true
+            child_element.attribute_by("result").should eq "HELLOWORLD"
+          else
+            raise "bad child element"
+          end
+        else
+          raise "bad child element"
+        end
+      else
+        raise "bad child element"
+      end
+    end
+    parser.free
+  end
 end
 

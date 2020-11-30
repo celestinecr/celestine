@@ -1,3 +1,4 @@
+# https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feTurbulence
 class Celestine::Filter::Turbulence < Celestine::Filter::Basic
   TAG = "feTurbulence"
   
@@ -13,7 +14,9 @@ class Celestine::Filter::Turbulence < Celestine::Filter::Basic
     id_attribute(io)
     custom_attribute(io)
     body_attribute(io)
-    transform_attribute(io)
+    
+    style_attribute(io)
+
     io << %Q[result="#{result}" ] if result
 
     io << %Q[baseFrequency="#{base_freq}" ] if base_freq

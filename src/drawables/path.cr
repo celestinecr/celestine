@@ -1,4 +1,6 @@
 # A class which represents an SVG path. Methods starting with a_ use absolute coordinates, while r_ methods require relative coordinates. 
+#
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path)
 class Celestine::Path < Celestine::Drawable
   TAG = "path"
 
@@ -13,7 +15,9 @@ class Celestine::Path < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
   
+  # Storage for path code points
   @code_points = String::Builder.new
+  # Finalized code
   @code = ""
 
   # Moves to an absolute point
@@ -101,7 +105,9 @@ class Celestine::Path < Celestine::Drawable
     @code_points << "z"
   end
 
-  # Finalized path code points. [Understanding Path Code](https://css-tricks.com/svg-path-syntax-illustrated-guide/)
+  # Finalized path code points. 
+  #
+  # * [Understanding Path Code](https://css-tricks.com/svg-path-syntax-illustrated-guide/)
   def code
     @code = @code_points.to_s if @code.empty?
     @code

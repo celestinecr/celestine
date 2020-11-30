@@ -1,3 +1,4 @@
+# https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feFlood
 class Celestine::Filter::Flood < Celestine::Filter::Basic
   TAG = "feFlood"
   
@@ -10,7 +11,8 @@ class Celestine::Filter::Flood < Celestine::Filter::Basic
     id_attribute(io)
     custom_attribute(io)
     body_attribute(io)
-    transform_attribute(io)
+    
+    style_attribute(io)
     io << %Q[result="#{result}" ] if result
 
     io << %Q[flood-color="#{flood_color}" ] if flood_color

@@ -1,3 +1,6 @@
+# Draws and holds information for text
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text)
 class Celestine::Text < Celestine::Drawable
   TAG = "text"
 
@@ -12,41 +15,80 @@ class Celestine::Text < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
+  # The text to be displayed
   property text : String? = nil
 
+  # Shifts the text position horizontally from a previous text element
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dx)
   make_units dx
+
+  # Shifts the text position vertically from a previous text element
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dy)
   make_units dy
 
+  # An array that allows for the rotation of each individual glyph
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rotate) *note the docs here do not talk about this usage, only on the main element page mentions this*
   property rotate : Array(Float64) = [] of Float64
 
+  # Changes the length of the text.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/textLength)
   make_units length
-  make_units length_adjust
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-family
+  # How the length should be adjusted.
+  # 
+  # * Potential values: `spacing | spacingAndGlyphs`
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust)
+  property length_adjust : String?
+
+  # Changes the font family used.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-family)
   property font_family : String?
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust
+  # Changes the font size used.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size)
   make_units font_size
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust
+  # Changes the font size adjustment.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-size-adjust)
   property font_size_adjust : Float64?
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch
+  # Changes the font stretch type.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-stretch)
   property font_stretch : String?
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style
+  # Changes the font style.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-style)
   property font_style : String?
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant
+  # Changes the font variant.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-variant)
   property font_variant : String?
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight
+  # Changes the font weight.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/font-weight)
   property font_weight : String?
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/letter-spacing
+  # Changes how far letters are spaced.
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/letter-spacing)
+  # TODO: Make this `SIFNumber?` since it can have the string value "normal" as well as numbers :(
   make_units letter_spacing
 
-  # https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline
+  # Changes where the natural anchor is for the text.
+  # 
+  # * Potential Values: `auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top`
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline)
   property dominant_baseline : String?
   
   def draw(io : IO) : Nil
@@ -69,7 +111,7 @@ class Celestine::Text < Celestine::Drawable
       io << %Q[" ]
     end
     io << %Q[#{Attrs::LENGTH}="#{length}#{length_units}" ] if length
-    io << %Q[#{Attrs::LENGTH_ADJUST}="#{length_adjust}#{length_adjust_units}" ] if length_adjust
+    io << %Q[#{Attrs::LENGTH_ADJUST}="#{length_adjust}" ] if length_adjust
     io << %Q[#{Attrs::FONT_FAMILY}="#{font_family}" ] if font_family
     io << %Q[#{Attrs::FONT_SIZE}="#{font_size}#{font_size_units}" ] if font_size
     io << %Q[#{Attrs::FONT_SIZE_ADJUST}="#{font_size_adjust}" ] if font_size_adjust

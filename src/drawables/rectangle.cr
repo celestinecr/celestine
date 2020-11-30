@@ -1,3 +1,6 @@
+# Draws and holds information for rectangles
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect)
 class Celestine::Rectangle < Celestine::Drawable
   TAG = "rect"
 
@@ -13,9 +16,12 @@ class Celestine::Rectangle < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
+  # The corner radius value
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx)
   make_units radius_x
 
-
+  # Draws this rectangle to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)

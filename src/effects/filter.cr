@@ -1,7 +1,11 @@
+# https://www.smashingmagazine.com/2015/05/why-the-svg-filter-is-awesome/
 class Celestine::Filter < Celestine::Drawable
   TAG = "filter"
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::Animate
+
+  property filter_units : String?
+  property primitive_units : String?
 
   SOURCE_GRAPHIC   = "SourceGraphic"
   SOURCE_ALPHA     = "SourceAlpha"
@@ -45,6 +49,13 @@ class Celestine::Filter < Celestine::Drawable
     blend_filter
   end
 
+  # Adds a `Celestine::Filter::Tile` to the calling filter's inner elements.
+  def tile(&block : Celestine::Filter::Tile -> Celestine::Filter::Tile)
+    tile_filter = yield Celestine::Filter::Tile.new
+    tile_filter.draw(inner_elements)
+    tile_filter
+  end
+
   # Adds a `Celestine::Filter::ColorMatrix` to the calling filter's inner elements.
   def color_matrix(&block : Celestine::Filter::ColorMatrix -> Celestine::Filter::ColorMatrix)
     color_matrix_filter = yield Celestine::Filter::ColorMatrix.new
@@ -80,12 +91,12 @@ class Celestine::Filter < Celestine::Drawable
     turbulence_filter
   end
 
-    # Adds a `Celestine::Filter::Composite` to the calling filter's inner elements.
-    def composite(&block : Celestine::Filter::Composite -> Celestine::Filter::Composite)
-      composite_filter = yield Celestine::Filter::Composite.new
-      composite_filter.draw(inner_elements)
-      composite_filter
-    end
+  # Adds a `Celestine::Filter::Composite` to the calling filter's inner elements.
+  def composite(&block : Celestine::Filter::Composite -> Celestine::Filter::Composite)
+    composite_filter = yield Celestine::Filter::Composite.new
+    composite_filter.draw(inner_elements)
+    composite_filter
+  end
   
 
   # Adds a `Celestine::Filter::SpecularLighting` to the calling filter's inner elements.
@@ -95,11 +106,24 @@ class Celestine::Filter < Celestine::Drawable
     specular_lighting_filter
   end
 
+    # Adds a `Celestine::Filter::Image` to the calling filter's inner elements.
+    def image(&block : Celestine::Filter::Image -> Celestine::Filter::Image)
+      image_filter = yield Celestine::Filter::Image.new
+      image_filter.draw(inner_elements)
+      image_filter
+    end
+
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     class_attribute(io)
     id_attribute(io)
     body_attribute(io)
+    style_attribute(io)
+
+
+    io << %Q[filterUnits="#{filter_units}" ] if filter_units
+    io << %Q[primitiveUnits="#{primitive_units}" ] if primitive_units
+    
     if inner_elements.empty?
       io << %Q[/>]
     else
