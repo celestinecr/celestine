@@ -5,14 +5,14 @@ class Celestine::Animate < Celestine::Drawable
   property attribute : String?  = nil
   property repeat_count : IFNumber | String? = nil
   make_units duration
-  property values = [] of String | IFNumber
+  property values : Array(SIFNumber) = [] of SIFNumber
 
   make_units from
   make_units to
   make_units by
 
-  property key_times = [] of String | IFNumber
-  property key_splines = [] of String | IFNumber
+  property key_times : Array(SIFNumber) = [] of SIFNumber
+  property key_splines : Array(SIFNumber) = [] of SIFNumber
 
   make_units min
   make_units max
