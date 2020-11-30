@@ -14,8 +14,8 @@ class Celestine::Point
     end
   {% end %}
 
-  def to_s
-    "#{x} #{y}"
+  def to_s(io)
+    io << "#{x} #{y}"
   end
 end
 
@@ -38,7 +38,7 @@ class Celestine::FPoint
     end
   {% end %}
 
-  def to_s
-    "#{x} #{y}"
+  def to_s(io)
+    io << "#{x} #{y}"
   end
 end
