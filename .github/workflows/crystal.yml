@@ -23,7 +23,7 @@ jobs:
     - name: Build docs
       run: crystal docs
     - name: Fix CNAME
-      run: echo docs.celestine.dev > CNAME
+      run: echo docs.celestine.dev > docs/CNAME
     - name: Deploy docs
       uses: crazy-max/ghaction-github-pages@v1.2.5
       with:
