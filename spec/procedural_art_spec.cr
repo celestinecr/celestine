@@ -40,4 +40,8 @@ describe ProceduralArt do
   it "should make 1 spash image" do
     ProceduralArt::SplashEffect.make
   end
+
+  it "should make 1 psychoflower image" do
+    ProceduralArt::PsychoFlower.make
+  end
 end
