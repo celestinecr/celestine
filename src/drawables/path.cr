@@ -16,7 +16,7 @@ class Celestine::Path < Celestine::Drawable
   include Celestine::Modules::Animate::Transform
   
   # Storage for path code points
-  @code_points = String::Builder.new
+  @code_points = IO::Memory.new
   # Finalized code
   @code = ""
 
@@ -120,15 +120,8 @@ class Celestine::Path < Celestine::Drawable
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
 
-    class_attribute(io)
-    id_attribute(io)
-    stroke_fill_attribute(io)
-    transform_attribute(io)
-    style_attribute(io)
-    mask_attribute(io)     
-    filter_attribute(io) 
-    marker_attribute(io)
-    custom_attribute(io)
+    draw_attributes(io)
+
     io << %Q[d="#{code}" ] unless code.empty?
     
     if inner_elements.empty?

@@ -23,12 +23,8 @@ class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
   # Draws this color matrix filter to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
-    
-    body_attribute(io)
-    style_attribute(io)
+    draw_attributes(io)
+
     io << %Q[in="#{input}" ] if input
     io << %Q[type="#{type}" ] if type
     io << %Q[result="#{result}" ] if result

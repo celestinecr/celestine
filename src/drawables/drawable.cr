@@ -34,8 +34,6 @@ abstract class Celestine::Drawable
     def empty?
       @objects_io.empty?
     end
-
-    
   end
 
   # ID of this object

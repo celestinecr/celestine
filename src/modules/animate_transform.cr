@@ -1,3 +1,4 @@
+# Gives drawables access to the animate_transform DSL
 module Celestine::Modules::Animate::Transform
   module Attrs
     ATTRIBUTE_NAME = "attributeName"

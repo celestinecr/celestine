@@ -1,20 +1,30 @@
-# https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feMorphology
+# Dilates or erodes it's source.
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feMorphology)
 class Celestine::Filter::Morphology < Celestine::Filter::Basic
   TAG = "feMorphology"
 
+  # The first input source
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String? = nil
 
+  # The amount to dilate or erode 
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   make_units radius
+
+  # The amount to dilate or erode 
+  # 
+  # * Potential Values: `dilate | erode`
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/operator#feMorphology)
   property operator : String?
 
+  # Draws this morphology filter to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
-    
-    body_attribute(io)
-    style_attribute(io)
+    draw_attributes(io)
+
 
     io << %Q[in="#{input}" ] if input
     io << %Q[result="#{result}" ] if result

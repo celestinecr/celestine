@@ -21,13 +21,7 @@ class Celestine::Marker < Celestine::Drawable
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    stroke_fill_attribute(io)
-    transform_attribute(io)
-    style_attribute(io)
-    filter_attribute(io)
-    custom_attribute(io)
+    draw_attributes(io)
 
     io << %Q[#{Attrs::HEIGHT}="#{height}#{height_units}" ] if height
     io << %Q[#{Attrs::WIDTH}="#{width}#{width_units}" ] if width

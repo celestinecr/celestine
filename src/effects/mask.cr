@@ -10,13 +10,8 @@ class Celestine::Mask < Celestine::Drawable
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    stroke_fill_attribute(io)
-    transform_attribute(io)
-    style_attribute(io)
-    filter_attribute(io)
-    custom_attribute(io)
+    draw_attributes(io)
+
     inner_elements << @objects_io
     if inner_elements.empty?
       io << %Q[/>]

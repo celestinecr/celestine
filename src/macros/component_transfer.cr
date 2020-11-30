@@ -1,4 +1,4 @@
-
+# Special macro for component transfer to need to rewrite less code for the `feFunc*` DSL
 macro make_component_transfer_funcs(char)
   # DSL call for feFunc{{char.upcase.id}}
   def func_{{char.downcase.id}}(&block : Celestine::Filter::ComponentTransfer::Func{{char.upcase.id}} -> Celestine::Filter::ComponentTransfer::Func{{char.upcase.id}})

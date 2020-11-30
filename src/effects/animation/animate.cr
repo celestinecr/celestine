@@ -26,9 +26,8 @@ class Celestine::Animate < Celestine::Drawable
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
+    draw_attributes(io)
+
     io << %Q[attributeName="#{attribute}" ]
     io << %Q[attributeType="XML" ]
     io << %Q[repeatCount="#{repeat_count}" ]         if repeat_count

@@ -37,7 +37,7 @@ describe ProceduralArt do
     ProceduralArt::SemiCirclePatchwork.seed = 1
   end
 
-  it "should make 1 spash images" do
+  it "should make 1 spash image" do
     ProceduralArt::SplashEffect.make
   end
 end

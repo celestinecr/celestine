@@ -1,19 +1,28 @@
-# https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feOffset
+# Moves the output to another location
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feOffset)
 class Celestine::Filter::Offset < Celestine::Filter::Basic
   TAG = "feOffset"
 
-  property input : String? = nil
+  # The first input source
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
+  property input : String?
+# How much to offset on the x-axis
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dx)
   make_units dx
+
+  # How much to offset on the y-axis
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dy)
   make_units dy
 
+  # Draws this offset filter to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
-    
-    body_attribute(io)
-    style_attribute(io)
+    draw_attributes(io)
+
 
     io << %Q[in="#{input}" ] if input
     io << %Q[result="#{result}" ] if result

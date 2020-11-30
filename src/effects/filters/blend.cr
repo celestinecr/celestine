@@ -22,11 +22,8 @@ class Celestine::Filter::Blend < Celestine::Filter::Basic
   # Draws this blend filter to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
-    body_attribute(io)
-    style_attribute(io)
+    draw_attributes(io)
+
     io << %Q[in="#{input}" ] if input
     io << %Q[in2="#{input2}" ] if input2
     io << %Q[mode="#{mode}" ] if mode

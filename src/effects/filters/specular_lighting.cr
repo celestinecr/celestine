@@ -1,16 +1,31 @@
-# https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feSpecularLighting
+# Shades an object using specular lighting using the alpha channel as a bump map.
+# 
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feSpecularLighting)
+# * [fePointLight](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/fePointLight)
+# * [feSpotLight](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feSpotLight)
+# * [feDistantLight](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feDistantLight)
 class Celestine::Filter::SpecularLighting < Celestine::Filter::Basic
   TAG = "feSpecularLighting"
   POINT_NODE_TAG = "fePointLight"
   SPOT_NODE_TAG = "feSpotLight"
   DISTANT_NODE_TAG = "feDistantLight"
-
+  # The first input source
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String?
+
+  # The color of the lighting
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lighting-color)
   property lighting_color : String?
+  # The scale of the surface.
+  # 
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/surfaceScale)
   property surface_scale : IFNumber?
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/specularConstant)
   property constant : IFNumber?
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/specularExponent)
   property exponent : IFNumber?
-  property kernel_unit_length : IFNumber?
 
 
   # TODO: THESE CAN BE ANIMATABLE, NEED TO FIX LATER!!! MAKE LIKE MASK GROUP OR MARKER
@@ -37,14 +52,11 @@ class Celestine::Filter::SpecularLighting < Celestine::Filter::Basic
     inner_elements << %Q[<#{DISTANT_NODE_TAG} azimuth="#{azimuth}" elevation="#{elevation}" />]
   end
 
+  # Draws this speculuar lighting filter to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
-    
-    body_attribute(io)
-    style_attribute(io)
+    draw_attributes(io)
+
 
     io << %Q[result="#{result}" ] if result
 
@@ -53,7 +65,6 @@ class Celestine::Filter::SpecularLighting < Celestine::Filter::Basic
     io << %Q[surfaceScale="#{surface_scale}" ] if surface_scale
     io << %Q[specularConstant="#{constant}" ] if constant
     io << %Q[specularExponent="#{exponent}" ] if exponent
-    io << %Q[kernelUnitLength="#{kernel_unit_length}" ] if kernel_unit_length
 
     if inner_elements.empty?
       io << %Q[/>]

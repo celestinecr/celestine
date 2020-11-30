@@ -31,15 +31,8 @@ class Celestine::Image < Celestine::Drawable
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     # Puncuate attributes with a space 
-    class_attribute(io)
-    id_attribute(io)
-    position_attribute(io)
-    body_attribute(io)
-    transform_attribute(io)
-    style_attribute(io)
-    mask_attribute(io) 
-    filter_attribute(io) 
-    custom_attribute(io)
+    draw_attributes(io)
+
 
     io << %Q[href="#{href}" ] if href
     io << %Q[image-rendering="#{rendering}" ] if rendering

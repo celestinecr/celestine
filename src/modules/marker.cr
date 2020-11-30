@@ -1,3 +1,5 @@
+# Gives drawables access to the marker attributes
+# TODO: Test this
 module Celestine::Modules::Marker
   @marker_start_id : String? = nil
   @marker_mid_id : String? = nil

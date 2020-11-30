@@ -32,15 +32,7 @@ alias IFNumber = (Int32 | Float64)
 
 # Main module for Celestine
 module Celestine
-  VERSION = "0.5.0alpha"
-  
-  def self.parse(io : IO)
-    Myhtml::Parser.new(io)
-  end
-
-  def self.parse(string : String)
-    Myhtml::Parser.new(string)
-  end
+  VERSION = "0.6.0alpha"
 
   # Main draw function for DSL
   def self.draw(&block : Proc(Celestine::Meta::Context, Nil)) : String

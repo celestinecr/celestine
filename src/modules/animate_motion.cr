@@ -1,3 +1,4 @@
+# Gives drawables access to the animate_motion DSL
 module Celestine::Modules::Animate::Motion
   module Attrs
     MPATH = "path"

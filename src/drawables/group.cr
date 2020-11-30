@@ -20,15 +20,8 @@ class Celestine::Group < Celestine::Drawable
   # Draws the group to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    style_attribute(io)
+    draw_attributes(io)
 
-    stroke_fill_attribute(io)
-    transform_attribute(io)
-    mask_attribute(io)  
-    filter_attribute(io) 
-    custom_attribute(io)
 
     if !@objects_io.empty? || !inner_elements.empty?
       io << %Q[>]

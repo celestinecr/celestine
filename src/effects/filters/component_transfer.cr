@@ -17,11 +17,8 @@ class Celestine::Filter::ComponentTransfer < Celestine::Filter::Basic
   # Draws this component transfer filter to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
-    style_attribute(io)
-    body_attribute(io)
+    draw_attributes(io)
+
     io << %Q[in="#{input}" ] if input
     io << %Q[result="#{result}" ] if result
 

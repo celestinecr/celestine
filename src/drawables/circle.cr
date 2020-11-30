@@ -29,16 +29,7 @@ class Celestine::Circle < Celestine::Drawable
   # Draws this circle to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    position_attribute(io)
-    stroke_fill_attribute(io)
-    transform_attribute(io)
-    style_attribute(io)
-    mask_attribute(io) 
-    filter_attribute(io)
-    marker_attribute(io)
-    custom_attribute(io)
+    draw_attributes(io)
 
     io << %Q[r="#{radius}#{radius_units}" ] if radius
     if inner_elements.empty?

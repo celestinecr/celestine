@@ -15,6 +15,11 @@ dependencies:
     github: redcodefinal/celestine
 ```
 
+## Docs
+Documentation is cool, you can view the docs for Celestine at:
+ * [docs.celestine.dev](https://docs.celestine.dev)
+ * [github.io](https://redcodefinal.github.io)
+
 ## SVG Stuff It Can Do
 
  * [circle](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
@@ -125,35 +130,6 @@ Celestine.draw do |ctx|
 end
 ```
 
-### Filters
-You can use filters to make things impossible with primitive shapes alone.
-
-```crystal
-Celestine.draw do |ctx|
-  our_filter = ctx.filter do |filter|
-    filter.id = "our-filter" # YOU MUST SET A UNIQUE ID FOR THE MASK!
-    # Use the filters DSL methods blur, offset, morphology, etc
-    filter.blur do |blur_filter|
-      blur_filter.standard_deviation = 5
-      blur_filter
-    end
-    filter
-  end
-
-  ctx.circle do |c|
-    c.set_filter our_filter # Set with the mask object directly
-    c.set_filter "our-filter" # Set via string id
-    c
-  end
-end
-```
-
-Filters available
- * Celestine::Filter::Blur -> blur
- * Celestine::Filter::Offset -> offset
- * Celestine::Filter::Morphology -> morphology
- * Celestine::Filter::Merge -> merge
-
 ### Animate
 You can animate some simpler SVG attributes using `animate`.
 ```crystal
@@ -220,6 +196,47 @@ Celestine.draw do |ctx|
   end
 end
 ```
+
+### Filters
+You can do some cool filtering using the `filter` DSL.
+
+Only rotate is supported right now.
+```crystal
+Celestine.draw do |ctx|
+  our_filter = ctx.filter do |f|
+    f.id = "our-filter" # ALWAYS SET ID FOR A FILTER!
+    f.blur do |b|
+      b.standard_deviation = 5
+      b
+    end
+    f
+  end
+
+  ctx.circle do |c|
+    # Either
+    c.set_filter("our-filter")
+    # or
+    c.set_filter(our_filter)
+    end
+    c
+  end
+end
+```
+
+#### Currently Implemented
+ * Celestine::Filter::Blend -> blend
+ * Celestine::Filter::Blur -> blur
+ * Celestine::Filter::ColorMatrix -> color_matrix
+ * Celestine::Filter::ComponentTransfer -> component_transfer
+ * Celestine::Filter::Composite -> composite
+ * Celestine::Filter::DisplacementMap -> displacement_map
+ * Celestine::Filter::Flood -> flood
+ * Celestine::Filter::Merge -> merge
+ * Celestine::Filter::Morphology -> morphology
+ * Celestine::Filter::Offset -> offset
+ * Celestine::Filter::SpecularLighting -> specular_lighting
+ * Celestine::Filter::Tile -> specular_lighting
+ * Celestine::Filter::Turbulence -> turbulence
 
 
 Here's a quick and dirty intro to features.

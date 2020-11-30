@@ -26,9 +26,8 @@ class Celestine::Animate::Transform::Rotate < Celestine::Drawable
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     # Puncuate attributes with a space 
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
+    draw_attributes(io)
+
     io << %Q[attributeName="transform" ]
     io << %Q[attributeType="XML" ]
     io << %Q[type="rotate" ]

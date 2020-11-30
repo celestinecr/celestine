@@ -57,9 +57,8 @@ class Celestine::Animate::Motion < Celestine::Drawable
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     # Puncuate attributes with a space 
-    class_attribute(io)
-    id_attribute(io)
-    custom_attribute(io)
+    draw_attributes(io)
+
     io << %Q[repeatCount="#{repeat_count}" ]         if repeat_count
     io << %Q[repeatDur="#{repeat_duration}" ]        if repeat_duration
     io << %Q[dur="#{duration}#{duration_units}" ]    if duration

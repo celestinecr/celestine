@@ -93,15 +93,8 @@ class Celestine::Text < Celestine::Drawable
   
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    position_attribute(io)
-    stroke_fill_attribute(io)
-    transform_attribute(io)
-    style_attribute(io)
-    mask_attribute(io)
-    filter_attribute(io)
-    custom_attribute(io)
+    draw_attributes(io)
+
     io << %Q[#{Attrs::DOMINANT_BASELINE}="#{dominant_baseline}" ] if dominant_baseline
     io << %Q[#{Attrs::DX}="#{dx}#{dx_units}" ] if dx
     io << %Q[#{Attrs::DY}="#{dy}#{dy_units}" ] if dy

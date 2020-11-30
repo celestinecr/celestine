@@ -115,10 +115,8 @@ class Celestine::Filter < Celestine::Drawable
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    class_attribute(io)
-    id_attribute(io)
-    body_attribute(io)
-    style_attribute(io)
+    draw_attributes(io)
+
 
 
     io << %Q[filterUnits="#{filter_units}" ] if filter_units
