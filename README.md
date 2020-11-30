@@ -200,7 +200,7 @@ end
 ### Filters
 You can do some cool filtering using the `filter` DSL.
 
-Only rotate is supported right now.
+
 ```crystal
 Celestine.draw do |ctx|
   our_filter = ctx.filter do |f|

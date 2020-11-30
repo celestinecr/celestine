@@ -4,8 +4,6 @@ class Celestine::Animate::Transform::Rotate < Celestine::Drawable
   make_units duration
   make_units repeat_duration
 
-
-  property values = [] of Float64
   #TODO: Can I use these with units?
   property? use_from = false
   property? use_to = false

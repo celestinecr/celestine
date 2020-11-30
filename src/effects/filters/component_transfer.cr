@@ -51,10 +51,7 @@ abstract class Celestine::Filter::ComponentTransfer::Func < Celestine::Drawable
   macro add_draw
     def draw(io : IO) : Nil
       io << "<#{TAG} "
-      class_attribute(io)
-      id_attribute(io)
-      style_attribute(io)
-      custom_attribute(io)
+      draw_attributes(io)
 
       io << "type=\"#{type}\" " if type
       io << "slope=\"#{slope}\" " if slope
