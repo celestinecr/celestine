@@ -1,36 +1,187 @@
 require "./celestine"
-File.open("./logo/logo.svg", "w+") do |f|
-  f.puts(Celestine.draw do |ctx|
-    ctx.height = 200
-    ctx.width = 200
-    ctx.view_box = {x: 0, y: 0, w: 200, h: 200}
 
-    oval_half_path = Celestine::Path.new
-    oval_half_path.a_move(100, 10)
-    # oval_half_path.r_arc(0, 180, 20, 40)
-    # oval_half_path.r_arc(0, -180, 20, 40)
-    oval_half_path.r_bcurve(-50, 100, -50, 100, 0, 180)
-    oval_half_path.r_bcurve(50, -100, 50, -100, 0, -180)
-    oval_half_path.stroke = "#5D737E"
-    oval_half_path.stroke_width = 3
+module Celestine::Logo
+  MASK_SHAPE_ID      = "hex-mask"
+  BACKGROUND_RECT_ID = "bg-rect"
+  SHADE_L_ID         = "shade-path-l"
+  SHADE_R_ID         = "shade-path-r"
+  SHADE_OFFSET       =  65
+  HEX_RADIUS         = 150
+  COLORS             = ["#73B8FC", "#3799FB", "#0466C8", "#0353A4", "#023E7D", "#002855", "#001233"]
+  SCREEN_SIZE = 500
 
-    oval_half_path.fill = "#C0FDFB"
+  def self.make_arc(start_angle, end_angle, distance, thickness = 10, large = false, flip = false)
+    p1 = Celestine::FPoint.new(0 + 250, distance + 250)
+    p2 = Celestine::FPoint.new(0 + 250, distance + thickness + 250)
 
-    oval_half_path.transform do |t|
-      t.rotate(40, 100, 100)
-      t
+    p1_t1 = Celestine::Math.rotate_point(p1.x, p1.y, SCREEN_SIZE/2.0, SCREEN_SIZE/2.0, start_angle)
+    p2_t1 = Celestine::Math.rotate_point(p2.x, p2.y, SCREEN_SIZE/2.0, SCREEN_SIZE/2.0, end_angle)
+
+    path = Celestine::Path.new
+    path.a_move(p1_t1.x, p1_t1.y)
+
+    current_p1_angle = start_angle
+    while current_p1_angle <= end_angle
+      current_p1_angle = end_angle if current_p1_angle > end_angle
+      p1_r1 = Celestine::Math.rotate_point(p1.x, p1.y, SCREEN_SIZE/2.0, SCREEN_SIZE/2.0, current_p1_angle)
+      path.a_line(p1_r1.x, p1_r1.y)
+      current_p1_angle += 0.2
+    end
+    path.a_line(p2_t1.x, p2_t1.y)
+
+    current_p2_angle = end_angle
+    while current_p2_angle >= start_angle
+      current_p2_angle = start_angle if current_p2_angle < start_angle
+      p2_r1 = Celestine::Math.rotate_point(p2.x, p2.y, SCREEN_SIZE/2.0, SCREEN_SIZE/2.0, current_p2_angle)
+      path.a_line(p2_r1.x, p2_r1.y)
+      current_p2_angle -= 0.2
     end
 
-    ctx << oval_half_path
+    path.close
 
-    ctx.text do |text|
-      text.text = "C"
-      text.x = 87
-      text.y = 110
-      text.style["font-size"] = "40px"
-      text.fill = "#64B6AC"
+    path
+  end
+end
 
-      text
+extend Celestine::Logo
+
+File.open("./logo/logo.svg", "w+") do |f|
+  f.puts(Celestine.draw do |ctx|
+    ctx.height = 500
+    ctx.height_units = ctx.width_units = "px"
+    ctx.width = 500
+
+    ctx.view_box = {x: 0, y: 0, w: 500, h: 500}
+
+    ctx.path(define: true) do |path|
+      path.id = MASK_SHAPE_ID
+
+      path.a_move(0, HEX_RADIUS)
+
+      6.times do |x|
+        point = Celestine::FPoint.new(0, HEX_RADIUS)
+        deg_inc = 360.to_f/6
+        rp = Celestine::Math.rotate_point(point, Celestine::FPoint::ZERO, deg_inc*x)
+        path.a_line(rp.x.floor, rp.y.floor)
+      end
+
+      path.transform do |t|
+        t.translate(250, 250)
+        t
+      end
+
+      path
+    end
+
+    ctx.rectangle(define: true) do |r|
+      r.id = BACKGROUND_RECT_ID
+      r.width = 500
+      r.height = 500
+      r
+    end
+
+    ctx.mask do |mask|
+      mask.id = "mask"
+
+      mask.use(BACKGROUND_RECT_ID) { |r| r.fill = "white"; r }
+      mask.use(MASK_SHAPE_ID) do |r|
+        r.fill = "black"
+
+        r
+      end
+
+      mask
+    end
+    ctx.use(BACKGROUND_RECT_ID) { |r| r.fill = COLORS[0]; r }
+
+    4.times do |index|
+      offset = SHADE_OFFSET * index
+      ctx.path(define: true) do |path|
+        path.id = SHADE_L_ID + index.to_s
+        # path.style["mix-blend-mode"] = "multiply"
+        path.fill = "black"
+        path.opacity = 0.1
+
+        p1 = Celestine::FPoint.new(1000, 0)
+        p2 = Celestine::Math.rotate_point(p1, Celestine::FPoint::ZERO, 30)
+
+        path.a_move(0, 0 + offset)
+        path.a_line(p2.x, p2.y + offset)
+        path.a_v_line 500 + offset
+        path.a_h_line 0
+        path.close
+
+        path
+      end
+    end
+
+    4.times do |index|
+      offset = SHADE_OFFSET * index
+      animate = Celestine::Animate.new
+      animate.attribute = "y"
+
+      # 5.times do |i|
+      #   animate.values << 500 - ((500/5) * i)
+      # end
+      # animate.values << 0
+
+      # 5.times do |i|
+      #   animate.key_times << i.to_f/5
+      # end
+      # animate.key_times << 1.0
+
+      animate.values << 500
+      animate.values << 0
+
+      animate.custom_attrs["keySplines"] = "0 1 0.79 0.99 ;"
+      
+
+
+      animate.duration = 3 + (index*2)
+      animate.freeze = true
+
+      ctx.use(SHADE_L_ID + index.to_s) do |u|
+        animate.draw(u.inner_elements)
+        u
+      end
+
+      ctx.use(SHADE_L_ID + index.to_s) do |u|
+        u.transform do |t|
+          t.scale(-1, 1)
+          t.translate(-500, 0)
+          t
+        end
+        animate.draw(u.inner_elements)
+        u
+      end
+    end
+
+    ctx.use(BACKGROUND_RECT_ID) { |r| r.fill = "white"; r.set_mask("mask"); r }
+
+    ctx.group do |g|
+      c_outline = Celestine::Logo.make_arc(300, 600, 90, 25)
+      c_outline.fill = "black"
+      g << c_outline
+
+      c_inline = Celestine::Logo.make_arc(300 + 3, 600 - 3, 95, 15)
+      c_inline.fill = "white"
+      g << c_inline
+
+      g.animate do |a|
+        a.attribute = "opacity"
+        a.values << 0
+        a.values << 0
+        a.values << 1.0
+
+        a.key_times << 0
+        a.key_times << 0.81
+        a.key_times << 1.0
+
+        a.duration = 13
+        a.freeze = true
+        a
+      end
+      g
     end
   end)
 end

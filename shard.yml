@@ -17,8 +17,6 @@ targets:
     main: src/crash_course.cr
   logo:
     main: src/make_logo.cr
-  sandbox:
-    main: src/sandbox.cr 
 crystal: 0.35.1
 
 license: MIT

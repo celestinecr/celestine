@@ -5,6 +5,7 @@ class Celestine::Mask < Celestine::Drawable
   include_options Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
   include_options Celestine::Modules::Filter
+  include_options Celestine::Modules::Body
 
   @objects_io = IO::Memory.new
 

@@ -48,7 +48,7 @@ Documentation is cool, you can view the docs for Celestine at:
 
 First, all drawing is done through `Celestine.draw` this returns a string SVG element, or works on an `IO`. You can easily embed this into webpages for dynamic server side drawing of assets.
 
-`Celestine.draw` takes a block which takes a `Celestine::Meta::Context`, the basis of all DSL calls in Celestine.
+`Celestine.draw` takes a block which takes a `Celestine::Meta::Context` (or `ctx` in the examples), the basis of all DSL calls in Celestine.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -76,6 +76,8 @@ Celestine.draw do |ctx|
 end
 ```
 
+All context methods such as `rectangle` or `circle` take a block that takes their respective types, and needs to have an object of that type returned.
+
 A short list of the Celestine types that can be used by `Celestine::Meta::Context` and their DSL methods
 
  * [Celestine::Rectangle](https://docs.celestine.dev/Celestine/Rectangle.html) -> [rectangle](https://docs.celestine.dev/Celestine/Meta/Context.html#rectangle(define=false,&block:Celestine::Rectangle-%3ECelestine::Rectangle):Celestine::Rectangle-instance-method)
@@ -93,7 +95,11 @@ A short list of the Celestine types that can be used by `Celestine::Meta::Contex
 ### Use
 `Celestine::Use` can be used to save space in an SVG, and reuse certain elements without the need to copy the entire object into your SVG document.
 
-You can do this 
+The only caveat is that the `use` SVG element cannot change attributes it both doesn't own itself, or ones that have been set by it's ancestor, except in the case of `x`, `y`, `width`, and `height`. For example, the `use` element cannot change the `radius` of a `circle` even if the `radius` attribute had never been set.
+
+`Celestine::Use` also requires that the drawable it is copying has an `id` set. If not `Celestine::Use` will still let you reference an ID that doesn't exist if you run `use` with a string `id`.
+
+You can do this only with `Celestine::Meta::Context` (or `ctx` in the examples). `Celestine::Group`, `Celestine::Mask`, `Celestine::Marker` cannot define drawables.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -113,7 +119,7 @@ Celestine.draw do |ctx|
 
     # Cannot use this because `Celestine::Use` cannot change attributes specific to a drawable
     # only the attributes its shares with the type it's using.
-    # use.rx = 1000
+    # use.radius_x = 1000
 
     use
   end
@@ -121,7 +127,7 @@ end
 ```
 
 ### Transform
-Most drawables can use the `transform` method to move, rotate, scale, and skew drawables.
+Most drawables can use the `transform` method to translate, rotate, scale, and skew drawables.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -131,6 +137,9 @@ Celestine.draw do |ctx|
       t.rotate(60, 0, 0) # Rotate by 60 degrees, at origin 0, 0
       t.translate(50, 60) # Move by 50, 60
       t.scale(100, 100) # Scale up 100x
+      t.skew_x(10)
+      t.skew_y(10)
+      t.matrix(1.0, 1.0, 1.0, 1.0, 1.0, 1.0)
       t
     end
     r
@@ -164,7 +173,7 @@ end
 ```
 
 ### Animate
-You can animate some simpler SVG attributes using `animate`.
+You can animate most simple SVG attributes using `animate` and the `from` and `to` attributes.
 ```crystal
 Celestine.draw do |ctx|
   ctx.circle do |c|
@@ -176,6 +185,42 @@ Celestine.draw do |ctx|
       a.attribute = Celestine::Circle::Attrs::RADIUS # Choose it using the predefined constants
       a.from = 100
       a.to = 200
+      a.duration = 10
+      a.repeat_count = "indefinite"
+      a
+    end
+    c
+  end
+end
+```
+
+You can also animate more complicated attributes and transition using the `values` array. SVG attempts to interpolate these values when possible.
+
+If you use `values` and don't also use the `key_times` array to designate the timing changes, it will evenly space the animation values in the alotted time.
+```crystal
+Celestine.draw do |ctx|
+  ctx.circle do |c|
+    c.animate do |a|
+      a.attribute = Celestine::Circle::Attrs::Fill
+      a.values << "red" # Will start the color of the fill at red
+      a.values << "blue" # Then interpolate to blue
+      a.values << "red" # Then interpolate back to red.
+      a.duration = 10
+      a.repeat_count = "indefinite"
+      a
+    end
+
+    c.animate do |a|
+      a.attribute = Celestine::Circle::Attrs::Stroke
+      a.values << "red" # Will start the color of the fill at red
+      a.values << "blue" # Then interpolate to blue
+      a.values << "red" # Then interpolate back to red.
+
+      a.key_times << 0.0  # Change to red to start. You should almost always use 0.0 as your first key_times value
+      a.key_times << 0.25 # Interpolate to blue at 25% of the duration
+      a.key_times << 0.75 # Interpolate to red at 75% of the duration
+      a_key_times << 1.0  # End the animation
+
       a.duration = 10
       a.repeat_count = "indefinite"
       a
@@ -218,6 +263,8 @@ Only rotate is supported right now.
 Celestine.draw do |ctx|
   ctx.circle do |c|
     c.animate_transform_rotate do |a|
+      a.use_from = true # Need to set these to allow `from` to render in the SVG element
+      a.use_to = true   # Need to set these to allow `to` to render in the SVG element
       a.from_angle = 0
       a.to_angle = 360
       a.from_origin_x = a.from_origin_y = a.to_origin_x = a.to_origin_y = 0
@@ -233,11 +280,10 @@ end
 ### Filters
 You can do some cool filtering using the `filter` DSL.
 
-
 ```crystal
 Celestine.draw do |ctx|
   our_filter = ctx.filter do |f|
-    f.id = "our-filter" # ALWAYS SET ID FOR A FILTER!
+    f.id = "our-filter" # ALWAYS SET ID FOR A FILTER OR IT CAN'T BE USED!
     f.blur do |b|
       b.standard_deviation = 5
       b
@@ -271,10 +317,6 @@ end
  * [Celestine::Filter::SpecularLighting](https://docs.celestine.dev/Celestine/Filter/SpecularLighting.html) -> [specular_lighting](https://docs.celestine.dev/Celestine/Filter.html#specular_lighting(&block:Celestine::Filter::SpecularLighting-%3ECelestine::Filter::SpecularLighting)-instance-method)
  * [Celestine::Filter::Tile](https://docs.celestine.dev/Celestine/Filter/Tile.html) -> [tile](https://docs.celestine.dev/Celestine/Filter.html#tile(&block:Celestine::Filter::Tile-%3ECelestine::Filter::Tile)-instance-method)
  * [Celestine::Filter::Turbulence](https://docs.celestine.dev/Celestine/Filter/Turbulence.html) -> [turbulence](https://docs.celestine.dev/Celestine/Filter.html#turbulence(&block:Celestine::Filter::Turbulence-%3ECelestine::Filter::Turbulence)-instance-method)
-
-
-Here's a quick and dirty intro to features.
-[crash_course](https://github.com/redcodefinal/celestine/blob/master/src/crash_course.cr)
 
 Here are some more intricate examples.
 [procedural_art](https://github.com/redcodefinal/procedural_art)
