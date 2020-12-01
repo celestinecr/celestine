@@ -9,6 +9,7 @@ module Celestine::Logo
   HEX_RADIUS         = 150
   COLORS             = ["#73B8FC", "#3799FB", "#0466C8", "#0353A4", "#023E7D", "#002855", "#001233"]
   SCREEN_SIZE = 500
+  BLEND_MODE = "difference"
 
   def self.make_arc(start_angle, end_angle, distance, thickness = 10, large = false, flip = false)
     p1 = Celestine::FPoint.new(0 + 250, distance + 250)
@@ -98,9 +99,8 @@ File.open("./logo/logo.svg", "w+") do |f|
       offset = SHADE_OFFSET * index
       ctx.path(define: true) do |path|
         path.id = SHADE_L_ID + index.to_s
-        # path.style["mix-blend-mode"] = "multiply"
-        path.fill = "black"
-        path.opacity = 0.1
+        path.fill = "slateblue"
+        path.opacity = 0.2
 
         p1 = Celestine::FPoint.new(1000, 0)
         p2 = Celestine::Math.rotate_point(p1, Celestine::FPoint::ZERO, 30)
@@ -130,7 +130,7 @@ File.open("./logo/logo.svg", "w+") do |f|
       # end
       # animate.key_times << 1.0
 
-      animate.values << 500
+      animate.values << 300
       animate.values << 0
 
       animate.custom_attrs["keySplines"] = "0 1 0.79 0.99 ;"
@@ -142,6 +142,7 @@ File.open("./logo/logo.svg", "w+") do |f|
 
       ctx.use(SHADE_L_ID + index.to_s) do |u|
         animate.draw(u.inner_elements)
+        u.style["mix-blend-mode"] = BLEND_MODE
         u
       end
 
@@ -152,6 +153,7 @@ File.open("./logo/logo.svg", "w+") do |f|
           t
         end
         animate.draw(u.inner_elements)
+        u.style["mix-blend-mode"] = BLEND_MODE
         u
       end
     end
