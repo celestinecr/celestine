@@ -2,7 +2,7 @@ version: 2.0
 shards:
   celestine:
     git: https://github.com/redcodefinal/celestine.git
-    version: 0.6.0alpha+git.commit.f96ecf840e526da07ae2e4e45ecf8ae30780e546
+    version: 0.6.0alpha+git.commit.62a09af7fdf9f263b9d615a075755e543855b655
 
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
@@ -26,7 +26,7 @@ shards:
 
   procedural_art:
     git: https://github.com/redcodefinal/procedural_art.git
-    version: 0.1.0+git.commit.0ac3f773dd147ef50518c865490e545e56ec37af
+    version: 0.1.0+git.commit.13f503ca8038892431a8d8d066fb6a6d2b9aaeb5
 
   radix:
     git: https://github.com/luislavena/radix.git

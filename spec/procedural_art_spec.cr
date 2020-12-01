@@ -44,4 +44,12 @@ describe ProceduralArt do
   it "should make 1 psychoflower image" do
     ProceduralArt::PsychoFlower.make
   end
+
+  it "should make 10 polar_spins images" do
+    10.times do
+      ProceduralArt::PolarSpins.make
+      ProceduralArt::PolarSpins.seed += 1
+    end
+    ProceduralArt::PolarSpins.seed = 1
+  end
 end
