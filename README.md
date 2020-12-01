@@ -1,7 +1,8 @@
-# Celestine ![Crystal CI](https://github.com/redcodefinal/celestine/workflows/Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://redcodefinal.github.io/celestine/)
+# Celestine ![Crystal CI](https://github.com/redcodefinal/celestine/workflows/Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
 
 
-<img align="center" width="500" height="500" src="https://raw.githubusercontent.com/redcodefinal/celestine/502f06dfd0ae9e1194101a373be580857276d69c/logo/logo.svg">
+![Celestine Logo](https://github.com/redcodefinal/celestine/blob/master/logo/logo.svg)
+
 
 A neat library and DSL for creating graphics using SVG
 
