@@ -10,6 +10,8 @@ module Celestine::Logo
   COLORS             = ["#73B8FC", "#3799FB", "#0466C8", "#0353A4", "#023E7D", "#002855", "#001233"]
   SCREEN_SIZE = 500
   BLEND_MODE = "difference"
+  PRECISION = 1
+  ARC_PRECISION = 4
 
   def self.make_arc(start_angle, end_angle, distance, thickness = 10, large = false, flip = false)
     p1 = Celestine::FPoint.new(0 + 250, distance + 250)
@@ -25,17 +27,17 @@ module Celestine::Logo
     while current_p1_angle <= end_angle
       current_p1_angle = end_angle if current_p1_angle > end_angle
       p1_r1 = Celestine::Math.rotate_point(p1.x, p1.y, SCREEN_SIZE/2.0, SCREEN_SIZE/2.0, current_p1_angle)
-      path.a_line(p1_r1.x, p1_r1.y)
-      current_p1_angle += 0.2
+      path.a_line(p1_r1.x.round(PRECISION), p1_r1.y.round(PRECISION))
+      current_p1_angle += ARC_PRECISION
     end
-    path.a_line(p2_t1.x, p2_t1.y)
+    path.a_line(p2_t1.x.round(PRECISION), p2_t1.y.round(PRECISION))
 
     current_p2_angle = end_angle
     while current_p2_angle >= start_angle
       current_p2_angle = start_angle if current_p2_angle < start_angle
       p2_r1 = Celestine::Math.rotate_point(p2.x, p2.y, SCREEN_SIZE/2.0, SCREEN_SIZE/2.0, current_p2_angle)
-      path.a_line(p2_r1.x, p2_r1.y)
-      current_p2_angle -= 0.2
+      path.a_line(p2_r1.x.round(PRECISION), p2_r1.y.round(PRECISION))
+      current_p2_angle -= ARC_PRECISION
     end
 
     path.close
@@ -106,7 +108,7 @@ File.open("./logo/logo.svg", "w+") do |f|
         p2 = Celestine::Math.rotate_point(p1, Celestine::FPoint::ZERO, 30)
 
         path.a_move(0, 0 + offset)
-        path.a_line(p2.x, p2.y + offset)
+        path.a_line(p2.x.round(PRECISION), p2.y.round(PRECISION) + offset)
         path.a_v_line 500 + offset
         path.a_h_line 0
         path.close
