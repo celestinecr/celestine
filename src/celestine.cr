@@ -198,7 +198,7 @@ module Celestine::Meta
       if self.view_box
         vb = self.view_box.as(ViewBox)
         view_box_option = %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
-        io << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""} #{view_box_option} width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
+        io << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : " "}#{view_box_option} width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
       else
         io << %Q[<svg width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
       end
