@@ -122,15 +122,6 @@ File.open("./logo/logo.svg", "w+") do |f|
       animate = Celestine::Animate.new
       animate.attribute = "y"
 
-      # 5.times do |i|
-      #   animate.values << 500 - ((500/5) * i)
-      # end
-      # animate.values << 0
-
-      # 5.times do |i|
-      #   animate.key_times << i.to_f/5
-      # end
-      # animate.key_times << 1.0
 
       animate.values << 300
       animate.values << 0
@@ -144,7 +135,7 @@ File.open("./logo/logo.svg", "w+") do |f|
 
       ctx.use(SHADE_L_ID + index.to_s) do |u|
         animate.draw(u.inner_elements)
-        u.style["mix-blend-mode"] = BLEND_MODE
+        #u.style["mix-blend-mode"] = BLEND_MODE
         u
       end
 
@@ -155,7 +146,7 @@ File.open("./logo/logo.svg", "w+") do |f|
           t
         end
         animate.draw(u.inner_elements)
-        u.style["mix-blend-mode"] = BLEND_MODE
+        #u.style["mix-blend-mode"] = BLEND_MODE
         u
       end
     end
