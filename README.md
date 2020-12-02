@@ -1,7 +1,7 @@
 # Celestine ![Crystal CI](https://github.com/redcodefinal/celestine/workflows/Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
 
 
-![Celestine Logo](https://raw.githubusercontent.com/redcodefinal/celestine/master/logo/logo.svg)
+[![Celestine Logo](https://raw.githubusercontent.com/redcodefinal/celestine/master/logo/logo.svg)](https://github.com/redcodefinal/celestine/blob/master/src/make_logo.cr)
 
 
 A neat library and DSL for creating graphics using SVG
@@ -318,9 +318,12 @@ end
  * [Celestine::Filter::SpecularLighting](https://docs.celestine.dev/Celestine/Filter/SpecularLighting.html) -> [specular_lighting](https://docs.celestine.dev/Celestine/Filter.html#specular_lighting(&block:Celestine::Filter::SpecularLighting-%3ECelestine::Filter::SpecularLighting)-instance-method)
  * [Celestine::Filter::Tile](https://docs.celestine.dev/Celestine/Filter/Tile.html) -> [tile](https://docs.celestine.dev/Celestine/Filter.html#tile(&block:Celestine::Filter::Tile-%3ECelestine::Filter::Tile)-instance-method)
  * [Celestine::Filter::Turbulence](https://docs.celestine.dev/Celestine/Filter/Turbulence.html) -> [turbulence](https://docs.celestine.dev/Celestine/Filter.html#turbulence(&block:Celestine::Filter::Turbulence-%3ECelestine::Filter::Turbulence)-instance-method)
+
+## Examples
+
 If you'd like to see how the logo was made, check out [make_logo](https://github.com/redcodefinal/celestine/blob/master/src/make_logo.cr)
-Here are some more intricate examples.
-[procedural_art](https://github.com/redcodefinal/procedural_art)
+
+Here are some more intricate examples. [procedural_art](https://github.com/redcodefinal/procedural_art)
 
 Real world examples made with Celestine. All of these are flat SVG files with no JS inside, using only functions built into Celestine.
 
