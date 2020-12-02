@@ -101,7 +101,7 @@ File.open("./logo/logo.svg", "w+") do |f|
       offset = SHADE_OFFSET * index
       ctx.path(define: true) do |path|
         path.id = SHADE_L_ID + index.to_s
-        path.fill = "slateblue"
+        path.fill = "black"
         path.opacity = 0.2
 
         p1 = Celestine::FPoint.new(1000, 0)
