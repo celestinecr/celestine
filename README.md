@@ -1,7 +1,7 @@
-# Celestine ![Crystal CI](https://github.com/redcodefinal/celestine/workflows/Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
+# Celestine ![Crystal CI](https://github.com/celestinecr/celestine/workflows/Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
 
 
-[![Celestine Logo](https://raw.githubusercontent.com/redcodefinal/celestine/master/logo/logo.svg)](https://github.com/redcodefinal/celestine/blob/master/src/make_logo.cr)
+[![Celestine Logo](https://raw.githubusercontent.com/celestinecr/celestine/master/logo/logo.svg)](https://github.com/celestinecr/celestine/blob/master/src/make_logo.cr)
 
 
 A neat library and DSL for creating graphics using SVG
@@ -13,13 +13,13 @@ Add to shards.yml
 ```yml
 dependencies:
   celestine:
-    github: redcodefinal/celestine
+    github: celestinecr/celestine
 ```
 
 ## Docs
 Documentation is cool, you can view the docs for Celestine at:
  * [docs.celestine.dev](https://docs.celestine.dev)
- * [github.io](https://redcodefinal.github.io/celestine)
+ * [github.io](https://celestinecr.github.io/celestine)
 
 ## SVG Stuff It Can Do
 
@@ -343,7 +343,7 @@ HMU via issues or make a pull request or something I don't know.
 
 ## Contributing
 
-1. Fork it (<https://github.com/redcodefinal/celestine/fork>)
+1. Fork it (<https://github.com/celestinecr/celestine/fork>)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
