@@ -331,6 +331,11 @@ Real world examples made with Celestine. All of these are flat SVG files with no
  * [Mineshift](https://www.sol.vin/art/live/mineshift/)
  * [Hypnos1](https://cdpn.io/redcodefinal/fullpage/ZEOgzXX)
  * [Hypnos2](https://cdpn.io/redcodefinal/fullpage/WNxqYMy)
+ * [Pschyoflower](https://codepen.io/redcodefinal/pen/mdrJeGZ)
+ * [Semicircle Patchwork 1](https://codepen.io/redcodefinal/pen/WNGwdxe)
+ * [Semicircle Patchwork 2](https://codepen.io/redcodefinal/pen/yLaOpae)
+ * [Chromatic Aberration](https://codepen.io/redcodefinal/pen/zYKqpBZ)
+ * [Polar Spins](https://codepen.io/redcodefinal/pen/RwGaxRY)
 
 ## Development
 
