@@ -23,7 +23,7 @@ Documentation is cool, you can view the docs for Celestine at:
 
 ## SVG Stuff It Can Do
 
-A full list if [here](/svg_element_checklist.md).
+A full list is [here](/dev_docs/svg_element_checklist.md).
 
  * [circle](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
  * [rect](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect) as rectangle
