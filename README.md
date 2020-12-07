@@ -23,6 +23,8 @@ Documentation is cool, you can view the docs for Celestine at:
 
 ## SVG Stuff It Can Do
 
+A full list if [here](/svg_element_checklist.md).
+
  * [circle](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
  * [rect](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect) as rectangle
  * [g](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g) as group
@@ -40,9 +42,10 @@ Documentation is cool, you can view the docs for Celestine at:
  * [mpath](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mpath) via animate_motion
 
  *TODO*
- * Filters :( gonna need to design a whole system just for those
  * Full SVG support for all [elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Element) and [attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)
-
+ * Finish adding all filters
+ * Add pattern
+ * Add gradients
 
 
 ## Usage
