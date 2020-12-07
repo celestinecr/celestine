@@ -7,6 +7,7 @@ require "./modules/position"
 require "./modules/*"
 
 require "./drawables/drawable"
+require "./drawables/anchor"
 require "./drawables/circle"
 require "./drawables/rectangle"
 require "./drawables/path"
@@ -53,7 +54,7 @@ end
 # Modules where all DSL and Meta code is held
 module Celestine::Meta
   # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you must add it here as well.
-  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text]
+  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text, Celestine::Anchor]
 
 
   # Hold context information for the DSL
@@ -218,6 +219,12 @@ module Celestine::Meta
   class ::Celestine::Group
     include Celestine::Meta::Context::Methods
   end
+
+    # Group class which can group multiple drawables together.
+    class ::Celestine::Anchor
+      include Celestine::Meta::Context::Methods
+    end
+  
 
   # Class which acts like a group, but applies masking to another drawable.
   class ::Celestine::Mask

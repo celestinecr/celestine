@@ -7,7 +7,7 @@
 
 | Status | Tag       | Notes | 
 |--------|-----------|-------|
-| ^ | a ||
+| ✓ | a ||
 | ✓ | animate ||
 | ✓ | animateMotion ||
 | / | animateTransform ||
