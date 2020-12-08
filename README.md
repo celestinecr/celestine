@@ -25,22 +25,6 @@ Documentation is cool, you can view the docs for Celestine at:
 
 A full list is [here](/dev_docs/svg_element_checklist.md).
 
- * [circle](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
- * [rect](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect) as rectangle
- * [g](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/g) as group
- * [ellipse](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse)
- * [text](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text)
- * [image](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image)
- * [path](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path)
- * [filter](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/filter)
- * [marker](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/marker)
- * [use](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use)
- * [mask](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mask)
- * [animate](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animate)
- * [animateTransform](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateTransform) as animate_transform_rotate 
- * [animateMotion](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/animateMotion) as animate_motion
- * [mpath](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/mpath) via animate_motion
-
  *TODO*
  * Full SVG support for all [elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Element) and [attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)
  * Finish adding all filters
