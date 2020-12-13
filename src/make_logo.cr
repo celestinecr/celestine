@@ -124,13 +124,17 @@ File.open("./logo/logo.svg", "w+") do |f|
 
 
       animate.values << 300
-      animate.values << 0
+      animate.values << 5
 
-      animate.custom_attrs["keySplines"] = "0 1 0.79 0.99 ;"
+      animate.key_times << 0.0
+      animate.key_times << 1.0
+
+
+      animate.custom_attrs["keySplines"] = "0.5 0 0.5 1 ;"
       
 
 
-      animate.duration = 3 + (index*2)
+      animate.duration = 3 + (index*0.5)
       animate.freeze = true
 
       ctx.use(SHADE_L_ID + index.to_s) do |u|
@@ -172,7 +176,7 @@ File.open("./logo/logo.svg", "w+") do |f|
         a.key_times << 0.81
         a.key_times << 1.0
 
-        a.duration = 13
+        a.duration = 7
         a.freeze = true
         a
       end
