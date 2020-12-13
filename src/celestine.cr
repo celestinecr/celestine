@@ -35,7 +35,7 @@ alias SIFNumber = (String | IFNumber)
 
 # Main module for Celestine
 module Celestine
-  VERSION = "0.6.0alpha"
+  VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
 
   # Main draw function for DSL
   def self.draw(&block : Proc(Celestine::Meta::Context, Nil)) : String
