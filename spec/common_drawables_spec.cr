@@ -1,4 +1,5 @@
 {% for drawable_class in Celestine::Meta::CLASSES %}
+{% if drawable_class.id != Celestine::Svg %}
 describe {{drawable_class.id}} do
   it "should add custom attributes" do
     celestine_svg = Celestine.draw do |ctx| 
@@ -11,7 +12,6 @@ describe {{drawable_class.id}} do
     if svg_root = parser.nodes(:svg).first
       svg_root.children.size.should eq(1)
       if child_element = svg_root.child
-        child_element.attributes.size.should eq(1)
         child_element.attribute_by("test-attr").should eq("Hello!")
       else
         raise "No child element found"
@@ -257,4 +257,5 @@ describe {{drawable_class.id}} do
   {% end %}
 
 end
+{% end %}
 {% end %}

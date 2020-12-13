@@ -36,7 +36,7 @@ A full list is [here](/dev_docs/svg_element_checklist.md).
 
 First, all drawing is done through `Celestine.draw` this returns a string SVG element, or works on an `IO`. You can easily embed this into webpages for dynamic server side drawing of assets.
 
-`Celestine.draw` takes a block which takes a `Celestine::Meta::Context` (or `ctx` in the examples), the basis of all DSL calls in Celestine.
+`Celestine.draw` takes a block which takes a `Celestine::Svg` (or `ctx` in the examples), the basis of all DSL calls in Celestine.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -66,19 +66,63 @@ end
 
 All context methods such as `rectangle` or `circle` take a block that takes their respective types, and needs to have an object of that type returned.
 
-A short list of the Celestine types that can be used by `Celestine::Meta::Context` and their DSL methods
+A short list of the Celestine types that can be used by `Celestine::Svg` and their DSL methods
 
- * [Celestine::Rectangle](https://docs.celestine.dev/Celestine/Rectangle.html) -> [rectangle](https://docs.celestine.dev/Celestine/Meta/Context.html#rectangle(define=false,&block:Celestine::Rectangle-%3ECelestine::Rectangle):Celestine::Rectangle-instance-method)
- * [Celestine::Circle](https://docs.celestine.dev/Celestine/Circle.html) -> [circle](https://docs.celestine.dev/Celestine/Meta/Context.html#circle(define=false,&block:Celestine::Circle-%3ECelestine::Circle):Celestine::Circle-instance-method)
- * [Celestine::Ellipse](https://docs.celestine.dev/Celestine/Ellipse.html) -> [ellipse](https://docs.celestine.dev/Celestine/Meta/Context.html#ellipse(define=false,&block:Celestine::Ellipse-%3ECelestine::Ellipse):Celestine::Ellipse-instance-method)
- * [Celestine::Path](https://docs.celestine.dev/Celestine/Path.html) -> [path](https://docs.celestine.dev/Celestine/Meta/Context.html#path(define=false,&block:Celestine::Path-%3ECelestine::Path):Celestine::Path-instance-method)
- * [Celestine::Marker](https://docs.celestine.dev/Celestine/Marker.html) -> [marker](https://docs.celestine.dev/Celestine/Meta/Context.html#marker(&block:Celestine::Marker-%3ECelestine::Marker)-instance-method)
- * [Celestine::Mask](https://docs.celestine.dev/Celestine/Mask.html) -> [mask](https://docs.celestine.dev/Celestine/Meta/Context.html#mask(&block:Celestine::Mask-%3ECelestine::Mask)-instance-method)
- * [Celestine::Text](https://docs.celestine.dev/Celestine/Text.html) -> [text](https://docs.celestine.dev/Celestine/Meta/Context.html#text(define=false,&block:Celestine::Text-%3ECelestine::Text):Celestine::Text-instance-method)
- * [Celestine::Group](https://docs.celestine.dev/Celestine/Group.html) -> [group](https://docs.celestine.dev/Celestine/Meta/Context.html#group(define=false,&block:Celestine::Group-%3ECelestine::Group):Celestine::Group-instance-method)
- * [Celestine::Image](https://docs.celestine.dev/Celestine/Image.html) -> [image](https://docs.celestine.dev/Celestine/Meta/Context.html#image(define=false,&block:Celestine::Image-%3ECelestine::Image):Celestine::Image-instance-method)
- * [Celestine::Use](https://docs.celestine.dev/Celestine/Use.html) -> [use](https://docs.celestine.dev/Celestine/Meta/Context/Methods.html#use(id:String)-instance-method)
- * [Celestine::Filter](https://docs.celestine.dev/Celestine/Filter.html) -> [filter](https://docs.celestine.dev/Celestine/Meta/Context.html#filter(&block:Celestine::Filter-%3ECelestine::Filter)-instance-method)
+ * [Celestine::Anchor](https://docs.celestine.dev/Celestine/Anchor.html) -> [anchor](https://docs.celestine.dev/Celestine/Svg.html#anchor(define=false,&block:Celestine::Anchor-%3ECelestine::Anchor):Celestine::Anchor-instance-method)
+ * [Celestine::Circle](https://docs.celestine.dev/Celestine/Circle.html) -> [circle](https://docs.celestine.dev/Celestine/Svg.html#circle(define=false,&block:Celestine::Circle-%3ECelestine::Circle):Celestine::Circle-instance-method)
+ * [Celestine::Ellipse](https://docs.celestine.dev/Celestine/Ellipse.html) -> [ellipse](https://docs.celestine.dev/Celestine/Svg.html#ellipse(define=false,&block:Celestine::Ellipse->Celestine::Ellipse):Celestine::Ellipse-instance-method)
+ * [Celestine::Filter](https://docs.celestine.dev/Celestine/Filter.html) -> [filter](https://docs.celestine.dev/Celestine/Svg.html#filter(&block:Celestine::Filter->Celestine::Filter)-instance-method)
+ * [Celestine::Group](https://docs.celestine.dev/Celestine/Group.html) -> [group](https://docs.celestine.dev/Celestine/Svg.html#group(define=false,&block:Celestine::Group->Celestine::Group):Celestine::Group-instance-method)
+ * [Celestine::Image](https://docs.celestine.dev/Celestine/Image.html) -> [image](https://docs.celestine.dev/Celestine/Svg.html#image(define=false,&block:Celestine::Image->Celestine::Image):Celestine::Image-instance-method)
+ * [Celestine::Marker](https://docs.celestine.dev/Celestine/Marker.html) -> [marker](https://docs.celestine.dev/Celestine/Svg.html#marker(&block:Celestine::Marker->Celestine::Marker)-instance-method)
+ * [Celestine::Mask](https://docs.celestine.dev/Celestine/Mask.html) -> [mask](https://docs.celestine.dev/Celestine/Svg.html#mask(&block:Celestine::Mask->Celestine::Mask)-instance-method)
+ * [Celestine::Path](https://docs.celestine.dev/Celestine/Path.html) -> [path](https://docs.celestine.dev/Celestine/Svg.html#path(define=false,&block:Celestine::Path->Celestine::Path):Celestine::Path-instance-method)
+ * [Celestine::Rectangle](https://docs.celestine.dev/Celestine/Rectangle.html) -> [rectangle](https://docs.celestine.dev/Celestine/Svg.html#rectangle(define=false,&block:Celestine::Rectangle->Celestine::Rectangle):Celestine::Rectangle-instance-method)
+ * [Celestine::Svg](https://docs.celestine.dev/Celestine/Svg.html) -> [svg](https://docs.celestine.dev/Celestine/Svg.html#svg(define=false,&block:Celestine::Svg->Celestine::Svg):Celestine::Svg-instance-method)
+ * [Celestine::Text](https://docs.celestine.dev/Celestine/Text.html) -> [text](https://docs.celestine.dev/Celestine/Svg.html#text(define=false,&block:Celestine::Text->Celestine::Text):Celestine::Text-instance-method)
+
+ 
+### Nested SVG
+
+`Celestine::SVG` allows you to nest SVG.
+
+```crystal
+Celestine.draw do |ctx|
+  ctx.svg do |svg_doc2|
+    svg_doc2.rectangle do |r|
+      r
+    end
+
+    svg_doc2.circle do |c|
+      c
+    end
+
+    svg_doc2
+  end
+end
+```
+
+### Groups
+
+`Celestine::Group` allows you to group multiple elements under one parent. You can manipulate the `x`, `y`, and other attributes to apply them to the whole group, or just use it to combine elements easier.
+
+```crystal
+Celestine.draw do |ctx|
+  ctx.group do |g|
+    g.rectangle do |r|
+      r
+    end
+
+    g.circle do |c|
+      c
+    end
+
+    g
+  end
+end
+```
+
+Groups cannot `define` objects like `Celestine::Svg` can. Groups also cannot use the `mask`, `filter`, or `marker` DSL methods as they `define` in the SVG document.
 
 ### Use
 `Celestine::Use` can be used to save space in an SVG, and reuse certain elements without the need to copy the entire object into your SVG document.
@@ -87,11 +131,11 @@ The only caveat is that the `use` SVG element cannot change attributes it both d
 
 `Celestine::Use` also requires that the drawable it is copying has an `id` set. If not `Celestine::Use` will still let you reference an ID that doesn't exist if you run `use` with a string `id`.
 
-You can do this only with `Celestine::Meta::Context` (or `ctx` in the examples). `Celestine::Group`, `Celestine::Mask`, `Celestine::Marker` cannot define drawables.
+You can do this only with `Celestine::Svg` (or `ctx` in the examples). `Celestine::Group`, `Celestine::Mask`, `Celestine::Marker` cannot define drawables. The `use` element will only copy elements in the current SVG document you are in, so if you nest SVG inside SVG you need to be wary of how you define objects.
 
 ```crystal
 Celestine.draw do |ctx|
-  # Only `Celestine::Meta::Context` is allowed to "define" objects.
+  # Only `Celestine::Svg` is allowed to "define" objects.
   ctx.rectangle(define: true) do |r|
     # Set r's x, y, width, height and other attributes here
     r.id = "our-rect" # YOU MUST SET AN ID TO BE ABLE TO REUSE A COMPONENT, OR THERE IS NO WAY TO REFERENCE IT.
