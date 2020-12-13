@@ -7,6 +7,7 @@ require "./modules/position"
 require "./modules/*"
 
 require "./drawables/drawable"
+require "./drawables/svg"
 require "./drawables/anchor"
 require "./drawables/circle"
 require "./drawables/rectangle"
@@ -38,73 +39,59 @@ module Celestine
   VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
 
   # Main draw function for DSL
-  def self.draw(&block : Proc(Celestine::Meta::Context, Nil)) : String
+  def self.draw(&block : Proc(Celestine::Svg, Nil)) : String
     String.build do |io|
       self.draw io, &block
     end
   end
 
-  def self.draw(io : IO, &block : Proc(Celestine::Meta::Context, Nil)) : IO
-    ctx = Celestine::Meta::Context.new
+  def self.draw(io : IO, &block : Proc(Celestine::Svg, Nil)) : IO
+    ctx = Celestine::Svg.new
     yield ctx
-    ctx.render(io)
+    ctx.draw(io)
+    io
   end
 end
 
 # Modules where all DSL and Meta code is held
 module Celestine::Meta
   # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you must add it here as well.
-  CLASSES = [Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text, Celestine::Anchor]
+  CLASSES = [Celestine::Svg, Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text, Celestine::Anchor]
 
 
   # Hold context information for the DSL
-  class Context
-    # Alias for the viewBox SVG parameter
-    alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
-    # Objects to be drawn to the scene
-    getter objects_io = IO::Memory.new
-    # Objects in the defs section, which can be used by ID
-    getter defines_io = IO::Memory.new
-    # The viewBox of the SVG scene
-    property view_box : ViewBox? = nil
-    property width : IFNumber = 100
-    property width_units : String = "%"
-    property height : IFNumber = 100
-    property height_units : String = "%"
-
-    property shape_rendering = "auto"
-
+  module Context
     # Holds all the context methods to be included in DSL classes like Context, Group, and Mask.
     # This creates all the methods that can be used inside the draw block, like `circle` or `group` or `use`.
     module Methods
       macro included
-        {% if @type == Celestine::Meta::Context %}
+        {% if @type == Celestine::Svg %}
           # Go through each class in CLASSES and lowercase the last part to make a method name.
           {% for klass in Celestine::Meta::CLASSES %}
               make_context_method({{ klass.id }})
           {% end %}
 
-          # Add `drawable` to this `Celestine::Meta::Context`'s definitions, allowing it to be `use`d later.
+          # Add `drawable` to this `Celestine::Svg`'s definitions, allowing it to be `use`d later.
           def define(drawable : Celestine::Drawable)
             drawable.draw(@defines_io)
             drawable
           end
 
-          # Create a mask object and add it to this `Celestine::Meta::Context`
+          # Create a mask object and add it to this `Celestine::Svg`
           def mask(&block : Celestine::Mask -> Celestine::Mask)
             mask = yield Celestine::Mask.new
             define(mask)
             mask
           end
 
-          # Create a mask object and add it to this `Celestine::Meta::Context`
+          # Create a mask object and add it to this `Celestine::Svg`
           def marker(&block : Celestine::Marker -> Celestine::Marker)
             marker = yield Celestine::Marker.new
             define(marker)
             marker
           end
 
-          # Create a mask object and add it to this `Celestine::Meta::Context`
+          # Create a mask object and add it to this `Celestine::Svg`
           def filter(&block : Celestine::Filter -> Celestine::Filter)
             filter = yield Celestine::Filter.new
             define(filter)
@@ -119,7 +106,7 @@ module Celestine::Meta
         {% end %}
       end
 
-      # Makes context methods specifically for Celestine::Meta::Context
+      # Makes context methods specifically for Celestine::Svg
       private macro make_context_method(klass)
         # Allows a `{{klass.id}}` to be made using a DSL call. Can be defined, which adds the drawable to the main context's definitions, and not to the main document itself.
         def {{ klass.stringify.split("::").last.downcase.id }}(define = false, &block : {{klass.id}} -> {{klass.id}}) : {{klass.id}}
@@ -189,30 +176,11 @@ module Celestine::Meta
         drawable
       end
     end
+  end
 
-    include Methods
-
-    # Takes all the objects and renders them to a string SVG
-    def render(io : IO)
-      xmlns = %Q[xmlns="http://www.w3.org/2000/svg"]
-      view_box_option = ""
-      if self.view_box
-        vb = self.view_box.as(ViewBox)
-        view_box_option = %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
-        io << %Q[<svg #{shape_rendering != "auto" ? "shape-rendering=\"#{shape_rendering}\" " : ""}#{view_box_option} width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
-      else
-        io << %Q[<svg width="#{width}#{width_units}" height="#{height}#{height_units}" #{xmlns}>]
-      end
-
-      unless @defines_io.empty?
-        io << %Q[<defs>]
-        io << @defines_io
-        io << %Q[</defs>]
-      end
-      io << @objects_io
-
-      io << %Q[</svg>]
-    end
+  # Group class which can group multiple drawables together.
+  class ::Celestine::Svg
+    include Celestine::Meta::Context::Methods
   end
 
   # Group class which can group multiple drawables together.
@@ -220,11 +188,10 @@ module Celestine::Meta
     include Celestine::Meta::Context::Methods
   end
 
-    # Group class which can group multiple drawables together.
-    class ::Celestine::Anchor
-      include Celestine::Meta::Context::Methods
-    end
-  
+  # Group class which can group multiple drawables together.
+  class ::Celestine::Anchor
+    include Celestine::Meta::Context::Methods
+  end
 
   # Class which acts like a group, but applies masking to another drawable.
   class ::Celestine::Mask

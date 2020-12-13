@@ -15,7 +15,7 @@ class Celestine::Marker < Celestine::Drawable
   property preserve_aspect_ratio : String?
   property ref_x : String?
   property ref_y : String?
-  property view_box : Celestine::Meta::Context::ViewBox?
+  property view_box : Celestine::Svg::ViewBox?
 
   @objects_io = IO::Memory.new
 
@@ -30,7 +30,7 @@ class Celestine::Marker < Celestine::Drawable
     io << %Q[#{Attrs::REF_X}="#{ref_x}" ] if ref_x
     io << %Q[#{Attrs::REF_Y}="#{ref_y}" ] if ref_y
     if @view_box
-      vb = @view_box.as(Celestine::Meta::Context::ViewBox)
+      vb = @view_box.as(Celestine::Svg::ViewBox)
       io << %Q[#{Attrs::VIEW_BOX}="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
     end
     inner_elements << @objects_io

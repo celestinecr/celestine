@@ -10,7 +10,7 @@ end
 # Creates a test that runs different types of numbers through an attribute and then parses and searches for it. It also makes sure it is the only attribute,
 # as well as it only has one child element, the `{{drawable_class.id}}`
 macro make_number_attribute_test(drawable_class, attr_name_html, attr_name_cr, units = false)
-  it "should set attribute {{attr_name_html.id}} via {{attr_name_cr.id}} and there should be no other attributes set" do
+  it "should set attribute {{attr_name_html.id}} via {{attr_name_cr.id}}" do
     positive_values = [0, 1.0, 2, 4, 0.22, 99.0, 60000.0, 99999.9999]
     values = positive_values.clone
     positive_values.each { |v| values << -v }
@@ -30,7 +30,6 @@ macro make_number_attribute_test(drawable_class, attr_name_html, attr_name_cr, u
       if svg_root = parser.nodes(:svg).first
         svg_root.children.size.should eq(1)
         if child_element = svg_root.child
-          child_element.attributes.size.should eq(1)
           (child_element.attribute_by({{attr_name_html}}) == v.to_s).should eq(true)
         end
       end
@@ -51,7 +50,6 @@ macro make_number_attribute_test(drawable_class, attr_name_html, attr_name_cr, u
         if svg_root = parser.nodes(:svg).first
           svg_root.children.size.should eq(1)
           if child_element = svg_root.child
-            child_element.attributes.size.should eq(1)
             (child_element.attribute_by({{attr_name_html}}) == "#{v}#{unit}").should eq(true)
           end
         end
@@ -75,7 +73,6 @@ macro make_color_attribute_test(drawable_class, attr_name_html, attr_name_cr)
       if svg_root = parser.nodes(:svg).first
         svg_root.children.size.should eq(1)
         if child_element = svg_root.child
-          child_element.attributes.size.should eq(1)
           (child_element.attribute_by({{attr_name_html}}) == v.to_s).should eq(true)
         end
       end
