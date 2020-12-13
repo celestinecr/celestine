@@ -67,9 +67,9 @@ module Celestine::Meta
     getter defines_io = IO::Memory.new
     # The viewBox of the SVG scene
     property view_box : ViewBox? = nil
-    property width : Float64 = 100
+    property width : IFNumber = 100
     property width_units : String = "%"
-    property height : Float64 = 100
+    property height : IFNumber = 100
     property height_units : String = "%"
 
     property shape_rendering = "auto"
