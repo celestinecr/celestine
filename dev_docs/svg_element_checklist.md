@@ -65,7 +65,7 @@
 | ^ | set ||This seems useful for simple interactivity|
 | ^ | stop ||Part of gradient|
 | ✘ | style ||Not sure if this should be implemented...|
-| / | svg ||Implemented for main usage but, should allow for nested SVG|
+| ✓ | svg ||Implemented for main usage but, should allow for nested SVG|
 | ^ | switch ||Would allow local dialect switching for text|
 | ✘ | symbol ||Is this any different than group?|
 | ✓ | text |[text](https://docs.celestine.dev/Celestine/Meta/Context.html#text(define=false,&block:Celestine::Text-%3ECelestine::Text):Celestine::Text-instance-method)||
