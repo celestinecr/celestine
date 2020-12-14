@@ -49,17 +49,16 @@
 | = | hatchpath ||Doesn't seem implemented by browsers|
 | ✓ | image |[image](https://docs.celestine.dev/Celestine/Meta/Context.html#image(define=false,&block:Celestine::Image-%3ECelestine::Image):Celestine::Image-instance-method)||
 | ✘ | line ||Seems covered by path....|
-| ^ | linearGradient |||
+| ✓ | linearGradient |||
 | / | marker |[marker](https://docs.celestine.dev/Celestine/Meta/Context.html#marker(&block:Celestine::Marker-%3ECelestine::Marker)-instance-method)||
 | ✓ | mask |[mask](https://docs.celestine.dev/Celestine/Meta/Context.html#mask(&block:Celestine::Mask-%3ECelestine::Mask)-instance-method)||
-| ^ | linearGradient ||
 | ^ | metadata ||
 | ✓ | mpath |[Celestine::Animate::Motion#mpath](https://docs.celestine.dev/Celestine/Animate/Motion.html#mpath(&block:Proc(Celestine::Path,Nil))-instance-method)||
 | ✓ | path |[path](https://docs.celestine.dev/Celestine/Meta/Context.html#path(define=false,&block:Celestine::Path-%3ECelestine::Path):Celestine::Path-instance-method)||
-| ^ | pattern |||
+| ✓ | pattern |||
 | ✘ | polygon ||Seems covered by path|
 | ✘ | polyline ||Seems covered by path|
-| ^ | radialGradient ||
+| ✓ | radialGradient ||
 | ✓ | rect |[rectangle](https://docs.celestine.dev/Celestine/Meta/Context.html#rectangle(define=false,&block:Celestine::Rectangle-%3ECelestine::Rectangle):Celestine::Rectangle-instance-method)||
 | ✘ | script ||Not sure if this should be implemented...|
 | ^ | set ||This seems useful for simple interactivity|
