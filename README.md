@@ -233,7 +233,7 @@ You can apply gradient fills and strokes using the `linear_gradient` and `radial
 ```crystal
 Celestine.draw do |ctx|
   our_gradient = ctx.linear_gradient do |gradient|
-    gradient.id = "our-gradient" # ALWAYS SET ID FOR A PATTERN OR IT CAN'T BE USED!
+    gradient.id = "our-gradient" # ALWAYS SET ID FOR A GRADIENT OR IT CAN'T BE USED!
     gradient.stop do |stop|
       stop.offset = 10
       stop.offset_units = "%"
