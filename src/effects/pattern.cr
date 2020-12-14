@@ -3,7 +3,6 @@ class Celestine::Pattern < Celestine::Drawable
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Animate
-  include_options Celestine::Modules::Animate::Motion
   include_options Celestine::Modules::Filter
   include_options Celestine::Modules::Body
 
@@ -35,6 +34,13 @@ class Celestine::Pattern < Celestine::Drawable
     draw_attributes(io)
 
     io << %Q[preserveAspectRatio="#{preserve_aspect_ratio}" ] if preserve_aspect_ratio
+    if vb = view_box
+      io << %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ] 
+    end
+    io << %Q[patternUnits="#{pattern_units}" ] if pattern_units
+    io << %Q[patternContentUnits="#{pattern_content_units}" ] if pattern_content_units
+    io << %Q[href="#{href}" ] if href
+
 
     if inner_elements.empty?
       io << %Q[/>]
@@ -43,5 +49,13 @@ class Celestine::Pattern < Celestine::Drawable
       io << inner_elements
       io << "</#{TAG}>"
     end
+  end
+
+  module Attrs
+    HREF = "href"
+    PRESERVE_ASPECT_RATIO = "preserveAspectRatio"
+    PATTERN_UNITS = "patternUnits"
+    PATTERN_CONTENT_UNITS = "patternContentUnits"
+    VIEW_BOX = "viewBox"
   end
 end

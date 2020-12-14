@@ -28,6 +28,8 @@ require "./effects/filters/basic"
 require "./effects/filters/**"
 require "./effects/marker"
 require "./effects/pattern"
+require "./effects/gradients/gradient"
+require "./effects/gradients/**"
 
 require "./math/**"
 
@@ -105,6 +107,20 @@ module Celestine::Meta
             pattern = yield Celestine::Pattern.new
             define(pattern)
             pattern
+          end
+
+          # Create a linear gradient object and add it to this `Celestine::Svg`'s defs
+          def linear_gradient(&block : Celestine::Gradient::Linear -> Celestine::Gradient::Linear)
+            linear = yield Celestine::Gradient::Linear.new
+            define(linear)
+            linear
+          end
+
+          # Create a linear gradient object and add it to this `Celestine::Svg`'s defs
+          def radial_gradient(&block : Celestine::Gradient::Radial -> Celestine::Gradient::Radial)
+            radial = yield Celestine::Gradient::Radial.new
+            define(radial)
+            radial
           end
 
         # Adds methods without the define parameter.

@@ -109,6 +109,14 @@ module Celestine::Modules::StrokeFill
     @stroke = %Q[url(##{pattern.id})]
   end
 
+  def set_fill(gradient : Celestine::Gradient)
+    @fill = %Q[url(##{gradient.id})]
+  end
+
+  def set_stroke(gradient : Celestine::Gradient)
+    @stroke = %Q[url(##{gradient.id})]
+  end
+
   # Draws the stroke and fill attributes out to an `IO`
   def stroke_fill_attribute(io : IO)
     io << %Q[shape-rendering="#{shape_rendering}" ] if shape_rendering
