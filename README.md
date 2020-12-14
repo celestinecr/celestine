@@ -1,4 +1,4 @@
-# Celestine ![Crystal CI](https://github.com/celestinecr/celestine/workflows/Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
+# Celestine ![Crystal CI](https://github.com/celestinecr/celestine/workflows/Crystal%20CI/badge.svg) ![Development Crystal CI](https://github.com/celestinecr/celestine/workflows/Development%20Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
 
 
 [![Celestine Logo](https://raw.githubusercontent.com/celestinecr/celestine/master/logo/logo.svg)](https://github.com/celestinecr/celestine/blob/master/src/make_logo.cr)
@@ -204,6 +204,56 @@ Celestine.draw do |ctx|
 end
 ```
 
+### Patterns
+You can apply complciated tiling/repeating fills and strokes using the `pattern` DSL.
+
+```crystal
+Celestine.draw do |ctx|
+  our_pattern = ctx.pattern do |pattern|
+    pattern.id = "our-pattern" # ALWAYS SET ID FOR A PATTERN OR IT CAN'T BE USED!
+    pattern.rectangle do |r|
+      r
+    end
+    pattern
+  end
+
+  ctx.circle do |c|
+    # Either
+    c.set_fill(our_pattern)
+    # or
+    c.set_stroke(our_pattern)
+    c
+  end
+end
+```
+
+### Gradients
+You can apply gradient fills and strokes using the `linear_gradient` and `radial_gradient` DSLs
+
+```crystal
+Celestine.draw do |ctx|
+  our_gradient = ctx.linear_gradient do |gradient|
+    gradient.id = "our-gradient" # ALWAYS SET ID FOR A PATTERN OR IT CAN'T BE USED!
+    gradient.stop do |stop|
+      stop.offset = 10
+      stop.offset_units = "%"
+      stop.color = "red"
+      stop.opacity = 1.0
+      stop
+    end
+    gradient
+  end
+
+  ctx.circle do |c|
+    # Either
+    c.set_fill(our_gradient)
+    # or
+    c.set_stroke(our_gradient)
+    c
+  end
+end
+```
+
 ### Animate
 You can animate most simple SVG attributes using `animate` and the `from` and `to` attributes.
 ```crystal
@@ -328,7 +378,6 @@ Celestine.draw do |ctx|
     c.set_filter("our-filter")
     # or
     c.set_filter(our_filter)
-    end
     c
   end
 end
