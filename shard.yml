@@ -1,5 +1,5 @@
 name: celestine
-version: 0.7.1alpha
+version: 0.7.5alpha
 
 authors:
   - Ian Rash <ian@sol.vin>
@@ -17,6 +17,8 @@ targets:
     main: src/crash_course.cr
   logo:
     main: src/make_logo.cr
+  benchmark:
+    main: src/benchmark.cr
 crystal: 0.35.1
 
 license: MIT

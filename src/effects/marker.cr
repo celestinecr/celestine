@@ -15,9 +15,7 @@ class Celestine::Marker < Celestine::Drawable
   property preserve_aspect_ratio : String?
   property ref_x : String?
   property ref_y : String?
-  property view_box : Celestine::Svg::ViewBox?
-
-  @objects_io = IO::Memory.new
+  property view_box : Celestine::ViewBox?
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
@@ -30,10 +28,10 @@ class Celestine::Marker < Celestine::Drawable
     io << %Q[#{Attrs::REF_X}="#{ref_x}" ] if ref_x
     io << %Q[#{Attrs::REF_Y}="#{ref_y}" ] if ref_y
     if @view_box
-      vb = @view_box.as(Celestine::Svg::ViewBox)
+      vb = @view_box.as(Celestine::ViewBox)
       io << %Q[#{Attrs::VIEW_BOX}="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
     end
-    inner_elements << @objects_io
+
     if inner_elements.empty?
       io << %Q[/>]
     else
