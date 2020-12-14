@@ -28,8 +28,7 @@ class Celestine::Svg < Celestine::Drawable
     io << %Q[<#{TAG} ]
     io << %Q[xmlns="http://www.w3.org/2000/svg" ]
 
-    if self.view_box
-      vb = self.view_box.as(ViewBox)
+    if vb = view_box
       io << %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ]
     end
 
