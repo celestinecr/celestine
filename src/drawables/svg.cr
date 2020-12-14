@@ -2,8 +2,6 @@
 # 
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
 class Celestine::Svg < Celestine::Drawable
-  alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
-
   TAG = "svg"
 
   include_options Celestine::Modules::Body
@@ -17,10 +15,9 @@ class Celestine::Svg < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  @objects_io = IO::Memory.new
   @defines_io = IO::Memory.new
 
-  property view_box : ViewBox?
+  property view_box : Celestine::ViewBox?
   property shape_rendering : String?
 
   def initialize
@@ -43,14 +40,13 @@ class Celestine::Svg < Celestine::Drawable
     draw_attributes(io)
 
     
-    if !@defines_io.empty? || !@objects_io.empty? || !inner_elements.empty?
+    if !@defines_io.empty? || !inner_elements.empty?
       io << %Q[>]
       if !@defines_io.empty?
         io << %Q[<defs>]
         io << @defines_io
         io << %Q[</defs>]
       end
-      io << @objects_io
       io << inner_elements
       io << %Q[</#{TAG}>]
     else

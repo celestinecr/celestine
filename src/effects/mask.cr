@@ -7,13 +7,10 @@ class Celestine::Mask < Celestine::Drawable
   include_options Celestine::Modules::Filter
   include_options Celestine::Modules::Body
 
-  @objects_io = IO::Memory.new
-
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    inner_elements << @objects_io
     if inner_elements.empty?
       io << %Q[/>]
     else

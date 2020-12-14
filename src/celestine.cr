@@ -27,6 +27,7 @@ require "./effects/filter"
 require "./effects/filters/basic"
 require "./effects/filters/**"
 require "./effects/marker"
+require "./effects/pattern"
 
 require "./math/**"
 
@@ -36,6 +37,7 @@ alias SIFNumber = (String | IFNumber)
 
 # Main module for Celestine
 module Celestine
+  alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
   VERSION = {{ `shards version #{__DIR__}`.chomp.stringify }}
 
   # Main draw function for DSL
@@ -77,25 +79,32 @@ module Celestine::Meta
             drawable
           end
 
-          # Create a mask object and add it to this `Celestine::Svg`
+          # Create a mask object and add it to this `Celestine::Svg`'s defs
           def mask(&block : Celestine::Mask -> Celestine::Mask)
             mask = yield Celestine::Mask.new
             define(mask)
             mask
           end
 
-          # Create a mask object and add it to this `Celestine::Svg`
+          # Create a marker object and add it to this `Celestine::Svg`'s defs
           def marker(&block : Celestine::Marker -> Celestine::Marker)
             marker = yield Celestine::Marker.new
             define(marker)
             marker
           end
 
-          # Create a mask object and add it to this `Celestine::Svg`
+          # Create a filter object and add it to this `Celestine::Svg`'s defs
           def filter(&block : Celestine::Filter -> Celestine::Filter)
             filter = yield Celestine::Filter.new
             define(filter)
             filter
+          end
+
+          # Create a pattern object and add it to this `Celestine::Svg`'s defs
+          def pattern(&block : Celestine::Pattern -> Celestine::Pattern)
+            pattern = yield Celestine::Pattern.new
+            define(pattern)
+            pattern
           end
 
         # Adds methods without the define parameter.
@@ -172,7 +181,7 @@ module Celestine::Meta
 
       # Adds a new drawable to this context's objects
       def <<(drawable : Celestine::Drawable)
-        drawable.draw(@objects_io)
+        drawable.draw(inner_elements)
         drawable
       end
     end
@@ -200,6 +209,11 @@ module Celestine::Meta
 
   # Class which acts like a group, but applies masking to another drawable.
   class ::Celestine::Marker
+    include Celestine::Meta::Context::Methods
+  end
+
+  # Class which acts like a group, but applies masking to another drawable.
+  class ::Celestine::Pattern
     include Celestine::Meta::Context::Methods
   end
 end
