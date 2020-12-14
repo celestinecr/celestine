@@ -41,7 +41,7 @@ module Celestine::Modules::StrokeFill
   make_units dash_offset
 
   
-  # The offset to begin dashes on
+  # How lines should be joined
   # 
   # Potential Values: `arcs | bevel |miter | miter-clip | round`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin)
@@ -100,6 +100,14 @@ module Celestine::Modules::StrokeFill
   # * Potential Values: `none | non-scaling-stroke | non-scaling-size | non-rotation | fixed-position`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/vector-effect)
   property vector_effect : String?
+
+  def set_fill(pattern : Celestine::Pattern)
+    @fill = %Q[url(##{pattern.id})]
+  end
+
+  def set_stroke(pattern : Celestine::Pattern)
+    @stroke = %Q[url(##{pattern.id})]
+  end
 
   # Draws the stroke and fill attributes out to an `IO`
   def stroke_fill_attribute(io : IO)

@@ -14,18 +14,13 @@ class Celestine::Group < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  # Holds objects to be written to the group
-  @objects_io = IO::Memory.new
-
   # Draws the group to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
-
-
-    if !@objects_io.empty? || !inner_elements.empty?
+    
+    if !inner_elements.empty?
       io << %Q[>]
-      io << @objects_io
       io << inner_elements
       io << %Q[</#{TAG}>]
     else

@@ -19,9 +19,6 @@ class Celestine::Anchor < Celestine::Drawable
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/href)
   property href : String? = nil
 
-  # Holds objects to be written to the group
-  @objects_io = IO::Memory.new
-
   # Draws the group to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]    
@@ -30,9 +27,8 @@ class Celestine::Anchor < Celestine::Drawable
     io << %Q[href="#{href}" ] if href
 
 
-    if !@objects_io.empty? || !inner_elements.empty?
+    if !inner_elements.empty?
       io << %Q[>]
-      io << @objects_io
       io << inner_elements
       io << %Q[</#{TAG}>]
     else

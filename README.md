@@ -368,6 +368,13 @@ Real world examples made with Celestine. All of these are flat SVG files with no
  * [Chromatic Aberration](https://codepen.io/redcodefinal/pen/zYKqpBZ)
  * [Polar Spins](https://codepen.io/redcodefinal/pen/RwGaxRY)
 
+## Community Examples
+
+These are some examples of cool stuff other people have done with Celestine!
+
+ * [sunrise](https://sunrise.sugarfi.dev) @ [github](https://github.com/sugarfi/sunrise) by [SugarFi](https://sugarfi.dev)
+   * Uses the very strong Turbulence and DisplacementMap filters to create a very neat water effect.
+
 ## Development
 
 HMU via issues or make a pull request or something I don't know.
