@@ -22,7 +22,7 @@ class Celestine::Animate::Transform::Translate < Celestine::Drawable
     # Puncuate attributes with a space 
     draw_attributes(io)
 
-    io << %Q[attributeName="translate" ]
+    io << %Q[attributeName="transform" ]
     io << %Q[attributeType="XML" ]
     io << %Q[type="translate" ]
     io << %Q[repeatCount="#{repeat_count}" ]                                 if repeat_count

@@ -22,9 +22,9 @@ class Celestine::Animate::Transform::Scale < Celestine::Drawable
     # Puncuate attributes with a space 
     draw_attributes(io)
 
-    io << %Q[attributeName="scale" ]
+    io << %Q[attributeName="transform" ]
     io << %Q[attributeType="XML" ]
-    io << %Q[type="translate" ]
+    io << %Q[type="scale" ]
     io << %Q[repeatCount="#{repeat_count}" ]                                 if repeat_count
     io << %Q[repeatDur="#{repeat_duration}#{repeat_duration_units}" ]        if repeat_duration
     io << %Q[dur="#{duration}#{duration_units}" ]                            if duration
