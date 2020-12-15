@@ -439,3 +439,4 @@ HMU via issues or make a pull request or something I don't know.
 ## Contributors
 
 - [Ian Rash](https://github.com/redcodefinal) - creator and maintainer
+- [sugarfi](https://github.com/sugarfi) - contributor
