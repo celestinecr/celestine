@@ -20,7 +20,7 @@ class Celestine::Animate::Transform::SkewY < Celestine::Drawable
 
     io << %Q[attributeName="skewY" ]
     io << %Q[attributeType="XML" ]
-    io << %Q[type="translate" ]
+    io << %Q[type="skewY" ]
     io << %Q[repeatCount="#{repeat_count}" ]                                 if repeat_count
     io << %Q[repeatDur="#{repeat_duration}#{repeat_duration_units}" ]        if repeat_duration
     io << %Q[dur="#{duration}#{duration_units}" ]                            if duration
