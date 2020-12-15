@@ -20,7 +20,7 @@ require "./drawables/image"
 
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
-require "./effects/animation/transform/rotate"
+require "./effects/animation/transform/*"
 
 require "./effects/mask"
 require "./effects/filter"
