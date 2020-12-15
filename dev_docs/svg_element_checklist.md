@@ -10,7 +10,7 @@
 | ✓ | a | [anchor](https://docs.celestine.dev/Celestine/Meta/Context.html#anchor(define=false,&block:Celestine::Anchor-%3ECelestine::Anchor):Celestine::Anchor-instance-method)||
 | ✓ | animate |[animate](https://docs.celestine.dev/Celestine/Modules/Animate.html#animate(&block:Proc(Celestine::Animate,Nil))-instance-method)||
 | ✓ | animateMotion |[animate_motion](https://docs.celestine.dev/Celestine/Modules/Animate/Motion.html#animate_motion(&block:Celestine::Animate::Motion-%3ECelestine::Animate::Motion)-instance-method)||
-| / | animateTransform |[animate_transform_{type}](https://docs.celestine.dev/Celestine/Modules/Animate/Transform.html)||
+| ✓ | animateTransform |[animate_transform_{type}](https://docs.celestine.dev/Celestine/Modules/Animate/Transform.html) thanks [sugarfi](https://github.com/sugarfi)!||
 | ✓ | circle |[circle](https://docs.celestine.dev/Celestine/Meta/Context.html#circle(define=false,&block:Celestine::Circle-%3ECelestine::Circle):Celestine::Circle-instance-method)||
 | ^ | clipPath |||
 | ✓ | defs |[define](https://docs.celestine.dev/Celestine/Meta/Context.html#define(drawable:Celestine::Drawable)-instance-method)||
