@@ -10,7 +10,7 @@
 | ✓ | a | [anchor](https://docs.celestine.dev/Celestine/Meta/Context.html#anchor(define=false,&block:Celestine::Anchor-%3ECelestine::Anchor):Celestine::Anchor-instance-method)||
 | ✓ | animate |[animate](https://docs.celestine.dev/Celestine/Modules/Animate.html#animate(&block:Proc(Celestine::Animate,Nil))-instance-method)||
 | ✓ | animateMotion |[animate_motion](https://docs.celestine.dev/Celestine/Modules/Animate/Motion.html#animate_motion(&block:Celestine::Animate::Motion-%3ECelestine::Animate::Motion)-instance-method)||
-| / | animateTransform |[animate_transform_{type}](https://docs.celestine.dev/Celestine/Modules/Animate/Transform.html)||
+| ✓ | animateTransform |[animate_transform_{type}](https://docs.celestine.dev/Celestine/Modules/Animate/Transform.html) thanks [sugarfi](https://github.com/sugarfi)!||
 | ✓ | circle |[circle](https://docs.celestine.dev/Celestine/Meta/Context.html#circle(define=false,&block:Celestine::Circle-%3ECelestine::Circle):Celestine::Circle-instance-method)||
 | ^ | clipPath |||
 | ✓ | defs |[define](https://docs.celestine.dev/Celestine/Meta/Context.html#define(drawable:Celestine::Drawable)-instance-method)||
@@ -49,17 +49,16 @@
 | = | hatchpath ||Doesn't seem implemented by browsers|
 | ✓ | image |[image](https://docs.celestine.dev/Celestine/Meta/Context.html#image(define=false,&block:Celestine::Image-%3ECelestine::Image):Celestine::Image-instance-method)||
 | ✘ | line ||Seems covered by path....|
-| ^ | linearGradient |||
+| ✓ | linearGradient |||
 | / | marker |[marker](https://docs.celestine.dev/Celestine/Meta/Context.html#marker(&block:Celestine::Marker-%3ECelestine::Marker)-instance-method)||
 | ✓ | mask |[mask](https://docs.celestine.dev/Celestine/Meta/Context.html#mask(&block:Celestine::Mask-%3ECelestine::Mask)-instance-method)||
-| ^ | linearGradient ||
 | ^ | metadata ||
 | ✓ | mpath |[Celestine::Animate::Motion#mpath](https://docs.celestine.dev/Celestine/Animate/Motion.html#mpath(&block:Proc(Celestine::Path,Nil))-instance-method)||
 | ✓ | path |[path](https://docs.celestine.dev/Celestine/Meta/Context.html#path(define=false,&block:Celestine::Path-%3ECelestine::Path):Celestine::Path-instance-method)||
-| ^ | pattern |||
+| ✓ | pattern |||
 | ✘ | polygon ||Seems covered by path|
 | ✘ | polyline ||Seems covered by path|
-| ^ | radialGradient ||
+| ✓ | radialGradient ||
 | ✓ | rect |[rectangle](https://docs.celestine.dev/Celestine/Meta/Context.html#rectangle(define=false,&block:Celestine::Rectangle-%3ECelestine::Rectangle):Celestine::Rectangle-instance-method)||
 | ✘ | script ||Not sure if this should be implemented...|
 | ^ | set ||This seems useful for simple interactivity|
