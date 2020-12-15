@@ -19,8 +19,8 @@ module Celestine::Modules::Animate::Transform
     animate
   end
 
-  def animate_transform_translate(&block : Proc(Celestine::Animate::Transform::Translation, Nil))
-    animate = yield Celestine::Animate::Transform::Rotate.new
+  def animate_transform_translate(&block : Proc(Celestine::Animate::Transform::Translate, Nil))
+    animate = yield Celestine::Animate::Transform::Translate.new
     animate.draw(inner_elements)
     animate
   end
