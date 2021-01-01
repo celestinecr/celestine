@@ -4,8 +4,6 @@
 class Celestine::Image < Celestine::Drawable
   TAG = "image"
 
-  # TODO: Add these
-
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::Mask

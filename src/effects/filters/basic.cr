@@ -4,4 +4,14 @@ abstract class Celestine::Filter::Basic < Celestine::Drawable
   include Celestine::Modules::Animate
 
   property result : String?
+
+  module Attrs
+    RESULT = "result"
+  end
+
+  macro inherited
+    module Attrs
+      include Celestine::Filter::Basic::Attrs
+    end
+  end
 end

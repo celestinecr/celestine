@@ -8,7 +8,8 @@ class Celestine::Filter::Blur < Celestine::Filter::Basic
   #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String? = nil
-  # The amount of blurring that should occur
+  
+  # The amount of bluring that should occur
   #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stdDeviation)
   make_units standard_deviation

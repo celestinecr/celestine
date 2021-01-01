@@ -36,7 +36,8 @@ describe Celestine::Filter do
   make_filter_test(Celestine::Filter::Composite, composite)
   make_filter_test(Celestine::Filter::Tile, tile)
   make_filter_test(Celestine::Filter::Image, image)
-
+  make_filter_test(Celestine::Filter::DropShadow, drop_shadow)
+  
   it "should properly format color_matrix values" do
     celestine_svg = Celestine.draw do |ctx|
       ctx.filter do |f|
