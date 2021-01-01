@@ -8,7 +8,7 @@ class Celestine::Anchor < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
-  
+
   # Do not allow these to add their ATTRS since they are their own elements
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
@@ -21,11 +21,10 @@ class Celestine::Anchor < Celestine::Drawable
 
   # Draws the group to an `IO`
   def draw(io : IO) : Nil
-    io << %Q[<#{TAG} ]    
+    io << %Q[<#{TAG} ]
     draw_attributes(io)
 
     io << %Q[href="#{href}" ] if href
-
 
     if !inner_elements.empty?
       io << %Q[>]
@@ -34,6 +33,5 @@ class Celestine::Anchor < Celestine::Drawable
     else
       io << %Q[/>]
     end
-
   end
 end

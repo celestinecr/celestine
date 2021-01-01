@@ -6,7 +6,6 @@ class Celestine::Image < Celestine::Drawable
 
   # TODO: Add these
 
-
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::Mask
@@ -22,17 +21,16 @@ class Celestine::Image < Celestine::Drawable
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/href)
   property href : String? = nil
   # How the image should be rendered.
-  # 
+  #
   # * Potential values: `auto | optimizeSpeed | optimizeQuality`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/image-rendering)
   property rendering : String? = nil
-  
+
   # Draws the image to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
-    # Puncuate attributes with a space 
+    # Punctuate attributes with a space
     draw_attributes(io)
-
 
     io << %Q[href="#{href}" ] if href
     io << %Q[image-rendering="#{rendering}" ] if rendering
@@ -45,4 +43,4 @@ class Celestine::Image < Celestine::Drawable
       io << "</#{TAG}>"
     end
   end
-end  
+end

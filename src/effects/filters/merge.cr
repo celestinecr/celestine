@@ -1,9 +1,9 @@
 # Merges one or more filters into a single result
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feMerge)
 # * [feMergeNode](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feMergeNode)
 class Celestine::Filter::Merge < Celestine::Filter::Basic
-  TAG = "feMerge"
+  TAG      = "feMerge"
   NODE_TAG = "feMergeNode"
 
   # Adds a new `feMergeNode` to this filter.
@@ -14,7 +14,6 @@ class Celestine::Filter::Merge < Celestine::Filter::Basic
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
-
 
     io << %Q[result="#{result}" ] if result
 

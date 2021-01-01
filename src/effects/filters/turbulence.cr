@@ -1,32 +1,32 @@
 # Merges one or mopre filters into a single result
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feTurbulence)
 class Celestine::Filter::Turbulence < Celestine::Filter::Basic
   TAG = "feTurbulence"
 
   # The base frequency parameter for the noise function
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseFrequency)
   property base_freq : IFNumber?
 
   # The number of octaves for the noise function
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/baseFrequency)
   property num_octaves : IFNumber?
 
   # The seed for the noise function
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/seed)
   property seed : IFNumber?
 
   # Type of noise function
-  # 
+  #
   # * Pontential Values: `fractalNoise | turbulence`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/type#feTurbulence)
   property type : String?
 
   # Defines how the Perlin Noise tiles behave at the border
-  # 
+  #
   # * Pontential Values: `noStitch | stitch`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stitchTiles)
   property stitch_tiles : String?
@@ -35,7 +35,6 @@ class Celestine::Filter::Turbulence < Celestine::Filter::Basic
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
-
 
     io << %Q[result="#{result}" ] if result
 

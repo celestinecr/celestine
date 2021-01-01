@@ -1,5 +1,5 @@
 # Draws and holds information for text
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/text)
 class Celestine::Text < Celestine::Drawable
   TAG = "text"
@@ -39,7 +39,7 @@ class Celestine::Text < Celestine::Drawable
   make_units length
 
   # How the length should be adjusted.
-  # 
+  #
   # * Potential values: `spacing | spacingAndGlyphs`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/lengthAdjust)
   property length_adjust : String?
@@ -86,11 +86,11 @@ class Celestine::Text < Celestine::Drawable
   make_units letter_spacing
 
   # Changes where the natural anchor is for the text.
-  # 
+  #
   # * Potential Values: `auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline)
   property dominant_baseline : String?
-  
+
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
@@ -113,7 +113,6 @@ class Celestine::Text < Celestine::Drawable
     io << %Q[#{Attrs::FONT_VARIANT}="#{font_variant}" ] if font_variant
     io << %Q[#{Attrs::FONT_WEIGHT}="#{font_weight}" ] if font_weight
     io << %Q[#{Attrs::LETTER_SPACING}="#{letter_spacing}#{letter_spacing_units}" ] if letter_spacing
-
 
     inner_elements << text if text
     if inner_elements.empty?

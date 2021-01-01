@@ -7,12 +7,12 @@ module Celestine::Modules::Body
 
   # Draws the body and position attributes to an `IO`
   def body_attribute(io)
-    io << %Q[width="#{width}#{width_units}" ]    if width
-    io << %Q[height="#{height}#{height_units}" ]    if height 
+    io << %Q[width="#{width}#{width_units}" ] if width
+    io << %Q[height="#{height}#{height_units}" ] if height
   end
 
   module Attrs
-    WIDTH = "width"
+    WIDTH  = "width"
     HEIGHT = "height"
   end
 end

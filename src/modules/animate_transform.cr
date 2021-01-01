@@ -1,15 +1,14 @@
 # Gives drawables access to the animate_transform DSL
 module Celestine::Modules::Animate::Transform
   module Attrs
-    ATTRIBUTE_NAME = "attributeName"
-    ATTRIBUTE_TYPE = "attributeType"
+    ATTRIBUTE_NAME  = "attributeName"
     ATTRIBUTE_TYPES = ["rotate", "translate", "scale", "skewX", "skewY"]
-    REPEAT_COUNT = "repeatCount"
+    REPEAT_COUNT    = "repeatCount"
     REPEAT_DURATION = "repeatDur"
-    DURATION = "dur"
-    FROM = "from"
-    TO = "to"
-    BY = "by"
+    DURATION        = "dur"
+    FROM            = "from"
+    TO              = "to"
+    BY              = "by"
   end
 
   # Adds a `Celestine::Animate::Transform` to the calling drawable's inner elements.
@@ -24,7 +23,7 @@ module Celestine::Modules::Animate::Transform
     animate.draw(inner_elements)
     animate
   end
-  
+
   def animate_transform_scale(&block : Proc(Celestine::Animate::Transform::Scale, Nil))
     animate = yield Celestine::Animate::Transform::Scale.new
     animate.draw(inner_elements)
@@ -42,6 +41,7 @@ module Celestine::Modules::Animate::Transform
     animate.draw(inner_elements)
     animate
   end
+
   def animate_transform_scale(&block : Proc(Celestine::Animate::Transform::Scale, Nil))
     animate = yield Celestine::Animate::Transform::Scale.new
     animate.draw(inner_elements)

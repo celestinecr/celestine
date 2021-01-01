@@ -13,7 +13,7 @@ class Celestine::Pattern < Celestine::Drawable
   property view_box : Celestine::ViewBox?
 
   @pattern_transform_meta = Celestine::Drawable::Transform.new
-  
+
   def pattern_transform(&block : Celestine::Drawable::Transform -> Celestine::Drawable::Transform)
     meta = yield Celestine::Drawable::Transform.new
     unless meta.empty?
@@ -35,12 +35,11 @@ class Celestine::Pattern < Celestine::Drawable
 
     io << %Q[preserveAspectRatio="#{preserve_aspect_ratio}" ] if preserve_aspect_ratio
     if vb = view_box
-      io << %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ] 
+      io << %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ]
     end
     io << %Q[patternUnits="#{pattern_units}" ] if pattern_units
     io << %Q[patternContentUnits="#{pattern_content_units}" ] if pattern_content_units
     io << %Q[href="#{href}" ] if href
-
 
     if inner_elements.empty?
       io << %Q[/>]
@@ -52,10 +51,10 @@ class Celestine::Pattern < Celestine::Drawable
   end
 
   module Attrs
-    HREF = "href"
+    HREF                  = "href"
     PRESERVE_ASPECT_RATIO = "preserveAspectRatio"
-    PATTERN_UNITS = "patternUnits"
+    PATTERN_UNITS         = "patternUnits"
     PATTERN_CONTENT_UNITS = "patternContentUnits"
-    VIEW_BOX = "viewBox"
+    VIEW_BOX              = "viewBox"
   end
 end

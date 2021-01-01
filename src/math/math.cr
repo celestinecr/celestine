@@ -1,4 +1,5 @@
 require "./point"
+
 module Celestine::Math
   def self.rotate_point(x, y, ox, oy, deg) : Celestine::FPoint
     angle = deg * (::Math::PI/180)

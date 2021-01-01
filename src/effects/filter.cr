@@ -97,7 +97,6 @@ class Celestine::Filter < Celestine::Drawable
     composite_filter.draw(inner_elements)
     composite_filter
   end
-  
 
   # Adds a `Celestine::Filter::SpecularLighting` to the calling filter's inner elements.
   def specular_lighting(&block : Celestine::Filter::SpecularLighting -> Celestine::Filter::SpecularLighting)
@@ -106,22 +105,20 @@ class Celestine::Filter < Celestine::Drawable
     specular_lighting_filter
   end
 
-    # Adds a `Celestine::Filter::Image` to the calling filter's inner elements.
-    def image(&block : Celestine::Filter::Image -> Celestine::Filter::Image)
-      image_filter = yield Celestine::Filter::Image.new
-      image_filter.draw(inner_elements)
-      image_filter
-    end
+  # Adds a `Celestine::Filter::Image` to the calling filter's inner elements.
+  def image(&block : Celestine::Filter::Image -> Celestine::Filter::Image)
+    image_filter = yield Celestine::Filter::Image.new
+    image_filter.draw(inner_elements)
+    image_filter
+  end
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-
-
     io << %Q[filterUnits="#{filter_units}" ] if filter_units
     io << %Q[primitiveUnits="#{primitive_units}" ] if primitive_units
-    
+
     if inner_elements.empty?
       io << %Q[/>]
     else

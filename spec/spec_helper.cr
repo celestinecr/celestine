@@ -146,4 +146,3 @@ macro make_filter_test(filter_class, filter_method)
     parser.free
   end
 end
-

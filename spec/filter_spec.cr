@@ -1,6 +1,6 @@
 describe Celestine::Filter do
   it "should add a filter element" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.filter do |f|
         f
       end
@@ -37,16 +37,15 @@ describe Celestine::Filter do
   make_filter_test(Celestine::Filter::Tile, tile)
   make_filter_test(Celestine::Filter::Image, image)
 
-
   it "should properly format color_matrix values" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.filter do |f|
         f.color_matrix do |f|
-          10.times do 
+          10.times do
             f.values << 0
             f.values << 1
           end
-      
+
           f
         end
         f
@@ -59,12 +58,12 @@ describe Celestine::Filter do
         child_element.is_tag_defs?.should eq true
         if child_element = child_element.child
           child_element.is_tag_filter?.should eq true
-        if child_element = child_element.child
-          child_element.is_tag_fecolormatrix?.should eq true
-          child_element.attribute_by("values").should eq "0 1 0 1 0, 1 0 1 0 1, 0 1 0 1 0, 1 0 1 0 1"
-        else
-          raise "no child"
-        end
+          if child_element = child_element.child
+            child_element.is_tag_fecolormatrix?.should eq true
+            child_element.attribute_by("values").should eq "0 1 0 1 0, 1 0 1 0 1, 0 1 0 1 0, 1 0 1 0 1"
+          else
+            raise "no child"
+          end
         else
           raise "no child"
         end
@@ -74,7 +73,6 @@ describe Celestine::Filter do
     end
     parser.free
   end
-
 
   {% for char in ["r", "g", "b", "a"] %}
     it "should add a feFunc{{char.upcase.id}} element to feComponentTransfer" do
@@ -116,11 +114,11 @@ describe Celestine::Filter do
   {% end %}
 
   it "should add a merge node filter element" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.filter do |f|
         f.merge do |b|
           b.add_node(Celestine::Filter::SOURCE_GRAPHIC)
-          b 
+          b
         end
         f
       end
@@ -132,16 +130,16 @@ describe Celestine::Filter do
         child_element.is_tag_defs?.should eq true
         if child_element = child_element.child
           child_element.is_tag_filter?.should eq true
-        if child_element = child_element.child
-          child_element.is_tag_femerge?.should eq true
           if child_element = child_element.child
-            child_element.is_tag_femergenode?.should eq true
+            child_element.is_tag_femerge?.should eq true
+            if child_element = child_element.child
+              child_element.is_tag_femergenode?.should eq true
+            else
+              raise "no child"
+            end
           else
             raise "no child"
           end
-        else
-          raise "no child"
-        end
         else
           raise "no child"
         end
@@ -153,11 +151,11 @@ describe Celestine::Filter do
   end
 
   it "should add a point light element to specular lighting" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.filter do |f|
         f.specular_lighting do |b|
           b.add_point_light(0, 1, 2)
-          b 
+          b
         end
         f
       end
@@ -169,16 +167,16 @@ describe Celestine::Filter do
         child_element.is_tag_defs?.should eq true
         if child_element = child_element.child
           child_element.is_tag_filter?.should eq true
-        if child_element = child_element.child
-          child_element.is_tag_fespecularlighting?.should eq true
           if child_element = child_element.child
-            child_element.is_tag_fepointlight?.should eq true
+            child_element.is_tag_fespecularlighting?.should eq true
+            if child_element = child_element.child
+              child_element.is_tag_fepointlight?.should eq true
+            else
+              raise "no child"
+            end
           else
             raise "no child"
           end
-        else
-          raise "no child"
-        end
         else
           raise "no child"
         end
@@ -190,11 +188,11 @@ describe Celestine::Filter do
   end
 
   it "should add a spot light element to specular lighting" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.filter do |f|
         f.specular_lighting do |b|
           b.add_spot_light(0, 1, 2, 4, 5, 6, 7)
-          b 
+          b
         end
         f
       end
@@ -206,16 +204,16 @@ describe Celestine::Filter do
         child_element.is_tag_defs?.should eq true
         if child_element = child_element.child
           child_element.is_tag_filter?.should eq true
-        if child_element = child_element.child
-          child_element.is_tag_fespecularlighting?.should eq true
           if child_element = child_element.child
-            child_element.is_tag_fespotlight?.should eq true
+            child_element.is_tag_fespecularlighting?.should eq true
+            if child_element = child_element.child
+              child_element.is_tag_fespotlight?.should eq true
+            else
+              raise "no child"
+            end
           else
             raise "no child"
           end
-        else
-          raise "no child"
-        end
         else
           raise "no child"
         end
@@ -227,11 +225,11 @@ describe Celestine::Filter do
   end
 
   it "should add a distant light element to specular lighting" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.filter do |f|
         f.specular_lighting do |b|
           b.add_distant_light(0, 1)
-          b 
+          b
         end
         f
       end
@@ -243,16 +241,16 @@ describe Celestine::Filter do
         child_element.is_tag_defs?.should eq true
         if child_element = child_element.child
           child_element.is_tag_filter?.should eq true
-        if child_element = child_element.child
-          child_element.is_tag_fespecularlighting?.should eq true
           if child_element = child_element.child
-            child_element.is_tag_fedistantlight?.should eq true
+            child_element.is_tag_fespecularlighting?.should eq true
+            if child_element = child_element.child
+              child_element.is_tag_fedistantlight?.should eq true
+            else
+              raise "no child"
+            end
           else
             raise "no child"
           end
-        else
-          raise "no child"
-        end
         else
           raise "no child"
         end

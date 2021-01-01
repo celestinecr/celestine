@@ -1,6 +1,6 @@
 describe Celestine::Marker do
   it "should add a marker element" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.marker do |m|
         m
       end
@@ -23,7 +23,7 @@ describe Celestine::Marker do
   end
 
   it "should add a marker element and inner elements" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.marker do |m|
         m.rectangle { |r| r }
         m

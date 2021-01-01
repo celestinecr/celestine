@@ -1,7 +1,7 @@
 # Gives a drawable access to the trasnform DSL
 module Celestine::Modules::Transform
   @transform_meta = Celestine::Drawable::Transform.new
-  
+
   def transform(&block : Celestine::Drawable::Transform -> Celestine::Drawable::Transform)
     meta = yield Celestine::Drawable::Transform.new
     unless meta.empty?
@@ -16,7 +16,7 @@ module Celestine::Modules::Transform
       io << %Q[" ]
     end
   end
-  
+
   module Attrs
     TRANSFORM = "transform"
   end

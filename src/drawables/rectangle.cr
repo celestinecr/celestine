@@ -1,5 +1,5 @@
 # Draws and holds information for rectangles
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/rect)
 class Celestine::Rectangle < Celestine::Drawable
   TAG = "rect"
@@ -26,9 +26,8 @@ class Celestine::Rectangle < Celestine::Drawable
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-
     io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x
-    
+
     if inner_elements.empty?
       io << %Q[/>]
     else

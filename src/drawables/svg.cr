@@ -1,5 +1,5 @@
 # Draws and holds information for SVG images
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
 class Celestine::Svg < Celestine::Drawable
   TAG = "svg"
@@ -38,7 +38,6 @@ class Celestine::Svg < Celestine::Drawable
 
     draw_attributes(io)
 
-    
     if !@defines_io.empty? || !inner_elements.empty?
       io << %Q[>]
       if !@defines_io.empty?

@@ -1,11 +1,11 @@
 # Fill a target rectangle with a repeated, tiled pattern of an input image
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feTile)
 class Celestine::Filter::Tile < Celestine::Filter::Basic
   TAG = "feTile"
 
   # The first input source
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String? = nil
 
@@ -13,7 +13,6 @@ class Celestine::Filter::Tile < Celestine::Filter::Basic
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
-
 
     io << %Q[in="#{input}" ] if input
     io << %Q[result="#{result}" ] if result
