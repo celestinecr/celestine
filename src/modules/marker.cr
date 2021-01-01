@@ -30,16 +30,14 @@ module Celestine::Modules::Marker
   end
 
   def marker_attribute(io : IO)
-    
     io << %Q[marker-start="url('##{@marker_start_id}')" ] if @marker_start_id
     io << %Q[marker-mid="url('##{@marker_mid_id}')" ] if @marker_mid_id
     io << %Q[marker-end="url('##{@marker_end_id}')" ] if @marker_end_id
-
   end
 
   module Attrs
     START = "marker-start"
-    MID = "marker-mid"
-    END = "marker-end"
+    MID   = "marker-mid"
+    END   = "marker-end"
   end
 end

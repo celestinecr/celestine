@@ -8,10 +8,10 @@ module Celestine::Logo
   SHADE_OFFSET       =  65
   HEX_RADIUS         = 150
   COLORS             = ["#73B8FC", "#3799FB", "#0466C8", "#0353A4", "#023E7D", "#002855", "#001233"]
-  SCREEN_SIZE = 500
-  BLEND_MODE = "difference"
-  PRECISION = 1
-  ARC_PRECISION = 4
+  SCREEN_SIZE        = 500
+  BLEND_MODE         = "difference"
+  PRECISION          = 1
+  ARC_PRECISION      = 4
 
   def self.make_arc(start_angle, end_angle, distance, thickness = 10, large = false, flip = false)
     p1 = Celestine::FPoint.new(0 + 250, distance + 250)
@@ -122,24 +122,20 @@ File.open("./logo/logo.svg", "w+") do |f|
       animate = Celestine::Animate.new
       animate.attribute = "y"
 
-
       animate.values << 300
       animate.values << 5
 
       animate.key_times << 0.0
       animate.key_times << 1.0
 
-
       animate.custom_attrs["keySplines"] = "0.5 0 0.5 1 ;"
-      
-
 
       animate.duration = 3 + (index*0.5)
       animate.freeze = true
 
       ctx.use(SHADE_L_ID + index.to_s) do |u|
         animate.draw(u.inner_elements)
-        #u.style["mix-blend-mode"] = BLEND_MODE
+        # u.style["mix-blend-mode"] = BLEND_MODE
         u
       end
 
@@ -150,7 +146,7 @@ File.open("./logo/logo.svg", "w+") do |f|
           t
         end
         animate.draw(u.inner_elements)
-        #u.style["mix-blend-mode"] = BLEND_MODE
+        # u.style["mix-blend-mode"] = BLEND_MODE
         u
       end
     end

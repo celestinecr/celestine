@@ -1,17 +1,17 @@
 # Composites two filter sources
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feFlood)
 class Celestine::Filter::Flood < Celestine::Filter::Basic
   TAG = "feFlood"
-  
+
   # The color of the flood fill
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-color)
   # TODO: Change this to `color`
   property flood_color : String?
 
   # The opacity of the flood fill
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/flood-opacity)
   # TODO: Change this to `opacity`
   property flood_opacity : IFNumber?
@@ -36,7 +36,7 @@ class Celestine::Filter::Flood < Celestine::Filter::Basic
   end
 
   module Attrs
-    FLOOD_COLOR = "flood-color"
+    FLOOD_COLOR   = "flood-color"
     FLOOD_OPACITY = "flood-opacity"
   end
 end

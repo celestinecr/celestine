@@ -1,4 +1,4 @@
-# A class which represents an SVG path. Methods starting with a_ use absolute coordinates, while r_ methods require relative coordinates. 
+# A class which represents an SVG path. Methods starting with a_ use absolute coordinates, while r_ methods require relative coordinates.
 #
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path)
 class Celestine::Path < Celestine::Drawable
@@ -9,12 +9,12 @@ class Celestine::Path < Celestine::Drawable
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
   include_options Celestine::Modules::Marker
-  
+
   # Do not allow these to add their ATTRS since they are their own elements
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
-  
+
   # Storage for path code points
   @code_points = IO::Memory.new
   # Finalized code
@@ -105,14 +105,14 @@ class Celestine::Path < Celestine::Drawable
     @code_points << "z"
   end
 
-  # Finalized path code points. 
+  # Finalized path code points.
   #
   # * [Understanding Path Code](https://css-tricks.com/svg-path-syntax-illustrated-guide/)
   def code
     @code = @code_points.to_s if @code.empty?
     @code
   end
-  
+
   def code=(other : String)
     @code = other
   end
@@ -123,7 +123,7 @@ class Celestine::Path < Celestine::Drawable
     draw_attributes(io)
 
     io << %Q[d="#{code}" ] unless code.empty?
-    
+
     if inner_elements.empty?
       io << %Q[/>]
     else

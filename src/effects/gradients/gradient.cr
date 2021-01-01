@@ -9,8 +9,15 @@ abstract class Celestine::Gradient < Celestine::Drawable
   property spread_method : String?
 
   @gradient_transform_meta = Celestine::Drawable::Transform.new
-  
 
+  def stop(offset, color = nil, opacity = nil)
+    c_stop = Celestine::Gradient::Stop.new
+    c_stop.offset = offset
+    c_stop.color = color
+    c_stop.opacity = opacity
+    c_stop
+  end
+  
   def stop(&block : Celestine::Gradient::Stop -> Celestine::Gradient::Stop)
     c_stop = Celestine::Gradient::Stop.new
     c_stop = yield c_stop
@@ -36,10 +43,10 @@ abstract class Celestine::Gradient < Celestine::Drawable
       io << %Q[" ]
     end
   end
-  
+
   module Attrs
-    HREF = "href"
-    SPREAD_METHOD = "spreadMethod"
+    HREF           = "href"
+    SPREAD_METHOD  = "spreadMethod"
     GRADIENT_UNITS = "gradientUnits"
   end
 end
@@ -60,7 +67,6 @@ class Celestine::Gradient::Stop < Celestine::Drawable
     io << %Q[stop-color="#{color}" ] if color
     io << %Q[stop-opacity="#{opacity}" ] if opacity
 
-
     if inner_elements.empty?
       io << %Q[/>]
     else
@@ -71,8 +77,8 @@ class Celestine::Gradient::Stop < Celestine::Drawable
   end
 
   module Attrs
-    OFFSET = "offset"
-    COLOR = "stop-color"
+    OFFSET  = "offset"
+    COLOR   = "stop-color"
     OPACITY = "stop-opacity"
   end
 end

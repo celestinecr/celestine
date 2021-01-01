@@ -1,11 +1,11 @@
 # Transfers color components
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feComponentTransfer)
 class Celestine::Filter::ComponentTransfer < Celestine::Filter::Basic
   TAG = "feComponentTransfer"
 
   # The input source
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String? = nil
 

@@ -3,9 +3,9 @@ require "./celestine"
 require "procedural_art"
 require "benchmark"
 
-PROC_ART_ITERATIONS = 1000
-SVG_NESTED_DEPTH = 10000
-SVG_MAX_OBJECTS = 1000000
+PROC_ART_ITERATIONS =    1000
+SVG_NESTED_DEPTH    =   10000
+SVG_MAX_OBJECTS     = 1000000
 
 Benchmark.bm do |benchmark|
   benchmark.report("Add objects") do

@@ -1,6 +1,6 @@
 describe Celestine::Pattern do
   it "should add a pattern element via DSL" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.pattern do |f|
         f
       end
@@ -23,7 +23,7 @@ describe Celestine::Pattern do
   end
 
   it "should add a pattern element via DSL and reference it via fill" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       pattern = ctx.pattern do |f|
         f.id = "my-pattern"
         f
@@ -55,7 +55,7 @@ describe Celestine::Pattern do
   end
 
   it "should add a pattern element via DSL and reference it via stroke" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       pattern = ctx.pattern do |f|
         f.id = "my-pattern"
         f

@@ -1,6 +1,6 @@
 describe Celestine::Gradient::Linear do
   it "should add a linear gradient element via DSL" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.linear_gradient do |f|
         f
       end
@@ -23,9 +23,9 @@ describe Celestine::Gradient::Linear do
   end
 
   it "should add a linear gradient element via DSL and add stops as children" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.linear_gradient do |f|
-        f.stop {|s| s}
+        f.stop { |s| s }
         f
       end
     end
@@ -52,7 +52,7 @@ describe Celestine::Gradient::Linear do
   end
 
   it "should add a linear gradient  element via DSL and reference it via fill" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       linear_gradient = ctx.linear_gradient do |f|
         f.id = "my-gradient"
         f
@@ -84,7 +84,7 @@ describe Celestine::Gradient::Linear do
   end
 
   it "should add a linear gradient element via DSL and reference it via stroke" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       linear_gradient = ctx.linear_gradient do |f|
         f.id = "my-gradient"
         f
@@ -116,10 +116,9 @@ describe Celestine::Gradient::Linear do
   end
 end
 
-
 describe Celestine::Gradient::Radial do
   it "should add a radial gradient element via DSL" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.radial_gradient do |f|
         f
       end
@@ -142,9 +141,9 @@ describe Celestine::Gradient::Radial do
   end
 
   it "should add a radial gradient element via DSL and add stops as children" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       ctx.radial_gradient do |f|
-        f.stop {|s| s}
+        f.stop { |s| s }
         f
       end
     end
@@ -171,7 +170,7 @@ describe Celestine::Gradient::Radial do
   end
 
   it "should add a radial gradient  element via DSL and reference it via fill" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       radial_gradient = ctx.radial_gradient do |f|
         f.id = "my-gradient"
         f
@@ -203,7 +202,7 @@ describe Celestine::Gradient::Radial do
   end
 
   it "should add a radial gradient element via DSL and reference it via stroke" do
-    celestine_svg = Celestine.draw do |ctx| 
+    celestine_svg = Celestine.draw do |ctx|
       radial_gradient = ctx.radial_gradient do |f|
         f.id = "my-gradient"
         f

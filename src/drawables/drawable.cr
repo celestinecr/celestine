@@ -1,8 +1,9 @@
-# Basic SVG drawable, inheritted by stuff like circles, rectangles, etc. 
+# Basic SVG drawable, inheritted by stuff like circles, rectangles, etc.
 abstract class Celestine::Drawable
   # A transform class used to interact with the `transform` attribute
   class Transform
     getter objects_io = IO::Memory.new
+
     def matrix(a : Float64, b : Float64, c : Float64, d : Float64, e : Float64, f : Float64)
       @objects_io << "matrix(#{a} #{b} #{c} #{d} #{e} #{f}) "
     end
@@ -27,7 +28,7 @@ abstract class Celestine::Drawable
       @objects_io << "scale(#{x},#{y}) "
     end
 
-    def to_s 
+    def to_s
       @objects_io.to_s
     end
 
@@ -41,7 +42,7 @@ abstract class Celestine::Drawable
 
   # Render ID options
   def id_attribute(io : IO)
-    if id 
+    if id
       io << %Q[id="#{id}" ]
     end
   end
@@ -85,7 +86,6 @@ abstract class Celestine::Drawable
   # TODO: Fix this by making it a string or class type
   property custom_attrs = {} of String => String
 
-  
   # Rendered custom attributes
   def custom_attribute(io : IO)
     custom_attrs.keys.map { |k| %Q[#{k}="#{custom_attrs[k]}"] }.join(io, " ")

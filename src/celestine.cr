@@ -36,7 +36,6 @@ require "./math/**"
 alias IFNumber = (Int32 | Float64)
 alias SIFNumber = (String | IFNumber)
 
-
 # Main module for Celestine
 module Celestine
   alias ViewBox = NamedTuple(x: IFNumber, y: IFNumber, w: IFNumber, h: IFNumber)
@@ -61,7 +60,6 @@ end
 module Celestine::Meta
   # List of classes we want context methods for (such as circle, rectangle, etc). If you need to add a new drawable to Celestine you must add it here as well.
   CLASSES = [Celestine::Svg, Celestine::Circle, Celestine::Rectangle, Celestine::Path, Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text, Celestine::Anchor]
-
 
   # Hold context information for the DSL
   module Context

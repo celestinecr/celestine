@@ -42,13 +42,13 @@ class Celestine::Marker < Celestine::Drawable
   end
 
   module Attrs
-    HEIGHT = "markerHeight"
-    WIDTH = "markerWidth"
-    UNITS = "markerUnits"
-    ORIENTATION = "orient"
+    HEIGHT                = "markerHeight"
+    WIDTH                 = "markerWidth"
+    UNITS                 = "markerUnits"
+    ORIENTATION           = "orient"
     PRESERVE_ASPECT_RATIO = "preserveAspectRatio"
-    REF_X = "refX"
-    REF_Y = "refY"
-    VIEW_BOX = "viewBox"
+    REF_X                 = "refX"
+    REF_Y                 = "refY"
+    VIEW_BOX              = "viewBox"
   end
 end

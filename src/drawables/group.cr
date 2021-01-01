@@ -8,7 +8,7 @@ class Celestine::Group < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
-  
+
   # Do not allow these to add their ATTRS since they are their own elements
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
@@ -18,7 +18,7 @@ class Celestine::Group < Celestine::Drawable
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
-    
+
     if !inner_elements.empty?
       io << %Q[>]
       io << inner_elements
@@ -26,6 +26,5 @@ class Celestine::Group < Celestine::Drawable
     else
       io << %Q[/>]
     end
-
   end
 end

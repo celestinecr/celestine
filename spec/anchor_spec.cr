@@ -1,7 +1,7 @@
 describe Celestine::Anchor do
   it "should use href" do
-    celestine_svg = Celestine.draw do |ctx| 
-      ctx.anchor do |r| 
+    celestine_svg = Celestine.draw do |ctx|
+      ctx.anchor do |r|
         r.href = "/test"
         r
       end
@@ -20,8 +20,8 @@ describe Celestine::Anchor do
   end
 
   it "should be able to use context methods" do
-    celestine_svg = Celestine.draw do |ctx| 
-      ctx.anchor do |r| 
+    celestine_svg = Celestine.draw do |ctx|
+      ctx.anchor do |r|
         r.rectangle do |r|
           r
         end
@@ -41,8 +41,8 @@ describe Celestine::Anchor do
   end
 
   it "should be able to use context methods 2" do
-    celestine_svg = Celestine.draw do |ctx| 
-      ctx.anchor do |r| 
+    celestine_svg = Celestine.draw do |ctx|
+      ctx.anchor do |r|
         3.times do
           r.rectangle do |r|
             r

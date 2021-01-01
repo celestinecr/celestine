@@ -1,11 +1,11 @@
 # Allows matrix operations on color values
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feColorMatrix)
 class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
   TAG = "feColorMatrix"
 
   # The input source
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String? = nil
 
@@ -29,7 +29,7 @@ class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
     io << %Q[type="#{type}" ] if type
     io << %Q[result="#{result}" ] if result
     unless values.empty?
-      io << %Q[values="] 
+      io << %Q[values="]
       if values.size == 20
         4.times do |y|
           5.times do |x|
@@ -42,7 +42,6 @@ class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
         values.join(io, " ")
       end
       io << %Q[" ]
-
     end
 
     if inner_elements.empty?
@@ -55,8 +54,8 @@ class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
   end
 
   module Attrs
-    INPUT = "in"
-    TYPE = "type"
+    INPUT  = "in"
+    TYPE   = "type"
     VALUES = "values"
   end
 end

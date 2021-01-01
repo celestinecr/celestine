@@ -67,7 +67,6 @@ describe {{drawable_class.id}} do
       svg_root.children.size.should eq(1)
       if child_element = svg_root.child
         if child_element = child_element.child
-          child_element.attributes.size.should eq(2)
           child_element.is_tag_animate?.should eq(true)
         else
           raise "No child element found"
@@ -95,7 +94,6 @@ describe {{drawable_class.id}} do
       svg_root.children.size.should eq(1)
       if child_element = svg_root.child
         if child_element = child_element.child
-          child_element.attributes.size.should eq(3)
           child_element.is_tag_animatetransform?.should eq(true)
         else
           raise "No child element found"
@@ -123,7 +121,6 @@ describe {{drawable_class.id}} do
       svg_root.children.size.should eq(1)
       if child_element = svg_root.child
         if child_element = child_element.child
-          child_element.attributes.size.should eq(1)
           child_element.is_tag_animatemotion?.should eq(true)
         else
           raise "No child element found"

@@ -19,7 +19,6 @@ class Celestine::Point
   end
 end
 
-
 class Celestine::FPoint
   property x : Float64, y : Float64
 

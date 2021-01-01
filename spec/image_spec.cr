@@ -1,7 +1,7 @@
 describe Celestine::Image do
   it "should use href" do
-    celestine_svg = Celestine.draw do |ctx| 
-      ctx.image do |r| 
+    celestine_svg = Celestine.draw do |ctx|
+      ctx.image do |r|
         r.href = "/test"
         r
       end

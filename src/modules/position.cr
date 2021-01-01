@@ -19,13 +19,13 @@ end
 module Celestine::Modules::CPosition
   make_units :x
   make_units :y
-  
+
   # Draws the positions attributes out to an `IO`
   def position_attribute(io : IO)
     io << %Q[cx="#{x}#{x_units}" ] if x
     io << %Q[cy="#{y}#{y_units}" ] if y
   end
-  
+
   module Attrs
     X = "cx"
     Y = "cy"

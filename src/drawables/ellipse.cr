@@ -1,7 +1,7 @@
 # Draws and holds information for ellipses
 #
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/ellipse)
-class Celestine::Ellipse < Celestine::Drawable 
+class Celestine::Ellipse < Celestine::Drawable
   TAG = "ellipse"
 
   include_options Celestine::Modules::Transform
@@ -10,7 +10,6 @@ class Celestine::Ellipse < Celestine::Drawable
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
   include_options Celestine::Modules::Marker
-
 
   # Do not allow these to add their ATTRS since they are their own elements
   include Celestine::Modules::Animate
@@ -30,10 +29,9 @@ class Celestine::Ellipse < Celestine::Drawable
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-
     io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x
     io << %Q[ry="#{radius_y}#{radius_y_units}" ] if radius_y
-    
+
     if inner_elements.empty?
       io << %Q[/>]
     else

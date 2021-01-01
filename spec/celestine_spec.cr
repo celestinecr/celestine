@@ -1,16 +1,16 @@
 require "./spec_helper"
 
 module Celestine::Test
-  BLANK_SVG = "<svg xmlns=\"http://www.w3.org/2000/svg\"  />"
+  BLANK_SVG       = "<svg xmlns=\"http://www.w3.org/2000/svg\"  />"
   SVG_TAGS_SIMPLE = {
     "rectangle" => "rect",
-    "circle" => "circle",
-    "ellipse" => "ellipse",
-    "path" => "path",
-    "group" => "g",
-    "image" => "image",
-    "text" => "text",
-    "anchor" => "a"
+    "circle"    => "circle",
+    "ellipse"   => "ellipse",
+    "path"      => "path",
+    "group"     => "g",
+    "image"     => "image",
+    "text"      => "text",
+    "anchor"    => "a",
   }
 
   UNITS = %w[px em rem ch vh vw in cm mm pt pc ex % vmin vmax]

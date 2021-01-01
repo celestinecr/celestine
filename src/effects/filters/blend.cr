@@ -1,21 +1,21 @@
 # Allows blending two filter sources
-# 
+#
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feBlend)
 class Celestine::Filter::Blend < Celestine::Filter::Basic
   TAG = "feBlend"
-  
+
   # The first input
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in)
   property input : String? = nil
-  
+
   # The second input
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/in2)
   property input2 : String? = nil
 
   # The blending type to use.
-  # 
+  #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/mode)
   property mode : String? = nil
 
@@ -39,8 +39,8 @@ class Celestine::Filter::Blend < Celestine::Filter::Basic
   end
 
   module Attrs
-    INPUT = "in"
+    INPUT  = "in"
     INPUT2 = "in2"
-    MODE = "mode"
+    MODE   = "mode"
   end
 end
