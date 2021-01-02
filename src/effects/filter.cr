@@ -21,6 +21,13 @@ class Celestine::Filter < Celestine::Drawable
     blur_filter
   end
 
+    # Adds a `Celestine::Filter::DropShadow` to the calling filter's inner elements.
+    def drop_shadow(&block : Celestine::Filter::DropShadow -> Celestine::Filter::DropShadow)
+      drop_shadow_filter = yield Celestine::Filter::DropShadow.new
+      drop_shadow_filter.draw(inner_elements)
+      drop_shadow_filter
+    end
+
   # Adds a `Celestine::Filter::Offset` to the calling filter's inner elements.
   def offset(&block : Celestine::Filter::Offset -> Celestine::Filter::Offset)
     offset_filter = yield Celestine::Filter::Offset.new
