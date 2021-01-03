@@ -390,6 +390,7 @@ end
  * [Celestine::Filter::ComponentTransfer](https://docs.celestine.dev/Celestine/Filter/ComponentTransfer.html) -> [component_transfer](https://docs.celestine.dev/Celestine/Filter.html#component_transfer(&block:Celestine::Filter::ComponentTransfer-%3ECelestine::Filter::ComponentTransfer)-instance-method)
  * [Celestine::Filter::Composite](https://docs.celestine.dev/Celestine/Filter/Composite.html) -> [composite](https://docs.celestine.dev/Celestine/Filter.html#composite(&block:Celestine::Filter::Composite-%3ECelestine::Filter::Composite)-instance-method)
  * [Celestine::Filter::DisplacementMap](https://docs.celestine.dev/Celestine/Filter/DisplacementMap.html) -> [displacement_map](https://docs.celestine.dev/Celestine/Filter.html#displacement_map(&block:Celestine::Filter::DisplacementMap-%3ECelestine::Filter::DisplacementMap)-instance-method)
+  * [Celestine::Filter::DropShadow](https://docs.celestine.dev/Celestine/Filter/DropShadow.html) -> [drop_shadow](https://docs.celestine.dev/Celestine/Filter.html#drop_shadow(&block:Celestine::Filter::DropShadow-%3ECelestine::Filter::DropShadow)-instance-method)
  * [Celestine::Filter::Flood](https://docs.celestine.dev/Celestine/Filter/Flood.html) -> [flood](https://docs.celestine.dev/Celestine/Filter.html#flood(&block:Celestine::Filter::Flood-%3ECelestine::Filter::Flood)-instance-method)
 * [Celestine::Filter::Image](https://docs.celestine.dev/Celestine/Filter/Image.html) -> [image](https://docs.celestine.dev/Celestine/Filter.html#image(&block:Celestine::Filter::Image-%3ECelestine::Filter::Image)-instance-method)
  * [Celestine::Filter::Merge](https://docs.celestine.dev/Celestine/Filter/Merge.html) -> [merge](https://docs.celestine.dev/Celestine/Filter.html#merge(&block:Celestine::Filter::Merge-%3ECelestine::Filter::Merge)-instance-method)
@@ -416,7 +417,11 @@ Real world examples made with Celestine. All of these are flat SVG files with no
  * [Semicircle Patchwork 2](https://codepen.io/redcodefinal/pen/yLaOpae)
  * [Chromatic Aberration](https://codepen.io/redcodefinal/pen/zYKqpBZ)
  * [Polar Spins](https://codepen.io/redcodefinal/pen/RwGaxRY)
-
+ * [Genuary 01 2021](https://codepen.io/redcodefinal/pen/RwGQdVN)
+ * [Genuary 02 2021 (10)](https://codepen.io/redcodefinal/pen/bGwvrNo)
+ * [Genuary 02 2021 (20)](https://codepen.io/redcodefinal/pen/jOMzLEz)
+ * [Genuary 02 2021 (40)](https://codepen.io/redcodefinal/pen/MWjVovO)
+ 
 ## Community Examples
 
 These are some examples of cool stuff other people have done with Celestine!
