@@ -1,15 +1,6 @@
 # Gives drawables access to the animate_transform DSL
 module Celestine::Modules::Animate::Transform
-  module Attrs
-    ATTRIBUTE_NAME  = "attributeName"
-    ATTRIBUTE_TYPES = ["rotate", "translate", "scale", "skewX", "skewY"]
-    REPEAT_COUNT    = "repeatCount"
-    REPEAT_DURATION = "repeatDur"
-    DURATION        = "dur"
-    FROM            = "from"
-    TO              = "to"
-    BY              = "by"
-  end
+  ANIMATE_TRANSFORM_TYPES = ["rotate", "translate", "scale", "skewX", "skewY"]
 
   # Adds a `Celestine::Animate::Transform` to the calling drawable's inner elements.
   def animate_transform_rotate(&block : Proc(Celestine::Animate::Transform::Rotate, Nil))

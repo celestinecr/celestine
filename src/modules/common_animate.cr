@@ -1,3 +1,4 @@
+# Gives animated elements like `animate` and `animate_motion` it's shared attributes.
 module Celestine::Modules::CommonAnimate
   module Attrs
     REPEAT_COUNT    = "repeatCount"
@@ -68,31 +69,31 @@ module Celestine::Modules::CommonAnimate
   property? freeze = false
 
   def animate_attribute(io : IO)
-    io << %Q[repeatCount="#{repeat_count}" ] if repeat_count
-    io << %Q[repeatDur="#{repeat_duration}#{duration_units}" ] if repeat_duration
-    io << %Q[dur="#{duration}#{duration_units}" ] if duration
+    io << %Q[#{Attrs::REPEAT_COUNT}="#{repeat_count}" ] if repeat_count
+    io << %Q[#{Attrs::REPEAT_DURATION}="#{repeat_duration}#{duration_units}" ] if repeat_duration
+    io << %Q[#{Attrs::DURATION}="#{duration}#{duration_units}" ] if duration
     unless values.empty?
-      io << %Q[values="]
+      io << %Q[#{Attrs::VALUES}="]
       values.join(io, ";")
       io << %Q[" ]
     end
     unless key_times.empty?
-      io << %Q[keyTimes="]
+      io << %Q[#{Attrs::KEY_TIMES}="]
       key_times.join(io, ";")
       io << %Q[" ]
     end
 
     unless key_splines.empty?
-      io << %Q[keySplines="]
+      io << %Q[#{Attrs::KEY_SPLINES}="]
       key_splines.join(io, ";")
       io << %Q[" ]
     end
 
-    io << %Q[min="#{min}#{min_units}" ] if min
-    io << %Q[min="#{max}#{max_units}" ] if max
-    io << %Q[accumulate="sum" ] if accumulate?
-    io << %Q[additive="sum" ] if additive?
-    io << %Q[fill="freeze" ] if freeze?
-    io << %Q[calcMode="#{calc_mode}" ] if calc_mode
+    io << %Q[#{Attrs::MIN}="#{min}#{min_units}" ] if min
+    io << %Q[#{Attrs::MAX}="#{max}#{max_units}" ] if max
+    io << %Q[#{Attrs::ACCUMULATE}="sum" ] if accumulate?
+    io << %Q[#{Attrs::ADDITIVE}="sum" ] if additive?
+    io << %Q[#{Attrs::FILL}="freeze" ] if freeze?
+    io << %Q[#{Attrs::CALC_MODE}="#{calc_mode}" ] if calc_mode
   end
 end

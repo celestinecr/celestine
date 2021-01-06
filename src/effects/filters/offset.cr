@@ -24,7 +24,6 @@ class Celestine::Filter::Offset < Celestine::Filter::Basic
     draw_attributes(io)
 
     io << %Q[in="#{input}" ] if input
-    io << %Q[result="#{result}" ] if result
     io << %Q[dx="#{dx}#{dx_units}" ] if dx
     io << %Q[dy="#{dy}#{dy_units}" ] if dy
 

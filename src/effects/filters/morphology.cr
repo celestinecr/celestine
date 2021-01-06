@@ -26,7 +26,6 @@ class Celestine::Filter::Morphology < Celestine::Filter::Basic
     draw_attributes(io)
 
     io << %Q[in="#{input}" ] if input
-    io << %Q[result="#{result}" ] if result
     io << %Q[radius="#{radius}#{radius_units}" ] if radius
     io << %Q[operator="#{operator}" ] if operator
 

@@ -1,7 +1,7 @@
 abstract class Celestine::Gradient < Celestine::Drawable
   TAG = "WARNING DO NOT USE THIS DIRECTLY!"
   include_options Celestine::Modules::Transform
-  include_options Celestine::Modules::Animate
+  include Celestine::Modules::Animate
   include_options Celestine::Modules::Filter
 
   property href : String?
@@ -57,7 +57,7 @@ class Celestine::Gradient::Stop < Celestine::Drawable
   property color : String?
   property opacity : IFNumber?
 
-  include_options Celestine::Modules::Animate
+  include Celestine::Modules::Animate
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]

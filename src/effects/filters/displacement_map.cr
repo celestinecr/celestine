@@ -36,7 +36,6 @@ class Celestine::Filter::DisplacementMap < Celestine::Filter::Basic
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[result="#{result}" ] if result
 
     io << %Q[in="#{input}" ] if input
     io << %Q[in2="#{input2}" ] if input2

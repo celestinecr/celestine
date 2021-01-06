@@ -2,7 +2,7 @@ class Celestine::Mask < Celestine::Drawable
   TAG = "mask"
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::StrokeFill
-  include_options Celestine::Modules::Animate
+  include Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
   include_options Celestine::Modules::Filter
   include_options Celestine::Modules::Body

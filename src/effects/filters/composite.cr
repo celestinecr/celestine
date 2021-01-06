@@ -62,7 +62,6 @@ class Celestine::Filter::Composite < Celestine::Filter::Basic
     io << %Q[k3="#{k3}" ] if k3
     io << %Q[k4="#{k4}" ] if k4
 
-    io << %Q[result="#{result}" ] if result
 
     if inner_elements.empty?
       io << %Q[/>]

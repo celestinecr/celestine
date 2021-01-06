@@ -36,7 +36,6 @@ class Celestine::Filter::Turbulence < Celestine::Filter::Basic
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[result="#{result}" ] if result
 
     io << %Q[baseFrequency="#{base_freq}" ] if base_freq
     io << %Q[numOctaves="#{num_octaves}" ] if num_octaves

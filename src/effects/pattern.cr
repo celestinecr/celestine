@@ -2,7 +2,7 @@ class Celestine::Pattern < Celestine::Drawable
   TAG = "pattern"
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::StrokeFill
-  include_options Celestine::Modules::Animate
+  include Celestine::Modules::Animate
   include_options Celestine::Modules::Filter
   include_options Celestine::Modules::Body
 
@@ -23,7 +23,7 @@ class Celestine::Pattern < Celestine::Drawable
 
   def pattern_transform_attribute(io : IO)
     unless @pattern_transform_meta.empty?
-      io << %Q[patternTransform="]
+      io << %Q[#{Attrs::PATTERN_TRANSFORM}="]
       io << @pattern_transform_meta.objects_io
       io << %Q[" ]
     end
@@ -33,13 +33,13 @@ class Celestine::Pattern < Celestine::Drawable
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[preserveAspectRatio="#{preserve_aspect_ratio}" ] if preserve_aspect_ratio
+    io << %Q[#{Attrs::PRESERVE_ASPECT_RATIO}="#{preserve_aspect_ratio}" ] if preserve_aspect_ratio
     if vb = view_box
-      io << %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ]
+      io << %Q[#{Attrs::VIEW_BOX}="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ]
     end
-    io << %Q[patternUnits="#{pattern_units}" ] if pattern_units
-    io << %Q[patternContentUnits="#{pattern_content_units}" ] if pattern_content_units
-    io << %Q[href="#{href}" ] if href
+    io << %Q[#{Attrs::PATTERN_UNITS}="#{pattern_units}" ] if pattern_units
+    io << %Q[#{Attrs::PATTERN_CONTENT_UNITS}="#{pattern_content_units}" ] if pattern_content_units
+    io << %Q[#{Attrs::HREF}="#{href}" ] if href
 
     if inner_elements.empty?
       io << %Q[/>]
@@ -56,5 +56,6 @@ class Celestine::Pattern < Celestine::Drawable
     PATTERN_UNITS         = "patternUnits"
     PATTERN_CONTENT_UNITS = "patternContentUnits"
     VIEW_BOX              = "viewBox"
+    PATTERN_TRANSFORM     = "patternTransform"
   end
 end

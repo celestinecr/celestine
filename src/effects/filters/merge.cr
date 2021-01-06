@@ -15,7 +15,6 @@ class Celestine::Filter::Merge < Celestine::Filter::Basic
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[result="#{result}" ] if result
 
     if inner_elements.empty?
       io << %Q[/>]

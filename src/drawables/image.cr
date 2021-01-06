@@ -2,6 +2,10 @@
 #
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/image)
 class Celestine::Image < Celestine::Drawable
+  module Attrs
+    HREF = "href"
+    RENDERING = "image-rendering"
+  end
   TAG = "image"
 
   include_options Celestine::Modules::Transform
@@ -30,8 +34,8 @@ class Celestine::Image < Celestine::Drawable
     # Punctuate attributes with a space
     draw_attributes(io)
 
-    io << %Q[href="#{href}" ] if href
-    io << %Q[image-rendering="#{rendering}" ] if rendering
+    io << %Q[#{Attrs::HREF}="#{href}" ] if href
+    io << %Q[#{Attrs::RENDERING}="#{rendering}" ] if rendering
 
     if inner_elements.empty?
       io << %Q[/>]

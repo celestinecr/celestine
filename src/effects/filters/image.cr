@@ -15,7 +15,6 @@ class Celestine::Filter::Image < Celestine::Filter::Basic
 
     # TODO: Try href vs xlink:href, xlink seems to be depriciated but current example on mozilla docs uses it....
     io << %Q[xlink:href="#{href}" ] if href
-    io << %Q[result="#{result}" ] if result
 
     if inner_elements.empty?
       io << %Q[/>]

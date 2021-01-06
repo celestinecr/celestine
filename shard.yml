@@ -1,5 +1,5 @@
 name: celestine
-version: 0.8.2alpha
+version: 0.8.3alpha
 
 authors:
   - Ian Rash <ian@sol.vin>
@@ -13,8 +13,6 @@ dependencies:
     github: kostya/myhtml
 
 targets:
-  crash_course:
-    main: src/crash_course.cr
   logo:
     main: src/make_logo.cr
   benchmark:

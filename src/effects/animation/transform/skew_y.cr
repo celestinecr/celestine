@@ -1,4 +1,13 @@
 class Celestine::Animate::Transform::SkewY < Celestine::Drawable
+  module Attrs
+    TYPE = "type"
+    ATTRIBUTE_NAME = "attributeName"
+    FROM = "from"
+    TO = "to"
+    BY = "by"
+  end
+
+  TYPE = "skewY"
   TAG = "animateTransform"
   include_options Celestine::Modules::CommonAnimate
 
@@ -16,11 +25,11 @@ class Celestine::Animate::Transform::SkewY < Celestine::Drawable
     # Punctuate attributes with a space
     draw_attributes(io)
 
-    io << %Q[attributeName="transform" ]
-    io << %Q[type="skewY" ]
-    io << %Q[from="#{from}" ] if use_from?
-    io << %Q[to="#{to}" ] if use_to?
-    io << %Q[by="#{by}" ] if use_by?
+    io << %Q[#{Attrs::ATTRIBUTE_NAME}="transform" ]
+    io << %Q[#{Attrs::TYPE}="#{TYPE}" ]
+    io << %Q[#{Attrs::FROM}="#{from}" ] if use_from?
+    io << %Q[#{Attrs::TO}="#{to}" ] if use_to?
+    io << %Q[#{Attrs::BY}="#{by}" ] if use_by?
 
     if inner_elements.empty?
       io << %Q[/>]

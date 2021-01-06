@@ -2,7 +2,7 @@
 class Celestine::Filter < Celestine::Drawable
   TAG = "filter"
   include_options Celestine::Modules::Body
-  include_options Celestine::Modules::Animate
+  include Celestine::Modules::Animate
 
   property filter_units : String?
   property primitive_units : String?
@@ -123,8 +123,8 @@ class Celestine::Filter < Celestine::Drawable
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[filterUnits="#{filter_units}" ] if filter_units
-    io << %Q[primitiveUnits="#{primitive_units}" ] if primitive_units
+    io << %Q[#{Attrs::FILTER_UNITS}="#{filter_units}" ] if filter_units
+    io << %Q[#{Attrs::PRIMITIVE_UNITS}="#{primitive_units}" ] if primitive_units
 
     if inner_elements.empty?
       io << %Q[/>]
@@ -133,5 +133,10 @@ class Celestine::Filter < Celestine::Drawable
       io << inner_elements
       io << "</#{TAG}>"
     end
+  end
+
+  module Attrs
+    FILTER_UNITS = "filterUnits"
+    PRIMITIVE_UNITS = "primitiveUnits"
   end
 end
