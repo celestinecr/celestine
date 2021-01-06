@@ -56,7 +56,6 @@ class Celestine::Filter::SpecularLighting < Celestine::Filter::Basic
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[result="#{result}" ] if result
 
     io << %Q[in="#{input}" ] if input
     io << %Q[lighting-color="#{lighting_color}" ] if lighting_color

@@ -1,6 +1,12 @@
 class Celestine::Animate::Motion < Celestine::Drawable
+  module Attrs
+    MPATH           = "path"
+    ROTATE          = "rotate"
+    KEY_POINTS = "keyPoints"
+  end
+
   TAG = "animateMotion"
-  include_options Celestine::Modules::Animate
+  include Celestine::Modules::Animate
   include_options Celestine::Modules::CommonAnimate
 
   property rotate = "none"
@@ -43,6 +49,12 @@ class Celestine::Animate::Motion < Celestine::Drawable
       inner_elements << %Q[<mpath xlink:href="#{mpath}"/>]
     else
       io << %Q[path="#{mpath}" ]
+    end
+
+    unless key_points.empty?
+      io << %Q[#{Attrs::KEY_POINTS}="]
+      key_points.join(io, ";")
+      io << %Q[" ]
     end
 
     if inner_elements.empty?

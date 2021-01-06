@@ -7,7 +7,7 @@ class Celestine::Animate < Celestine::Drawable
   end
 
   TAG = "animate"
-  include_options Celestine::Modules::Animate
+  include Celestine::Modules::Animate
   include_options Celestine::Modules::CommonAnimate
 
   # The attribute that will be controlled by the animation. You can dig into any `Celestine::Drawable`'s `Attrs` module (ex: `Celestine::Circle::Attrs`) and it will contain a
@@ -25,10 +25,10 @@ class Celestine::Animate < Celestine::Drawable
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
-    io << %Q[attributeName="#{attribute}" ]
-    io << %Q[from="#{from}#{from_units}" ] if from
-    io << %Q[to="#{to}#{to_units}" ] if to
-    io << %Q[by="#{by}#{by_units}" ] if by
+    io << %Q[#{Attrs::ATTRIBUTE_NAME}="#{attribute}" ]
+    io << %Q[#{Attrs::FROM}="#{from}#{from_units}" ] if from
+    io << %Q[#{Attrs::TO}="#{to}#{to_units}" ] if to
+    io << %Q[#{Attrs::BY}="#{by}#{by_units}" ] if by
 
     if inner_elements.empty?
       io << %Q[/>]

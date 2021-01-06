@@ -26,7 +26,6 @@ class Celestine::Filter::Blur < Celestine::Filter::Basic
     draw_attributes(io)
 
     io << %Q[in="#{input}" ] if input
-    io << %Q[result="#{result}" ] if result
     io << %Q[stdDeviation="#{standard_deviation}#{standard_deviation_units}" ] if standard_deviation
     io << %Q[edgeMode="#{edge_mode}" ] if edge_mode
 

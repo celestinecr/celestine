@@ -24,10 +24,9 @@ class Celestine::Filter::Blend < Celestine::Filter::Basic
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[in="#{input}" ] if input
-    io << %Q[in2="#{input2}" ] if input2
-    io << %Q[mode="#{mode}" ] if mode
-    io << %Q[result="#{result}" ] if result
+    io << %Q[#{Attrs::INPUT}="#{input}" ] if input
+    io << %Q[#{Attrs::INPUT2}="#{input2}" ] if input2
+    io << %Q[#{Attrs::MODE}="#{mode}" ] if mode
 
     if inner_elements.empty?
       io << %Q[/>]

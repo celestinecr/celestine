@@ -4,7 +4,7 @@ class Celestine::Marker < Celestine::Drawable
 
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::StrokeFill
-  include_options Celestine::Modules::Animate
+  include Celestine::Modules::Animate
   include_options Celestine::Modules::Animate::Motion
   include_options Celestine::Modules::Filter
 
@@ -27,6 +27,8 @@ class Celestine::Marker < Celestine::Drawable
     io << %Q[#{Attrs::PRESERVE_ASPECT_RATIO}="#{preserve_aspect_ratio}" ] if preserve_aspect_ratio
     io << %Q[#{Attrs::REF_X}="#{ref_x}" ] if ref_x
     io << %Q[#{Attrs::REF_Y}="#{ref_y}" ] if ref_y
+    io << %Q[#{Attrs::UNITS}="#{units}" ] if units
+    io << %Q[#{Attrs::ORIENTATION}="#{orientation}" ] if orientation
     if @view_box
       vb = @view_box.as(Celestine::ViewBox)
       io << %Q[#{Attrs::VIEW_BOX}="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]

@@ -9,6 +9,10 @@ abstract class Celestine::Filter::Basic < Celestine::Drawable
     RESULT = "result"
   end
 
+  def filter_basic_attribute(io)
+    io << %Q[#{Attrs::RESULT}="#{result}" ] if result
+  end
+
   macro inherited
     module Attrs
       include Celestine::Filter::Basic::Attrs

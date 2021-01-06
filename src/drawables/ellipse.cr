@@ -29,8 +29,8 @@ class Celestine::Ellipse < Celestine::Drawable
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x
-    io << %Q[ry="#{radius_y}#{radius_y_units}" ] if radius_y
+    io << %Q[#{Attrs::RADIUS_X}="#{radius_x}#{radius_x_units}" ] if radius_x
+    io << %Q[#{Attrs::RADIUS_Y}="#{radius_y}#{radius_y_units}" ] if radius_y
 
     if inner_elements.empty?
       io << %Q[/>]

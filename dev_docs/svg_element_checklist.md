@@ -25,7 +25,7 @@
 | ^ | feDiffuseLighting |||
 | ✓ | feDisplacementMap |[Celestine::Filter#displacement_map](https://docs.celestine.dev/Celestine/Filter.html#displacement_map(&block:Celestine::Filter::DisplacementMap-%3ECelestine::Filter::DisplacementMap)-instance-method)||
 | / | feDistantLight |||
-| ^ | feDropShadow ||
+| ✓ | feDropShadow |[Celestine::Filter#drop_shadow](https://docs.celestine.dev/Celestine/Filter.html#drop_shadow(&block:Celestine::Filter::DropShadow-%3ECelestine::Filter::DropShadow)-instance-method)||
 | ✓ | feFlood |[Celestine::Filter#flood](https://docs.celestine.dev/Celestine/Filter.html#flood(&block:Celestine::Filter::Flood-%3ECelestine::Filter::Flood)-instance-method)||
 | ✓ | feFuncA |[see](https://docs.celestine.dev/Celestine/Filter/ComponentTransfer.html)||
 | ✓ | feFuncB |[see](https://docs.celestine.dev/Celestine/Filter/ComponentTransfer.html)||
@@ -62,9 +62,9 @@
 | ✓ | rect |[rectangle](https://docs.celestine.dev/Celestine/Meta/Context.html#rectangle(define=false,&block:Celestine::Rectangle-%3ECelestine::Rectangle):Celestine::Rectangle-instance-method)||
 | ✘ | script ||Not sure if this should be implemented...|
 | ^ | set ||This seems useful for simple interactivity|
-| ^ | stop ||Part of gradient|
+| ✓ | stop ||Part of gradient|
 | ✘ | style ||Not sure if this should be implemented...|
-| ✓ | svg ||Implemented for main usage but, should allow for nested SVG|
+| ✓ | svg |[svg](https://docs.celestine.dev/Celestine/Svg.html#svg(define=false,&block:Celestine::Svg-%3ECelestine::Svg):Celestine::Svg-instance-method)|Fully Implemented!|
 | ^ | switch ||Would allow local dialect switching for text|
 | ✘ | symbol ||Is this any different than group?|
 | ✓ | text |[text](https://docs.celestine.dev/Celestine/Meta/Context.html#text(define=false,&block:Celestine::Text-%3ECelestine::Text):Celestine::Text-instance-method)||

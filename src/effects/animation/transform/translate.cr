@@ -1,4 +1,13 @@
 class Celestine::Animate::Transform::Translate < Celestine::Drawable
+  module Attrs
+    TYPE = "type"
+    ATTRIBUTE_NAME = "attributeName"
+    FROM = "from"
+    TO = "to"
+    BY = "by"
+  end
+
+  TYPE = "translate"
   TAG = "animateTransform"
   include_options Celestine::Modules::CommonAnimate
 
@@ -19,12 +28,11 @@ class Celestine::Animate::Transform::Translate < Celestine::Drawable
     io << %Q[<#{TAG} ]
     # Punctuate attributes with a space
     draw_attributes(io)
-
-    io << %Q[attributeName="transform" ]
-    io << %Q[type="translate" ]
-    io << %Q[from="#{from_x} #{from_y}" ] if use_from?
-    io << %Q[to="#{to_x} #{to_y}" ] if use_to?
-    io << %Q[by="#{by_x} #{by_y}" ] if use_by?
+    io << %Q[#{Attrs::ATTRIBUTE_NAME}="transform" ]
+    io << %Q[#{Attrs::TYPE}="#{TYPE}" ]
+    io << %Q[#{Attrs::FROM}="#{from_x} #{from_y}" ] if use_from?
+    io << %Q[#{Attrs::TO}="#{to_x} #{to_y}" ] if use_to?
+    io << %Q[#{Attrs::BY}="#{by_x} #{by_y}" ] if use_by?
 
     if inner_elements.empty?
       io << %Q[/>]

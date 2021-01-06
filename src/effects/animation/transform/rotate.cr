@@ -1,4 +1,14 @@
 class Celestine::Animate::Transform::Rotate < Celestine::Drawable
+  module Attrs
+    TYPE = "type"
+    ATTRIBUTE_NAME = "attributeName"
+    FROM = "from"
+    TO = "to"
+    BY = "by"
+  end
+
+  TYPE = "rotate"
+
   TAG = "animateTransform"
   include_options Celestine::Modules::CommonAnimate
 
@@ -24,11 +34,11 @@ class Celestine::Animate::Transform::Rotate < Celestine::Drawable
     # Punctuate attributes with a space
     draw_attributes(io)
 
-    io << %Q[attributeName="transform" ]
-    io << %Q[type="rotate" ]
-    io << %Q[from="#{from_angle} #{from_origin_x} #{from_origin_y}" ] if use_from?
-    io << %Q[to="#{to_angle} #{to_origin_x} #{to_origin_y}" ] if use_to?
-    io << %Q[by="#{by_angle} #{by_origin_x} #{by_origin_y}" ] if use_by?
+    io << %Q[#{Attrs::ATTRIBUTE_NAME}="transform" ]
+    io << %Q[#{Attrs::TYPE}="#{TYPE}" ]
+    io << %Q[#{Attrs::FROM}="#{from_angle} #{from_origin_x} #{from_origin_y}" ] if use_from?
+    io << %Q[#{Attrs::TO}="#{to_angle} #{to_origin_x} #{to_origin_y}" ] if use_to?
+    io << %Q[#{Attrs::BY}="#{by_angle} #{by_origin_x} #{by_origin_y}" ] if use_by?
 
     if inner_elements.empty?
       io << %Q[/>]

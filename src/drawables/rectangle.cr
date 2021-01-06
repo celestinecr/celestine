@@ -26,7 +26,7 @@ class Celestine::Rectangle < Celestine::Drawable
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[rx="#{radius_x}#{radius_x_units}" ] if radius_x
+    io << %Q[#{Attrs::RADIUS_X}="#{radius_x}#{radius_x_units}" ] if radius_x
 
     if inner_elements.empty?
       io << %Q[/>]

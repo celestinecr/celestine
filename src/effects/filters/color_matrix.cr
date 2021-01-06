@@ -27,7 +27,6 @@ class Celestine::Filter::ColorMatrix < Celestine::Filter::Basic
 
     io << %Q[in="#{input}" ] if input
     io << %Q[type="#{type}" ] if type
-    io << %Q[result="#{result}" ] if result
     unless values.empty?
       io << %Q[values="]
       if values.size == 20

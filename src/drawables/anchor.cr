@@ -2,6 +2,9 @@
 #
 # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/a)
 class Celestine::Anchor < Celestine::Drawable
+  module Attrs
+    HREF = "href"
+  end
   TAG = "a"
 
   include_options Celestine::Modules::Transform

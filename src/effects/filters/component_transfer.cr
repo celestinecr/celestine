@@ -20,7 +20,6 @@ class Celestine::Filter::ComponentTransfer < Celestine::Filter::Basic
     draw_attributes(io)
 
     io << %Q[in="#{input}" ] if input
-    io << %Q[result="#{result}" ] if result
 
     if inner_elements.empty?
       io << %Q[/>]
