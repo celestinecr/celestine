@@ -1,5 +1,4 @@
-# Celestine ![Crystal CI](https://github.com/celestinecr/celestine/workflows/Crystal%20CI/badge.svg) ![Development Crystal CI](https://github.com/celestinecr/celestine/workflows/Development%20Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
-
+# Celestine
 
 [![Celestine Logo](https://raw.githubusercontent.com/celestinecr/celestine/master/logo/logo.svg)](https://github.com/celestinecr/celestine/blob/master/src/make_logo.cr)
 
@@ -10,33 +9,20 @@ A neat library and DSL for creating graphics using SVG
 
 Add to shards.yml
 
-```yml
+```yaml
 dependencies:
   celestine:
     github: celestinecr/celestine
 ```
 
-## Docs
-Documentation is cool, you can view the docs for Celestine at:
- * [docs.celestine.dev](https://docs.celestine.dev)
- * [github.io](https://celestinecr.github.io/celestine)
-
-## SVG Stuff It Can Do
-
-A full list is [here](/dev_docs/svg_element_checklist.md).
-
- *TODO*
- * Full SVG support for all [elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Element) and [attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute)
- * Finish adding all filters
- * Add pattern
- * Add gradients
-
 
 ## Usage
 
-First, all drawing is done through `Celestine.draw` this returns a string SVG element, or works on an `IO`. You can easily embed this into webpages for dynamic server side drawing of assets.
+### Drawing
 
-`Celestine.draw` takes a block which takes a `Celestine::Svg` (or `ctx` in the examples), the basis of all DSL calls in Celestine.
+First, all drawing is done through [`Celestine.draw`][] this returns a string SVG element, or works on an `IO`. You can easily embed this into webpages for dynamic server side drawing of assets.
+
+[`Celestine.draw`][] takes a block which takes a [`Celestine::Svg`][] (or `ctx` in the examples), the basis of all DSL calls in Celestine.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -64,27 +50,29 @@ Celestine.draw do |ctx|
 end
 ```
 
-All context methods such as `rectangle` or `circle` take a block that takes their respective types, and needs to have an object of that type returned.
+All context methods such as [`circle`][Celestine::Svg#circle] or [`rectangle`][Celestine::Svg#rectangle] take a block that takes their respective types, and needs to have an object of that type returned.
 
-A short list of the Celestine types that can be used by `Celestine::Svg` and their DSL methods
+#### Currently Implemented
 
- * [Celestine::Anchor](https://docs.celestine.dev/Celestine/Anchor.html) -> [anchor](https://docs.celestine.dev/Celestine/Svg.html#anchor(define=false,&block:Celestine::Anchor-%3ECelestine::Anchor):Celestine::Anchor-instance-method)
- * [Celestine::Circle](https://docs.celestine.dev/Celestine/Circle.html) -> [circle](https://docs.celestine.dev/Celestine/Svg.html#circle(define=false,&block:Celestine::Circle-%3ECelestine::Circle):Celestine::Circle-instance-method)
- * [Celestine::Ellipse](https://docs.celestine.dev/Celestine/Ellipse.html) -> [ellipse](https://docs.celestine.dev/Celestine/Svg.html#ellipse(define=false,&block:Celestine::Ellipse->Celestine::Ellipse):Celestine::Ellipse-instance-method)
- * [Celestine::Filter](https://docs.celestine.dev/Celestine/Filter.html) -> [filter](https://docs.celestine.dev/Celestine/Svg.html#filter(&block:Celestine::Filter->Celestine::Filter)-instance-method)
- * [Celestine::Group](https://docs.celestine.dev/Celestine/Group.html) -> [group](https://docs.celestine.dev/Celestine/Svg.html#group(define=false,&block:Celestine::Group->Celestine::Group):Celestine::Group-instance-method)
- * [Celestine::Image](https://docs.celestine.dev/Celestine/Image.html) -> [image](https://docs.celestine.dev/Celestine/Svg.html#image(define=false,&block:Celestine::Image->Celestine::Image):Celestine::Image-instance-method)
- * [Celestine::Marker](https://docs.celestine.dev/Celestine/Marker.html) -> [marker](https://docs.celestine.dev/Celestine/Svg.html#marker(&block:Celestine::Marker->Celestine::Marker)-instance-method)
- * [Celestine::Mask](https://docs.celestine.dev/Celestine/Mask.html) -> [mask](https://docs.celestine.dev/Celestine/Svg.html#mask(&block:Celestine::Mask->Celestine::Mask)-instance-method)
- * [Celestine::Path](https://docs.celestine.dev/Celestine/Path.html) -> [path](https://docs.celestine.dev/Celestine/Svg.html#path(define=false,&block:Celestine::Path->Celestine::Path):Celestine::Path-instance-method)
- * [Celestine::Rectangle](https://docs.celestine.dev/Celestine/Rectangle.html) -> [rectangle](https://docs.celestine.dev/Celestine/Svg.html#rectangle(define=false,&block:Celestine::Rectangle->Celestine::Rectangle):Celestine::Rectangle-instance-method)
- * [Celestine::Svg](https://docs.celestine.dev/Celestine/Svg.html) -> [svg](https://docs.celestine.dev/Celestine/Svg.html#svg(define=false,&block:Celestine::Svg->Celestine::Svg):Celestine::Svg-instance-method)
- * [Celestine::Text](https://docs.celestine.dev/Celestine/Text.html) -> [text](https://docs.celestine.dev/Celestine/Svg.html#text(define=false,&block:Celestine::Text->Celestine::Text):Celestine::Text-instance-method)
+A short list of the Celestine types that can be used by [`Celestine::Svg`][] and their DSL methods
 
- 
+ * [`Celestine::Anchor`][] -> [`anchor`][Celestine::Svg#anchor]
+ * [`Celestine::Circle`][] -> [`circle`][Celestine::Svg#circle]
+ * [`Celestine::Ellipse`][] -> [`ellipse`][Celestine::Svg#ellipse]
+ * [`Celestine::Filter`][] -> [`filter`][Celestine::Svg#filter]
+ * [`Celestine::Group`][] -> [`group`][Celestine::Svg#group]
+ * [`Celestine::Image`][] -> [`image`][Celestine::Svg#image]
+ * [`Celestine::Marker`][] -> [`marker`][Celestine::Svg#marker]
+ * [`Celestine::Mask`][] -> [`mask`][Celestine::Svg#mask]
+ * [`Celestine::Path`][] -> [`path`][Celestine::Svg#path]
+ * [`Celestine::Rectangle`][] -> [`rectangle`][Celestine::Svg#rectangle]
+ * [`Celestine::Svg`][] -> [`svg`][Celestine::Svg#svg]
+ * [`Celestine::Text`][] -> [`text`][Celestine::Svg#text]
+
+
 ### Nested SVG
 
-`Celestine::SVG` allows you to nest SVG.
+[`Celestine::Svg`][] allows you to nest SVG.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -104,7 +92,7 @@ end
 
 ### Groups
 
-`Celestine::Group` allows you to group multiple elements under one parent. You can manipulate the `x`, `y`, and other attributes to apply them to the whole group, or just use it to combine elements easier.
+[`Celestine::Group`][] allows you to group multiple elements under one parent. You can manipulate the `x`, `y`, and other attributes to apply them to the whole group, or just use it to combine elements easier.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -122,16 +110,16 @@ Celestine.draw do |ctx|
 end
 ```
 
-Groups cannot `define` objects like `Celestine::Svg` can. Groups also cannot use the `mask`, `filter`, or `marker` DSL methods as they `define` in the SVG document.
+Groups cannot [`define`][Celestine::Svg#define] objects like [`Celestine::Svg`][] can. Groups also cannot use the [`mask`][Celestine::Svg#mask], [`filter`][Celestine::Svg#filter], or [`marker`][Celestine::Svg#marker] DSL methods as they [`define`][Celestine::Svg#define] in the SVG document.
 
 ### Use
-`Celestine::Use` can be used to save space in an SVG, and reuse certain elements without the need to copy the entire object into your SVG document.
+[`Celestine::Use`][] can be used to save space in an SVG, and reuse certain elements without the need to copy the entire object into your SVG document.
 
 The only caveat is that the `use` SVG element cannot change attributes it both doesn't own itself, or ones that have been set by it's ancestor, except in the case of `x`, `y`, `width`, and `height`. For example, the `use` element cannot change the `radius` of a `circle` even if the `radius` attribute had never been set.
 
-`Celestine::Use` also requires that the drawable it is copying has an `id` set. If not `Celestine::Use` will still let you reference an ID that doesn't exist if you run `use` with a string `id`.
+[`Celestine::Use`][] also requires that the drawable it is copying has an `id` set. If not [`Celestine::Use`][] will still let you reference an ID that doesn't exist if you run `use` with a string `id`.
 
-You can do this only with `Celestine::Svg` (or `ctx` in the examples). `Celestine::Group`, `Celestine::Mask`, `Celestine::Marker` cannot define drawables. The `use` element will only copy elements in the current SVG document you are in, so if you nest SVG inside SVG you need to be wary of how you define objects.
+You can do this only with [`Celestine::Svg`][] (or `ctx` in the examples). [`Celestine::Group`][], [`Celestine::Mask`][], [`Celestine::Marker`][] cannot define drawables. The `use` element will only copy elements in the current SVG document you are in, so if you nest SVG inside SVG you need to be wary of how you define objects.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -159,7 +147,7 @@ end
 ```
 
 ### Transform
-Most drawables can use the `transform` method to translate, rotate, scale, and skew drawables.
+Most drawables can use the [`transform`][Celestine::Modules::Transform#transform] method to translate, rotate, scale, and skew drawables.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -205,7 +193,7 @@ end
 ```
 
 ### Patterns
-You can apply complciated tiling/repeating fills and strokes using the `pattern` DSL.
+You can apply complciated tiling/repeating fills and strokes using the [`pattern`][Celestine::Svg#pattern] DSL.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -228,7 +216,7 @@ end
 ```
 
 ### Gradients
-You can apply gradient fills and strokes using the `linear_gradient` and `radial_gradient` DSLs
+You can apply gradient fills and strokes using the [`linear_gradient`][Celestine::Svg#linear_gradient] and [`radial_gradient`][Celestine::Svg#radial_gradient] DSLs
 
 ```crystal
 Celestine.draw do |ctx|
@@ -255,7 +243,7 @@ end
 ```
 
 ### Animate
-You can animate most simple SVG attributes using `animate` and the `from` and `to` attributes.
+You can animate most simple SVG attributes using [`animate`][Celestine::Modules::Animate#animate] and the `from` and `to` attributes.
 ```crystal
 Celestine.draw do |ctx|
   ctx.circle do |c|
@@ -276,9 +264,9 @@ Celestine.draw do |ctx|
 end
 ```
 
-You can also animate more complicated attributes and transition using the `values` array. SVG attempts to interpolate these values when possible.
+You can also animate more complicated attributes and transition using the [`values`][Celestine::Modules::CommonAnimate#values] array. SVG attempts to interpolate these values when possible.
 
-If you use `values` and don't also use the `key_times` array to designate the timing changes, it will evenly space the animation values in the alotted time.
+If you use [`values`][Celestine::Modules::CommonAnimate#values] and don't also use the [`key_times`][Celestine::Modules::CommonAnimate#key_times] array to designate the timing changes, it will evenly space the animation values in the alotted time.
 ```crystal
 Celestine.draw do |ctx|
   ctx.circle do |c|
@@ -313,7 +301,7 @@ end
 ```
 
 ### AnimateMotion
-You can animate movement along paths using `animateMotion`.
+You can animate movement along paths using [`animate_motion`][Celestine::Modules::Animate::Motion#animate_motion].
 
 ```crystal
 Celestine.draw do |ctx|
@@ -338,7 +326,7 @@ end
 ```
 
 ### AnimateTransform
-You can animate transform elements using `animateTransform`.
+You can animate transform elements using [`animate_transform_*`][Celestine::Modules::Animate::Transform].
 
 Only rotate is supported right now.
 ```crystal
@@ -360,7 +348,7 @@ end
 ```
 
 ### Filters
-You can do some cool filtering using the `filter` DSL.
+You can do some cool filtering using the [`filter`][Celestine::Svg#filter] DSL.
 
 ```crystal
 Celestine.draw do |ctx|
@@ -384,64 +372,18 @@ end
 ```
 
 #### Currently Implemented
- * [Celestine::Filter::Blend](https://docs.celestine.dev/Celestine/Filter/Blend.html) -> [blend](https://docs.celestine.dev/Celestine/Filter.html#blend(&block:Celestine::Filter::Blend-%3ECelestine::Filter::Blend)-instance-method)
- * [Celestine::Filter::Blur](https://docs.celestine.dev/Celestine/Filter/Blur.html) -> [blur](https://docs.celestine.dev/Celestine/Filter.html#blur(&block:Celestine::Filter::Blur-%3ECelestine::Filter::Blur)-instance-method)
- * [Celestine::Filter::ColorMatrix](https://docs.celestine.dev/Celestine/Filter/ColorMatrix.html) -> [color_matrix](https://docs.celestine.dev/Celestine/Filter.html#color_matrix(&block:Celestine::Filter::ColorMatrix-%3ECelestine::Filter::ColorMatrix)-instance-method)
- * [Celestine::Filter::ComponentTransfer](https://docs.celestine.dev/Celestine/Filter/ComponentTransfer.html) -> [component_transfer](https://docs.celestine.dev/Celestine/Filter.html#component_transfer(&block:Celestine::Filter::ComponentTransfer-%3ECelestine::Filter::ComponentTransfer)-instance-method)
- * [Celestine::Filter::Composite](https://docs.celestine.dev/Celestine/Filter/Composite.html) -> [composite](https://docs.celestine.dev/Celestine/Filter.html#composite(&block:Celestine::Filter::Composite-%3ECelestine::Filter::Composite)-instance-method)
- * [Celestine::Filter::DisplacementMap](https://docs.celestine.dev/Celestine/Filter/DisplacementMap.html) -> [displacement_map](https://docs.celestine.dev/Celestine/Filter.html#displacement_map(&block:Celestine::Filter::DisplacementMap-%3ECelestine::Filter::DisplacementMap)-instance-method)
-  * [Celestine::Filter::DropShadow](https://docs.celestine.dev/Celestine/Filter/DropShadow.html) -> [drop_shadow](https://docs.celestine.dev/Celestine/Filter.html#drop_shadow(&block:Celestine::Filter::DropShadow-%3ECelestine::Filter::DropShadow)-instance-method)
- * [Celestine::Filter::Flood](https://docs.celestine.dev/Celestine/Filter/Flood.html) -> [flood](https://docs.celestine.dev/Celestine/Filter.html#flood(&block:Celestine::Filter::Flood-%3ECelestine::Filter::Flood)-instance-method)
-* [Celestine::Filter::Image](https://docs.celestine.dev/Celestine/Filter/Image.html) -> [image](https://docs.celestine.dev/Celestine/Filter.html#image(&block:Celestine::Filter::Image-%3ECelestine::Filter::Image)-instance-method)
- * [Celestine::Filter::Merge](https://docs.celestine.dev/Celestine/Filter/Merge.html) -> [merge](https://docs.celestine.dev/Celestine/Filter.html#merge(&block:Celestine::Filter::Merge-%3ECelestine::Filter::Merge)-instance-method)
- * [Celestine::Filter::Morphology](https://docs.celestine.dev/Celestine/Filter/Morphology.html) -> [morphology](https://docs.celestine.dev/Celestine/Filter.html#morphology(&block:Celestine::Filter::Morphology-%3ECelestine::Filter::Morphology)-instance-method)
- * [Celestine::Filter::Offset](https://docs.celestine.dev/Celestine/Filter/Offset.html) -> [offset](https://docs.celestine.dev/Celestine/Filter.html#offset(&block:Celestine::Filter::Offset-%3ECelestine::Filter::Offset)-instance-method)
- * [Celestine::Filter::SpecularLighting](https://docs.celestine.dev/Celestine/Filter/SpecularLighting.html) -> [specular_lighting](https://docs.celestine.dev/Celestine/Filter.html#specular_lighting(&block:Celestine::Filter::SpecularLighting-%3ECelestine::Filter::SpecularLighting)-instance-method)
- * [Celestine::Filter::Tile](https://docs.celestine.dev/Celestine/Filter/Tile.html) -> [tile](https://docs.celestine.dev/Celestine/Filter.html#tile(&block:Celestine::Filter::Tile-%3ECelestine::Filter::Tile)-instance-method)
- * [Celestine::Filter::Turbulence](https://docs.celestine.dev/Celestine/Filter/Turbulence.html) -> [turbulence](https://docs.celestine.dev/Celestine/Filter.html#turbulence(&block:Celestine::Filter::Turbulence-%3ECelestine::Filter::Turbulence)-instance-method)
-
-## Examples
-
-If you'd like to see how the logo was made, check out [make_logo](https://github.com/redcodefinal/celestine/blob/master/src/make_logo.cr)
-
-Here are some more intricate examples. [procedural_art](https://github.com/redcodefinal/procedural_art)
-
-Real world examples made with Celestine. All of these are flat SVG files with no JS inside, using only functions built into Celestine.
-
- * [Inward](https://www.sol.vin/art/live/inward/)
- * [Mineshift](https://www.sol.vin/art/live/mineshift/)
- * [Hypnos1](https://cdpn.io/redcodefinal/fullpage/ZEOgzXX)
- * [Hypnos2](https://cdpn.io/redcodefinal/fullpage/WNxqYMy)
- * [Pschyoflower](https://codepen.io/redcodefinal/pen/mdrJeGZ)
- * [Semicircle Patchwork 1](https://codepen.io/redcodefinal/pen/WNGwdxe)
- * [Semicircle Patchwork 2](https://codepen.io/redcodefinal/pen/yLaOpae)
- * [Chromatic Aberration](https://codepen.io/redcodefinal/pen/zYKqpBZ)
- * [Polar Spins](https://codepen.io/redcodefinal/pen/RwGaxRY)
- * [Genuary 01 2021](https://codepen.io/redcodefinal/pen/RwGQdVN)
- * [Genuary 02 2021 (10)](https://codepen.io/redcodefinal/pen/bGwvrNo)
- * [Genuary 02 2021 (20)](https://codepen.io/redcodefinal/pen/jOMzLEz)
- * [Genuary 02 2021 (40)](https://codepen.io/redcodefinal/pen/MWjVovO)
- 
-## Community Examples
-
-These are some examples of cool stuff other people have done with Celestine!
-
- * [sunrise](https://sunrise.sugarfi.dev) @ [github](https://github.com/sugarfi/sunrise) by [SugarFi](https://sugarfi.dev)
-   * Uses the very strong Turbulence and DisplacementMap filters to create a very neat water effect.
-
-## Development
-
-HMU via issues or make a pull request or something I don't know.
-
-## Contributing
-
-1. Fork it (<https://github.com/celestinecr/celestine/fork>)
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request to the `development` branch at celestinecr/celestine
-
-## Contributors
-
-- [Ian Rash](https://github.com/redcodefinal) - creator and maintainer
-- [sugarfi](https://github.com/sugarfi) - contributor
+ * [`Celestine::Filter::Blend`][] -> [`blend`][Celestine::Filter#blend]
+ * [`Celestine::Filter::Blur`][] -> [`blur`][Celestine::Filter#blur]
+ * [`Celestine::Filter::ColorMatrix`][] -> [`color_matrix`][Celestine::Filter#color_matrix]
+ * [`Celestine::Filter::ComponentTransfer`][] -> [`component_transfer`][Celestine::Filter#component_transfer]
+ * [`Celestine::Filter::Composite`][] -> [`composite`][Celestine::Filter#composite]
+ * [`Celestine::Filter::DisplacementMap`][] -> [`displacement_map`][Celestine::Filter#displacement_map]
+ * [`Celestine::Filter::DropShadow`][] -> [`drop_shadow`][Celestine::Filter#drop_shadow]
+ * [`Celestine::Filter::Flood`][] -> [`flood`][Celestine::Filter#flood]
+ * [`Celestine::Filter::Image`][] -> [`image`][Celestine::Filter#image]
+ * [`Celestine::Filter::Merge`][] -> [`merge`][Celestine::Filter#merge]
+ * [`Celestine::Filter::Morphology`][] -> [`morphology`][Celestine::Filter#morphology]
+ * [`Celestine::Filter::Offset`][] -> [`offset`][Celestine::Filter#offset]
+ * [`Celestine::Filter::SpecularLighting`][] -> [`specular_lighting`][Celestine::Filter#specular_lighting]
+ * [`Celestine::Filter::Tile`][] -> [`tile`][Celestine::Filter#tile]
+ * [`Celestine::Filter::Turbulence`][] -> [`turbulence`][Celestine::Filter#turbulence]
