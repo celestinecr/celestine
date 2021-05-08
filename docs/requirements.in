@@ -1,0 +1,7 @@
+mkdocs
+mkdocs-material
+git+https://github.com/mkdocstrings/mkdocstrings@master
+git+https://github.com/mkdocstrings/crystal@master
+mkdocs-gen-files
+mkdocs-literate-nav
+mkdocs-section-index
