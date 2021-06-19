@@ -1,7 +1,7 @@
-mkdocs
-mkdocs-material
-git+https://github.com/mkdocstrings/mkdocstrings@master
-git+https://github.com/mkdocstrings/crystal@master
-mkdocs-gen-files
-mkdocs-literate-nav
-mkdocs-section-index
+mkdocs>=1.1.1
+mkdocs-material>=7.0
+mkdocstrings>=0.15
+mkdocstrings-crystal>=0.3.2
+mkdocs-gen-files>=0.3.2
+mkdocs-literate-nav>=0.3.1
+mkdocs-section-index>=0.3.1
