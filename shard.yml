@@ -17,6 +17,6 @@ targets:
     main: src/make_logo.cr
   benchmark:
     main: src/benchmark.cr
-crystal: 0.35.1
+crystal: 1.0
 
 license: MIT
