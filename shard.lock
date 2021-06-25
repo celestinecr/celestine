@@ -1,34 +1,38 @@
 version: 2.0
 shards:
+  backtracer:
+    git: https://github.com/Sija/backtracer.cr.git
+    version: 1.2.1
+
   celestine:
     git: https://github.com/celestinecr/celestine.git
-    version: 0.8.2alpha+git.commit.bc82d4fc82a6e93b87e962e2e6a9aa1369dce541
+    version: 0.8.3alpha+git.commit.e67a422beb9821c184f15446756952a10315b868
 
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
-    version: 0.1.4
+    version: 0.2.0
 
   kemal:
     git: https://github.com/kemalcr/kemal.git
-    version: 0.27.0+git.commit.bf9f627ac789d2ebe573629904f02beb9e4089d5
+    version: 1.0.0+git.commit.218be2422172d330feb62c6a8abc7df5402fdb84
 
   kilt:
     git: https://github.com/jeromegn/kilt.git
-    version: 0.4.0
+    version: 0.6.1
 
   myhtml:
     git: https://github.com/kostya/myhtml.git
-    version: 1.5.2
+    version: 1.5.6
 
   perlin_noise:
     git: https://github.com/redcodefinal/perlin_noise.git
-    version: 0.1.0+git.commit.79c452d46884382c8f15625e0ea37ce3e867b360
+    version: 0.1.0+git.commit.94dd0fdcd2d5ddf194ad403861832d5fe1a71706
 
   procedural_art:
-    git: https://github.com/redcodefinal/procedural_art.git
-    version: 0.1.0+git.commit.54ef0b22e6b65571e6121c131d88c32ea828e5da
+    git: https://github.com/sol-vin/procedural_art.git
+    version: 0.1.0+git.commit.95438c4e54f3d94d6957feb9afb4ecf55629c1dd
 
   radix:
     git: https://github.com/luislavena/radix.git
-    version: 0.3.9
+    version: 0.4.1
 
