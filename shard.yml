@@ -6,7 +6,7 @@ authors:
 
 development_dependencies:
   procedural_art:
-    github: redcodefinal/procedural_art
+    github: sol-vin/procedural_art
 
 dependencies:
   myhtml:
