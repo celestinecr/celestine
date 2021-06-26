@@ -1,3 +1,4 @@
+require "./spec_helper"
 describe Celestine::Anchor do
   it "should use href" do
     celestine_svg = Celestine.draw do |ctx|

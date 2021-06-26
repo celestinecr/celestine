@@ -6,7 +6,7 @@ shards:
 
   celestine:
     git: https://github.com/celestinecr/celestine.git
-    version: 0.8.3alpha+git.commit.e67a422beb9821c184f15446756952a10315b868
+    version: 0.8.3alpha+git.commit.7dcb4119853e9fdc2f4fd45cfaa936106de2ccb2
 
   exception_page:
     git: https://github.com/crystal-loot/exception_page.git
@@ -25,12 +25,12 @@ shards:
     version: 1.5.6
 
   perlin_noise:
-    git: https://github.com/redcodefinal/perlin_noise.git
+    git: https://github.com/sol-vin/perlin_noise.git
     version: 0.1.0+git.commit.94dd0fdcd2d5ddf194ad403861832d5fe1a71706
 
   procedural_art:
     git: https://github.com/sol-vin/procedural_art.git
-    version: 0.1.0+git.commit.95438c4e54f3d94d6957feb9afb4ecf55629c1dd
+    version: 0.1.0+git.commit.ce8acfe169cf5f79df79423e95cce8ee099b3f96
 
   radix:
     git: https://github.com/luislavena/radix.git

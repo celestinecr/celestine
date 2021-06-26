@@ -1,3 +1,4 @@
+require "./spec_helper"
 {% for drawable_class in Celestine::Meta::CLASSES %}
 {% if drawable_class.id != Celestine::Svg %}
 describe {{drawable_class.id}} do

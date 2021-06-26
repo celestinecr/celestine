@@ -1,5 +1,7 @@
 require "spec"
+
 require "../src/celestine"
+
 require "file_utils"
 require "procedural_art"
 

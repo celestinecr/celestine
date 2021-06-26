@@ -1,3 +1,4 @@
+require "./spec_helper"
 describe Celestine::Path do
   it "should fill up path code using DSL" do
     path = Celestine::Path.new

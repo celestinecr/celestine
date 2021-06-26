@@ -1,3 +1,4 @@
+require "./spec_helper"
 describe Celestine::Marker do
   it "should add a marker element" do
     celestine_svg = Celestine.draw do |ctx|
