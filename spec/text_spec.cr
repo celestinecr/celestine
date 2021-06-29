@@ -1,3 +1,5 @@
+
+require "./spec_helper"
 describe Celestine::Text do
   make_number_attribute_test(Celestine::Text, "dx", units: true)
   make_number_attribute_test(Celestine::Text, "dy", units: true)

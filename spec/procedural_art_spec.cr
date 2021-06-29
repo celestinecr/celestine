@@ -1,3 +1,4 @@
+require "./spec_helper"
 describe ProceduralArt do
   it "should make 10 hypnos images" do
     100.times do

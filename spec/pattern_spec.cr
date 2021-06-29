@@ -1,3 +1,4 @@
+require "./spec_helper"
 describe Celestine::Pattern do
   it "should add a pattern element via DSL" do
     celestine_svg = Celestine.draw do |ctx|

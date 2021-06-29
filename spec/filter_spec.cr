@@ -1,3 +1,4 @@
+require "./spec_helper"
 describe Celestine::Filter do
   it "should add a filter element" do
     celestine_svg = Celestine.draw do |ctx|

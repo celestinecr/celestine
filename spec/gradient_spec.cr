@@ -1,3 +1,4 @@
+require "./spec_helper"
 describe Celestine::Gradient::Linear do
   it "should add a linear gradient element via DSL" do
     celestine_svg = Celestine.draw do |ctx|
