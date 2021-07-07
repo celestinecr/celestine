@@ -1,7 +1,7 @@
 # Celestine ![Crystal CI](https://github.com/celestinecr/celestine/workflows/Crystal%20CI/badge.svg) ![Development Crystal CI](https://github.com/celestinecr/celestine/workflows/Development%20Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
 
 
-[![Celestine Logo](https://raw.githubusercontent.com/celestinecr/celestine/master/logo/logo.svg)](https://github.com/celestinecr/celestine/blob/master/src/make_logo.cr)
+[![Celestine Logo](https://raw.githubusercontent.com/celestinecr/celestine/main/logo/logo.svg)](https://github.com/celestinecr/celestine/blob/main/src/make_logo.cr)
 
 
 A neat library and DSL for creating graphics using SVG
@@ -33,9 +33,9 @@ A full list is [here](https://docs.celestine.dev/svg_element_checklist.html).
 
 ## Examples
 
-If you'd like to see how the logo was made, check out [make_logo](https://github.com/redcodefinal/celestine/blob/master/src/make_logo.cr)
+If you'd like to see how the logo was made, check out [make_logo](https://github.com/celestinecr/celestine/blob/main/src/make_logo.cr)
 
-Here are some more intricate examples. [procedural_art](https://github.com/redcodefinal/procedural_art)
+Here are some more intricate examples. [procedural_art](https://github.com/sol-vin/procedural_art)
 
 Real world examples made with Celestine. All of these are flat SVG files with no JS inside, using only functions built into Celestine.
 
@@ -74,5 +74,5 @@ HMU via issues or make a pull request or something I don't know.
 
 ## Contributors
 
-- [Ian Rash](https://github.com/redcodefinal) - creator and maintainer
+- [Ian Rash](https://github.com/sol-vin) - creator and maintainer
 - [sugarfi](https://github.com/sugarfi) - contributor

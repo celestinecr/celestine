@@ -1,6 +1,6 @@
 # Celestine
 
-[![Celestine Logo](https://raw.githubusercontent.com/celestinecr/celestine/master/logo/logo.svg)](https://github.com/celestinecr/celestine/blob/master/src/make_logo.cr)
+[![Celestine Logo](https://raw.githubusercontent.com/celestinecr/celestine/main/logo/logo.svg)](https://github.com/celestinecr/celestine/blob/main/src/make_logo.cr)
 
 
 A neat library and DSL for creating graphics using SVG
