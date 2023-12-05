@@ -1,5 +1,3 @@
-require "myhtml"
-
 require "./patches/number"
 require "./macros/**"
 
