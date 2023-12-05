@@ -1,5 +1,5 @@
 name: celestine
-version: 0.8.3alpha
+version: 0.9
 
 authors:
   - Ian Rash <ian@sol.vin>
@@ -7,10 +7,6 @@ authors:
 development_dependencies:
   procedural_art:
     github: sol-vin/procedural_art
-
-dependencies:
-  myhtml:
-    github: kostya/myhtml
 
 targets:
   logo:

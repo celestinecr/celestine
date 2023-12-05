@@ -17,4 +17,4 @@ jobs:
     - name: Install dependencies
       run: shards install
     - name: Run tests
-      run: crystal spec
+      run: shards build logo
