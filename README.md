@@ -1,4 +1,4 @@
-# Celestine ![Crystal CI](https://github.com/celestinecr/celestine/workflows/Crystal%20CI/badge.svg) ![Development Crystal CI](https://github.com/celestinecr/celestine/workflows/Development%20Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
+# Celestine ![Crystal CI](https://github.com/celestinecr/celestine/workflows/Crystal%20CI/badge.svg) [![Documentation badge](https://img.shields.io/badge/docs-latest-green.svg?style=flat-square)](https://docs.celestine.dev)
 
 
 [![Celestine Logo](https://raw.githubusercontent.com/celestinecr/celestine/main/logo/logo.svg)](https://github.com/celestinecr/celestine/blob/main/src/make_logo.cr)
