@@ -1,1844 +1,1989 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-      
-        <link rel="canonical" href="https://docs.celestine.dev/Celestine/Circle.html">
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
-    
-    
-      
-        <title>Circle - Celestine</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
-        
-      
-    
-    
-    
-      
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
-      
-    
-    
-    
-      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
-    
-      <link rel="stylesheet" href="../css/mkdocstrings.css">
-    
-    
-      
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Crystal Docs 1.20.3">
+<meta name="crystal_docs.project_version" content="main">
+<meta name="crystal_docs.project_name" content="celestine">
 
 
-    
-    
-  </head>
-  
-  
-    
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
-  
-    
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#Celestine::Circle" class="md-skip">
-          Skip to content
+
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/doc.js"></script>
+
+  <meta name="repository-name" content="celestine">
+  <title>Celestine::Circle - celestine main</title>
+  <script type="text/javascript">
+    CrystalDocs.base_path = "../";
+  </script>
+</head>
+<body>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill="currentColor" fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+<input type="checkbox" id="sidebar-btn">
+<label for="sidebar-btn" id="sidebar-btn-label">
+  <svg class="open" xmlns="http://www.w3.org/2000/svg" height="2em" width="2em" viewBox="0 0 512 512"><title>Open Sidebar</title><path fill="currentColor" d="M80 96v64h352V96H80zm0 112v64h352v-64H80zm0 112v64h352v-64H80z"></path></svg>
+  <svg class="close" xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 512 512"><title>Close Sidebar</title><path fill="currentColor" d="m118.6 73.4-45.2 45.2L210.7 256 73.4 393.4l45.2 45.2L256 301.3l137.4 137.3 45.2-45.2L301.3 256l137.3-137.4-45.2-45.2L256 210.7Z"></path></svg>
+</label>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="project-summary">
+      <h1 class="project-name">
+        <a href="../index.html">
+          celestine
         </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../index.html" title="Celestine" class="md-header__button md-logo" aria-label="Celestine" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+      </h1>
 
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Celestine
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              Circle
-            
-          </span>
-        </div>
-      </div>
+      <span class="project-version">
+        main
+      </span>
     </div>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
+  </div>
+
+  <div class="search-results hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="celestine/toplevel" data-name="top level namespace">
+      <a href="../toplevel.html">Top Level Namespace</a>
       
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
+    </li>
+  
+  <li class="parent open current" data-id="celestine/Celestine" data-name="celestine">
+      <a href="../Celestine.html">Celestine</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="celestine/Celestine/Anchor" data-name="celestine::anchor">
+      <a href="../Celestine/Anchor.html">Anchor</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Anchor/Attrs" data-name="celestine::anchor::attrs">
+      <a href="../Celestine/Anchor/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Animate" data-name="celestine::animate">
+      <a href="../Celestine/Animate.html">Animate</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Animate/Attrs" data-name="celestine::animate::attrs">
+      <a href="../Celestine/Animate/Attrs.html">Attrs</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Animate/Motion" data-name="celestine::animate::motion">
+      <a href="../Celestine/Animate/Motion.html">Motion</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Animate/Motion/Attrs" data-name="celestine::animate::motion::attrs">
+      <a href="../Celestine/Animate/Motion/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent open current" data-id="celestine/Celestine/Circle" data-name="celestine::circle">
+      <a href="../Celestine/Circle.html">Circle</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Circle/Attrs" data-name="celestine::circle::attrs">
+      <a href="../Celestine/Circle/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Docs" data-name="celestine::docs">
+      <a href="../Celestine/Docs.html">Docs</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="celestine/Celestine/Docs/A_GETTING_STARTED" data-name="celestine::docs::a_getting_started">
+      <a href="../Celestine/Docs/A_GETTING_STARTED.html">A_GETTING_STARTED</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Docs/A_GETTING_STARTED/OVERVIEW" data-name="celestine::docs::a_getting_started::overview">
+      <a href="../Celestine/Docs/A_GETTING_STARTED/OVERVIEW.html">OVERVIEW</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Drawable" data-name="celestine::drawable">
+      <a href="../Celestine/Drawable.html">Drawable</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Drawable/Transform" data-name="celestine::drawable::transform">
+      <a href="../Celestine/Drawable/Transform.html">Transform</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Ellipse" data-name="celestine::ellipse">
+      <a href="../Celestine/Ellipse.html">Ellipse</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Ellipse/Attrs" data-name="celestine::ellipse::attrs">
+      <a href="../Celestine/Ellipse/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter" data-name="celestine::filter">
+      <a href="../Celestine/Filter.html">Filter</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Attrs" data-name="celestine::filter::attrs">
+      <a href="../Celestine/Filter/Attrs.html">Attrs</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Basic" data-name="celestine::filter::basic">
+      <a href="../Celestine/Filter/Basic.html">Basic</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Basic/Attrs" data-name="celestine::filter::basic::attrs">
+      <a href="../Celestine/Filter/Basic/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Blend" data-name="celestine::filter::blend">
+      <a href="../Celestine/Filter/Blend.html">Blend</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Blend/Attrs" data-name="celestine::filter::blend::attrs">
+      <a href="../Celestine/Filter/Blend/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Blur" data-name="celestine::filter::blur">
+      <a href="../Celestine/Filter/Blur.html">Blur</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Blur/Attrs" data-name="celestine::filter::blur::attrs">
+      <a href="../Celestine/Filter/Blur/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/ColorMatrix" data-name="celestine::filter::colormatrix">
+      <a href="../Celestine/Filter/ColorMatrix.html">ColorMatrix</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/ColorMatrix/Attrs" data-name="celestine::filter::colormatrix::attrs">
+      <a href="../Celestine/Filter/ColorMatrix/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/ComponentTransfer" data-name="celestine::filter::componenttransfer">
+      <a href="../Celestine/Filter/ComponentTransfer.html">ComponentTransfer</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/ComponentTransfer/Attrs" data-name="celestine::filter::componenttransfer::attrs">
+      <a href="../Celestine/Filter/ComponentTransfer/Attrs.html">Attrs</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/ComponentTransfer/Func" data-name="celestine::filter::componenttransfer::func">
+      <a href="../Celestine/Filter/ComponentTransfer/Func.html">Func</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/ComponentTransfer/Func/Attrs" data-name="celestine::filter::componenttransfer::func::attrs">
+      <a href="../Celestine/Filter/ComponentTransfer/Func/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/ComponentTransfer/FuncA" data-name="celestine::filter::componenttransfer::funca">
+      <a href="../Celestine/Filter/ComponentTransfer/FuncA.html">FuncA</a>
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/ComponentTransfer/FuncB" data-name="celestine::filter::componenttransfer::funcb">
+      <a href="../Celestine/Filter/ComponentTransfer/FuncB.html">FuncB</a>
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/ComponentTransfer/FuncG" data-name="celestine::filter::componenttransfer::funcg">
+      <a href="../Celestine/Filter/ComponentTransfer/FuncG.html">FuncG</a>
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/ComponentTransfer/FuncR" data-name="celestine::filter::componenttransfer::funcr">
+      <a href="../Celestine/Filter/ComponentTransfer/FuncR.html">FuncR</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Composite" data-name="celestine::filter::composite">
+      <a href="../Celestine/Filter/Composite.html">Composite</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Composite/Attrs" data-name="celestine::filter::composite::attrs">
+      <a href="../Celestine/Filter/Composite/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/DisplacementMap" data-name="celestine::filter::displacementmap">
+      <a href="../Celestine/Filter/DisplacementMap.html">DisplacementMap</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/DisplacementMap/Attrs" data-name="celestine::filter::displacementmap::attrs">
+      <a href="../Celestine/Filter/DisplacementMap/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/DropShadow" data-name="celestine::filter::dropshadow">
+      <a href="../Celestine/Filter/DropShadow.html">DropShadow</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/DropShadow/Attrs" data-name="celestine::filter::dropshadow::attrs">
+      <a href="../Celestine/Filter/DropShadow/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Flood" data-name="celestine::filter::flood">
+      <a href="../Celestine/Filter/Flood.html">Flood</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Flood/Attrs" data-name="celestine::filter::flood::attrs">
+      <a href="../Celestine/Filter/Flood/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Image" data-name="celestine::filter::image">
+      <a href="../Celestine/Filter/Image.html">Image</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Image/Attrs" data-name="celestine::filter::image::attrs">
+      <a href="../Celestine/Filter/Image/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Merge" data-name="celestine::filter::merge">
+      <a href="../Celestine/Filter/Merge.html">Merge</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Merge/Attrs" data-name="celestine::filter::merge::attrs">
+      <a href="../Celestine/Filter/Merge/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Morphology" data-name="celestine::filter::morphology">
+      <a href="../Celestine/Filter/Morphology.html">Morphology</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Morphology/Attrs" data-name="celestine::filter::morphology::attrs">
+      <a href="../Celestine/Filter/Morphology/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Offset" data-name="celestine::filter::offset">
+      <a href="../Celestine/Filter/Offset.html">Offset</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Offset/Attrs" data-name="celestine::filter::offset::attrs">
+      <a href="../Celestine/Filter/Offset/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/SpecularLighting" data-name="celestine::filter::specularlighting">
+      <a href="../Celestine/Filter/SpecularLighting.html">SpecularLighting</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/SpecularLighting/Attrs" data-name="celestine::filter::specularlighting::attrs">
+      <a href="../Celestine/Filter/SpecularLighting/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Tile" data-name="celestine::filter::tile">
+      <a href="../Celestine/Filter/Tile.html">Tile</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Tile/Attrs" data-name="celestine::filter::tile::attrs">
+      <a href="../Celestine/Filter/Tile/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Filter/Turbulence" data-name="celestine::filter::turbulence">
+      <a href="../Celestine/Filter/Turbulence.html">Turbulence</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Filter/Turbulence/Attrs" data-name="celestine::filter::turbulence::attrs">
+      <a href="../Celestine/Filter/Turbulence/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/FPoint" data-name="celestine::fpoint">
+      <a href="../Celestine/FPoint.html">FPoint</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Gradient" data-name="celestine::gradient">
+      <a href="../Celestine/Gradient.html">Gradient</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Gradient/Attrs" data-name="celestine::gradient::attrs">
+      <a href="../Celestine/Gradient/Attrs.html">Attrs</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Gradient/Linear" data-name="celestine::gradient::linear">
+      <a href="../Celestine/Gradient/Linear.html">Linear</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Gradient/Linear/Attrs" data-name="celestine::gradient::linear::attrs">
+      <a href="../Celestine/Gradient/Linear/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Gradient/Radial" data-name="celestine::gradient::radial">
+      <a href="../Celestine/Gradient/Radial.html">Radial</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Gradient/Radial/Attrs" data-name="celestine::gradient::radial::attrs">
+      <a href="../Celestine/Gradient/Radial/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Gradient/Stop" data-name="celestine::gradient::stop">
+      <a href="../Celestine/Gradient/Stop.html">Stop</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Gradient/Stop/Attrs" data-name="celestine::gradient::stop::attrs">
+      <a href="../Celestine/Gradient/Stop/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Group" data-name="celestine::group">
+      <a href="../Celestine/Group.html">Group</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Group/Attrs" data-name="celestine::group::attrs">
+      <a href="../Celestine/Group/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Image" data-name="celestine::image">
+      <a href="../Celestine/Image.html">Image</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Image/Attrs" data-name="celestine::image::attrs">
+      <a href="../Celestine/Image/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Line" data-name="celestine::line">
+      <a href="../Celestine/Line.html">Line</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Line/Attrs" data-name="celestine::line::attrs">
+      <a href="../Celestine/Line/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Logo" data-name="celestine::logo">
+      <a href="../Celestine/Logo.html">Logo</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Marker" data-name="celestine::marker">
+      <a href="../Celestine/Marker.html">Marker</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Marker/Attrs" data-name="celestine::marker::attrs">
+      <a href="../Celestine/Marker/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Mask" data-name="celestine::mask">
+      <a href="../Celestine/Mask.html">Mask</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Mask/Attrs" data-name="celestine::mask::attrs">
+      <a href="../Celestine/Mask/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Math" data-name="celestine::math">
+      <a href="../Celestine/Math.html">Math</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Meta" data-name="celestine::meta">
+      <a href="../Celestine/Meta.html">Meta</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="celestine/Celestine/Meta/Context" data-name="celestine::meta::context">
+      <a href="../Celestine/Meta/Context.html">Context</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Meta/Context/Methods" data-name="celestine::meta::context::methods">
+      <a href="../Celestine/Meta/Context/Methods.html">Methods</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules" data-name="celestine::modules">
+      <a href="../Celestine/Modules.html">Modules</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Animate" data-name="celestine::modules::animate">
+      <a href="../Celestine/Modules/Animate.html">Animate</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Animate/Motion" data-name="celestine::modules::animate::motion">
+      <a href="../Celestine/Modules/Animate/Motion.html">Motion</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Animate/Transform" data-name="celestine::modules::animate::transform">
+      <a href="../Celestine/Modules/Animate/Transform.html">Transform</a>
+      
+        <ul>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Animate/Transform/Rotate" data-name="celestine::modules::animate::transform::rotate">
+      <a href="../Celestine/Modules/Animate/Transform/Rotate.html">Rotate</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Animate/Transform/Rotate/Attrs" data-name="celestine::modules::animate::transform::rotate::attrs">
+      <a href="../Celestine/Modules/Animate/Transform/Rotate/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Animate/Transform/Scale" data-name="celestine::modules::animate::transform::scale">
+      <a href="../Celestine/Modules/Animate/Transform/Scale.html">Scale</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Animate/Transform/Scale/Attrs" data-name="celestine::modules::animate::transform::scale::attrs">
+      <a href="../Celestine/Modules/Animate/Transform/Scale/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Animate/Transform/SkewX" data-name="celestine::modules::animate::transform::skewx">
+      <a href="../Celestine/Modules/Animate/Transform/SkewX.html">SkewX</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Animate/Transform/SkewX/Attrs" data-name="celestine::modules::animate::transform::skewx::attrs">
+      <a href="../Celestine/Modules/Animate/Transform/SkewX/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Animate/Transform/SkewY" data-name="celestine::modules::animate::transform::skewy">
+      <a href="../Celestine/Modules/Animate/Transform/SkewY.html">SkewY</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Animate/Transform/SkewY/Attrs" data-name="celestine::modules::animate::transform::skewy::attrs">
+      <a href="../Celestine/Modules/Animate/Transform/SkewY/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Animate/Transform/Translate" data-name="celestine::modules::animate::transform::translate">
+      <a href="../Celestine/Modules/Animate/Transform/Translate.html">Translate</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Animate/Transform/Translate/Attrs" data-name="celestine::modules::animate::transform::translate::attrs">
+      <a href="../Celestine/Modules/Animate/Transform/Translate/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Body" data-name="celestine::modules::body">
+      <a href="../Celestine/Modules/Body.html">Body</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Body/Attrs" data-name="celestine::modules::body::attrs">
+      <a href="../Celestine/Modules/Body/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/CommonAnimate" data-name="celestine::modules::commonanimate">
+      <a href="../Celestine/Modules/CommonAnimate.html">CommonAnimate</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/CommonAnimate/Attrs" data-name="celestine::modules::commonanimate::attrs">
+      <a href="../Celestine/Modules/CommonAnimate/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/CPosition" data-name="celestine::modules::cposition">
+      <a href="../Celestine/Modules/CPosition.html">CPosition</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/CPosition/Attrs" data-name="celestine::modules::cposition::attrs">
+      <a href="../Celestine/Modules/CPosition/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Filter" data-name="celestine::modules::filter">
+      <a href="../Celestine/Modules/Filter.html">Filter</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Filter/Attrs" data-name="celestine::modules::filter::attrs">
+      <a href="../Celestine/Modules/Filter/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Marker" data-name="celestine::modules::marker">
+      <a href="../Celestine/Modules/Marker.html">Marker</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Marker/Attrs" data-name="celestine::modules::marker::attrs">
+      <a href="../Celestine/Modules/Marker/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Mask" data-name="celestine::modules::mask">
+      <a href="../Celestine/Modules/Mask.html">Mask</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Mask/Attrs" data-name="celestine::modules::mask::attrs">
+      <a href="../Celestine/Modules/Mask/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Position" data-name="celestine::modules::position">
+      <a href="../Celestine/Modules/Position.html">Position</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Position/Attrs" data-name="celestine::modules::position::attrs">
+      <a href="../Celestine/Modules/Position/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/StrokeFill" data-name="celestine::modules::strokefill">
+      <a href="../Celestine/Modules/StrokeFill.html">StrokeFill</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/StrokeFill/Attrs" data-name="celestine::modules::strokefill::attrs">
+      <a href="../Celestine/Modules/StrokeFill/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Modules/Transform" data-name="celestine::modules::transform">
+      <a href="../Celestine/Modules/Transform.html">Transform</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Modules/Transform/Attrs" data-name="celestine::modules::transform::attrs">
+      <a href="../Celestine/Modules/Transform/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Path" data-name="celestine::path">
+      <a href="../Celestine/Path.html">Path</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Path/Attrs" data-name="celestine::path::attrs">
+      <a href="../Celestine/Path/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Pattern" data-name="celestine::pattern">
+      <a href="../Celestine/Pattern.html">Pattern</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Pattern/Attrs" data-name="celestine::pattern::attrs">
+      <a href="../Celestine/Pattern/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Point" data-name="celestine::point">
+      <a href="../Celestine/Point.html">Point</a>
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Polygon" data-name="celestine::polygon">
+      <a href="../Celestine/Polygon.html">Polygon</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Polygon/Attrs" data-name="celestine::polygon::attrs">
+      <a href="../Celestine/Polygon/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Polyline" data-name="celestine::polyline">
+      <a href="../Celestine/Polyline.html">Polyline</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Polyline/Attrs" data-name="celestine::polyline::attrs">
+      <a href="../Celestine/Polyline/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Rectangle" data-name="celestine::rectangle">
+      <a href="../Celestine/Rectangle.html">Rectangle</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Rectangle/Attrs" data-name="celestine::rectangle::attrs">
+      <a href="../Celestine/Rectangle/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Svg" data-name="celestine::svg">
+      <a href="../Celestine/Svg.html">Svg</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Svg/Attrs" data-name="celestine::svg::attrs">
+      <a href="../Celestine/Svg/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Text" data-name="celestine::text">
+      <a href="../Celestine/Text.html">Text</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Text/Attrs" data-name="celestine::text::attrs">
+      <a href="../Celestine/Text/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Use" data-name="celestine::use">
+      <a href="../Celestine/Use.html">Use</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Use/Attrs" data-name="celestine::use::attrs">
+      <a href="../Celestine/Use/Attrs.html">Attrs</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/ViewBox" data-name="celestine::viewbox">
+      <a href="../Celestine/ViewBox.html">ViewBox</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="celestine/IFNumber" data-name="ifnumber">
+      <a href="../IFNumber.html">IFNumber</a>
+      
+    </li>
+  
+  <li class=" " data-id="celestine/SIFNumber" data-name="sifnumber">
+      <a href="../SIFNumber.html">SIFNumber</a>
+      
+    </li>
+  
+</ul>
+
   </div>
 </div>
-    
-    
-      <div class="md-header__source">
-        
-<a href="https://github.com/celestinecr/celestine/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
+
+
+<div class="main-content">
+<h1 class="type-name">
+
+  <span class="kind">
+    class
+  </span> Celestine::<wbr>Circle
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="../Celestine/Circle.html">Celestine::Circle</a></li><li class="superclass"><a href="../Celestine/Drawable.html">Celestine::Drawable</a></li><li class="superclass">Reference</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>
+    <a id="overview" class="anchor" href="#overview">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
 </a>
-      </div>
-    
-  </nav>
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
+    Overview
+  </h2>
 
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href="../index.html" title="Celestine" class="md-nav__button md-logo" aria-label="Celestine" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    Celestine
-  </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/celestinecr/celestine/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    GitHub
-  </div>
-</a>
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../index.html" class="md-nav__link">
-        Usage
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    
-      
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
-      
-      <label class="md-nav__link" for="__nav_2">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="../Celestine.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          API
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="API" data-md-level="1">
-        <label class="md-nav__title" for="__nav_2">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="../Celestine.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            API
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-    
-  
-  
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1" type="checkbox" id="__nav_2_1" checked>
-      
-      <label class="md-nav__link" for="__nav_2_1">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Drawable.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Drawable
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Drawable" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_1">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Drawable.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Drawable
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Anchor.html" class="md-nav__link">
-        Anchor
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_2" type="checkbox" id="__nav_2_1_2" >
-      
-      <label class="md-nav__link" for="__nav_2_1_2">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Animate.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Animate
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Animate" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_2">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Animate.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Animate
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Animate/Motion.html" class="md-nav__link">
-        Motion
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Circle.html" class="md-nav__link md-nav__link--active"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Circle
-          </a>
-        </label>
-      
-      <a href="Circle.html" class="md-nav__link md-nav__link--active">
-        Circle
-      </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#Celestine::Circle-constants" class="md-nav__link">
-    Constants
-  </a>
-  
-    <nav class="md-nav" aria-label="Constants">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle::TAG" class="md-nav__link">
-    TAG
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#Celestine::Circle-methods" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#diameter" class="md-nav__link">
-    #diameter
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#draw(io)" class="md-nav__link">
-    #draw
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#radius" class="md-nav__link">
-    #radius
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#radius=(radius)" class="md-nav__link">
-    #radius=
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#radius_units" class="md-nav__link">
-    #radius_units
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#radius_units=(radius_units)" class="md-nav__link">
-    #radius_units=
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#Celestine::Circle::Attrs" class="md-nav__link">
-    Attrs
-  </a>
-  
-    <nav class="md-nav" aria-label="Attrs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle::Attrs-constants" class="md-nav__link">
-    Constants
-  </a>
-  
-    <nav class="md-nav" aria-label="Constants">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle::Attrs::RADIUS" class="md-nav__link">
-    RADIUS
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Ellipse.html" class="md-nav__link">
-        Ellipse
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_5" type="checkbox" id="__nav_2_1_5" >
-      
-      <label class="md-nav__link" for="__nav_2_1_5">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Filter.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Filter
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Filter" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_5">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Filter.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Filter
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Basic.html" class="md-nav__link">
-        Basic
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Blend.html" class="md-nav__link">
-        Blend
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Blur.html" class="md-nav__link">
-        Blur
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/ColorMatrix.html" class="md-nav__link">
-        ColorMatrix
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_5_5" type="checkbox" id="__nav_2_1_5_5" >
-      
-      <label class="md-nav__link" for="__nav_2_1_5_5">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Filter/ComponentTransfer.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          ComponentTransfer
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="ComponentTransfer" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_1_5_5">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Filter/ComponentTransfer.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            ComponentTransfer
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/ComponentTransfer/Func.html" class="md-nav__link">
-        Func
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/ComponentTransfer/FuncA.html" class="md-nav__link">
-        FuncA
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/ComponentTransfer/FuncB.html" class="md-nav__link">
-        FuncB
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/ComponentTransfer/FuncG.html" class="md-nav__link">
-        FuncG
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/ComponentTransfer/FuncR.html" class="md-nav__link">
-        FuncR
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Composite.html" class="md-nav__link">
-        Composite
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/DisplacementMap.html" class="md-nav__link">
-        DisplacementMap
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/DropShadow.html" class="md-nav__link">
-        DropShadow
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Flood.html" class="md-nav__link">
-        Flood
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Image.html" class="md-nav__link">
-        Image
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Merge.html" class="md-nav__link">
-        Merge
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Morphology.html" class="md-nav__link">
-        Morphology
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Offset.html" class="md-nav__link">
-        Offset
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/SpecularLighting.html" class="md-nav__link">
-        SpecularLighting
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Tile.html" class="md-nav__link">
-        Tile
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Filter/Turbulence.html" class="md-nav__link">
-        Turbulence
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_1_6" type="checkbox" id="__nav_2_1_6" >
-      
-      <label class="md-nav__link" for="__nav_2_1_6">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Gradient.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Gradient
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Gradient" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_1_6">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Gradient.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Gradient
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Gradient/Linear.html" class="md-nav__link">
-        Linear
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Gradient/Radial.html" class="md-nav__link">
-        Radial
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Gradient/Stop.html" class="md-nav__link">
-        Stop
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Group.html" class="md-nav__link">
-        Group
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Image.html" class="md-nav__link">
-        Image
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Marker.html" class="md-nav__link">
-        Marker
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Mask.html" class="md-nav__link">
-        Mask
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Path.html" class="md-nav__link">
-        Path
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Pattern.html" class="md-nav__link">
-        Pattern
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Rectangle.html" class="md-nav__link">
-        Rectangle
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Svg.html" class="md-nav__link">
-        Svg
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Text.html" class="md-nav__link">
-        Text
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Drawable/Transform.html" class="md-nav__link">
-        Transform
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Use.html" class="md-nav__link">
-        Use
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="FPoint.html" class="md-nav__link">
-        FPoint
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Logo.html" class="md-nav__link">
-        Logo
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Math.html" class="md-nav__link">
-        Math
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
-      
-      <label class="md-nav__link" for="__nav_2_5">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Meta.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Meta
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Meta" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_5">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Meta.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Meta
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
-      
-      <label class="md-nav__link" for="__nav_2_5_1">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Meta/Context.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Context
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Context" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_5_1">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Meta/Context.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Context
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Meta/Context/Methods.html" class="md-nav__link">
-        Methods
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
-      
-      <label class="md-nav__link" for="__nav_2_6">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Modules.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Modules
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Modules" data-md-level="2">
-        <label class="md-nav__title" for="__nav_2_6">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Modules.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Modules
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" type="checkbox" id="__nav_2_6_1" >
-      
-      <label class="md-nav__link" for="__nav_2_6_1">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Modules/Animate.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Animate
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Animate" data-md-level="3">
-        <label class="md-nav__title" for="__nav_2_6_1">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Modules/Animate.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Animate
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Animate/Motion.html" class="md-nav__link">
-        Motion
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-      
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1_2" type="checkbox" id="__nav_2_6_1_2" >
-      
-      <label class="md-nav__link" for="__nav_2_6_1_2">
-        <span class="md-nav__icon md-icon"></span>
-        
-          <a href="Modules/Animate/Transform.html" class="md-nav__link"
-            style="margin: initial; padding: initial; pointer-events: initial">
-        
-          Transform
-        </a>
-      </label>
-      <nav class="md-nav" aria-label="Transform" data-md-level="4">
-        <label class="md-nav__title" for="__nav_2_6_1_2">
-          <span class="md-nav__icon md-icon"></span>
-          
-            <a href="Modules/Animate/Transform.html" class="md-nav__link"
-              style="margin: initial; padding: initial; pointer-events: initial">
-          
-            Transform
-          </a>
-        </label>
-        <ul class="md-nav__list" data-md-scrollfix>
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Animate/Transform/Rotate.html" class="md-nav__link">
-        Rotate
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Animate/Transform/Scale.html" class="md-nav__link">
-        Scale
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Animate/Transform/SkewX.html" class="md-nav__link">
-        SkewX
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Animate/Transform/SkewY.html" class="md-nav__link">
-        SkewY
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Animate/Transform/Translate.html" class="md-nav__link">
-        Translate
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Body.html" class="md-nav__link">
-        Body
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/CPosition.html" class="md-nav__link">
-        CPosition
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/CommonAnimate.html" class="md-nav__link">
-        CommonAnimate
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Filter.html" class="md-nav__link">
-        Filter
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Marker.html" class="md-nav__link">
-        Marker
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Mask.html" class="md-nav__link">
-        Mask
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Position.html" class="md-nav__link">
-        Position
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/StrokeFill.html" class="md-nav__link">
-        StrokeFill
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Modules/Transform.html" class="md-nav__link">
-        Transform
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="Point.html" class="md-nav__link">
-        Point
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="ViewBox.html" class="md-nav__link">
-        ViewBox
-      </a>
-    </li>
-  
-
-          
-        </ul>
-      </nav>
-    </li>
-  
-
-    
-  </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#Celestine::Circle-constants" class="md-nav__link">
-    Constants
-  </a>
-  
-    <nav class="md-nav" aria-label="Constants">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle::TAG" class="md-nav__link">
-    TAG
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#Celestine::Circle-methods" class="md-nav__link">
-    Methods
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#diameter" class="md-nav__link">
-    #diameter
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#draw(io)" class="md-nav__link">
-    #draw
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#radius" class="md-nav__link">
-    #radius
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#radius=(radius)" class="md-nav__link">
-    #radius=
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#radius_units" class="md-nav__link">
-    #radius_units
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle#radius_units=(radius_units)" class="md-nav__link">
-    #radius_units=
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#Celestine::Circle::Attrs" class="md-nav__link">
-    Attrs
-  </a>
-  
-    <nav class="md-nav" aria-label="Attrs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle::Attrs-constants" class="md-nav__link">
-    Constants
-  </a>
-  
-    <nav class="md-nav" aria-label="Constants">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#Celestine::Circle::Attrs::RADIUS" class="md-nav__link">
-    RADIUS
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/celestinecr/celestine/blob/75f1b0dc5b636df995e71a89a176dbf88fb64c71/src/drawables/circle.cr#L4" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                <div class="doc doc-object doc-type class">
-<h1 id="Celestine::Circle" class="doc doc-heading">class <code>Celestine::Circle</code>
-      <br/><small>inherits <code><a href="Drawable.html#Celestine::Drawable">Celestine::Drawable</a></code></small>
-<a href="#Celestine::Circle" class="headerlink" title="Permanent link">#</a></h1>
-  <div class="doc doc-contents first">
-<p>Draws and holds information for circles</p>
+  <p>Draws and holds information for circles</p>
 <ul>
 <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle">Mozilla SVG Docs</a></li>
 </ul>
-      <div class="doc doc-children">
 
-            <h2>Included modules</h2>
-              <code><a href="Modules/Animate.html#Celestine::Modules::Animate">Celestine::Modules::Animate</a></code>
-              <code><a href="Modules/Animate/Motion.html#Celestine::Modules::Animate::Motion">Celestine::Modules::Animate::Motion</a></code>
-              <code><a href="Modules/Animate/Transform.html#Celestine::Modules::Animate::Transform">Celestine::Modules::Animate::Transform</a></code>
-              <code><a href="Modules/CPosition.html#Celestine::Modules::CPosition">Celestine::Modules::CPosition</a></code>
-              <code><a href="Modules/Filter.html#Celestine::Modules::Filter">Celestine::Modules::Filter</a></code>
-              <code><a href="Modules/Marker.html#Celestine::Modules::Marker">Celestine::Modules::Marker</a></code>
-              <code><a href="Modules/Mask.html#Celestine::Modules::Mask">Celestine::Modules::Mask</a></code>
-              <code><a href="Modules/StrokeFill.html#Celestine::Modules::StrokeFill">Celestine::Modules::StrokeFill</a></code>
-              <code><a href="Modules/Transform.html#Celestine::Modules::Transform">Celestine::Modules::Transform</a></code>
 
-<h2 id="Celestine::Circle-constants">Constants<a href="#Celestine::Circle-constants" class="headerlink" title="Permanent link">#</a></h2>
 
-<div class="doc doc-object doc-constant">
-<h3 id="Celestine::Circle::TAG" class="doc doc-heading">    <code>
-      TAG = <span style="font-weight: normal"><code class="highlight language-crystal"><span class="s2">&quot;circle&quot;</span></code></span>
-    </code>
-<a href="#Celestine::Circle::TAG" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
+
+
+
+
+  <h2>
+    <a id="included-modules" class="anchor" href="#included-modules">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Included Modules
+  </h2>
+  <ul class="other-types-list">
+    
+      <li class="other-type"><a href="../Celestine/Modules/Animate.html">Celestine::Modules::Animate</a></li>
+    
+      <li class="other-type"><a href="../Celestine/Modules/Animate/Motion.html">Celestine::Modules::Animate::Motion</a></li>
+    
+      <li class="other-type"><a href="../Celestine/Modules/Animate/Transform.html">Celestine::Modules::Animate::Transform</a></li>
+    
+      <li class="other-type"><a href="../Celestine/Modules/CPosition.html">Celestine::Modules::CPosition</a></li>
+    
+      <li class="other-type"><a href="../Celestine/Modules/Filter.html">Celestine::Modules::Filter</a></li>
+    
+      <li class="other-type"><a href="../Celestine/Modules/Marker.html">Celestine::Modules::Marker</a></li>
+    
+      <li class="other-type"><a href="../Celestine/Modules/Mask.html">Celestine::Modules::Mask</a></li>
+    
+      <li class="other-type"><a href="../Celestine/Modules/StrokeFill.html">Celestine::Modules::StrokeFill</a></li>
+    
+      <li class="other-type"><a href="../Celestine/Modules/Transform.html">Celestine::Modules::Transform</a></li>
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>
+    <a id="defined-in" class="anchor" href="#defined-in">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Defined in:
+  </h2>
+  
+    
+      <a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/drawables/circle.cr#L4" target="_blank">
+        drawables/circle.cr
+      </a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>
+      <a id="constant-summary" class="anchor" href="#constant-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+      Constant Summary
+    </h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="TAG">
+        <strong>TAG</strong> = <code><span class="s">&quot;circle&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  
+
+  
+
+  
+
+  
+  <h2>
+    <a id="instance-method-summary" class="anchor" href="#instance-method-summary">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Summary
+  </h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#diameter-instance-method" class="signature"><strong>#diameter</strong></a>
+        
+          <div class="summary"><p>The diameter of the circle</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#draw%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#draw</strong>(io : IO) : Nil</a>
+        
+          <div class="summary"><p>Draws this circle to an <code>IO</code></p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#radius%3AIFNumber%7CNil-instance-method" class="signature"><strong>#radius</strong> : IFNumber | Nil</a>
+        
+          <div class="summary"><p>Radius of the circle</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#radius%3D%28radius%3AIFNumber%7CNil%29-instance-method" class="signature"><strong>#radius=</strong>(radius : IFNumber | Nil)</a>
+        
+          <div class="summary"><p>Radius of the circle</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#radius_units%3AString%7CNil-instance-method" class="signature"><strong>#radius_units</strong> : String | Nil</a>
+        
+          <div class="summary"><p>What kind of unit <code><a href="../Celestine/Circle.html#radius%3AIFNumber%7CNil-instance-method">#radius</a></code> should use when rendering</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#radius_units%3D%28radius_units%3AString%7CNil%29-instance-method" class="signature"><strong>#radius_units=</strong>(radius_units : String | Nil)</a>
+        
+          <div class="summary"><p>What kind of unit <code><a href="../Celestine/Circle.html#radius%3AIFNumber%7CNil-instance-method">#radius</a></code> should use when rendering</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+  <div class="methods-inherited">
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/Animate/Transform.html">Celestine::Modules::Animate::Transform</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/Animate/Transform.html#animate_transform_rotate%28%26block%3ACelestine%3A%3AAnimate%3A%3ATransform%3A%3ARotate-%3E%29-instance-method" class="tooltip">
+      <span>animate_transform_rotate(&block : Celestine::Animate::Transform::Rotate -> )</span>
+    animate_transform_rotate</a>, 
+    
+  
+    <a href="../Celestine/Modules/Animate/Transform.html#animate_transform_scale%28%26block%3ACelestine%3A%3AAnimate%3A%3ATransform%3A%3AScale-%3E%29-instance-method" class="tooltip">
+      <span>animate_transform_scale(&block : Celestine::Animate::Transform::Scale -> )</span>
+    animate_transform_scale</a>, 
+    
+  
+    <a href="../Celestine/Modules/Animate/Transform.html#animate_transform_skew_x%28%26block%3ACelestine%3A%3AAnimate%3A%3ATransform%3A%3ASkewX-%3E%29-instance-method" class="tooltip">
+      <span>animate_transform_skew_x(&block : Celestine::Animate::Transform::SkewX -> )</span>
+    animate_transform_skew_x</a>, 
+    
+  
+    <a href="../Celestine/Modules/Animate/Transform.html#animate_transform_skew_y%28%26block%3ACelestine%3A%3AAnimate%3A%3ATransform%3A%3ASkewY-%3E%29-instance-method" class="tooltip">
+      <span>animate_transform_skew_y(&block : Celestine::Animate::Transform::SkewY -> )</span>
+    animate_transform_skew_y</a>, 
+    
+  
+    <a href="../Celestine/Modules/Animate/Transform.html#animate_transform_translate%28%26block%3ACelestine%3A%3AAnimate%3A%3ATransform%3A%3ATranslate-%3E%29-instance-method" class="tooltip">
+      <span>animate_transform_translate(&block : Celestine::Animate::Transform::Translate -> )</span>
+    animate_transform_translate</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/Animate/Motion.html">Celestine::Modules::Animate::Motion</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/Animate/Motion.html#animate_motion%28%26block%3ACelestine%3A%3AAnimate%3A%3AMotion-%3E%29-instance-method" class="tooltip">
+      <span>animate_motion(&block : Celestine::Animate::Motion -> )</span>
+    animate_motion</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/Animate.html">Celestine::Modules::Animate</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/Animate.html#animate%28%26block%3ACelestine%3A%3AAnimate-%3E%29-instance-method" class="tooltip">
+      <span>animate(&block : Celestine::Animate -> )</span>
+    animate</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/Marker.html">Celestine::Modules::Marker</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/Marker.html#marker_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>marker_attribute(io : IO)</span>
+    marker_attribute</a>, 
+    
+  
+    <a href="../Celestine/Modules/Marker.html#set_marker_end%28id%3AString%29-instance-method" class="tooltip">
+      <span>set_marker_end(id : String)<br/>set_marker_end(marker : Celestine::Marker)</span>
+    set_marker_end</a>, 
+    
+  
+    <a href="../Celestine/Modules/Marker.html#set_marker_mid%28id%3AString%29-instance-method" class="tooltip">
+      <span>set_marker_mid(id : String)<br/>set_marker_mid(marker : Celestine::Marker)</span>
+    set_marker_mid</a>, 
+    
+  
+    <a href="../Celestine/Modules/Marker.html#set_marker_start%28id%3AString%29-instance-method" class="tooltip">
+      <span>set_marker_start(id : String)<br/>set_marker_start(marker : Celestine::Marker)</span>
+    set_marker_start</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/Filter.html">Celestine::Modules::Filter</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/Filter.html#filter_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>filter_attribute(io : IO)</span>
+    filter_attribute</a>, 
+    
+  
+    <a href="../Celestine/Modules/Filter.html#set_filter%28id%3AString%29-instance-method" class="tooltip">
+      <span>set_filter(id : String)<br/>set_filter(filter : Celestine::Filter)</span>
+    set_filter</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/Mask.html">Celestine::Modules::Mask</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/Mask.html#mask_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>mask_attribute(io : IO)</span>
+    mask_attribute</a>, 
+    
+  
+    <a href="../Celestine/Modules/Mask.html#set_mask%28id%3AString%29-instance-method" class="tooltip">
+      <span>set_mask(id : String)<br/>set_mask(mask : Celestine::Mask)</span>
+    set_mask</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/Transform.html">Celestine::Modules::Transform</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/Transform.html#transform%28%26block%3ACelestine%3A%3ADrawable%3A%3ATransform-%3E%29-instance-method" class="tooltip">
+      <span>transform(&block : Celestine::Drawable::Transform -> )</span>
+    transform</a>, 
+    
+  
+    <a href="../Celestine/Modules/Transform.html#transform_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>transform_attribute(io : IO)</span>
+    transform_attribute</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/StrokeFill.html">Celestine::Modules::StrokeFill</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/StrokeFill.html#color%3AString%7CNil-instance-method" class="tooltip">
+      <span>color : String | Nil</span>
+    color</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#color%3D%28color%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>color=(color : String | Nil)</span>
+    color=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#color_interpolation%3AString%7CNil-instance-method" class="tooltip">
+      <span>color_interpolation : String | Nil</span>
+    color_interpolation</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#color_interpolation%3D%28color_interpolation%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>color_interpolation=(color_interpolation : String | Nil)</span>
+    color_interpolation=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#color_interpolation_filters%3AString%7CNil-instance-method" class="tooltip">
+      <span>color_interpolation_filters : String | Nil</span>
+    color_interpolation_filters</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#color_interpolation_filters%3D%28color_interpolation_filters%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>color_interpolation_filters=(color_interpolation_filters : String | Nil)</span>
+    color_interpolation_filters=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#dash_array%3AArray%28Float64%29-instance-method" class="tooltip">
+      <span>dash_array : Array(Float64)</span>
+    dash_array</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#dash_array%3D%28dash_array%3AArray%28Float64%29%29-instance-method" class="tooltip">
+      <span>dash_array=(dash_array : Array(Float64))</span>
+    dash_array=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#dash_offset%3AIFNumber%7CNil-instance-method" class="tooltip">
+      <span>dash_offset : IFNumber | Nil</span>
+    dash_offset</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#dash_offset%3D%28dash_offset%3AIFNumber%7CNil%29-instance-method" class="tooltip">
+      <span>dash_offset=(dash_offset : IFNumber | Nil)</span>
+    dash_offset=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#dash_offset_units%3AString%7CNil-instance-method" class="tooltip">
+      <span>dash_offset_units : String | Nil</span>
+    dash_offset_units</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#dash_offset_units%3D%28dash_offset_units%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>dash_offset_units=(dash_offset_units : String | Nil)</span>
+    dash_offset_units=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#fill%3AString%7CNil-instance-method" class="tooltip">
+      <span>fill : String | Nil</span>
+    fill</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#fill%3D%28fill%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>fill=(fill : String | Nil)</span>
+    fill=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#fill_opacity%3AIFNumber%7CNil-instance-method" class="tooltip">
+      <span>fill_opacity : IFNumber | Nil</span>
+    fill_opacity</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#fill_opacity%3D%28fill_opacity%3AIFNumber%7CNil%29-instance-method" class="tooltip">
+      <span>fill_opacity=(fill_opacity : IFNumber | Nil)</span>
+    fill_opacity=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#fill_rule%3ABool-instance-method" class="tooltip">
+      <span>fill_rule : Bool</span>
+    fill_rule</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#fill_rule%3D%28fill_rule%3ABool%29-instance-method" class="tooltip">
+      <span>fill_rule=(fill_rule : Bool)</span>
+    fill_rule=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#line_cap%3AString%7CNil-instance-method" class="tooltip">
+      <span>line_cap : String | Nil</span>
+    line_cap</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#line_cap%3D%28line_cap%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>line_cap=(line_cap : String | Nil)</span>
+    line_cap=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#line_join%3AString%7CNil-instance-method" class="tooltip">
+      <span>line_join : String | Nil</span>
+    line_join</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#line_join%3D%28line_join%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>line_join=(line_join : String | Nil)</span>
+    line_join=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#miter_limit%3AIFNumber%7CNil-instance-method" class="tooltip">
+      <span>miter_limit : IFNumber | Nil</span>
+    miter_limit</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#miter_limit%3D%28miter_limit%3AIFNumber%7CNil%29-instance-method" class="tooltip">
+      <span>miter_limit=(miter_limit : IFNumber | Nil)</span>
+    miter_limit=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#miter_limit_units%3AString%7CNil-instance-method" class="tooltip">
+      <span>miter_limit_units : String | Nil</span>
+    miter_limit_units</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#miter_limit_units%3D%28miter_limit_units%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>miter_limit_units=(miter_limit_units : String | Nil)</span>
+    miter_limit_units=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#opacity%3AIFNumber%7CNil-instance-method" class="tooltip">
+      <span>opacity : IFNumber | Nil</span>
+    opacity</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#opacity%3D%28opacity%3AIFNumber%7CNil%29-instance-method" class="tooltip">
+      <span>opacity=(opacity : IFNumber | Nil)</span>
+    opacity=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#set_fill%28pattern%3ACelestine%3A%3APattern%29-instance-method" class="tooltip">
+      <span>set_fill(pattern : Celestine::Pattern)<br/>set_fill(gradient : Celestine::Gradient)</span>
+    set_fill</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#set_stroke%28pattern%3ACelestine%3A%3APattern%29-instance-method" class="tooltip">
+      <span>set_stroke(pattern : Celestine::Pattern)<br/>set_stroke(gradient : Celestine::Gradient)</span>
+    set_stroke</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#shape_rendering%3AString%7CNil-instance-method" class="tooltip">
+      <span>shape_rendering : String | Nil</span>
+    shape_rendering</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#shape_rendering%3D%28shape_rendering%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>shape_rendering=(shape_rendering : String | Nil)</span>
+    shape_rendering=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke%3AString%7CNil-instance-method" class="tooltip">
+      <span>stroke : String | Nil</span>
+    stroke</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke%3D%28stroke%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>stroke=(stroke : String | Nil)</span>
+    stroke=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke_fill_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>stroke_fill_attribute(io : IO)</span>
+    stroke_fill_attribute</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke_opacity%3AIFNumber%7CNil-instance-method" class="tooltip">
+      <span>stroke_opacity : IFNumber | Nil</span>
+    stroke_opacity</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke_opacity%3D%28stroke_opacity%3AIFNumber%7CNil%29-instance-method" class="tooltip">
+      <span>stroke_opacity=(stroke_opacity : IFNumber | Nil)</span>
+    stroke_opacity=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke_width%3AIFNumber%7CNil-instance-method" class="tooltip">
+      <span>stroke_width : IFNumber | Nil</span>
+    stroke_width</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke_width%3D%28stroke_width%3AIFNumber%7CNil%29-instance-method" class="tooltip">
+      <span>stroke_width=(stroke_width : IFNumber | Nil)</span>
+    stroke_width=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke_width_units%3AString%7CNil-instance-method" class="tooltip">
+      <span>stroke_width_units : String | Nil</span>
+    stroke_width_units</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#stroke_width_units%3D%28stroke_width_units%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>stroke_width_units=(stroke_width_units : String | Nil)</span>
+    stroke_width_units=</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#vector_effect%3AString%7CNil-instance-method" class="tooltip">
+      <span>vector_effect : String | Nil</span>
+    vector_effect</a>, 
+    
+  
+    <a href="../Celestine/Modules/StrokeFill.html#vector_effect%3D%28vector_effect%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>vector_effect=(vector_effect : String | Nil)</span>
+    vector_effect=</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from module <code><a href="../Celestine/Modules/CPosition.html">Celestine::Modules::CPosition</a></code></h3>
+  
+  
+    <a href="../Celestine/Modules/CPosition.html#position_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>position_attribute(io : IO)</span>
+    position_attribute</a>, 
+    
+  
+    <a href="../Celestine/Modules/CPosition.html#x%3AIFNumber%7CNil-instance-method" class="tooltip">
+      <span>x : IFNumber | Nil</span>
+    x</a>, 
+    
+  
+    <a href="../Celestine/Modules/CPosition.html#x%3D%28x%3AIFNumber%7CNil%29-instance-method" class="tooltip">
+      <span>x=(x : IFNumber | Nil)</span>
+    x=</a>, 
+    
+  
+    <a href="../Celestine/Modules/CPosition.html#x_units%3AString%7CNil-instance-method" class="tooltip">
+      <span>x_units : String | Nil</span>
+    x_units</a>, 
+    
+  
+    <a href="../Celestine/Modules/CPosition.html#x_units%3D%28x_units%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>x_units=(x_units : String | Nil)</span>
+    x_units=</a>, 
+    
+  
+    <a href="../Celestine/Modules/CPosition.html#y%3AIFNumber%7CNil-instance-method" class="tooltip">
+      <span>y : IFNumber | Nil</span>
+    y</a>, 
+    
+  
+    <a href="../Celestine/Modules/CPosition.html#y%3D%28y%3AIFNumber%7CNil%29-instance-method" class="tooltip">
+      <span>y=(y : IFNumber | Nil)</span>
+    y=</a>, 
+    
+  
+    <a href="../Celestine/Modules/CPosition.html#y_units%3AString%7CNil-instance-method" class="tooltip">
+      <span>y_units : String | Nil</span>
+    y_units</a>, 
+    
+  
+    <a href="../Celestine/Modules/CPosition.html#y_units%3D%28y_units%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>y_units=(y_units : String | Nil)</span>
+    y_units=</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+  <h3>Instance methods inherited from class <code><a href="../Celestine/Drawable.html">Celestine::Drawable</a></code></h3>
+  
+  
+    <a href="../Celestine/Drawable.html#class_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>class_attribute(io : IO)</span>
+    class_attribute</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#classes%3AArray%28String%29-instance-method" class="tooltip">
+      <span>classes : Array(String)</span>
+    classes</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#classes%3D%28classes%3AArray%28String%29%29-instance-method" class="tooltip">
+      <span>classes=(classes : Array(String))</span>
+    classes=</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#custom_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>custom_attribute(io : IO)</span>
+    custom_attribute</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#custom_attrs%3AHash%28String%2CString%29-instance-method" class="tooltip">
+      <span>custom_attrs : Hash(String, String)</span>
+    custom_attrs</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#custom_attrs%3D%28custom_attrs%3AHash%28String%2CString%29%29-instance-method" class="tooltip">
+      <span>custom_attrs=(custom_attrs : Hash(String, String))</span>
+    custom_attrs=</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#draw%28io%3AIO%29%3ANil-instance-method" class="tooltip">
+      <span>draw(io : IO) : Nil</span>
+    draw</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#id%3AString%7CNil-instance-method" class="tooltip">
+      <span>id : String | Nil</span>
+    id</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#id%3D%28id%3AString%7CNil%29-instance-method" class="tooltip">
+      <span>id=(id : String | Nil)</span>
+    id=</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#id_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>id_attribute(io : IO)</span>
+    id_attribute</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#inner_elements%3AIO%3A%3AMemory-instance-method" class="tooltip">
+      <span>inner_elements : IO::Memory</span>
+    inner_elements</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#inner_elements%3D%28inner_elements%3AIO%3A%3AMemory%29-instance-method" class="tooltip">
+      <span>inner_elements=(inner_elements : IO::Memory)</span>
+    inner_elements=</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#style%3AHash%28String%2CString%29-instance-method" class="tooltip">
+      <span>style : Hash(String, String)</span>
+    style</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#style%3D%28style%3AHash%28String%2CString%29%29-instance-method" class="tooltip">
+      <span>style=(style : Hash(String, String))</span>
+    style=</a>, 
+    
+  
+    <a href="../Celestine/Drawable.html#style_attribute%28io%3AIO%29-instance-method" class="tooltip">
+      <span>style_attribute(io : IO)</span>
+    style_attribute</a>
+    
+  
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
+      
+
+
+      
+
+
+      
+
+
+      
+
+
+    
   </div>
-</div>
-<h2 id="Celestine::Circle-methods">Methods<a href="#Celestine::Circle-methods" class="headerlink" title="Permanent link">#</a></h2>
 
-<div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Celestine::Circle#diameter" class="doc doc-heading">    <code>
-      #diameter<span style="font-weight: normal"><code class="highlight language-crystal"></code></span>
-    </code>
-<a href="#Celestine::Circle#diameter" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-<p>The diameter of the circle</p>  </div>
+  
 
-    <a class="doc-source-link" href="https://github.com/celestinecr/celestine/blob/75f1b0dc5b636df995e71a89a176dbf88fb64c71/src/drawables/circle.cr#L25">View source</a>
-</div>
+  
 
-<div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Celestine::Circle#draw(io)" class="doc doc-heading">    <code>
-      #draw<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">io</span> <span class="p">:</span> <span class="no">IO</span><span class="p">)</span> <span class="p">:</span> <span class="n">Nil</span></code></span>
-    </code>
-<a href="#Celestine::Circle#draw(io)" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-<p>Draws this circle to an <code>IO</code></p>  </div>
+  
 
-    <a class="doc-source-link" href="https://github.com/celestinecr/celestine/blob/75f1b0dc5b636df995e71a89a176dbf88fb64c71/src/drawables/circle.cr#L30">View source</a>
-</div>
+  
+  <h2>
+    <a id="instance-method-detail" class="anchor" href="#instance-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Instance Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="diameter-instance-method">
+      <div class="signature">
+        
+        def <strong>diameter</strong>
 
-<div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Celestine::Circle#radius" class="doc doc-heading">    <code>
-      #radius<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> IFNumber?</code></span>
-    </code>
-<a href="#Celestine::Circle#radius" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-<p>Radius of the circle</p>
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r">Mozilla SVG Docs</a></li>
-</ul>  </div>
-
-</div>
-
-<div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Celestine::Circle#radius=(radius)" class="doc doc-heading">    <code>
-      #radius=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">radius</span> <span class="p">:</span> IFNumber?<span class="p">)</span></code></span>
-    </code>
-<a href="#Celestine::Circle#radius=(radius)" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-<p>Radius of the circle</p>
-<ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r">Mozilla SVG Docs</a></li>
-</ul>  </div>
-
-</div>
-
-<div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Celestine::Circle#radius_units" class="doc doc-heading">    <code>
-      #radius_units<span style="font-weight: normal"> <code class="highlight language-crystal"><span class="p">:</span> <span class="n">String?</span></code></span>
-    </code>
-<a href="#Celestine::Circle#radius_units" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-<p>What kind of unit <a href="#Celestine::Circle#radius"><code>radius</code></a> should use when rendering</p>  </div>
-
-</div>
-
-<div class="doc doc-object doc-method doc-instance_method">
-<h3 id="Celestine::Circle#radius_units=(radius_units)" class="doc doc-heading">    <code>
-      #radius_units=<span style="font-weight: normal"><code class="highlight language-crystal"><span class="p">(</span><span class="n">radius_units</span> <span class="p">:</span> <span class="n">String?</span><span class="p">)</span></code></span>
-    </code>
-<a href="#Celestine::Circle#radius_units=(radius_units)" class="headerlink" title="Permanent link">#</a></h3>
-  <div class="doc doc-contents ">
-<p>What kind of unit <a href="#Celestine::Circle#radius"><code>radius</code></a> should use when rendering</p>  </div>
-
-</div>      </div>
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-type module">
-<h2 id="Celestine::Circle::Attrs" class="doc doc-heading">module <code>Celestine::Circle::Attrs</code>
-<a href="#Celestine::Circle::Attrs" class="headerlink" title="Permanent link">#</a></h2>
-  <div class="doc doc-contents first">
-
-      <div class="doc doc-children">
-
-            <h3>Included modules</h3>
-              <code><a href="Modules/CPosition.html#Celestine::Modules::CPosition::Attrs">Celestine::Modules::CPosition::Attrs</a></code>
-              <code><a href="Modules/Filter.html#Celestine::Modules::Filter::Attrs">Celestine::Modules::Filter::Attrs</a></code>
-              <code><a href="Modules/Marker.html#Celestine::Modules::Marker::Attrs">Celestine::Modules::Marker::Attrs</a></code>
-              <code><a href="Modules/Mask.html#Celestine::Modules::Mask::Attrs">Celestine::Modules::Mask::Attrs</a></code>
-              <code><a href="Modules/StrokeFill.html#Celestine::Modules::StrokeFill::Attrs">Celestine::Modules::StrokeFill::Attrs</a></code>
-              <code><a href="Modules/Transform.html#Celestine::Modules::Transform::Attrs">Celestine::Modules::Transform::Attrs</a></code>
-
-<h3 id="Celestine::Circle::Attrs-constants">Constants<a href="#Celestine::Circle::Attrs-constants" class="headerlink" title="Permanent link">#</a></h3>
-
-<div class="doc doc-object doc-constant">
-<h4 id="Celestine::Circle::Attrs::RADIUS" class="doc doc-heading">    <code>
-      RADIUS = <span style="font-weight: normal"><code class="highlight language-crystal"><span class="s2">&quot;r&quot;</span></code></span>
-    </code>
-<a href="#Celestine::Circle::Attrs::RADIUS" class="headerlink" title="Permanent link">#</a></h4>
-  <div class="doc doc-contents ">
-  </div>
-</div>
+        <a class="method-permalink" href="#diameter-instance-method">#</a>
       </div>
-  </div>
-
-</div>
-                
-              
-              
-                
-
-
-              
-            </article>
-          </div>
+      
+        <div class="doc">
+          
+          <p>The diameter of the circle</p>
         </div>
-        
-      </main>
       
+      <br/>
+      <div>
         
-<footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="Animate/Motion.html" class="md-footer__link md-footer__link--prev" aria-label="Previous: Motion" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Motion
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="Ellipse.html" class="md-footer__link md-footer__link--next" aria-label="Next: Ellipse" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Ellipse
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
+          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/drawables/circle.cr#L25" target="_blank">View source</a>]
         
       </div>
-      
     </div>
-  </div>
-</footer>
+  
+    <div class="entry-detail" id="draw(io:IO):Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>draw</strong>(io : IO) : Nil
+
+        <a class="method-permalink" href="#draw%28io%3AIO%29%3ANil-instance-method">#</a>
+      </div>
       
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
-    
-    
-      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+        <div class="doc">
+          
+          <p>Draws this circle to an <code>IO</code></p>
+        </div>
       
-    
-  </body>
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/drawables/circle.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="radius:IFNumber|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>radius</strong> : <a href="../IFNumber.html">IFNumber</a> | Nil
+
+        <a class="method-permalink" href="#radius%3AIFNumber%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Radius of the circle</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r">Mozilla SVG Docs</a></li>
+</ul>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="radius=(radius:IFNumber|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>radius=</strong>(radius : <a href="../IFNumber.html">IFNumber</a> | Nil)
+
+        <a class="method-permalink" href="#radius%3D%28radius%3AIFNumber%7CNil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Radius of the circle</p>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r">Mozilla SVG Docs</a></li>
+</ul>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="radius_units:String|Nil-instance-method">
+      <div class="signature">
+        
+        def <strong>radius_units</strong> : String | Nil
+
+        <a class="method-permalink" href="#radius_units%3AString%7CNil-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>What kind of unit <code><a href="../Celestine/Circle.html#radius%3AIFNumber%7CNil-instance-method">#radius</a></code> should use when rendering</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="radius_units=(radius_units:String|Nil)-instance-method">
+      <div class="signature">
+        
+        def <strong>radius_units=</strong>(radius_units : String | Nil)
+
+        <a class="method-permalink" href="#radius_units%3D%28radius_units%3AString%7CNil%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>What kind of unit <code><a href="../Celestine/Circle.html#radius%3AIFNumber%7CNil-instance-method">#radius</a></code> should use when rendering</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+</div>
+
+</body>
 </html>
