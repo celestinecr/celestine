@@ -20,12 +20,20 @@ abstract class Celestine::Drawable
       @objects_io << "translate(#{x},#{y}) "
     end
 
-    def rotate(degrees, origin_x, origin_y)
-      @objects_io << "rotate(#{degrees} #{origin_x} #{origin_y}) "
+    def rotate(degrees, origin_x = nil, origin_y = nil)
+      if origin_x && origin_y
+        @objects_io << "rotate(#{degrees} #{origin_x} #{origin_y}) "
+      else
+        @objects_io << "rotate(#{degrees}) "
+      end
     end
 
-    def scale(x, y)
-      @objects_io << "scale(#{x},#{y}) "
+    def scale(x, y = nil)
+      if y
+        @objects_io << "scale(#{x},#{y}) "
+      else
+        @objects_io << "scale(#{x}) "
+      end
     end
 
     def to_s
@@ -83,8 +91,11 @@ abstract class Celestine::Drawable
 
   # Rendered custom attributes
   def custom_attribute(io : IO)
-    custom_attrs.keys.map { |k| %Q[#{k}="#{custom_attrs[k]}"] }.join(io, " ")
-    io << " "
+    unless custom_attrs.empty?
+      custom_attrs.each do |k, v|
+        io << %Q[#{k}="#{v}" ]
+      end
+    end
   end
 
   # Main draw method for a drawable. Takes in and interacts with an io.

@@ -23,15 +23,21 @@ module Celestine::Modules::CommonAnimate
   # The duration of the animation
   make_units duration
 
-  # An optional way to specify the values to animate between, for example, adding the numbers `0`, `100`, `0` it will animate the attribute from `0` to `100` in the first half # of the animation time and then go back to `0`. Values in this
-  property values : Array(SIFNumber) = [] of SIFNumber
+  getter values = [] of SIFNumber
+  getter key_times = [] of SIFNumber
+  getter key_splines = [] of SIFNumber
 
-  # This is an optional array of floats that describe at what times in an animation `values` should be used. This can only be used with `values`.
-  # TODO: Restrict this to only allow numbers between 0 and 1.0
-  property key_times : Array(SIFNumber) = [] of SIFNumber
-  # This is an optional array of floats that describe at what times in an animation `values` should be used. This can only be used with `values`.
-  # TODO: Restrict this to only allow numbers between 0 and 1.0
-  property key_splines : Array(SIFNumber) = [] of SIFNumber
+  def values=(vals : Enumerable)
+    @values = vals.map { |v| v.as(SIFNumber) }.to_a
+  end
+
+  def key_times=(vals : Enumerable)
+    @key_times = vals.map { |v| v.as(SIFNumber) }.to_a
+  end
+
+  def key_splines=(vals : Enumerable)
+    @key_splines = vals.map { |v| v.as(SIFNumber) }.to_a
+  end
 
   # Defines how the animation should interpolate values.
   #

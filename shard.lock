@@ -1,38 +1,14 @@
 version: 2.0
 shards:
-  backtracer:
-    git: https://github.com/Sija/backtracer.cr.git
-    version: 1.2.1
+  carbon:
+    git: https://github.com/sol-vin/carbon.git
+    version: 0.1.9+git.commit.37480c633fb9fde81dc9494ce022d02ae2ced7a3
 
-  celestine:
-    git: https://github.com/celestinecr/celestine.git
-    version: 0.8.3alpha+git.commit.7dcb4119853e9fdc2f4fd45cfaa936106de2ccb2
+  jasper:
+    git: https://github.com/sol-vin/jasper.git
+    version: 0.1.0+git.commit.84f01e6ca1cf9bbbd5333faba30a823eddea7cec
 
-  exception_page:
-    git: https://github.com/crystal-loot/exception_page.git
-    version: 0.2.0
-
-  kemal:
-    git: https://github.com/kemalcr/kemal.git
-    version: 1.0.0+git.commit.218be2422172d330feb62c6a8abc7df5402fdb84
-
-  kilt:
-    git: https://github.com/jeromegn/kilt.git
-    version: 0.6.1
-
-  myhtml:
-    git: https://github.com/kostya/myhtml.git
-    version: 1.5.6
-
-  perlin_noise:
-    git: https://github.com/sol-vin/perlin_noise.git
-    version: 0.1.0+git.commit.94dd0fdcd2d5ddf194ad403861832d5fe1a71706
-
-  procedural_art:
-    git: https://github.com/sol-vin/procedural_art.git
-    version: 0.1.0+git.commit.ce8acfe169cf5f79df79423e95cce8ee099b3f96
-
-  radix:
-    git: https://github.com/luislavena/radix.git
-    version: 0.4.1
+  lexbor:
+    git: https://github.com/kostya/lexbor.git
+    version: 3.6.4
 

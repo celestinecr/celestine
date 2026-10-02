@@ -1,10 +1,9 @@
-# Draws and holds information for circles
+# Draws and holds information for lines
 #
-# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/circle)
-class Celestine::Circle < Celestine::Drawable
-  TAG = "circle"
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/line)
+class Celestine::Line < Celestine::Drawable
+  TAG = "line"
 
-  include_options Celestine::Modules::CPosition
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Mask
@@ -16,22 +15,21 @@ class Celestine::Circle < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  # Radius of the circle
-  #
-  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/r)
-  make_units :radius
+  make_units x1
+  make_units y1
+  make_units x2
+  make_units y2
 
-  # The diameter of the circle
-  def diameter
-    radius.try { |r| r * 2 }
-  end
-
-  # Draws this circle to an `IO`
+  # Draws this line to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
 
-    io << %Q[r="#{radius}#{radius_units}" ] if radius
+    io << %Q[#{Attrs::X1}="#{x1}#{x1_units}" ] if x1
+    io << %Q[#{Attrs::Y1}="#{y1}#{y1_units}" ] if y1
+    io << %Q[#{Attrs::X2}="#{x2}#{x2_units}" ] if x2
+    io << %Q[#{Attrs::Y2}="#{y2}#{y2_units}" ] if y2
+
     if inner_elements.empty?
       io << %Q[/>]
     else
@@ -42,6 +40,9 @@ class Celestine::Circle < Celestine::Drawable
   end
 
   module Attrs
-    RADIUS = "r"
+    X1 = "x1"
+    Y1 = "y1"
+    X2 = "x2"
+    Y2 = "y2"
   end
 end

@@ -47,9 +47,11 @@ class Celestine::Animate::Motion < Celestine::Drawable
 
     if mpath =~ /^#/
       inner_elements << %Q[<mpath xlink:href="#{mpath}"/>]
-    else
+    elsif !mpath.empty?
       io << %Q[path="#{mpath}" ]
     end
+
+    io << %Q[#{Attrs::ROTATE}="#{rotate}" ] if rotate
 
     unless key_points.empty?
       io << %Q[#{Attrs::KEY_POINTS}="]

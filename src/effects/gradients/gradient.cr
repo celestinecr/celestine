@@ -15,12 +15,13 @@ abstract class Celestine::Gradient < Celestine::Drawable
     c_stop.offset = offset
     c_stop.color = color
     c_stop.opacity = opacity
+    c_stop.draw(inner_elements)
     c_stop
   end
-  
-  def stop(&block : Celestine::Gradient::Stop -> Celestine::Gradient::Stop)
+
+  def stop(&block : Celestine::Gradient::Stop ->)
     c_stop = Celestine::Gradient::Stop.new
-    c_stop = yield c_stop
+    yield c_stop
     c_stop.draw(inner_elements)
     c_stop
   end
@@ -29,11 +30,13 @@ abstract class Celestine::Gradient < Celestine::Drawable
     c_stop.draw(inner_elements)
   end
 
-  def gradient_transform(&block : Celestine::Drawable::Transform -> Celestine::Drawable::Transform)
-    meta = yield Celestine::Drawable::Transform.new
+  def gradient_transform(&block : Celestine::Drawable::Transform ->)
+    meta = Celestine::Drawable::Transform.new
+    yield meta
     unless meta.empty?
       @gradient_transform_meta = meta
     end
+    meta
   end
 
   def gradient_transform_attribute(io : IO)

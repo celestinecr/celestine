@@ -13,9 +13,17 @@ class Celestine::Marker < Celestine::Drawable
   property units : String?
   property orientation : String?
   property preserve_aspect_ratio : String?
-  property ref_x : String?
-  property ref_y : String?
+  property ref_x : SIFNumber?
+  property ref_y : SIFNumber?
   property view_box : Celestine::ViewBox?
+
+  def orient=(val : String)
+    @orientation = val
+  end
+
+  def orient : String?
+    @orientation
+  end
 
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
@@ -27,11 +35,10 @@ class Celestine::Marker < Celestine::Drawable
     io << %Q[#{Attrs::PRESERVE_ASPECT_RATIO}="#{preserve_aspect_ratio}" ] if preserve_aspect_ratio
     io << %Q[#{Attrs::REF_X}="#{ref_x}" ] if ref_x
     io << %Q[#{Attrs::REF_Y}="#{ref_y}" ] if ref_y
-    io << %Q[#{Attrs::UNITS}="#{units}" ] if units
     io << %Q[#{Attrs::ORIENTATION}="#{orientation}" ] if orientation
     if @view_box
       vb = @view_box.as(Celestine::ViewBox)
-      io << %Q[#{Attrs::VIEW_BOX}="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}"]
+      io << %Q[#{Attrs::VIEW_BOX}="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ]
     end
 
     if inner_elements.empty?

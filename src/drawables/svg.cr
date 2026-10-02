@@ -18,22 +18,32 @@ class Celestine::Svg < Celestine::Drawable
   @defines_io = IO::Memory.new
 
   property view_box : Celestine::ViewBox?
-  property shape_rendering : String?
+
+  def view_box(x : IFNumber, y : IFNumber, w : IFNumber, h : IFNumber)
+    @view_box = {x: x, y: y, w: w, h: h}
+  end
+
+  def view_box=(str : String)
+    parts = str.split(/\s+/).reject(&.empty?)
+    if parts.size == 4
+      x = parts[0].includes?('.') ? parts[0].to_f64 : parts[0].to_i32
+      y = parts[1].includes?('.') ? parts[1].to_f64 : parts[1].to_i32
+      w = parts[2].includes?('.') ? parts[2].to_f64 : parts[2].to_i32
+      h = parts[3].includes?('.') ? parts[3].to_f64 : parts[3].to_i32
+      @view_box = {x: x.as(IFNumber), y: y.as(IFNumber), w: w.as(IFNumber), h: h.as(IFNumber)}
+    end
+  end
 
   def initialize
   end
 
-  # Draws this rectangle to an `IO`
+  # Draws this SVG root to an `IO`
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     io << %Q[xmlns="http://www.w3.org/2000/svg" ]
 
     if vb = view_box
       io << %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ]
-    end
-
-    if self.shape_rendering
-      io << %Q[shape-rendering="#{shape_rendering}" ]
     end
 
     draw_attributes(io)

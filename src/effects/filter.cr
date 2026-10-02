@@ -15,108 +15,123 @@ class Celestine::Filter < Celestine::Drawable
   STROKE_PAINT     = "StrokePaint"
 
   # Adds a `Celestine::Filter::Blur` to the calling filter's inner elements.
-  def blur(&block : Celestine::Filter::Blur -> Celestine::Filter::Blur)
-    blur_filter = yield Celestine::Filter::Blur.new
-    blur_filter.draw(inner_elements)
-    blur_filter
+  def blur(&block : Celestine::Filter::Blur ->)
+    filter = Celestine::Filter::Blur.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
-    # Adds a `Celestine::Filter::DropShadow` to the calling filter's inner elements.
-    def drop_shadow(&block : Celestine::Filter::DropShadow -> Celestine::Filter::DropShadow)
-      drop_shadow_filter = yield Celestine::Filter::DropShadow.new
-      drop_shadow_filter.draw(inner_elements)
-      drop_shadow_filter
-    end
+  # Adds a `Celestine::Filter::DropShadow` to the calling filter's inner elements.
+  def drop_shadow(&block : Celestine::Filter::DropShadow ->)
+    filter = Celestine::Filter::DropShadow.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
+  end
 
   # Adds a `Celestine::Filter::Offset` to the calling filter's inner elements.
-  def offset(&block : Celestine::Filter::Offset -> Celestine::Filter::Offset)
-    offset_filter = yield Celestine::Filter::Offset.new
-    offset_filter.draw(inner_elements)
-    offset_filter
+  def offset(&block : Celestine::Filter::Offset ->)
+    filter = Celestine::Filter::Offset.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::Morphology` to the calling filter's inner elements.
-  def morphology(&block : Celestine::Filter::Morphology -> Celestine::Filter::Morphology)
-    morphology_filter = yield Celestine::Filter::Morphology.new
-    morphology_filter.draw(inner_elements)
-    morphology_filter
+  def morphology(&block : Celestine::Filter::Morphology ->)
+    filter = Celestine::Filter::Morphology.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::Merge` to the calling filter's inner elements.
-  def merge(&block : Celestine::Filter::Merge -> Celestine::Filter::Merge)
-    merge_filter = yield Celestine::Filter::Merge.new
-    merge_filter.draw(inner_elements)
-    merge_filter
+  def merge(&block : Celestine::Filter::Merge ->)
+    filter = Celestine::Filter::Merge.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::Blend` to the calling filter's inner elements.
-  def blend(&block : Celestine::Filter::Blend -> Celestine::Filter::Blend)
-    blend_filter = yield Celestine::Filter::Blend.new
-    blend_filter.draw(inner_elements)
-    blend_filter
+  def blend(&block : Celestine::Filter::Blend ->)
+    filter = Celestine::Filter::Blend.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::Tile` to the calling filter's inner elements.
-  def tile(&block : Celestine::Filter::Tile -> Celestine::Filter::Tile)
-    tile_filter = yield Celestine::Filter::Tile.new
-    tile_filter.draw(inner_elements)
-    tile_filter
+  def tile(&block : Celestine::Filter::Tile ->)
+    filter = Celestine::Filter::Tile.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::ColorMatrix` to the calling filter's inner elements.
-  def color_matrix(&block : Celestine::Filter::ColorMatrix -> Celestine::Filter::ColorMatrix)
-    color_matrix_filter = yield Celestine::Filter::ColorMatrix.new
-    color_matrix_filter.draw(inner_elements)
-    color_matrix_filter
+  def color_matrix(&block : Celestine::Filter::ColorMatrix ->)
+    filter = Celestine::Filter::ColorMatrix.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::ComponentTransfer` to the calling filter's inner elements.
-  def component_transfer(&block : Celestine::Filter::ComponentTransfer -> Celestine::Filter::ComponentTransfer)
-    component_transfer_filter = yield Celestine::Filter::ComponentTransfer.new
-    component_transfer_filter.draw(inner_elements)
-    component_transfer_filter
+  def component_transfer(&block : Celestine::Filter::ComponentTransfer ->)
+    filter = Celestine::Filter::ComponentTransfer.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::Flood` to the calling filter's inner elements.
-  def flood(&block : Celestine::Filter::Flood -> Celestine::Filter::Flood)
-    flood_filter = yield Celestine::Filter::Flood.new
-    flood_filter.draw(inner_elements)
-    flood_filter
+  def flood(&block : Celestine::Filter::Flood ->)
+    filter = Celestine::Filter::Flood.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::DisplacementMap` to the calling filter's inner elements.
-  def displacement_map(&block : Celestine::Filter::DisplacementMap -> Celestine::Filter::DisplacementMap)
-    displacement_map_filter = yield Celestine::Filter::DisplacementMap.new
-    displacement_map_filter.draw(inner_elements)
-    displacement_map_filter
+  def displacement_map(&block : Celestine::Filter::DisplacementMap ->)
+    filter = Celestine::Filter::DisplacementMap.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::Turbulence` to the calling filter's inner elements.
-  def turbulence(&block : Celestine::Filter::Turbulence -> Celestine::Filter::Turbulence)
-    turbulence_filter = yield Celestine::Filter::Turbulence.new
-    turbulence_filter.draw(inner_elements)
-    turbulence_filter
+  def turbulence(&block : Celestine::Filter::Turbulence ->)
+    filter = Celestine::Filter::Turbulence.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::Composite` to the calling filter's inner elements.
-  def composite(&block : Celestine::Filter::Composite -> Celestine::Filter::Composite)
-    composite_filter = yield Celestine::Filter::Composite.new
-    composite_filter.draw(inner_elements)
-    composite_filter
+  def composite(&block : Celestine::Filter::Composite ->)
+    filter = Celestine::Filter::Composite.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::SpecularLighting` to the calling filter's inner elements.
-  def specular_lighting(&block : Celestine::Filter::SpecularLighting -> Celestine::Filter::SpecularLighting)
-    specular_lighting_filter = yield Celestine::Filter::SpecularLighting.new
-    specular_lighting_filter.draw(inner_elements)
-    specular_lighting_filter
+  def specular_lighting(&block : Celestine::Filter::SpecularLighting ->)
+    filter = Celestine::Filter::SpecularLighting.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   # Adds a `Celestine::Filter::Image` to the calling filter's inner elements.
-  def image(&block : Celestine::Filter::Image -> Celestine::Filter::Image)
-    image_filter = yield Celestine::Filter::Image.new
-    image_filter.draw(inner_elements)
-    image_filter
+  def image(&block : Celestine::Filter::Image ->)
+    filter = Celestine::Filter::Image.new
+    yield filter
+    filter.draw(inner_elements)
+    filter
   end
 
   def draw(io : IO) : Nil
@@ -136,7 +151,7 @@ class Celestine::Filter < Celestine::Drawable
   end
 
   module Attrs
-    FILTER_UNITS = "filterUnits"
+    FILTER_UNITS    = "filterUnits"
     PRIMITIVE_UNITS = "primitiveUnits"
   end
 end

@@ -22,13 +22,30 @@ class Celestine::Animate < Celestine::Drawable
   # An optional way to specify the amount an attribute should change by per frame
   make_units by
 
+  # Support string or number values for from/to/by in animations (e.g. colors, transforms)
+  property from_value : SIFNumber? = nil
+  property to_value : SIFNumber? = nil
+  property by_value : SIFNumber? = nil
+
   def draw(io : IO) : Nil
     io << %Q[<#{TAG} ]
     draw_attributes(io)
-    io << %Q[#{Attrs::ATTRIBUTE_NAME}="#{attribute}" ]
-    io << %Q[#{Attrs::FROM}="#{from}#{from_units}" ] if from
-    io << %Q[#{Attrs::TO}="#{to}#{to_units}" ] if to
-    io << %Q[#{Attrs::BY}="#{by}#{by_units}" ] if by
+    io << %Q[#{Attrs::ATTRIBUTE_NAME}="#{attribute}" ] if attribute
+    if val = from_value
+      io << %Q[#{Attrs::FROM}="#{val}" ]
+    elsif from
+      io << %Q[#{Attrs::FROM}="#{from}#{from_units}" ]
+    end
+    if val = to_value
+      io << %Q[#{Attrs::TO}="#{val}" ]
+    elsif to
+      io << %Q[#{Attrs::TO}="#{to}#{to_units}" ]
+    end
+    if val = by_value
+      io << %Q[#{Attrs::BY}="#{val}" ]
+    elsif by
+      io << %Q[#{Attrs::BY}="#{by}#{by_units}" ]
+    end
 
     if inner_elements.empty?
       io << %Q[/>]

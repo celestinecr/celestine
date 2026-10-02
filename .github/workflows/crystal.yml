@@ -3,18 +3,23 @@ name: Crystal CI
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
-
+  test:
     runs-on: ubuntu-latest
 
     container:
-      image: crystallang/crystal
+      image: crystallang/crystal:latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Install dependencies
       run: shards install
-    - name: Run tests
-      run: shards build logo
+    - name: Run specs
+      run: crystal spec
+    - name: Build targets
+      run: |
+        shards build logo
+        shards build benchmark

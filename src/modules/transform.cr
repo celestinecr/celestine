@@ -1,12 +1,14 @@
-# Gives a drawable access to the trasnform DSL
+# Gives a drawable access to the transform DSL
 module Celestine::Modules::Transform
   @transform_meta = Celestine::Drawable::Transform.new
 
-  def transform(&block : Celestine::Drawable::Transform -> Celestine::Drawable::Transform)
-    meta = yield Celestine::Drawable::Transform.new
+  def transform(&block : Celestine::Drawable::Transform ->)
+    meta = Celestine::Drawable::Transform.new
+    yield meta
     unless meta.empty?
       @transform_meta = meta
     end
+    meta
   end
 
   def transform_attribute(io : IO)

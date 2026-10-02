@@ -16,10 +16,15 @@ class Celestine::Rectangle < Celestine::Drawable
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  # The corner radius value
+  # The corner radius value on the x axis
   #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/rx)
   make_units radius_x
+
+  # The corner radius value on the y axis
+  #
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/ry)
+  make_units radius_y
 
   # Draws this rectangle to an `IO`
   def draw(io : IO) : Nil
@@ -27,6 +32,7 @@ class Celestine::Rectangle < Celestine::Drawable
     draw_attributes(io)
 
     io << %Q[#{Attrs::RADIUS_X}="#{radius_x}#{radius_x_units}" ] if radius_x
+    io << %Q[#{Attrs::RADIUS_Y}="#{radius_y}#{radius_y_units}" ] if radius_y
 
     if inner_elements.empty?
       io << %Q[/>]
@@ -39,5 +45,6 @@ class Celestine::Rectangle < Celestine::Drawable
 
   module Attrs
     RADIUS_X = "rx"
+    RADIUS_Y = "ry"
   end
 end

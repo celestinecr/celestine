@@ -1,0 +1,20 @@
+---
+namespace: Celestine::Docs
+source_dir: docs_src
+output_dir: src/docs
+master_file: src/docs.cr
+features:
+  release_guard: true
+  naming_style: prefixed
+  prefix_format: topic_%02d_
+  table_auto_html: true
+  protect_summary: true
+  summary_table: true
+  master_index: true
+  aliases: []
+  quick_start:
+    title: Docs Commands
+    commands:
+    - shards install
+    - crystal spec
+    - crystal docs

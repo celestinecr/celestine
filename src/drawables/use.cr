@@ -23,7 +23,7 @@ class Celestine::Use < Celestine::Drawable
   def initialize
   end
 
-  def initialize(@target_id : Sting)
+  def initialize(@target_id : String)
   end
 
   def initialize(target : Celestine::Drawable)
