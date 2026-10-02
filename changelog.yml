@@ -22,9 +22,1113 @@ settings:
       title: "\U0001F6E0️ Chores & Tooling"
       bullet: •
 releases:
-- version: 0.9.217
+- version: 0.9.218
   date: "2026-10-01"
   status: active
+  entries:
+  - type: other
+    description: First
+    bullet: •
+    hash: 41e4c01
+    author: Ian Rash
+  - type: other
+    description: Added animate basics
+    bullet: •
+    hash: bcfec02
+    author: Ian Rash
+  - type: other
+    description: Added animate_motion
+    bullet: •
+    hash: 6f12933
+    author: Ian Rash
+  - type: other
+    description: added use
+    bullet: •
+    hash: 277d1ed
+    author: Ian Rash
+  - type: other
+    description: added new use to group
+    bullet: •
+    hash: 10cdb85
+    author: Ian Rash
+  - type: other
+    description: Added context method module
+    bullet: •
+    hash: 5da81cb
+    author: Ian Rash
+  - type: other
+    description: Added masking
+    bullet: •
+    hash: 7df0150
+    author: Ian Rash
+  - type: other
+    description: Fixed small issue
+    bullet: •
+    hash: c8ded75
+    author: Ian Rash
+  - type: other
+    description: Added collision helpers
+    bullet: •
+    hash: 142afa1
+    author: Ian Rash
+  - type: other
+    description: Added fixes for collsiion points
+    bullet: •
+    hash: f98b547
+    author: Ian Rash
+  - type: other
+    description: I swapped all Celestine::Drawables with structs for performance enhancements.
+      IDK if this really worked and benchmark has a hard time timing runs within a
+      good winow. My debug times definately went up, (5s for mineshaft-2frames-debug
+      vs 170ms for mineshaft-2frames-release) very weird
+    bullet: •
+    hash: 9ddf14f
+    author: Ian Rash
+  - type: other
+    description: Celestine fixes
+    bullet: •
+    hash: 68df25d
+    author: Ian Rash
+  - type: other
+    description: Added simple 3d render math
+    bullet: •
+    hash: "5726188"
+    author: Ian Rash
+  - type: other
+    description: Small fixes
+    bullet: •
+    hash: f9af619
+    author: Ian Rash
+  - type: other
+    description: Working kind of 3d
+    bullet: •
+    hash: dcd9fcf
+    author: Ian Rash
+  - type: other
+    description: Working on normals
+    bullet: •
+    hash: e3395e0
+    author: Ian Rash
+  - type: other
+    description: Update readme
+    bullet: •
+    hash: 1beb8e1
+    author: Ian Rash
+  - type: other
+    description: Update path.cr
+    bullet: •
+    hash: cefe295
+    author: Ian Rash
+  - type: other
+    description: Update path.cr
+    bullet: •
+    hash: 04cb751
+    author: Ian Rash
+  - type: other
+    description: Better readme, added text
+    bullet: •
+    hash: e56b03b
+    author: Ian Rash
+  - type: other
+    description: update crystal version
+    bullet: •
+    hash: 5ed7e5b
+    author: Ian Rash
+  - type: other
+    description: Added custom attrs and made a macro for including options modules
+    bullet: •
+    hash: aa72ab5
+    author: Ian Rash
+  - type: other
+    description: Added proper text examples
+    bullet: •
+    hash: 9d6ef1a
+    author: Ian Rash
+  - type: other
+    description: Added custom attrs to animate structs
+    bullet: •
+    hash: b50378c
+    author: Ian Rash
+  - type: other
+    description: fix animate
+    bullet: •
+    hash: 27dbc5d
+    author: Ian Rash
+  - type: other
+    description: Added ID to animate and animatemotion
+    bullet: •
+    hash: 690b29f
+    author: Ian Rash
+  - type: other
+    description: Fix for missing image require
+    bullet: •
+    hash: 24a5f0e
+    author: Ian Rash
+  - type: other
+    description: Fix view_box SIFNumber inputs
+    bullet: •
+    hash: 3cf3283
+    author: Ian Rash
+  - type: other
+    description: Fixed rectangle radius_x
+    bullet: •
+    hash: f5e6ceb
+    author: Ian Rash
+  - type: other
+    description: Adding some basic tests
+    bullet: •
+    hash: fc8a2d3
+    author: Ian Rash
+  - type: other
+    description: Added fixes for IO ty @Blacksmoke16
+    bullet: •
+    hash: be8b4e1
+    author: Ian Rash
+  - type: other
+    description: Added specs and fixed warnings
+    bullet: •
+    hash: 5f8049e
+    author: Ian Rash
+  - type: other
+    description: Create crystal.yml
+    bullet: •
+    hash: 6ddfe5a
+    author: Ian Rash
+  - type: other
+    description: Added more tests. Changed bad String::Builder usage to IOs
+    bullet: •
+    hash: 3cbd822
+    author: Ian Rash
+  - type: other
+    description: Removed file ops from specs. Cleaned up specs.
+    bullet: •
+    hash: de76954
+    author: Ian Rash
+  - type: other
+    description: Added build status to readme
+    bullet: •
+    hash: e3e9737
+    author: Ian Rash
+  - type: other
+    description: Fixes to text, as well as adding a logo, and adding the logo to readme
+    bullet: •
+    hash: b1c4bfb
+    author: Ian Rash
+  - type: other
+    description: Fix readme formatting
+    bullet: •
+    hash: ad9e599
+    author: Ian Rash
+  - type: other
+    description: Added Mineshift::Complex to stress test celestine
+    bullet: •
+    hash: 7a55b4a
+    author: Ian Rash
+  - type: other
+    description: Merge branch 'master' of https://github.com/redcodefinal/celestine
+    bullet: •
+    hash: 6a16dff
+    author: Ian Rash
+  - type: other
+    description: Added new hypnos tests, added animate_transform, fixed a small bug
+      with animation
+    bullet: •
+    hash: eac0fe9
+    author: Ian Rash
+  - type: other
+    description: Fix custom attrs issue with formatting
+    bullet: •
+    hash: bdb34fa
+    author: Ian Rash
+  - type: other
+    description: Fix custom attrs again
+    bullet: •
+    hash: 256eed2
+    author: Ian Rash
+  - type: other
+    description: Added stroke dash and miter properties
+    bullet: •
+    hash: 118acba
+    author: Ian Rash
+  - type: other
+    description: cleaned up readme
+    bullet: •
+    hash: 37f2bd9
+    author: Ian Rash
+  - type: other
+    description: Cleaning up test code, adding more automatic test cases
+    bullet: •
+    hash: f1bda5c
+    author: Ian Rash
+  - type: other
+    description: Fix readme, clean up testing code a little further
+    bullet: •
+    hash: 18be041
+    author: Ian Rash
+  - type: other
+    description: Fix readme
+    bullet: •
+    hash: 099cbbd
+    author: Ian Rash
+  - type: other
+    description: Testing new docs workflow
+    bullet: •
+    hash: 2ba7d1c
+    author: Ian Rash
+  - type: other
+    description: Fix readme
+    bullet: •
+    hash: 783e490
+    author: Ian Rash
+  - type: other
+    description: Add more to readme
+    bullet: •
+    hash: 7cf2529
+    author: Ian Rash
+  - type: other
+    description: Fix workflows this time for real!
+    bullet: •
+    hash: 840df44
+    author: Ian Rash
+  - type: other
+    description: Fix docs generation
+    bullet: •
+    hash: "6571940"
+    author: Ian Rash
+  - type: other
+    description: Added more docs
+    bullet: •
+    hash: 7ce4855
+    author: Ian Rash
+  - type: other
+    description: Added more docs and better tests for StrokeFill
+    bullet: •
+    hash: 60377ba
+    author: Ian Rash
+  - type: other
+    description: Add float specs
+    bullet: •
+    hash: 98240c3
+    author: Ian Rash
+  - type: other
+    description: Testing class changes to speed
+    bullet: •
+    hash: 2fa7772
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #4 from redcodefinal/class-vs-struct-benchmark-test'
+    bullet: •
+    hash: bda4cd3
+    author: Ian Rash
+  - type: other
+    description: Added new filters
+    bullet: •
+    hash: 1a6ee0e
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #5 from redcodefinal/class-vs-struct-benchmark-test'
+    bullet: •
+    hash: 9b71c81
+    author: Ian Rash
+  - type: other
+    description: Add myhtml, tests, and fix a number of old rendering bugs resulting
+      from ignoring default values.
+    bullet: •
+    hash: ec86d4b
+    author: Ian Rash
+  - type: other
+    description: Removed SIFNumber and IFNumber, they were dumb. Simplified all number
+      types to Float64. Added tests for unique drawable attributes. Added new check
+      to numbers to ensure the  problems I fixed here today don't come back.
+    bullet: •
+    hash: 33b2dd5
+    author: Ian Rash
+  - type: other
+    description: Can;t get rid of IFNumber yet it turns out
+    bullet: •
+    hash: 1d108a2
+    author: Ian Rash
+  - type: other
+    description: Fix viewbox
+    bullet: •
+    hash: c0ead30
+    author: Ian Rash
+  - type: other
+    description: Fix repreat_count indefinite not working
+    bullet: •
+    hash: 2718bd9
+    author: Ian Rash
+  - type: other
+    description: Fix some animate issues
+    bullet: •
+    hash: "1687630"
+    author: Ian Rash
+  - type: other
+    description: Fix path issue
+    bullet: •
+    hash: a6ed313
+    author: Ian Rash
+  - type: other
+    description: Fix and clean up animateTransform
+    bullet: •
+    hash: 6ab27a8
+    author: Ian Rash
+  - type: other
+    description: Fix animate transform
+    bullet: •
+    hash: "8651538"
+    author: Ian Rash
+  - type: other
+    description: fix animate transform
+    bullet: •
+    hash: f878dcc
+    author: Ian Rash
+  - type: other
+    description: Fix issues
+    bullet: •
+    hash: b509ed1
+    author: Ian Rash
+  - type: other
+    description: Fix celestine procedural tests
+    bullet: •
+    hash: eb0b140
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #6 from redcodefinal/myhtml'
+    bullet: •
+    hash: f20612c
+    author: Ian Rash
+  - type: other
+    description: bump Version
+    bullet: •
+    hash: 1a7b068
+    author: Ian Rash
+  - type: other
+    description: Merge branch 'master' of https://github.com/redcodefinal/celestine
+    bullet: •
+    hash: 170863e
+    author: Ian Rash
+  - type: other
+    description: trying to fix celestine version number problem with docs
+    bullet: •
+    hash: 5bc2868
+    author: Ian Rash
+  - type: other
+    description: Added new tests for animation
+    bullet: •
+    hash: 62145d4
+    author: Ian Rash
+  - type: other
+    description: Added more tests, filters, and made a constant for element names
+    bullet: •
+    hash: e5557c2
+    author: Ian Rash
+  - type: other
+    description: Added new filters and deleted placeholders.
+    bullet: •
+    hash: ec77bc0
+    author: Ian Rash
+  - type: other
+    description: Updated readme something fierce
+    bullet: •
+    hash: 104b538
+    author: Ian Rash
+  - type: other
+    description: Added marker, added new tests for marker, filters, and other things.
+    bullet: •
+    hash: a70c892
+    author: Ian Rash
+  - type: other
+    description: Added new filters
+    bullet: •
+    hash: 1f859dd
+    author: Ian Rash
+  - type: other
+    description: Add new filters
+    bullet: •
+    hash: a4a1ba4
+    author: Ian Rash
+  - type: other
+    description: Fix composite
+    bullet: •
+    hash: db67a22
+    author: Ian Rash
+  - type: other
+    description: Fix spec lighting
+    bullet: •
+    hash: 82c6195
+    author: Ian Rash
+  - type: other
+    description: Fix spec lighting
+    bullet: •
+    hash: 887a4a8
+    author: Ian Rash
+  - type: other
+    description: fix color matrix
+    bullet: •
+    hash: 7f873b6
+    author: Ian Rash
+  - type: other
+    description: fix color matrix again
+    bullet: •
+    hash: 04d5e17
+    author: Ian Rash
+  - type: other
+    description: Fixed color matrix and added sanity checks
+    bullet: •
+    hash: 5fd4847
+    author: Ian Rash
+  - type: other
+    description: Added splash effect tp specs
+    bullet: •
+    hash: e24651c
+    author: Ian Rash
+  - type: other
+    description: Fixed docs issue
+    bullet: •
+    hash: c106996
+    author: Ian Rash
+  - type: other
+    description: Added a bunch of docs. Need to start off again from `Celestine::Filter::Flood`
+    bullet: •
+    hash: f072e4f
+    author: Ian Rash
+  - type: other
+    description: Added a ton of docs, updating things for docs.celestine.dev
+    bullet: •
+    hash: e24876a
+    author: Ian Rash
+  - type: other
+    description: fixed dumb `to_s` usage and also testing pages workflow CNAME deletion
+    bullet: •
+    hash: 3ee6ce6
+    author: Ian Rash
+  - type: other
+    description: Attempt workflow fix
+    bullet: •
+    hash: 12b6008
+    author: Ian Rash
+  - type: other
+    description: Try again
+    bullet: •
+    hash: dc793c9
+    author: Ian Rash
+  - type: other
+    description: Try Try Again
+    bullet: •
+    hash: dc47d34
+    author: Ian Rash
+  - type: other
+    description: ALMOST!
+    bullet: •
+    hash: 5ef7e05
+    author: Ian Rash
+  - type: other
+    description: fix readme, other light fixes
+    bullet: •
+    hash: 39e9965
+    author: Ian Rash
+  - type: other
+    description: Fix animation values and splines issue with ints and string
+    bullet: •
+    hash: 69da957
+    author: Ian Rash
+  - type: other
+    description: Add back SIFNumber
+    bullet: •
+    hash: aea09ea
+    author: Ian Rash
+  - type: other
+    description: Fix shard issue with old procedural_art
+    bullet: •
+    hash: f96ecf8
+    author: Ian Rash
+  - type: other
+    description: Add psychoflower procedural art spec
+    bullet: •
+    hash: 62a09af
+    author: Ian Rash
+  - type: other
+    description: Added polar_spins spec
+    bullet: •
+    hash: 71521ad
+    author: Ian Rash
+  - type: other
+    description: Fix repeating x attribute bug
+    bullet: •
+    hash: 12e0a82
+    author: Ian Rash
+  - type: other
+    description: update readme with new stuff
+    bullet: •
+    hash: dc89719
+    author: Ian Rash
+  - type: other
+    description: Updated logo, shards, and issue with mask and added new readme info
+    bullet: •
+    hash: 56446d4
+    author: Ian Rash
+  - type: other
+    description: Fixed coloring on logo
+    bullet: •
+    hash: 85a44dc
+    author: Ian Rash
+  - type: other
+    description: Fix formatting
+    bullet: •
+    hash: 502f06d
+    author: Ian Rash
+  - type: other
+    description: 2nd logo fix attempt
+    bullet: •
+    hash: 21e6497
+    author: Ian Rash
+  - type: other
+    description: Fix logo again .....
+    bullet: •
+    hash: f5c5ed6
+    author: Ian Rash
+  - type: other
+    description: try try try again for logo fix
+    bullet: •
+    hash: fd50c3e
+    author: Ian Rash
+  - type: other
+    description: Fix logo precision (it was too high), lowered overall logo size
+    bullet: •
+    hash: 9dab21a
+    author: Ian Rash
+  - type: other
+    description: Removed the `mix-blend-mode` css style because it make mobile sad.
+      so very very sad
+    bullet: •
+    hash: 564d226
+    author: Ian Rash
+  - type: other
+    description: changed color to better fake `mix-blend-mode`
+    bullet: •
+    hash: f1a2dc9
+    author: Ian Rash
+  - type: other
+    description: Add examples section to readme
+    bullet: •
+    hash: e752817
+    author: Ian Rash
+  - type: other
+    description: Fix small rendering issue with viewbox
+    bullet: •
+    hash: d452d57
+    author: Ian Rash
+  - type: other
+    description: fix
+    bullet: •
+    hash: cd039f5
+    author: Ian Rash
+  - type: other
+    description: Added more live celestine examples
+    bullet: •
+    hash: 4ecb284
+    author: Ian Rash
+  - type: other
+    description: Fixed readme to reflect the organization
+    bullet: •
+    hash: b7c558e
+    author: Ian Rash
+  - type: other
+    description: Update crystal.yml
+    bullet: •
+    hash: c594b4b
+    author: Ian Rash
+  - type: other
+    description: Fix shards update needs
+    bullet: •
+    hash: 20edbfc
+    author: Ian Rash
+  - type: other
+    description: Merge branch 'main' of https://github.com/celestinecr/celestine into
+      main
+    bullet: •
+    hash: 7258b65
+    author: Ian Rash
+  - type: other
+    description: Added SVG Element checklist
+    bullet: •
+    hash: 4eaf723
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #1 from redcodefinal/main'
+    bullet: •
+    hash: a8080ef
+    author: Ian Rash
+  - type: other
+    description: Added anchor elements
+    bullet: •
+    hash: 0841ef6
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #2 from redcodefinal/main'
+    bullet: •
+    hash: df4a0ae
+    author: Ian Rash
+  - type: other
+    description: Update README.md
+    bullet: •
+    hash: b8c69fc
+    author: Ian Rash
+  - type: other
+    description: Added docs info to the element checklist
+    bullet: •
+    hash: 63a5e2d
+    author: Ian Rash
+  - type: other
+    description: Merge branch 'main' of https://github.com/redcodefinal/celestine
+      into main
+    bullet: •
+    hash: 448a950
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #3 from redcodefinal/main'
+    bullet: •
+    hash: e0d8ec8
+    author: Ian Rash
+  - type: other
+    description: Cleaned up readme and added development workflow
+    bullet: •
+    hash: 08d3645
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #4 from redcodefinal/development'
+    bullet: •
+    hash: beab052
+    author: Ian Rash
+  - type: other
+    description: Test new workflows
+    bullet: •
+    hash: 11cb43c
+    author: Ian Rash
+  - type: other
+    description: Merge branch 'development' into development
+    bullet: •
+    hash: 99d2212
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #5 from redcodefinal/development'
+    bullet: •
+    hash: 0b5e9b9
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #6 from celestinecr/development'
+    bullet: •
+    hash: "4530293"
+    author: Ian Rash
+  - type: other
+    description: Add better development instructions
+    bullet: •
+    hash: f45a3c6
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #7 from redcodefinal/development'
+    bullet: •
+    hash: c8a1f1d
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #8 from celestinecr/development'
+    bullet: •
+    hash: 27c988f
+    author: Ian Rash
+  - type: other
+    description: Create FUNDING.yml
+    bullet: •
+    hash: 9fb6546
+    author: Ian Rash
+  - type: other
+    description: Update FUNDING.yml
+    bullet: •
+    hash: 8f161a4
+    author: Ian Rash
+  - type: other
+    description: Update FUNDING.yml
+    bullet: •
+    hash: d99f3c9
+    author: Ian Rash
+  - type: other
+    description: Update FUNDING.yml
+    bullet: •
+    hash: f95ff71
+    author: Ian Rash
+  - type: other
+    description: Update FUNDING.yml
+    bullet: •
+    hash: 7cf4dac
+    author: Ian Rash
+  - type: other
+    description: Update FUNDING.yml
+    bullet: •
+    hash: bcb1be9
+    author: Ian Rash
+  - type: other
+    description: Update FUNDING.yml
+    bullet: •
+    hash: "1152990"
+    author: Ian Rash
+  - type: other
+    description: Added some logo changes
+    bullet: •
+    hash: 4de9ab1
+    author: Ian Rash
+  - type: other
+    description: Fixed width/height issue with Int32
+    bullet: •
+    hash: ce66dc3
+    author: Ian Rash
+  - type: other
+    description: Update shard.yml
+    bullet: •
+    hash: 6a2153b
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #11 from celestinecr/development'
+    bullet: •
+    hash: 9fa9582
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #12 from celestinecr/main'
+    bullet: •
+    hash: 5a0d5d6
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #13 from celestinecr/development'
+    bullet: •
+    hash: 5f01ef7
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #10 from redcodefinal/development'
+    bullet: •
+    hash: 2a99b37
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #14 from celestinecr/development'
+    bullet: •
+    hash: c2acd13
+    author: Ian Rash
+  - type: other
+    description: Fixed issue with celestine version number
+    bullet: •
+    hash: f35ffc8
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #16 from redcodefinal/development'
+    bullet: •
+    hash: 495af88
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #17 from celestinecr/development'
+    bullet: •
+    hash: ca78483
+    author: Ian Rash
+  - type: other
+    description: Added nested SVG. Major rework of `ctx`, it is no longer a `Celestine::Meta::Context`
+      and is now a `Celestine::SVG` which is now a drawable.
+    bullet: •
+    hash: 2ad94b5
+    author: Ian Rash
+  - type: other
+    description: Bump Version
+    bullet: •
+    hash: 961caaa
+    author: Ian Rash
+  - type: other
+    description: Merge branch 'development' into development
+    bullet: •
+    hash: 4ea581a
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #19 from redcodefinal/development'
+    bullet: •
+    hash: a3d4f40
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #20 from celestinecr/development'
+    bullet: •
+    hash: 7810aa7
+    author: Ian Rash
+  - type: other
+    description: Create SECURITY.md
+    bullet: •
+    hash: 1dcf96c
+    author: Ian Rash
+  - type: other
+    description: Update svg_element_checklist.md
+    bullet: •
+    hash: 8804eed
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #21 from celestinecr/main'
+    bullet: •
+    hash: "6334975"
+    author: Ian Rash
+  - type: other
+    description: Update README.md
+    bullet: •
+    hash: f02398c
+    author: Ian Rash
+  - type: other
+    description: Added patterns, new benchmark
+    bullet: •
+    hash: b77bc26
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #22 from redcodefinal/development'
+    bullet: •
+    hash: 6d8f241
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #23 from celestinecr/development'
+    bullet: •
+    hash: 872e310
+    author: Ian Rash
+  - type: other
+    description: Added Gradients
+    bullet: •
+    hash: a2d773c
+    author: Ian Rash
+  - type: other
+    description: Merge branch 'development' into development
+    bullet: •
+    hash: 0421282
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #24 from redcodefinal/development'
+    bullet: •
+    hash: e83360b
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #25 from celestinecr/development'
+    bullet: •
+    hash: 49d76a0
+    author: Ian Rash
+  - type: other
+    description: Update svg_element_checklist.md
+    bullet: •
+    hash: 2b345bd
+    author: Ian Rash
+  - type: other
+    description: Update README.md
+    bullet: •
+    hash: b98da95
+    author: Ian Rash
+  - type: other
+    description: fix minor bug in rectangle spec, add all the animateTransform types
+    bullet: •
+    hash: 0f79c6d
+    author: Solomon Jackson
+  - type: other
+    description: 'Merge pull request #26 from sugarfi/main'
+    bullet: •
+    hash: 9c86b21
+    author: Ian Rash
+  - type: other
+    description: Update svg_element_checklist.md
+    bullet: •
+    hash: af83da5
+    author: Ian Rash
+  - type: other
+    description: Update shard.yml
+    bullet: •
+    hash: 5be18de
+    author: Ian Rash
+  - type: other
+    description: Update README.md
+    bullet: •
+    hash: ddb57ff
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #27 from celestinecr/main'
+    bullet: •
+    hash: 039fd7b
+    author: Ian Rash
+  - type: other
+    description: :facepalm
+    bullet: •
+    hash: a284b03
+    author: Solomon Jackson
+  - type: other
+    description: 'Merge pull request #29 from sugarfi/main'
+    bullet: •
+    hash: 1025d55
+    author: Ian Rash
+  - type: other
+    description: require * from animations/transform
+    bullet: •
+    hash: 3789e6a
+    author: Solomon Jackson
+  - type: other
+    description: 'Merge pull request #30 from sugarfi/main'
+    bullet: •
+    hash: aa89066
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #31 from celestinecr/development'
+    bullet: •
+    hash: 3cfea2f
+    author: Ian Rash
+  - type: other
+    description: '*sigh*'
+    bullet: •
+    hash: 5b95892
+    author: Solomon Jackson
+  - type: other
+    description: finally fix animate transform
+    bullet: •
+    hash: 51f78c2
+    author: Solomon Jackson
+  - type: other
+    description: Merge branch 'main' of https://github.com/sugarfi/celestine into
+      main
+    bullet: •
+    hash: db08be3
+    author: Solomon Jackson
+  - type: other
+    description: 'Merge pull request #33 from sugarfi/main'
+    bullet: •
+    hash: ccac7c7
+    author: Ian Rash
+  - type: other
+    description: Add calcMode to animations and used crystal formatter on the code,
+      added docs for animation. Cleaned up some common animation code into a module.
+      Removed some depriciated SVG attributes like `attributeType`
+    bullet: •
+    hash: 62d77f0
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #34 from redcodefinal/main'
+    bullet: •
+    hash: 820b434
+    author: Ian Rash
+  - type: other
+    description: Add drop shadow and clean up some code and todos
+    bullet: •
+    hash: eb2bb5b
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #35 from redcodefinal/main'
+    bullet: •
+    hash: 30586d4
+    author: Ian Rash
+  - type: other
+    description: Update README with new genuary examples
+    bullet: •
+    hash: bc82d4f
+    author: Ian Rash
+  - type: other
+    description: Code cleanup.
+    bullet: •
+    hash: 0d6f543
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #36 from redcodefinal/main'
+    bullet: •
+    hash: 83db759
+    author: Ian Rash
+  - type: other
+    description: Move files in preparation for new structure
+    bullet: •
+    hash: beb2260
+    author: Oleh Prypin
+  - type: other
+    description: Migrate documentation to MkDocs
+    bullet: •
+    hash: ff4b13d
+    author: Oleh Prypin
+  - type: other
+    description: 'Merge pull request #37 from oprypin/mkdocs'
+    bullet: •
+    hash: aec3e43
+    author: Ian Rash
+  - type: other
+    description: Fix docs workflow from overwriting CNAME
+    bullet: •
+    hash: 74fb44e
+    author: Ian Rash
+  - type: other
+    description: Upgrade/pin docs dependencies
+    bullet: •
+    hash: 3ad65ec
+    author: Oleh Prypin
+  - type: other
+    description: 'Merge pull request #38 from oprypin/mkdocs'
+    bullet: •
+    hash: 6010b29
+    author: Ian Rash
+  - type: other
+    description: Bump  Crystal Version
+    bullet: •
+    hash: 15a67c5
+    author: Ian Rash
+  - type: other
+    description: Update shard.yml
+    bullet: •
+    hash: e67a422
+    author: Ian Rash
+  - type: other
+    description: Fixed old shard issues keeping actions from running
+    bullet: •
+    hash: 159e71b
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #39 from sol-vin/main'
+    bullet: •
+    hash: 7dcb411
+    author: Ian Rash
+  - type: other
+    description: Spec fixes???
+    bullet: •
+    hash: 980bcdb
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #40 from sol-vin/main'
+    bullet: •
+    hash: 82df1fe
+    author: Ian Rash
+  - type: fix
+    description: broken links
+    bullet: ✓
+    hash: efcbdfa
+    author: Evangelos Paterakis
+  - type: other
+    description: 'Merge pull request #41 from geopjr-forks/fix_links'
+    bullet: •
+    hash: 75f1b0d
+    author: Ian Rash
+  - type: other
+    description: Celestine fixed again.
+    bullet: •
+    hash: 299a63f
+    author: Ian Rash
+  - type: other
+    description: Update README.md
+    bullet: •
+    hash: 68c5765
+    author: Ian Rash
+  - type: other
+    description: 'Merge pull request #43 from celestinecr/sol-vin-patch-1'
+    bullet: •
+    hash: fd7f61d
+    author: Ian Rash
+  - type: other
+    description: fix
+    bullet: •
+    hash: "5085e78"
+    author: Ian Rash
+  - type: other
+    description: Upgrade Celestine to modern Crystal (>= 1.20.0), restore specs with
+      Lexbor, add Carbon and Jasper
+    bullet: •
+    hash: bd59e37
+    author: Ian Rash
+- version: 0.9.217
+  date: "2026-10-01"
+  status: released
   entries:
   - type: other
     description: First
