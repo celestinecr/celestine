@@ -1,0 +1,14 @@
+version: 2.0
+shards:
+  carbon:
+    git: https://github.com/sol-vin/carbon.git
+    version: 0.1.9+git.commit.37480c633fb9fde81dc9494ce022d02ae2ced7a3
+
+  jasper:
+    git: https://github.com/sol-vin/jasper.git
+    version: 0.1.0+git.commit.84f01e6ca1cf9bbbd5333faba30a823eddea7cec
+
+  lexbor:
+    git: https://github.com/kostya/lexbor.git
+    version: 3.6.4
+

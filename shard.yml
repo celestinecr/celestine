@@ -1,0 +1,31 @@
+name: celestine
+version: 0.9.1
+
+description: Fast, pure-Crystal SVG generation library with a fluent DSL and object model.
+
+authors:
+  - Ian Rash <ian@sol.vin>
+
+development_dependencies:
+  carbon:
+    github: sol-vin/carbon
+    branch: main
+  jasper:
+    github: sol-vin/jasper
+    branch: main
+  lexbor:
+    github: kostya/lexbor
+
+targets:
+  logo:
+    main: src/make_logo.cr
+  benchmark:
+    main: src/benchmark.cr
+  carbon:
+    main: lib/carbon/src/carbon/cli.cr
+  jasper:
+    main: lib/jasper/src/jasper_cli.cr
+
+crystal: ">= 1.20.0"
+
+license: MIT

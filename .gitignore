@@ -1,0 +1,7 @@
+/site/
+/lib/
+/bin/
+/.shards/
+/docs/
+*.dwarf
+*.pdb

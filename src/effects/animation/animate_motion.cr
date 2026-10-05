@@ -1,0 +1,70 @@
+class Celestine::Animate::Motion < Celestine::Drawable
+  module Attrs
+    MPATH           = "path"
+    ROTATE          = "rotate"
+    KEY_POINTS = "keyPoints"
+  end
+
+  TAG = "animateMotion"
+  include Celestine::Modules::Animate
+  include_options Celestine::Modules::CommonAnimate
+
+  property rotate = "none"
+  # This attribute indicate, in the range [0,1], how far is the object along the path for each `key_times` associated values.
+  property key_points = [] of Float64
+  getter mpath = ""
+
+  def mpath(&block : Proc(Celestine::Path, Nil))
+    path = yield Celestine::Path.new
+    @mpath = path.code
+  end
+
+  def mpath=(path : Celestine::Path)
+    @mpath = path.code
+  end
+
+  def link_mpath(path : Celestine::Path)
+    if path.id
+      @mpath = "##{path.id}"
+    else
+      raise "You must give an ID with elements you want to reuse"
+    end
+  end
+
+  def link_mpath(id : String)
+    @mpath = id
+  end
+
+  def draw(io : IO) : Nil
+    io << %Q[<#{TAG} ]
+    # Punctuate attributes with a space
+    draw_attributes(io)
+
+    # TODO: Find out if AnimateMotion can actually use this in any meaningful way....
+    # io << %Q[from="#{from}#{from_units}" ] if from
+    # io << %Q[to="#{to}#{to_units}" ] if to
+    # io << %Q[by="#{by}#{by_units}" ] if by
+
+    if mpath =~ /^#/
+      inner_elements << %Q[<mpath xlink:href="#{mpath}"/>]
+    elsif !mpath.empty?
+      io << %Q[path="#{mpath}" ]
+    end
+
+    io << %Q[#{Attrs::ROTATE}="#{rotate}" ] if rotate
+
+    unless key_points.empty?
+      io << %Q[#{Attrs::KEY_POINTS}="]
+      key_points.join(io, ";")
+      io << %Q[" ]
+    end
+
+    if inner_elements.empty?
+      io << %Q[/>]
+    else
+      io << ">"
+      io << inner_elements
+      io << "</#{TAG}>"
+    end
+  end
+end

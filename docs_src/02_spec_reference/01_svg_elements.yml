@@ -1,0 +1,62 @@
+id: SVG_ELEMENTS
+title: SVG Elements & Spec Checklist
+summary: Comprehensive audit of SVG elements, current implementation status, and DSL method mappings.
+track: 02_spec_reference
+overview: |
+  Celestine aims for high-fidelity compliance with W3C SVG 1.1 and SVG 2 specifications.
+  This reference catalogues all standard SVG elements, their implementation status in Celestine,
+  and their corresponding Crystal classes and DSL methods.
+
+related_sources:
+  - "src/drawables/"
+  - "src/effects/"
+  - "src/modules/"
+
+sections:
+  - id: topic_01_element_checklist
+    title: Element Parity & Status Matrix
+    summary: Element-by-element status table showing implemented, planned, and out-of-scope tags.
+    content: |
+      | Status | SVG Tag | Celestine Class | DSL Helper | Notes |
+      | :---: | :--- | :--- | :--- | :--- |
+      | ✓ | `<a>` | `Celestine::Anchor` | `ctx.anchor` | Hyperlink container |
+      | ✓ | `<animate>` | `Celestine::Animate` | `shape.animate` | SMIL attribute animation |
+      | ✓ | `<animateMotion>` | `Celestine::Animate::Motion` | `shape.animate_motion` | Motion path animation |
+      | ✓ | `<animateTransform>` | `Celestine::Animate::Transform::*` | `shape.animate_transform_*` | Rotate, scale, translate, skew |
+      | ✓ | `<circle>` | `Celestine::Circle` | `ctx.circle` | cx, cy, r, diameter |
+      | ^ | `<clipPath>` | Planned | `ctx.clip_path` | Vector path clipping |
+      | ✓ | `<defs>` | Handled implicitly | `ctx.define` / `define: true` | Collected into `<defs>` buffer |
+      | ✓ | `<ellipse>` | `Celestine::Ellipse` | `ctx.ellipse` | cx, cy, rx, ry |
+      | ✓ | `<g>` | `Celestine::Group` | `ctx.group` | Structural grouping container |
+      | ✓ | `<image>` | `Celestine::Image` | `ctx.image` | Bitmap/vector image embed |
+      | ✓ | `<line>` | `Celestine::Line` | `ctx.line` | x1, y1, x2, y2 |
+      | ✓ | `<linearGradient>` | `Celestine::Gradient::Linear` | `ctx.linear_gradient` | Linear color transitions |
+      | ✓ | `<marker>` | `Celestine::Marker` | `ctx.marker` | Arrowheads and path markers |
+      | ✓ | `<mask>` | `Celestine::Mask` | `ctx.mask` | Alpha & luminance masking |
+      | ✓ | `<path>` | `Celestine::Path` | `ctx.path` | Full SVG 1.1 path command support |
+      | ✓ | `<pattern>` | `Celestine::Pattern` | `ctx.pattern` | Repeated visual tile patterns |
+      | ✓ | `<polygon>` | `Celestine::Polygon` | `ctx.polygon` | Closed multi-point shapes |
+      | ✓ | `<polyline>` | `Celestine::Polyline` | `ctx.polyline` | Open multi-point stroke lines |
+      | ✓ | `<radialGradient>` | `Celestine::Gradient::Radial` | `ctx.radial_gradient` | Radial color transitions |
+      | ✓ | `<rect>` | `Celestine::Rectangle` | `ctx.rectangle` | x, y, width, height, rx, ry |
+      | ✓ | `<stop>` | `Celestine::Gradient::Stop` | `grad.stop` | Gradient color stops |
+      | ✓ | `<svg>` | `Celestine::Svg` | `Celestine.draw` | Document root & nested viewports |
+      | ✓ | `<text>` | `Celestine::Text` | `ctx.text` | Typography & layout attributes |
+      | ✓ | `<use>` | `Celestine::Use` | `ctx.use` | Reusable element instantiator |
+      | ^ | `<symbol>` | Planned | `ctx.symbol` | Reusable icon symbols with viewBox |
+      | ^ | `<tspan>` | Planned | `text.tspan` | Inline sub-string text styling |
+      | ^ | `<textPath>` | Planned | `text.text_path` | Text aligned along curved path |
+      | ^ | `<style>` | Planned | `ctx.style` | Embedded CSS stylesheet block |
+      | ✘ | `<foreignObject>` | Planned | `ctx.foreign_object` | Embedding HTML inside SVG |
+
+  - id: topic_02_presentation_attributes
+    title: Supported Presentation Attributes
+    summary: Styling and geometric presentation attributes available across drawables.
+    content: |
+      Through `Celestine::Modules::StrokeFill`, `Position`, and `Transform`, drawables support:
+
+      - **Stroke & Fill**: `stroke`, `fill`, `stroke_width`, `fill_opacity`, `stroke_opacity`, `opacity`
+      - **Dashes & Caps**: `dash_array`, `dash_offset`, `line_join`, `line_cap`, `miter_limit`
+      - **Rendering Hints**: `shape_rendering`, `vector_effect`, `color_interpolation`, `fill_rule`
+      - **Transforms**: `translate(x, y)`, `scale(x, y)`, `rotate(deg, ox, oy)`, `skew_x(deg)`, `skew_y(deg)`, `matrix(a,b,c,d,e,f)`
+      - **Effects Binding**: `set_filter(id)`, `set_mask(id)`, `set_marker_start(id)`, `set_fill(gradient)`

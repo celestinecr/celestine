@@ -1,0 +1,99 @@
+id: FILTERS_AND_EFFECTS
+title: Filters, Gradients & Visual Effects
+summary: Reference guide for SVG filter primitives, linear and radial gradients, masks, and SMIL animations.
+track: 02_spec_reference
+overview: |
+  Celestine provides first-class support for declarative SVG filter pipelines, color gradients,
+  patterns, and SMIL animations. This guide covers how to construct complex graphical effects
+  in pure Crystal.
+
+related_sources:
+  - "src/effects/filter.cr"
+  - "src/effects/filters/"
+  - "src/effects/gradients/"
+  - "src/effects/animation/"
+
+sections:
+  - id: topic_01_filter_primitives
+    title: Filter Pipelines & fe* Primitives
+    summary: Constructing multi-stage filter pipelines using feGaussianBlur, feColorMatrix, and more.
+    content: |
+      Celestine implements 16 W3C filter primitives under `Celestine::Filter`. Filters are declared
+      using `ctx.filter` (automatically placed into `<defs>`) and assigned to shapes using `.set_filter(id)`.
+
+      | Primitive | Celestine Method | Description |
+      | :--- | :--- | :--- |
+      | `feGaussianBlur` | `f.blur` | Standard Gaussian blur with stdDeviation |
+      | `feColorMatrix` | `f.color_matrix` | Matrix, saturate, hueRotate, luminanceToAlpha |
+      | `feDropShadow` | `f.drop_shadow` | Combined blur and offset drop shadow |
+      | `feDisplacementMap` | `f.displacement_map` | Geometric distortion using map channels |
+      | `feTurbulence` | `f.turbulence` | Perlin noise and fractal noise generation |
+      | `feBlend` | `f.blend` | Blend modes (multiply, screen, overlay, etc.) |
+      | `feComposite` | `f.composite` | Porter-Duff compositing operators |
+      | `feComponentTransfer` | `f.component_transfer` | Linear, gamma, and table color curves |
+      | `feMorphology` | `f.morphology` | Erode and dilate operators |
+      | `feOffset` | `f.offset` | Spatial translation of graphic buffers |
+      | `feTile` | `f.tile` | Repeats input image to fill filter region |
+      | `feFlood` | `f.flood` | Solid color flood fill |
+      | `feSpecularLighting` | `f.specular_lighting` | Surface lighting bump-mapping |
+
+    examples:
+      - |
+        ```crystal
+        svg = Celestine.draw do |ctx|
+          ctx.filter do |f|
+            f.id = "soft-glow"
+            f.blur do |b|
+              b.input = Celestine::Filter::SOURCE_GRAPHIC
+              b.std_deviation = 5
+              b.result = "blur-out"
+            end
+            f.merge do |m|
+              m.add_node("blur-out")
+              m.add_node(Celestine::Filter::SOURCE_GRAPHIC)
+            end
+          end
+
+          ctx.circle do |c|
+            c.x = 100
+            c.y = 100
+            c.radius = 40
+            c.fill = "#00f0ff"
+            c.set_filter("soft-glow")
+          end
+        end
+        ```
+
+  - id: topic_02_gradients_and_patterns
+    title: Gradients & Patterns
+    summary: Configuring smooth color transitions and repeating visual fills.
+    content: |
+      Gradients define smooth color transitions across shapes. Celestine supports both linear and radial
+      gradients, which can be bound directly via `shape.set_fill(gradient)`.
+
+    examples:
+      - |
+        ```crystal
+        svg = Celestine.draw do |ctx|
+          grad = ctx.linear_gradient do |g|
+            g.id = "sunset"
+            g.stop(0, color: "#ff512f")
+            g.stop(1, color: "#dd2476")
+          end
+
+          ctx.rectangle do |r|
+            r.width = 200
+            r.height = 100
+            r.set_fill(grad)
+          end
+        end
+        ```
+
+  - id: topic_03_smil_animations
+    title: Declarative SMIL Animations
+    summary: Animating attributes, transforms, and motion paths without JavaScript.
+    content: |
+      Every drawable can host SMIL animation tags:
+      - `shape.animate`: Animates attributes like `opacity`, `fill`, `r`, `width`.
+      - `shape.animate_motion`: Moves shapes along arbitrary SVG path trajectories.
+      - `shape.animate_transform_*`: Hardware-accelerated rotations, scaling, and translations.

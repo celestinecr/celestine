@@ -1,0 +1,128 @@
+id: USAGE_GUIDE
+title: Quickstart & Usage Guide
+summary: Comprehensive guide to drawing, DSL blocks, object models, and element reuse in Celestine.
+track: 01_getting_started
+overview: |
+  Celestine provides two intuitive ways to author SVG graphics: a fluent block-based DSL
+  that streams element definitions directly to memory, and an explicit object model where
+  any drawable can be instantiated, mutated, and appended to containers.
+
+related_sources:
+  - "src/celestine.cr"
+  - "src/drawables/drawable.cr"
+  - "src/drawables/svg.cr"
+  - "src/drawables/use.cr"
+
+sections:
+  - id: topic_01_drawing_basics
+    title: Drawing Basics & Output Targets
+    summary: How to invoke Celestine.draw to generate SVG strings or stream directly to IO.
+    content: |
+      All vector drawing starts with `Celestine.draw`. By default, it returns a finalized SVG XML `String`.
+      For high-performance web servers (e.g. Kemal, Lucky, Amber) or file output, pass an `IO` directly
+      to avoid unnecessary intermediate string allocations.
+
+    examples:
+      - |
+        ```crystal
+        require "celestine"
+
+        # 1. Generate an SVG String
+        svg_string = Celestine.draw do |ctx|
+          ctx.view_box = {x: 0, y: 0, w: 100, h: 100}
+          ctx.circle do |c|
+            c.x = 50
+            c.y = 50
+            c.radius = 40
+            c.fill = "#ff007f"
+          end
+        end
+
+        # 2. Stream directly to an IO (e.g. File or HTTP response)
+        File.open("output.svg", "w") do |file|
+          Celestine.draw(file) do |ctx|
+            ctx.rectangle do |r|
+              r.width = 100
+              r.height = 100
+              r.fill = "blue"
+            end
+          end
+        end
+        ```
+
+  - id: topic_02_dsl_vs_object_model
+    title: Block DSL vs Explicit Object Model
+    summary: Comparing context builder blocks with explicit object instantiation.
+    content: |
+      Celestine supports two interchangeable workflows:
+
+      1. **Fluent Block DSL**: Inside `Celestine.draw do |ctx|`, invoke helper methods such as
+         `ctx.circle`, `ctx.rectangle`, `ctx.path`, or `ctx.group`. Each method yields a fresh instance
+         of the element.
+      2. **Explicit Object Model**: Create any drawable using standard `.new` constructors (e.g. `Celestine::Circle.new`),
+         configure its properties, and append it to any container using `<<`.
+
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          # Approach A: Context helper block
+          ctx.rectangle do |r|
+            r.x = 10
+            r.y = 10
+            r.width = 80
+            r.height = 40
+            r.fill = "#3799FB"
+          end
+
+          # Approach B: Explicit object creation
+          c = Celestine::Circle.new
+          c.x = 50
+          c.y = 50
+          c.radius = 25
+          c.fill = "#0353A4"
+          ctx << c
+        end
+        ```
+
+  - id: topic_03_element_reuse_and_defs
+    title: Reusing Elements with Definitions & Use
+    summary: Defining reusable assets in <defs> and instantiating them via <use>.
+    content: |
+      To prevent duplicating complex geometry or styles, define elements in the document's `<defs>`
+      collection by passing `define: true` to DSL methods, or by calling `ctx.define(element)`.
+      Elements can then be referenced anywhere in the document using `ctx.use`.
+
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          # Define a reusable star symbol in <defs>
+          ctx.path(define: true) do |p|
+            p.id = "star-shape"
+            p.a_move(10, 1)
+            p.a_line(4, 19)
+            p.a_line(19, 7)
+            p.a_line(1, 7)
+            p.a_line(16, 19)
+            p.close
+            p.fill = "gold"
+          end
+
+          # Clone the defined star at multiple coordinates
+          ctx.use("star-shape") do |u|
+            u.x = 10
+            u.y = 10
+          end
+
+          ctx.use("star-shape") do |u|
+            u.x = 50
+            u.y = 10
+            u.opacity = 0.5
+          end
+        end
+        ```
+
+    pitfalls:
+      - "Reused drawables MUST have an ID assigned before calling ctx.use."
+      - "Properties set on <use> override presentation attributes of the referenced element according to SVG cascading rules."
