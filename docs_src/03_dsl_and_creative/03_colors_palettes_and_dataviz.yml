@@ -1,0 +1,87 @@
+id: COLORS_PALETTES_AND_DATAVIZ
+title: Color Engine, Designer Palettes & Micro Data-Viz
+title_short: Color & Data-Viz
+summary: Rich color manipulations, Nord/Dracula/Tailwind palettes, sparklines, progress rings, and Data URIs.
+track: 03_dsl_and_creative
+overview: |
+  Celestine includes a built-in color engine (`Celestine::Color`), curated designer
+  palettes (`Celestine::Palette`), responsive micro data-visualization components
+  (`sparkline`, `progress_ring`, `donut_slice`), and RFC 2397 Data URI export helpers.
+
+related_sources:
+  - "src/color/color.cr"
+  - "src/color/palette.cr"
+  - "src/dataviz/dataviz.cr"
+
+sections:
+  - id: topic_01_color_engine
+    title: Color Engine & Manipulations
+    summary: Hex, RGB, HSL parsing and transformations.
+    content: |
+      `Celestine::Color` allows parsing hex (3, 4, 6, 8 digit), RGB, or HSL strings,
+      and performing programmatic color adjustments:
+
+      - `lighten(amount)` / `darken(amount)`
+      - `saturate(amount)` / `desaturate(amount)`
+      - `complementary`
+      - `mix(other_color, weight)`
+      - `with_alpha(alpha)`
+    examples:
+      - |
+        ```crystal
+        base = Celestine::Color.hex("#3b82f6")
+        highlight = base.lighten(0.15)
+        shadow = base.darken(0.2)
+        ```
+
+  - id: topic_02_palettes
+    title: Curated Designer Palettes
+    summary: Ready-to-use color schemes.
+    content: |
+      Celestine comes bundled with designer-grade palettes:
+      - `Celestine::Palette::Nord`: Arctic Frost, Polar Night, Snow Storm, Aurora.
+      - `Celestine::Palette::Dracula`: Modern high-contrast dark theme colors.
+      - `Celestine::Palette::Tailwind`: Scales (50..900) for Slate, Emerald, Indigo, Amber, Rose, Cyan.
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          ctx.circle do |c|
+            c.cx = 50
+            c.cy = 50
+            c.r = 30
+            c.fill = Celestine::Palette::Nord::Frost1
+            c.stroke = Celestine::Palette::Nord::PolarNight0
+          end
+        end
+        ```
+
+  - id: topic_03_dataviz
+    title: Micro Data-Visualization
+    summary: Responsive sparklines, progress rings, and donut slices.
+    content: |
+      Render data-driven graphics with minimal boilerplate:
+      - `ctx.sparkline(data, x, y, width, height, smooth: true, fill: "...")`
+      - `ctx.progress_ring(cx, cy, radius, progress: 0.75, fill_color: "...")`
+      - `ctx.donut_slice(cx, cy, r_inner, r_outer, start_angle, end_angle)`
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          ctx.sparkline([10, 45, 30, 80, 50, 95], x: 10, y: 10, width: 200, height: 60, smooth: true)
+          ctx.progress_ring(cx: 280, cy: 40, radius: 25, progress: 0.85, fill_color: "#10b981")
+        end
+        ```
+
+  - id: topic_04_data_uri_export
+    title: Data URI Export
+    summary: Export directly to base64 or utf8 data URIs for inline HTML or CSS usage.
+    content: |
+      Export SVG directly as an RFC 2397 Data URI without intermediate file writing:
+    examples:
+      - |
+        ```crystal
+        uri = Celestine.to_data_uri(:utf8) do |ctx|
+          ctx.circle { |c| c.cx = 10; c.cy = 10; c.r = 5; c.fill = "red" }
+        end
+        ```

@@ -1,8 +1,8 @@
-# Draws and holds information for SVG images
+# Draws and holds information for SVG <symbol> elements
 #
-# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg)
-class Celestine::Svg < Celestine::Drawable
-  TAG = "svg"
+# * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol)
+class Celestine::Symbol < Celestine::Drawable
+  TAG = "symbol"
 
   include_options Celestine::Modules::Body
   include_options Celestine::Modules::StrokeFill
@@ -11,14 +11,12 @@ class Celestine::Svg < Celestine::Drawable
   include_options Celestine::Modules::Filter
   include_options Celestine::Modules::Clip
 
-  # Do not allow these to add their ATTRS since they are their own elements
   include Celestine::Modules::Animate
   include Celestine::Modules::Animate::Motion
   include Celestine::Modules::Animate::Transform
 
-  @defines_io = IO::Memory.new
-
   property view_box : Celestine::ViewBox?
+  property preserve_aspect_ratio : String?
 
   def view_box(x : IFNumber, y : IFNumber, w : IFNumber, h : IFNumber)
     @view_box = {x: x, y: y, w: w, h: h}
@@ -35,46 +33,23 @@ class Celestine::Svg < Celestine::Drawable
     end
   end
 
-  def initialize
-  end
-
-  # Draws this SVG root to an `IO`
   def draw(io : IO) : Nil
-    io << %Q[<#{TAG} ]
-    io << %Q[xmlns="http://www.w3.org/2000/svg" ]
+    io << '<' << TAG << ' '
+    draw_attributes(io)
 
     if vb = view_box
       io << %Q[viewBox="#{vb[:x]} #{vb[:y]} #{vb[:w]} #{vb[:h]}" ]
     end
+    if par = preserve_aspect_ratio
+      io << %Q[preserveAspectRatio="#{par}" ]
+    end
 
-    draw_attributes(io)
-
-    if !@defines_io.empty? || !inner_elements.empty?
-      io << %Q[>]
-      if !@defines_io.empty?
-        io << %Q[<defs>]
-        io << @defines_io
-        io << %Q[</defs>]
-      end
+    if !has_inner_elements?
+      io << "/>"
+    else
+      io << '>'
       io << inner_elements
-      io << %Q[</#{TAG}>]
-    else
-      io << %Q[/>]
+      io << "</" << TAG << '>'
     end
-  end
-
-  # Serializes SVG to an RFC 2397 Data URI string (:utf8 or :base64)
-  def to_data_uri(format : ::Symbol = :utf8) : String
-    case format
-    when :utf8
-      "data:image/svg+xml;utf8," + URI.encode_path_segment(to_s)
-    when :base64
-      "data:image/svg+xml;base64," + Base64.strict_encode(to_s)
-    else
-      raise ArgumentError.new("Unsupported Data URI format: #{format}. Use :utf8 or :base64.")
-    end
-  end
-
-  module Attrs
   end
 end

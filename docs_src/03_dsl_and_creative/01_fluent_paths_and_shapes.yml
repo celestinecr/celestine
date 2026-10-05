@@ -1,0 +1,86 @@
+id: FLUENT_PATHS_AND_SHAPES
+title: Fluent Path Builders, Procedural Shapes & Turtle Graphics
+summary: Fluent command chaining, stars, polygons, arc sectors, rounded rects, and turtle graphics.
+track: 03_dsl_and_creative
+overview: |
+  Celestine provides a fluent, chainable SVG path construction API alongside
+  procedural shape generators and an intuitive turtle graphics engine.
+
+related_sources:
+  - "src/drawables/path.cr"
+
+sections:
+  - id: topic_01_fluent_paths
+    title: Fluent Path Construction
+    summary: Chainable movement, lines, curves, and arcs with Point and Tuple overloads.
+    content: |
+      Rather than relying solely on cryptic SVG command codes, `Celestine::Path` supports
+      fluent chaining where every command returns `self`.
+
+      Supported commands include:
+      - `move_to(x, y)` / `move_to(point)` / `move_by(dx, dy)`
+      - `line_to(x, y)` / `line_to(point)` / `line_by(dx, dy)`
+      - `horizontal_to(x)` / `vertical_to(y)`
+      - `curve_to(c1x, c1y, c2x, c2y, x, y)` / `smooth_curve_to(...)`
+      - `quad_to(cx, cy, x, y)` / `smooth_quad_to(...)`
+      - `arc_to(rx, ry, rotation, large, sweep, x, y)` / `arc_by(...)`
+      - `close` or `close_path`
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          ctx.path do |p|
+            p.stroke = "#0284c7"
+            p.fill = "none"
+            p.move_to(10, 20)
+             .line_to(100, 20)
+             .curve_to(120, 20, 150, 50, 150, 80)
+             .close
+          end
+        end
+        ```
+
+  - id: topic_02_procedural_shapes
+    title: Procedural Shape Generators
+    summary: Instantly build stars, regular polygons, annular arc sectors, rounded rects, and hearts.
+    content: |
+      Paths can procedurally generate complex vector geometries in a single call:
+
+      - `regular_polygon(cx, cy, sides, radius)`
+      - `star(cx, cy, points, outer_radius, inner_radius)`
+      - `arc_sector(cx, cy, r_inner, r_outer, start_angle, end_angle)`
+      - `rounded_rect(x, y, width, height, rx, ry)`
+      - `heart(cx, cy, size)`
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          ctx.path do |p|
+            p.fill = "#f59e0b"
+            p.star(cx: 100, cy: 100, points: 5, outer_radius: 50, inner_radius: 25)
+          end
+        end
+        ```
+
+  - id: topic_03_turtle_graphics
+    title: Turtle Graphics
+    summary: Relative angle and distance path generation.
+    content: |
+      Use the integrated `turtle` engine to draw algorithmic geometries using relative forward
+      steps and angle turns.
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          ctx.path do |p|
+            p.stroke = "#10b981"
+            p.turtle(start_x: 100, start_y: 100) do |t|
+              4.times do
+                t.forward(80)
+                 .turn_right(90)
+              end
+              t.close
+            end
+          end
+        end
+        ```

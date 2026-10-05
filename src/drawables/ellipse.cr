@@ -9,6 +9,7 @@ class Celestine::Ellipse < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
+  include_options Celestine::Modules::Clip
   include_options Celestine::Modules::Marker
 
   # Do not allow these to add their ATTRS since they are their own elements

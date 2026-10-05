@@ -2,6 +2,7 @@
 ## [0.9.2] - 2026-10-04
 ### ✨ Features & Improvements
 - ✦ initial squashed release of Celestine SVG generation library (`f0ec49a`)
+- ✦ initial squashed release of Celestine SVG generation library (`9b20a86`)
 
 ---
 ## [0.9.1] - 2026-10-04

@@ -5,10 +5,18 @@ module Celestine::Modules::StrokeFill
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke)
   property stroke : String?
 
+  def stroke=(color : Celestine::Color)
+    @stroke = color.to_s
+  end
+
   # The color of the fill
   #
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/fill)
   property fill : String?
+
+  def fill=(color : Celestine::Color)
+    @fill = color.to_s
+  end
 
   # The width of the stroke
   #
@@ -73,6 +81,10 @@ module Celestine::Modules::StrokeFill
   # * Potential Values: `<Any CSS Color Type> | currentColor`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/color)
   property color : String?
+
+  def color=(c : Celestine::Color)
+    @color = c.to_s
+  end
 
   # Specifies the color space for gradient interpolations, color animations, and alpha compositing
   #

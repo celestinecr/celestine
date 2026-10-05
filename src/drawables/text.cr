@@ -9,6 +9,7 @@ class Celestine::Text < Celestine::Drawable
   include_options Celestine::Modules::StrokeFill
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
+  include_options Celestine::Modules::Clip
 
   # Do not allow these to add their ATTRS since they are their own elements
   include Celestine::Modules::Animate
@@ -87,15 +88,38 @@ class Celestine::Text < Celestine::Drawable
 
   # Changes where the natural anchor is for the text.
   #
+  # Changes where the natural anchor is for the text.
+  #
   # * Potential Values: `auto | text-bottom | alphabetic | ideographic | middle | central | mathematical | hanging | text-top`
   # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline)
   property dominant_baseline : String?
 
+  # Changes the horizontal alignment anchor of the text.
+  #
+  # * Potential Values: `start | middle | end | inherit`
+  # * [Mozilla SVG Docs](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor)
+  property text_anchor : String?
+
+  # Adds a <tspan> element inside this text element
+  def tspan(content : String? = nil, &block : Celestine::TSpan ->) : Celestine::TSpan
+    span = Celestine::TSpan.new
+    span.text = content if content
+    yield span
+    span.draw(inner_elements)
+    span
+  end
+
+  # Adds a <tspan> element inside this text element with static content
+  def tspan(content : String) : Celestine::TSpan
+    tspan(content) { }
+  end
+
   def draw(io : IO) : Nil
-    io << %Q[<#{TAG} ]
+    io << '<' << TAG << ' '
     draw_attributes(io)
 
     io << %Q[#{Attrs::DOMINANT_BASELINE}="#{dominant_baseline}" ] if dominant_baseline
+    io << %Q[#{Attrs::TEXT_ANCHOR}="#{text_anchor}" ] if text_anchor
     io << %Q[#{Attrs::DX}="#{dx}#{dx_units}" ] if dx
     io << %Q[#{Attrs::DY}="#{dy}#{dy_units}" ] if dy
     unless rotate.empty?
@@ -115,12 +139,12 @@ class Celestine::Text < Celestine::Drawable
     io << %Q[#{Attrs::LETTER_SPACING}="#{letter_spacing}#{letter_spacing_units}" ] if letter_spacing
 
     inner_elements << text if text
-    if inner_elements.empty?
-      io << %Q[/>]
+    if !has_inner_elements?
+      io << "/>"
     else
-      io << ">"
+      io << '>'
       io << inner_elements
-      io << "</#{TAG}>"
+      io << "</" << TAG << '>'
     end
   end
 
@@ -139,5 +163,6 @@ class Celestine::Text < Celestine::Drawable
     FONT_WEIGHT       = "font-weight"
     LETTER_SPACING    = "letter-spacing"
     DOMINANT_BASELINE = "dominant-baseline"
+    TEXT_ANCHOR       = "text-anchor"
   end
 end

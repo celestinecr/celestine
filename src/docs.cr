@@ -9,7 +9,7 @@ module Celestine
   #
   # ## Learning Tracks & Topic Index
   #
-  # The documentation is paced into 2 distinct tracks:
+  # The documentation is paced into 3 distinct tracks:
   #
   # ### 1. Getting started (`A_GETTING_STARTED`)
   # <table>
@@ -57,6 +57,34 @@ module Celestine
   #   </tbody>
   # </table>
   #
+  # ### 3. Dsl and creative (`C_DSL_AND_CREATIVE`)
+  # <table>
+  #   <thead>
+  #     <tr>
+  #       <th>Submodule</th>
+  #       <th>Title</th>
+  #       <th>Description</th>
+  #     </tr>
+  #   </thead>
+  #   <tbody>
+  #     <tr>
+  #       <td><code>FLUENT_PATHS_AND_SHAPES</code></td>
+  #       <td><strong>Fluent Path Builders, Procedural Shapes & Turtle Graphics</strong></td>
+  #       <td>Fluent command chaining, stars, polygons, arc sectors, rounded rects, and turtle graphics.</td>
+  #     </tr>
+  #     <tr>
+  #       <td><code>ROUGH_SKETCHY_GRAPHICS</code></td>
+  #       <td><strong>Hand-Drawn Sketchy Vector Engine</strong></td>
+  #       <td>Create organic, sketchy architectural and hand-drawn SVG vectors using Celestine::Rough.</td>
+  #     </tr>
+  #     <tr>
+  #       <td><code>COLORS_PALETTES_AND_DATAVIZ</code></td>
+  #       <td><strong>Color Engine, Designer Palettes & Micro Data-Viz</strong></td>
+  #       <td>Rich color manipulations, Nord/Dracula/Tailwind palettes, sparklines, progress rings, and Data URIs.</td>
+  #     </tr>
+  #   </tbody>
+  # </table>
+  #
   module Docs
     # **Quick-Start Commands**: Essential commands for building, running, and testing.
     #
@@ -80,6 +108,11 @@ module Celestine
     # - `B_SPEC_REFERENCE::SVG_ELEMENTS`: **SVG Elements & Spec Checklist** &mdash; Comprehensive audit of SVG elements, current implementation status, and DSL method mappings.
     # - `B_SPEC_REFERENCE::FILTERS_AND_EFFECTS`: **Filters, Gradients & Visual Effects** &mdash; Reference guide for SVG filter primitives, linear and radial gradients, masks, and SMIL animations.
     #
+    # ##### 3. Dsl and creative (`C_DSL_AND_CREATIVE`)
+    # - `C_DSL_AND_CREATIVE::FLUENT_PATHS_AND_SHAPES`: **Fluent Path Builders, Procedural Shapes & Turtle Graphics** &mdash; Fluent command chaining, stars, polygons, arc sectors, rounded rects, and turtle graphics.
+    # - `C_DSL_AND_CREATIVE::ROUGH_SKETCHY_GRAPHICS`: **Hand-Drawn Sketchy Vector Engine** &mdash; Create organic, sketchy architectural and hand-drawn SVG vectors using Celestine::Rough.
+    # - `C_DSL_AND_CREATIVE::COLORS_PALETTES_AND_DATAVIZ`: **Color Engine, Designer Palettes & Micro Data-Viz** &mdash; Rich color manipulations, Nord/Dracula/Tailwind palettes, sparklines, progress rings, and Data URIs.
+    #
     def self.topic_02_reading_paths : Nil; end
 
     # **Master Table of Contents**: Complete hierarchical topic index.
@@ -93,6 +126,11 @@ module Celestine
     # ##### `B_SPEC_REFERENCE`
     # - `B_SPEC_REFERENCE::SVG_ELEMENTS`: **SVG Elements & Spec Checklist** &mdash; Comprehensive audit of SVG elements, current implementation status, and DSL method mappings.
     # - `B_SPEC_REFERENCE::FILTERS_AND_EFFECTS`: **Filters, Gradients & Visual Effects** &mdash; Reference guide for SVG filter primitives, linear and radial gradients, masks, and SMIL animations.
+    #
+    # ##### `C_DSL_AND_CREATIVE`
+    # - `C_DSL_AND_CREATIVE::FLUENT_PATHS_AND_SHAPES`: **Fluent Path Builders, Procedural Shapes & Turtle Graphics** &mdash; Fluent command chaining, stars, polygons, arc sectors, rounded rects, and turtle graphics.
+    # - `C_DSL_AND_CREATIVE::ROUGH_SKETCHY_GRAPHICS`: **Hand-Drawn Sketchy Vector Engine** &mdash; Create organic, sketchy architectural and hand-drawn SVG vectors using Celestine::Rough.
+    # - `C_DSL_AND_CREATIVE::COLORS_PALETTES_AND_DATAVIZ`: **Color Engine, Designer Palettes & Micro Data-Viz** &mdash; Rich color manipulations, Nord/Dracula/Tailwind palettes, sparklines, progress rings, and Data URIs.
     #
     def self.topic_03_table_of_contents : Nil; end
 
@@ -109,4 +147,7 @@ require "./docs/a_getting_started/overview"
 require "./docs/a_getting_started/usage_guide"
 require "./docs/b_spec_reference/svg_elements"
 require "./docs/b_spec_reference/filters_and_effects"
+require "./docs/c_dsl_and_creative/fluent_paths_and_shapes"
+require "./docs/c_dsl_and_creative/rough_sketchy_graphics"
+require "./docs/c_dsl_and_creative/colors_palettes_and_dataviz"
 {% end %}

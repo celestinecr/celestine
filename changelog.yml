@@ -24,16 +24,21 @@ settings:
 releases:
 - version: 0.9.2
   date: "2026-10-04"
-  status: released
+  status: active
   entries:
   - type: feat
     description: initial squashed release of Celestine SVG generation library
     bullet: ✦
     hash: f0ec49a
     author: Ian Rash
+  - type: feat
+    description: initial squashed release of Celestine SVG generation library
+    bullet: ✦
+    hash: 9b20a86
+    author: Ian Rash
 - version: 0.9.1
   date: "2026-10-04"
-  status: active
+  status: released
   entries:
   - type: feat
     description: initial squashed release of Celestine SVG generation library

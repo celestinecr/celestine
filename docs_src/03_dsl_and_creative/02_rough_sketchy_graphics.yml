@@ -1,0 +1,53 @@
+id: ROUGH_SKETCHY_GRAPHICS
+title: Hand-Drawn Sketchy Vector Engine
+title_short: Rough Vectors
+summary: Create organic, sketchy architectural and hand-drawn SVG vectors using Celestine::Rough.
+track: 03_dsl_and_creative
+overview: |
+  Celestine includes an algorithmic rough graphics engine that renders organic,
+  hand-drawn lines, rectangles, circles, and polygons with configurable roughness,
+  bowing, and deterministic PRNG seeding.
+
+related_sources:
+  - "src/rough/rough.cr"
+
+sections:
+  - id: topic_01_rough_dsl
+    title: Using the Rough Builder DSL
+    summary: Block-based hand-drawn vector graphics.
+    content: |
+      The `ctx.rough` method configures the sketching engine and provides a convenient
+      builder block:
+
+      - `roughness`: controls degree of jitter and multi-pass displacement (default 1.0)
+      - `bowing`: controls curve bowing deflection (default 1.0)
+      - `seed`: provides deterministic generation across renders
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          ctx.rough(roughness: 1.5, stroke: "#334155", stroke_width: 2) do |r|
+            r.rect(20, 20, 160, 100)
+            r.circle(260, 70, 40)
+            r.line(20, 160, 300, 160)
+            r.polygon([{40, 200}, {100, 180}, {80, 240}])
+          end
+        end
+        ```
+
+  - id: topic_02_direct_path_sketching
+    title: Direct Path Sketching
+    summary: Applying sketchy primitives to any existing Path drawable.
+    content: |
+      Any `Celestine::Path` can directly invoke `rough_line`, `rough_rect`, `rough_circle`,
+      or `rough_polygon`.
+    examples:
+      - |
+        ```crystal
+        Celestine.draw do |ctx|
+          ctx.path do |p|
+            p.stroke = "#e11d48"
+            p.rough_circle(cx: 100, cy: 100, r: 50, roughness: 1.2)
+          end
+        end
+        ```

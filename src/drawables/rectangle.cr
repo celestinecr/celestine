@@ -9,6 +9,7 @@ class Celestine::Rectangle < Celestine::Drawable
   include_options Celestine::Modules::Transform
   include_options Celestine::Modules::Mask
   include_options Celestine::Modules::Filter
+  include_options Celestine::Modules::Clip
   include_options Celestine::Modules::Marker
 
   # Do not allow these to add their ATTRS since they are their own elements
@@ -28,18 +29,22 @@ class Celestine::Rectangle < Celestine::Drawable
 
   # Draws this rectangle to an `IO`
   def draw(io : IO) : Nil
-    io << %Q[<#{TAG} ]
+    io << '<' << TAG << ' '
     draw_attributes(io)
 
-    io << %Q[#{Attrs::RADIUS_X}="#{radius_x}#{radius_x_units}" ] if radius_x
-    io << %Q[#{Attrs::RADIUS_Y}="#{radius_y}#{radius_y_units}" ] if radius_y
+    if rx = radius_x
+      io << Attrs::RADIUS_X << "=\"" << rx << radius_x_units << "\" "
+    end
+    if ry = radius_y
+      io << Attrs::RADIUS_Y << "=\"" << ry << radius_y_units << "\" "
+    end
 
-    if inner_elements.empty?
-      io << %Q[/>]
+    if !has_inner_elements?
+      io << "/>"
     else
       io << ">"
       io << inner_elements
-      io << "</#{TAG}>"
+      io << "</" << TAG << '>'
     end
   end
 

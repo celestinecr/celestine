@@ -1,5 +1,5 @@
 name: celestine
-version: 0.9.1
+version: 0.9.2
 
 description: Fast, pure-Crystal SVG generation library with a fluent DSL and object model.
 

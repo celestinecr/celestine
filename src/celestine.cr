@@ -1,5 +1,10 @@
+require "uri"
+require "base64"
+
 require "./patches/number"
 require "./macros/**"
+require "./color/color"
+require "./color/palette"
 
 require "./modules/position"
 require "./modules/*"
@@ -18,12 +23,16 @@ require "./drawables/image"
 require "./drawables/line"
 require "./drawables/polygon"
 require "./drawables/polyline"
+require "./drawables/symbol"
+require "./drawables/style"
+require "./drawables/tspan"
 
 require "./effects/animation/animate"
 require "./effects/animation/animate_motion"
 require "./effects/animation/transform/*"
 
 require "./effects/mask"
+require "./effects/clip_path"
 require "./effects/filter"
 require "./effects/filters/basic"
 require "./effects/filters/**"
@@ -33,6 +42,8 @@ require "./effects/gradients/gradient"
 require "./effects/gradients/**"
 
 require "./math/**"
+require "./rough/rough"
+require "./dataviz/dataviz"
 
 alias IFNumber = (Int32 | Float64)
 alias SIFNumber = (String | IFNumber)
@@ -55,6 +66,13 @@ module Celestine
     ctx.draw(io)
     io
   end
+
+  # Main draw function returning an RFC 2397 Data URI
+  def self.to_data_uri(format : ::Symbol = :utf8, &block : Proc(Celestine::Svg, Nil)) : String
+    svg = Celestine::Svg.new
+    yield svg
+    svg.to_data_uri(format)
+  end
 end
 
 # Modules where all DSL and Meta code is held
@@ -63,7 +81,8 @@ module Celestine::Meta
   CLASSES = [
     Celestine::Svg, Celestine::Circle, Celestine::Rectangle, Celestine::Path,
     Celestine::Ellipse, Celestine::Group, Celestine::Image, Celestine::Text,
-    Celestine::Anchor, Celestine::Line, Celestine::Polygon, Celestine::Polyline
+    Celestine::Anchor, Celestine::Line, Celestine::Polygon, Celestine::Polyline,
+    Celestine::Style
   ]
 
   # Hold context information for the DSL
@@ -71,6 +90,8 @@ module Celestine::Meta
     # Holds all the context methods to be included in DSL classes like Context, Group, and Mask.
     # This creates all the methods that can be used inside the draw block, like `circle` or `group` or `use`.
     module Methods
+      include Celestine::DataViz
+
       macro included
         {% if @type == Celestine::Svg %}
           # Go through each class in CLASSES and lowercase the last part to make a method name.
@@ -82,6 +103,24 @@ module Celestine::Meta
           def define(drawable : Celestine::Drawable)
             drawable.draw(@defines_io)
             drawable
+          end
+
+          # Create a clip-path object and add it to this `Celestine::Svg`'s defs
+          def clip_path(id : String? = nil, &block : Celestine::ClipPath ->)
+            clip_path = Celestine::ClipPath.new
+            clip_path.id = id if id
+            yield clip_path
+            define(clip_path)
+            clip_path
+          end
+
+          # Create a symbol object and add it to this `Celestine::Svg`'s defs
+          def symbol(id : String? = nil, &block : Celestine::Symbol ->)
+            symbol = Celestine::Symbol.new
+            symbol.id = id if id
+            yield symbol
+            define(symbol)
+            symbol
           end
 
           # Create a mask object and add it to this `Celestine::Svg`'s defs
@@ -206,6 +245,27 @@ module Celestine::Meta
         use_elem
       end
 
+      # Draws sketchy hand-drawn vector graphics using Celestine::Rough
+      def rough(
+        roughness : Float64 = 1.0,
+        bowing : Float64 = 1.0,
+        seed : UInt64 = 42_u64,
+        stroke : String = "#000",
+        stroke_width : Number = 1.5,
+        fill : String = "none",
+        &block : Celestine::Rough::Builder ->
+      ) : Celestine::Path
+        r = Celestine::Rough.new(roughness: roughness, bowing: bowing, seed: seed)
+        p = Celestine::Path.new
+        p.stroke = stroke
+        p.stroke_width = stroke_width
+        p.fill = fill
+        builder = Celestine::Rough::Builder.new(r, p)
+        yield builder
+        self << p
+        p
+      end
+
       # Adds a new drawable to this context's objects
       def <<(drawable : Celestine::Drawable)
         drawable.draw(inner_elements)
@@ -241,6 +301,16 @@ module Celestine::Meta
 
   # Class which acts like a group, but applies masking to another drawable.
   class ::Celestine::Pattern
+    include Celestine::Meta::Context::Methods
+  end
+
+  # Class which defines a reusable graphical template
+  class ::Celestine::Symbol
+    include Celestine::Meta::Context::Methods
+  end
+
+  # Class which defines a clipping path for vector graphics
+  class ::Celestine::ClipPath
     include Celestine::Meta::Context::Methods
   end
 end
