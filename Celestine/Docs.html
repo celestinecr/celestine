@@ -142,6 +142,31 @@
       
     </li>
   
+  <li class=" " data-id="celestine/Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE" data-name="celestine::docs::a_getting_started::usage_guide">
+      <a href="../Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE.html">USAGE_GUIDE</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE" data-name="celestine::docs::b_spec_reference">
+      <a href="../Celestine/Docs/B_SPEC_REFERENCE.html">B_SPEC_REFERENCE</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS" data-name="celestine::docs::b_spec_reference::filters_and_effects">
+      <a href="../Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS.html">FILTERS_AND_EFFECTS</a>
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS" data-name="celestine::docs::b_spec_reference::svg_elements">
+      <a href="../Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS.html">SVG_ELEMENTS</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -1071,7 +1096,7 @@
     <use href="#octicon-link"/>
   </svg>
 </a>Learning Tracks &amp; Topic Index</h2>
-<p>The documentation is paced into 1 distinct tracks:</p>
+<p>The documentation is paced into 2 distinct tracks:</p>
 <h3><a id="1.-getting-started-a-getting-started" class="anchor" href="#1.-getting-started-a-getting-started">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
@@ -1090,6 +1115,37 @@
       <td><code>OVERVIEW</code></td>
       <td><strong>Getting Started & System Overview</strong></td>
       <td>Introduction to Celestine SVG generation DSL and object model.</td>
+    </tr>
+    <tr>
+      <td><code>USAGE_GUIDE</code></td>
+      <td><strong>Quickstart & Usage Guide</strong></td>
+      <td>Comprehensive guide to drawing, DSL blocks, object models, and element reuse in Celestine.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a id="2.-spec-reference-b-spec-reference" class="anchor" href="#2.-spec-reference-b-spec-reference">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>2. Spec reference (<code><a href="../Celestine/Docs/B_SPEC_REFERENCE.html">B_SPEC_REFERENCE</a></code>)</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Submodule</th>
+      <th>Title</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>SVG_ELEMENTS</code></td>
+      <td><strong>SVG Elements & Spec Checklist</strong></td>
+      <td>Comprehensive audit of SVG elements, current implementation status, and DSL method mappings.</td>
+    </tr>
+    <tr>
+      <td><code>FILTERS_AND_EFFECTS</code></td>
+      <td><strong>Filters, Gradients & Visual Effects</strong></td>
+      <td>Reference guide for SVG filter primitives, linear and radial gradients, masks, and SMIL animations.</td>
     </tr>
   </tbody>
 </table>
@@ -1119,15 +1175,36 @@
   </h2>
   
     
-      <a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/docs.cr#L6" target="_blank">
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs.cr#L6" target="_blank">
         docs.cr
       </a>
     
     <br/>
   
     
-      <a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/docs/a_getting_started/overview.cr#L6" target="_blank">
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/a_getting_started/overview.cr#L6" target="_blank">
         docs/a_getting_started/overview.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/a_getting_started/usage_guide.cr#L6" target="_blank">
+        docs/a_getting_started/usage_guide.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/filters_and_effects.cr#L6" target="_blank">
+        docs/b_spec_reference/filters_and_effects.cr
+      </a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/svg_elements.cr#L6" target="_blank">
+        docs/b_spec_reference/svg_elements.cr
       </a>
     
     <br/>
@@ -1219,7 +1296,7 @@ crystal docs</code></pre>
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/docs.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1247,13 +1324,23 @@ crystal docs</code></pre>
 </a>1. Getting started (<code><a href="../Celestine/Docs/A_GETTING_STARTED.html">A_GETTING_STARTED</a></code>)</h5>
 <ul>
 <li><code><a href="../Celestine/Docs/A_GETTING_STARTED/OVERVIEW.html">A_GETTING_STARTED::OVERVIEW</a></code>: **Getting Started &amp; System Overview** &amp;mdash; Introduction to Celestine SVG generation DSL and object model.</li>
+<li><code><a href="../Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE.html">A_GETTING_STARTED::USAGE_GUIDE</a></code>: **Quickstart &amp; Usage Guide** &amp;mdash; Comprehensive guide to drawing, DSL blocks, object models, and element reuse in Celestine.</li>
+</ul>
+<h5><a id="2.-spec-reference-b-spec-reference" class="anchor" href="#2.-spec-reference-b-spec-reference">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>2. Spec reference (<code><a href="../Celestine/Docs/B_SPEC_REFERENCE.html">B_SPEC_REFERENCE</a></code>)</h5>
+<ul>
+<li><code><a href="../Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS.html">B_SPEC_REFERENCE::SVG_ELEMENTS</a></code>: **SVG Elements &amp; Spec Checklist** &amp;mdash; Comprehensive audit of SVG elements, current implementation status, and DSL method mappings.</li>
+<li><code><a href="../Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS.html">B_SPEC_REFERENCE::FILTERS_AND_EFFECTS</a></code>: **Filters, Gradients &amp; Visual Effects** &amp;mdash; Reference guide for SVG filter primitives, linear and radial gradients, masks, and SMIL animations.</li>
 </ul>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/docs.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1281,13 +1368,23 @@ crystal docs</code></pre>
 </a><code><a href="../Celestine/Docs/A_GETTING_STARTED.html">A_GETTING_STARTED</a></code></h5>
 <ul>
 <li><code><a href="../Celestine/Docs/A_GETTING_STARTED/OVERVIEW.html">A_GETTING_STARTED::OVERVIEW</a></code>: **Getting Started &amp; System Overview** &amp;mdash; Introduction to Celestine SVG generation DSL and object model.</li>
+<li><code><a href="../Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE.html">A_GETTING_STARTED::USAGE_GUIDE</a></code>: **Quickstart &amp; Usage Guide** &amp;mdash; Comprehensive guide to drawing, DSL blocks, object models, and element reuse in Celestine.</li>
+</ul>
+<h5><a id="b-spec-reference" class="anchor" href="#b-spec-reference">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a><code><a href="../Celestine/Docs/B_SPEC_REFERENCE.html">B_SPEC_REFERENCE</a></code></h5>
+<ul>
+<li><code><a href="../Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS.html">B_SPEC_REFERENCE::SVG_ELEMENTS</a></code>: **SVG Elements &amp; Spec Checklist** &amp;mdash; Comprehensive audit of SVG elements, current implementation status, and DSL method mappings.</li>
+<li><code><a href="../Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS.html">B_SPEC_REFERENCE::FILTERS_AND_EFFECTS</a></code>: **Filters, Gradients &amp; Visual Effects** &amp;mdash; Reference guide for SVG filter primitives, linear and radial gradients, masks, and SMIL animations.</li>
 </ul>
         </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/docs.cr#L6" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs.cr#L6" target="_blank">View source</a>]
         
       </div>
     </div>

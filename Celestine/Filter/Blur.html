@@ -142,6 +142,31 @@
       
     </li>
   
+  <li class=" " data-id="celestine/Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE" data-name="celestine::docs::a_getting_started::usage_guide">
+      <a href="../../Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE.html">USAGE_GUIDE</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE" data-name="celestine::docs::b_spec_reference">
+      <a href="../../Celestine/Docs/B_SPEC_REFERENCE.html">B_SPEC_REFERENCE</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS" data-name="celestine::docs::b_spec_reference::filters_and_effects">
+      <a href="../../Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS.html">FILTERS_AND_EFFECTS</a>
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS" data-name="celestine::docs::b_spec_reference::svg_elements">
+      <a href="../../Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS.html">SVG_ELEMENTS</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -1097,7 +1122,7 @@
   </h2>
   
     
-      <a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/effects/filters/blur.cr#L4" target="_blank">
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L4" target="_blank">
         effects/filters/blur.cr
       </a>
     
@@ -1204,6 +1229,28 @@
         <a href="#standard_deviation_units%3D%28standard_deviation_units%3AString%7CNil%29-instance-method" class="signature"><strong>#standard_deviation_units=</strong>(standard_deviation_units : String | Nil)</a>
         
           <div class="summary"><p>What kind of unit <code><a href="../../Celestine/Filter/Blur.html#standard_deviation%3AIFNumber%7CNil-instance-method">#standard_deviation</a></code> should use when rendering</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#std_deviation-instance-method" class="signature"><strong>#std_deviation</strong></a>
+        
+          <div class="summary"><p>Convenient aliases for SVG stdDeviation</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#std_deviation%3D%28val%29-instance-method" class="signature"><strong>#std_deviation=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#std_deviation_units-instance-method" class="signature"><strong>#std_deviation_units</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#std_deviation_units%3D%28val%29-instance-method" class="signature"><strong>#std_deviation_units=</strong>(val)</a>
         
       </li>
     
@@ -1543,7 +1590,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/effects/filters/blur.cr#L24" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L41" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1568,7 +1615,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/effects/filters/blur.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1593,7 +1640,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/effects/filters/blur.cr#L21" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L38" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1617,7 +1664,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/effects/filters/blur.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1641,7 +1688,7 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/effects/filters/blur.cr#L10" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L10" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -1724,6 +1771,75 @@
       
       <br/>
       <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="std_deviation-instance-method">
+      <div class="signature">
+        
+        def <strong>std_deviation</strong>
+
+        <a class="method-permalink" href="#std_deviation-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>Convenient aliases for SVG stdDeviation</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="std_deviation=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>std_deviation=</strong>(val)
+
+        <a class="method-permalink" href="#std_deviation%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="std_deviation_units-instance-method">
+      <div class="signature">
+        
+        def <strong>std_deviation_units</strong>
+
+        <a class="method-permalink" href="#std_deviation_units-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L26" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="std_deviation_units=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>std_deviation_units=</strong>(val)
+
+        <a class="method-permalink" href="#std_deviation_units%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/blur.cr#L30" target="_blank">View source</a>]
         
       </div>
     </div>

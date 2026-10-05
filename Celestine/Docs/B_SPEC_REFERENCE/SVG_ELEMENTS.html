@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../../../js/doc.js"></script>
 
   <meta name="repository-name" content="celestine">
-  <title>Celestine::Filter::Offset::Attrs - celestine main</title>
+  <title>Celestine::Docs::B_SPEC_REFERENCE::SVG_ELEMENTS - celestine main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../../";
   </script>
@@ -127,7 +127,7 @@
       
     </li>
   
-  <li class="parent " data-id="celestine/Celestine/Docs" data-name="celestine::docs">
+  <li class="parent open current" data-id="celestine/Celestine/Docs" data-name="celestine::docs">
       <a href="../../../Celestine/Docs.html">Docs</a>
       
         <ul>
@@ -152,7 +152,7 @@
       
     </li>
   
-  <li class="parent " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE" data-name="celestine::docs::b_spec_reference">
+  <li class="parent open current" data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE" data-name="celestine::docs::b_spec_reference">
       <a href="../../../Celestine/Docs/B_SPEC_REFERENCE.html">B_SPEC_REFERENCE</a>
       
         <ul>
@@ -162,7 +162,7 @@
       
     </li>
   
-  <li class=" " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS" data-name="celestine::docs::b_spec_reference::svg_elements">
+  <li class=" current" data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS" data-name="celestine::docs::b_spec_reference::svg_elements">
       <a href="../../../Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS.html">SVG_ELEMENTS</a>
       
     </li>
@@ -207,7 +207,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="celestine/Celestine/Filter" data-name="celestine::filter">
+  <li class="parent " data-id="celestine/Celestine/Filter" data-name="celestine::filter">
       <a href="../../../Celestine/Filter.html">Filter</a>
       
         <ul>
@@ -432,12 +432,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="celestine/Celestine/Filter/Offset" data-name="celestine::filter::offset">
+  <li class="parent " data-id="celestine/Celestine/Filter/Offset" data-name="celestine::filter::offset">
       <a href="../../../Celestine/Filter/Offset.html">Offset</a>
       
         <ul>
   
-  <li class=" current" data-id="celestine/Celestine/Filter/Offset/Attrs" data-name="celestine::filter::offset::attrs">
+  <li class=" " data-id="celestine/Celestine/Filter/Offset/Attrs" data-name="celestine::filter::offset::attrs">
       <a href="../../../Celestine/Filter/Offset/Attrs.html">Attrs</a>
       
     </li>
@@ -1073,7 +1073,7 @@
 
   <span class="kind">
     module
-  </span> Celestine::<wbr>Filter::<wbr>Offset::<wbr>Attrs
+  </span> Celestine::<wbr>Docs::<wbr>B_SPEC_REFERENCE::<wbr>SVG_ELEMENTS
 
 </h1>
 
@@ -1090,9 +1090,48 @@
     Overview
   </h2>
 
-  <p>Moves the output to another location</p>
+  <h1><a id="svg-elements-spec-checklist" class="anchor" href="#svg-elements-spec-checklist">  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>SVG Elements &amp; Spec Checklist</h1>
+<p>Celestine aims for high-fidelity compliance with W3C SVG 1.1 and SVG 2 specifications.
+This reference catalogues all standard SVG elements, their implementation status in Celestine,
+and their corresponding Crystal classes and DSL methods.</p>
+<h3><a id="executive-summary-key-topics" class="anchor" href="#executive-summary-key-topics">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Executive Summary &amp; Key Topics</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Method / Anchor</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Element Parity & Status Matrix</strong></td>
+      <td><code>.topic_01_element_checklist</code></td>
+      <td>Element-by-element status table showing implemented, planned, and out-of-scope tags.</td>
+    </tr>
+    <tr>
+      <td><strong>Supported Presentation Attributes</strong></td>
+      <td><code>.topic_02_presentation_attributes</code></td>
+      <td>Styling and geometric presentation attributes available across drawables.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a id="related-guides-source-references" class="anchor" href="#related-guides-source-references">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Related Guides &amp; Source References</h3>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feOffset">Mozilla SVG Docs</a></li>
+<li>src/drawables/</li>
+<li>src/effects/</li>
+<li>src/modules/</li>
 </ul>
 
 
@@ -1100,20 +1139,6 @@
 
 
 
-
-  <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Included Modules
-  </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type"><a href="../../../Celestine/Filter/Basic/Attrs.html">Celestine::Filter::Basic::Attrs</a></li>
-    
-  </ul>
 
 
 
@@ -1134,15 +1159,8 @@
   </h2>
   
     
-      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/offset.cr#L4" target="_blank">
-        effects/filters/offset.cr:4
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/offset.cr#L39" target="_blank">
-        effects/filters/offset.cr:39
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/svg_elements.cr#L6" target="_blank">
+        docs/b_spec_reference/svg_elements.cr
       </a>
     
     <br/>
@@ -1150,35 +1168,37 @@
 
 
 
+
+
   
-    <h2>
-      <a id="constant-summary" class="anchor" href="#constant-summary">
+
+  
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-      Constant Summary
-    </h2>
-  
-  <dl>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
     
-      <dt class="entry-const" id="DX">
-        <strong>DX</strong> = <code><span class="s">&quot;dx&quot;</span></code>
-      </dt>
-      
+      <li class="entry-summary">
+        <a href="#topic_01_element_checklist%3ANil-class-method" class="signature"><strong>.topic_01_element_checklist</strong> : Nil</a>
+        
+          <div class="summary"><p><strong>Element Parity &amp; Status Matrix</strong>: Element-by-element status table showing implemented, planned, and out-of-scope tags.</p></div>
+        
+      </li>
     
-      <dt class="entry-const" id="DY">
-        <strong>DY</strong> = <code><span class="s">&quot;dy&quot;</span></code>
-      </dt>
-      
+      <li class="entry-summary">
+        <a href="#topic_02_presentation_attributes%3ANil-class-method" class="signature"><strong>.topic_02_presentation_attributes</strong> : Nil</a>
+        
+          <div class="summary"><p><strong>Supported Presentation Attributes</strong>: Styling and geometric presentation attributes available across drawables.</p></div>
+        
+      </li>
     
-  </dl>
+  </ul>
 
-
-
-  
-
-  
 
   
 
@@ -1187,37 +1207,287 @@
 
   <div class="methods-inherited">
     
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
   </div>
 
   
 
   
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="topic_01_element_checklist:Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>topic_01_element_checklist</strong> : Nil
+
+        <a class="method-permalink" href="#topic_01_element_checklist%3ANil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><strong>Element Parity &amp; Status Matrix</strong>: Element-by-element status table showing implemented, planned, and out-of-scope tags.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Status</th>
+      <th>SVG Tag</th>
+      <th>Celestine Class</th>
+      <th>DSL Helper</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>✓</td>
+      <td>`<a>`</td>
+      <td>`Celestine::Anchor`</td>
+      <td>`ctx.anchor`</td>
+      <td>Hyperlink container</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<animate>`</td>
+      <td>`Celestine::Animate`</td>
+      <td>`shape.animate`</td>
+      <td>SMIL attribute animation</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<animateMotion>`</td>
+      <td>`Celestine::Animate::Motion`</td>
+      <td>`shape.animate_motion`</td>
+      <td>Motion path animation</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<animateTransform>`</td>
+      <td>`Celestine::Animate::Transform::*`</td>
+      <td>`shape.animate_transform_*`</td>
+      <td>Rotate, scale, translate, skew</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<circle>`</td>
+      <td>`Celestine::Circle`</td>
+      <td>`ctx.circle`</td>
+      <td>cx, cy, r, diameter</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>`<clipPath>`</td>
+      <td>Planned</td>
+      <td>`ctx.clip_path`</td>
+      <td>Vector path clipping</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<defs>`</td>
+      <td>Handled implicitly</td>
+      <td>`ctx.define` / `define: true`</td>
+      <td>Collected into `<defs>` buffer</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<ellipse>`</td>
+      <td>`Celestine::Ellipse`</td>
+      <td>`ctx.ellipse`</td>
+      <td>cx, cy, rx, ry</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<g>`</td>
+      <td>`Celestine::Group`</td>
+      <td>`ctx.group`</td>
+      <td>Structural grouping container</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<image>`</td>
+      <td>`Celestine::Image`</td>
+      <td>`ctx.image`</td>
+      <td>Bitmap/vector image embed</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<line>`</td>
+      <td>`Celestine::Line`</td>
+      <td>`ctx.line`</td>
+      <td>x1, y1, x2, y2</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<linearGradient>`</td>
+      <td>`Celestine::Gradient::Linear`</td>
+      <td>`ctx.linear_gradient`</td>
+      <td>Linear color transitions</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<marker>`</td>
+      <td>`Celestine::Marker`</td>
+      <td>`ctx.marker`</td>
+      <td>Arrowheads and path markers</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<mask>`</td>
+      <td>`Celestine::Mask`</td>
+      <td>`ctx.mask`</td>
+      <td>Alpha & luminance masking</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<path>`</td>
+      <td>`Celestine::Path`</td>
+      <td>`ctx.path`</td>
+      <td>Full SVG 1.1 path command support</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<pattern>`</td>
+      <td>`Celestine::Pattern`</td>
+      <td>`ctx.pattern`</td>
+      <td>Repeated visual tile patterns</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<polygon>`</td>
+      <td>`Celestine::Polygon`</td>
+      <td>`ctx.polygon`</td>
+      <td>Closed multi-point shapes</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<polyline>`</td>
+      <td>`Celestine::Polyline`</td>
+      <td>`ctx.polyline`</td>
+      <td>Open multi-point stroke lines</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<radialGradient>`</td>
+      <td>`Celestine::Gradient::Radial`</td>
+      <td>`ctx.radial_gradient`</td>
+      <td>Radial color transitions</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<rect>`</td>
+      <td>`Celestine::Rectangle`</td>
+      <td>`ctx.rectangle`</td>
+      <td>x, y, width, height, rx, ry</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<stop>`</td>
+      <td>`Celestine::Gradient::Stop`</td>
+      <td>`grad.stop`</td>
+      <td>Gradient color stops</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<svg>`</td>
+      <td>`Celestine::Svg`</td>
+      <td>`Celestine.draw`</td>
+      <td>Document root & nested viewports</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<text>`</td>
+      <td>`Celestine::Text`</td>
+      <td>`ctx.text`</td>
+      <td>Typography & layout attributes</td>
+    </tr>
+    <tr>
+      <td>✓</td>
+      <td>`<use>`</td>
+      <td>`Celestine::Use`</td>
+      <td>`ctx.use`</td>
+      <td>Reusable element instantiator</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>`<symbol>`</td>
+      <td>Planned</td>
+      <td>`ctx.symbol`</td>
+      <td>Reusable icon symbols with viewBox</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>`<tspan>`</td>
+      <td>Planned</td>
+      <td>`text.tspan`</td>
+      <td>Inline sub-string text styling</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>`<textPath>`</td>
+      <td>Planned</td>
+      <td>`text.text_path`</td>
+      <td>Text aligned along curved path</td>
+    </tr>
+    <tr>
+      <td>^</td>
+      <td>`<style>`</td>
+      <td>Planned</td>
+      <td>`ctx.style`</td>
+      <td>Embedded CSS stylesheet block</td>
+    </tr>
+    <tr>
+      <td>✘</td>
+      <td>`<foreignObject>`</td>
+      <td>Planned</td>
+      <td>`ctx.foreign_object`</td>
+      <td>Embedding HTML inside SVG</td>
+    </tr>
+  </tbody>
+</table>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/svg_elements.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="topic_02_presentation_attributes:Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>topic_02_presentation_attributes</strong> : Nil
+
+        <a class="method-permalink" href="#topic_02_presentation_attributes%3ANil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><strong>Supported Presentation Attributes</strong>: Styling and geometric presentation attributes available across drawables.</p>
+<p>Through <code><a href="../../../Celestine/Modules/StrokeFill.html">Celestine::Modules::StrokeFill</a></code>, <code>Position</code>, and <code>Transform</code>, drawables support:</p>
+<ul>
+<li><strong>Stroke &amp; Fill</strong>: <code>stroke</code>, <code>fill</code>, <code>stroke_width</code>, <code>fill_opacity</code>, <code>stroke_opacity</code>, <code>opacity</code></li>
+<li><strong>Dashes &amp; Caps</strong>: <code>dash_array</code>, <code>dash_offset</code>, <code>line_join</code>, <code>line_cap</code>, <code>miter_limit</code></li>
+<li><strong>Rendering Hints</strong>: <code>shape_rendering</code>, <code>vector_effect</code>, <code>color_interpolation</code>, <code>fill_rule</code></li>
+<li><strong>Transforms</strong>: <code>translate(x, y)</code>, <code>scale(x, y)</code>, <code>rotate(deg, ox, oy)</code>, <code>skew_x(deg)</code>, <code>skew_y(deg)</code>, <code>matrix(a,b,c,d,e,f)</code></li>
+<li><strong>Effects Binding</strong>: <code>set_filter(id)</code>, <code>set_mask(id)</code>, <code>set_marker_start(id)</code>, <code>set_fill(gradient)</code></li>
+</ul>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/svg_elements.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
   
 

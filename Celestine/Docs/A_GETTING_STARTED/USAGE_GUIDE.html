@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../../../js/doc.js"></script>
 
   <meta name="repository-name" content="celestine">
-  <title>Celestine::Filter::Offset::Attrs - celestine main</title>
+  <title>Celestine::Docs::A_GETTING_STARTED::USAGE_GUIDE - celestine main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../../";
   </script>
@@ -127,12 +127,12 @@
       
     </li>
   
-  <li class="parent " data-id="celestine/Celestine/Docs" data-name="celestine::docs">
+  <li class="parent open current" data-id="celestine/Celestine/Docs" data-name="celestine::docs">
       <a href="../../../Celestine/Docs.html">Docs</a>
       
         <ul>
   
-  <li class="parent " data-id="celestine/Celestine/Docs/A_GETTING_STARTED" data-name="celestine::docs::a_getting_started">
+  <li class="parent open current" data-id="celestine/Celestine/Docs/A_GETTING_STARTED" data-name="celestine::docs::a_getting_started">
       <a href="../../../Celestine/Docs/A_GETTING_STARTED.html">A_GETTING_STARTED</a>
       
         <ul>
@@ -142,7 +142,7 @@
       
     </li>
   
-  <li class=" " data-id="celestine/Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE" data-name="celestine::docs::a_getting_started::usage_guide">
+  <li class=" current" data-id="celestine/Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE" data-name="celestine::docs::a_getting_started::usage_guide">
       <a href="../../../Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE.html">USAGE_GUIDE</a>
       
     </li>
@@ -207,7 +207,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="celestine/Celestine/Filter" data-name="celestine::filter">
+  <li class="parent " data-id="celestine/Celestine/Filter" data-name="celestine::filter">
       <a href="../../../Celestine/Filter.html">Filter</a>
       
         <ul>
@@ -432,12 +432,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="celestine/Celestine/Filter/Offset" data-name="celestine::filter::offset">
+  <li class="parent " data-id="celestine/Celestine/Filter/Offset" data-name="celestine::filter::offset">
       <a href="../../../Celestine/Filter/Offset.html">Offset</a>
       
         <ul>
   
-  <li class=" current" data-id="celestine/Celestine/Filter/Offset/Attrs" data-name="celestine::filter::offset::attrs">
+  <li class=" " data-id="celestine/Celestine/Filter/Offset/Attrs" data-name="celestine::filter::offset::attrs">
       <a href="../../../Celestine/Filter/Offset/Attrs.html">Attrs</a>
       
     </li>
@@ -1073,7 +1073,7 @@
 
   <span class="kind">
     module
-  </span> Celestine::<wbr>Filter::<wbr>Offset::<wbr>Attrs
+  </span> Celestine::<wbr>Docs::<wbr>A_GETTING_STARTED::<wbr>USAGE_GUIDE
 
 </h1>
 
@@ -1090,9 +1090,54 @@
     Overview
   </h2>
 
-  <p>Moves the output to another location</p>
+  <h1><a id="quickstart-usage-guide" class="anchor" href="#quickstart-usage-guide">  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Quickstart &amp; Usage Guide</h1>
+<p>Celestine provides two intuitive ways to author SVG graphics: a fluent block-based DSL
+that streams element definitions directly to memory, and an explicit object model where
+any drawable can be instantiated, mutated, and appended to containers.</p>
+<h3><a id="executive-summary-key-topics" class="anchor" href="#executive-summary-key-topics">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Executive Summary &amp; Key Topics</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Method / Anchor</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Drawing Basics & Output Targets</strong></td>
+      <td><code>.topic_01_drawing_basics</code></td>
+      <td>How to invoke Celestine.draw to generate SVG strings or stream directly to IO.</td>
+    </tr>
+    <tr>
+      <td><strong>Block DSL vs Explicit Object Model</strong></td>
+      <td><code>.topic_02_dsl_vs_object_model</code></td>
+      <td>Comparing context builder blocks with explicit object instantiation.</td>
+    </tr>
+    <tr>
+      <td><strong>Reusing Elements with Definitions & Use</strong></td>
+      <td><code>.topic_03_element_reuse_and_defs</code></td>
+      <td>Defining reusable assets in &lt;defs&gt; and instantiating them via &lt;use&gt;.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a id="related-guides-source-references" class="anchor" href="#related-guides-source-references">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Related Guides &amp; Source References</h3>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feOffset">Mozilla SVG Docs</a></li>
+<li>src/celestine.cr</li>
+<li>src/drawables/drawable.cr</li>
+<li>src/drawables/svg.cr</li>
+<li>src/drawables/use.cr</li>
 </ul>
 
 
@@ -1100,20 +1145,6 @@
 
 
 
-
-  <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Included Modules
-  </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type"><a href="../../../Celestine/Filter/Basic/Attrs.html">Celestine::Filter::Basic::Attrs</a></li>
-    
-  </ul>
 
 
 
@@ -1134,15 +1165,8 @@
   </h2>
   
     
-      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/offset.cr#L4" target="_blank">
-        effects/filters/offset.cr:4
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/offset.cr#L39" target="_blank">
-        effects/filters/offset.cr:39
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/a_getting_started/usage_guide.cr#L6" target="_blank">
+        docs/a_getting_started/usage_guide.cr
       </a>
     
     <br/>
@@ -1150,35 +1174,44 @@
 
 
 
+
+
   
-    <h2>
-      <a id="constant-summary" class="anchor" href="#constant-summary">
+
+  
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-      Constant Summary
-    </h2>
-  
-  <dl>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
     
-      <dt class="entry-const" id="DX">
-        <strong>DX</strong> = <code><span class="s">&quot;dx&quot;</span></code>
-      </dt>
-      
+      <li class="entry-summary">
+        <a href="#topic_01_drawing_basics%3ANil-class-method" class="signature"><strong>.topic_01_drawing_basics</strong> : Nil</a>
+        
+          <div class="summary"><p><strong>Drawing Basics &amp; Output Targets</strong>: How to invoke Celestine.draw to generate SVG strings or stream directly to IO.</p></div>
+        
+      </li>
     
-      <dt class="entry-const" id="DY">
-        <strong>DY</strong> = <code><span class="s">&quot;dy&quot;</span></code>
-      </dt>
-      
+      <li class="entry-summary">
+        <a href="#topic_02_dsl_vs_object_model%3ANil-class-method" class="signature"><strong>.topic_02_dsl_vs_object_model</strong> : Nil</a>
+        
+          <div class="summary"><p><strong>Block DSL vs Explicit Object Model</strong>: Comparing context builder blocks with explicit object instantiation.</p></div>
+        
+      </li>
     
-  </dl>
+      <li class="entry-summary">
+        <a href="#topic_03_element_reuse_and_defs%3ANil-class-method" class="signature"><strong>.topic_03_element_reuse_and_defs</strong> : Nil</a>
+        
+          <div class="summary"><p><strong>Reusing Elements with Definitions &amp; Use</strong>: Defining reusable assets in <defs> and instantiating them via <use>.</p></div>
+        
+      </li>
+    
+  </ul>
 
-
-
-  
-
-  
 
   
 
@@ -1187,37 +1220,188 @@
 
   <div class="methods-inherited">
     
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
   </div>
 
   
 
   
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="topic_01_drawing_basics:Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>topic_01_drawing_basics</strong> : Nil
+
+        <a class="method-permalink" href="#topic_01_drawing_basics%3ANil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><strong>Drawing Basics &amp; Output Targets</strong>: How to invoke Celestine.draw to generate SVG strings or stream directly to IO.</p>
+<p>All vector drawing starts with <code><a href="../../../Celestine.html#draw%28%26block%3AProc%28Celestine%3A%3ASvg%2CNil%29%29%3AString-class-method">Celestine.draw</a></code>. By default, it returns a finalized SVG XML <code>String</code>.
+For high-performance web servers (e.g. Kemal, Lucky, Amber) or file output, pass an <code>IO</code> directly
+to avoid unnecessary intermediate string allocations.</p>
+<h4><a id="working-examples" class="anchor" href="#working-examples">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Working Examples</h4>
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;celestine&quot;</span>
+
+<span class="c"># 1. Generate an SVG String</span>
+svg_string <span class="o">=</span> <span class="t">Celestine</span>.draw <span class="k">do</span> <span class="o">|</span>ctx<span class="o">|</span>
+  ctx.view_box <span class="o">=</span> {x: <span class="n">0</span>, y: <span class="n">0</span>, w: <span class="n">100</span>, h: <span class="n">100</span>}
+  ctx.circle <span class="k">do</span> <span class="o">|</span>c<span class="o">|</span>
+    c.x <span class="o">=</span> <span class="n">50</span>
+    c.y <span class="o">=</span> <span class="n">50</span>
+    c.radius <span class="o">=</span> <span class="n">40</span>
+    c.fill <span class="o">=</span> <span class="s">&quot;#ff007f&quot;</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c"># 2. Stream directly to an IO (e.g. File or HTTP response)</span>
+<span class="t">File</span>.open(<span class="s">&quot;output.svg&quot;</span>, <span class="s">&quot;w&quot;</span>) <span class="k">do</span> <span class="o">|</span>file<span class="o">|</span>
+  <span class="t">Celestine</span>.draw(file) <span class="k">do</span> <span class="o">|</span>ctx<span class="o">|</span>
+    ctx.rectangle <span class="k">do</span> <span class="o">|</span>r<span class="o">|</span>
+      r.width <span class="o">=</span> <span class="n">100</span>
+      r.height <span class="o">=</span> <span class="n">100</span>
+      r.fill <span class="o">=</span> <span class="s">&quot;blue&quot;</span>
+    <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/a_getting_started/usage_guide.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="topic_02_dsl_vs_object_model:Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>topic_02_dsl_vs_object_model</strong> : Nil
+
+        <a class="method-permalink" href="#topic_02_dsl_vs_object_model%3ANil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><strong>Block DSL vs Explicit Object Model</strong>: Comparing context builder blocks with explicit object instantiation.</p>
+<p>Celestine supports two interchangeable workflows:</p>
+<ol>
+<li><strong>Fluent Block DSL</strong>: Inside <code><a href="../../../Celestine.html#draw%28%26block%3AProc%28Celestine%3A%3ASvg%2CNil%29%29%3AString-class-method">Celestine.draw</a> do |ctx|</code>, invoke helper methods such as
+<code>ctx.circle</code>, <code>ctx.rectangle</code>, <code>ctx.path</code>, or <code>ctx.group</code>. Each method yields a fresh instance
+of the element.</li>
+<li><strong>Explicit Object Model</strong>: Create any drawable using standard <code>.new</code> constructors (e.g. <code>Celestine::Circle.new</code>),
+configure its properties, and append it to any container using <code>&lt;&lt;</code>.</li>
+</ol>
+<h4><a id="working-examples" class="anchor" href="#working-examples">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Working Examples</h4>
+<pre><code class="language-crystal"><span class="t">Celestine</span>.draw <span class="k">do</span> <span class="o">|</span>ctx<span class="o">|</span>
+  <span class="c"># Approach A: Context helper block</span>
+  ctx.rectangle <span class="k">do</span> <span class="o">|</span>r<span class="o">|</span>
+    r.x <span class="o">=</span> <span class="n">10</span>
+    r.y <span class="o">=</span> <span class="n">10</span>
+    r.width <span class="o">=</span> <span class="n">80</span>
+    r.height <span class="o">=</span> <span class="n">40</span>
+    r.fill <span class="o">=</span> <span class="s">&quot;#3799FB&quot;</span>
+  <span class="k">end</span>
+
+  <span class="c"># Approach B: Explicit object creation</span>
+  c <span class="o">=</span> <span class="t">Celestine</span><span class="t">::</span><span class="t">Circle</span>.new
+  c.x <span class="o">=</span> <span class="n">50</span>
+  c.y <span class="o">=</span> <span class="n">50</span>
+  c.radius <span class="o">=</span> <span class="n">25</span>
+  c.fill <span class="o">=</span> <span class="s">&quot;#0353A4&quot;</span>
+  ctx <span class="o">&lt;&lt;</span> c
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/a_getting_started/usage_guide.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="topic_03_element_reuse_and_defs:Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>topic_03_element_reuse_and_defs</strong> : Nil
+
+        <a class="method-permalink" href="#topic_03_element_reuse_and_defs%3ANil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><strong>Reusing Elements with Definitions &amp; Use</strong>: Defining reusable assets in <defs> and instantiating them via <use>.</p>
+<p>To prevent duplicating complex geometry or styles, define elements in the document's <code>&lt;defs&gt;</code>
+collection by passing <code>define: true</code> to DSL methods, or by calling <code>ctx.define(element)</code>.
+Elements can then be referenced anywhere in the document using <code>ctx.use</code>.</p>
+<h4><a id="working-examples" class="anchor" href="#working-examples">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Working Examples</h4>
+<pre><code class="language-crystal"><span class="t">Celestine</span>.draw <span class="k">do</span> <span class="o">|</span>ctx<span class="o">|</span>
+  <span class="c"># Define a reusable star symbol in &lt;defs&gt;</span>
+  ctx.path(define: <span class="n">true</span>) <span class="k">do</span> <span class="o">|</span>p<span class="o">|</span>
+    p.id <span class="o">=</span> <span class="s">&quot;star-shape&quot;</span>
+    p.a_move(<span class="n">10</span>, <span class="n">1</span>)
+    p.a_line(<span class="n">4</span>, <span class="n">19</span>)
+    p.a_line(<span class="n">19</span>, <span class="n">7</span>)
+    p.a_line(<span class="n">1</span>, <span class="n">7</span>)
+    p.a_line(<span class="n">16</span>, <span class="n">19</span>)
+    p.close
+    p.fill <span class="o">=</span> <span class="s">&quot;gold&quot;</span>
+  <span class="k">end</span>
+
+  <span class="c"># Clone the defined star at multiple coordinates</span>
+  ctx.use(<span class="s">&quot;star-shape&quot;</span>) <span class="k">do</span> <span class="o">|</span>u<span class="o">|</span>
+    u.x <span class="o">=</span> <span class="n">10</span>
+    u.y <span class="o">=</span> <span class="n">10</span>
+  <span class="k">end</span>
+
+  ctx.use(<span class="s">&quot;star-shape&quot;</span>) <span class="k">do</span> <span class="o">|</span>u<span class="o">|</span>
+    u.x <span class="o">=</span> <span class="n">50</span>
+    u.y <span class="o">=</span> <span class="n">10</span>
+    u.opacity <span class="o">=</span> <span class="n">0.5</span>
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+<h4><a id="common-pitfalls-safety-caveats" class="anchor" href="#common-pitfalls-safety-caveats">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Common Pitfalls &amp; Safety Caveats</h4>
+<ul>
+<li><strong>Warning</strong>: Reused drawables MUST have an ID assigned before calling ctx.use.</li>
+<li><strong>Warning</strong>: Properties set on <use> override presentation attributes of the referenced element according to SVG cascading rules.</li>
+</ul>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/a_getting_started/usage_guide.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
   
 

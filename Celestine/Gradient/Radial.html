@@ -142,6 +142,31 @@
       
     </li>
   
+  <li class=" " data-id="celestine/Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE" data-name="celestine::docs::a_getting_started::usage_guide">
+      <a href="../../Celestine/Docs/A_GETTING_STARTED/USAGE_GUIDE.html">USAGE_GUIDE</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class="parent " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE" data-name="celestine::docs::b_spec_reference">
+      <a href="../../Celestine/Docs/B_SPEC_REFERENCE.html">B_SPEC_REFERENCE</a>
+      
+        <ul>
+  
+  <li class=" " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS" data-name="celestine::docs::b_spec_reference::filters_and_effects">
+      <a href="../../Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS.html">FILTERS_AND_EFFECTS</a>
+      
+    </li>
+  
+  <li class=" " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS" data-name="celestine::docs::b_spec_reference::svg_elements">
+      <a href="../../Celestine/Docs/B_SPEC_REFERENCE/SVG_ELEMENTS.html">SVG_ELEMENTS</a>
+      
+    </li>
+  
 </ul>
 
       
@@ -1097,7 +1122,7 @@
   </h2>
   
     
-      <a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/effects/gradients/radial_gradient.cr#L1" target="_blank">
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L1" target="_blank">
         effects/gradients/radial_gradient.cr
       </a>
     
@@ -1145,9 +1170,111 @@
   <ul class="list-summary">
     
       <li class="entry-summary">
+        <a href="#cx-instance-method" class="signature"><strong>#cx</strong></a>
+        
+          <div class="summary"><p>SVG attribute aliases</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cx%3D%28val%29-instance-method" class="signature"><strong>#cx=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cx_units-instance-method" class="signature"><strong>#cx_units</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cx_units%3D%28val%29-instance-method" class="signature"><strong>#cx_units=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cy-instance-method" class="signature"><strong>#cy</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cy%3D%28val%29-instance-method" class="signature"><strong>#cy=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cy_units-instance-method" class="signature"><strong>#cy_units</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#cy_units%3D%28val%29-instance-method" class="signature"><strong>#cy_units=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
         <a href="#draw%28io%3AIO%29%3ANil-instance-method" class="signature"><strong>#draw</strong>(io : IO) : Nil</a>
         
           <div class="summary"><p>Main draw method for a drawable.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fx-instance-method" class="signature"><strong>#fx</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fx%3D%28val%29-instance-method" class="signature"><strong>#fx=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fx_units-instance-method" class="signature"><strong>#fx_units</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fx_units%3D%28val%29-instance-method" class="signature"><strong>#fx_units=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fy-instance-method" class="signature"><strong>#fy</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fy%3D%28val%29-instance-method" class="signature"><strong>#fy=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fy_units-instance-method" class="signature"><strong>#fy_units</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#fy_units%3D%28val%29-instance-method" class="signature"><strong>#fy_units=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#r-instance-method" class="signature"><strong>#r</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#r%3D%28val%29-instance-method" class="signature"><strong>#r=</strong>(val)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#r_units-instance-method" class="signature"><strong>#r_units</strong></a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#r_units%3D%28val%29-instance-method" class="signature"><strong>#r_units=</strong>(val)</a>
         
       </li>
     
@@ -1594,6 +1721,139 @@
     Instance Method Detail
   </h2>
   
+    <div class="entry-detail" id="cx-instance-method">
+      <div class="signature">
+        
+        def <strong>cx</strong>
+
+        <a class="method-permalink" href="#cx-instance-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p>SVG attribute aliases</p>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L12" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cx=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>cx=</strong>(val)
+
+        <a class="method-permalink" href="#cx%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L13" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cx_units-instance-method">
+      <div class="signature">
+        
+        def <strong>cx_units</strong>
+
+        <a class="method-permalink" href="#cx_units-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L14" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cx_units=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>cx_units=</strong>(val)
+
+        <a class="method-permalink" href="#cx_units%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L15" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cy-instance-method">
+      <div class="signature">
+        
+        def <strong>cy</strong>
+
+        <a class="method-permalink" href="#cy-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L17" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cy=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>cy=</strong>(val)
+
+        <a class="method-permalink" href="#cy%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L18" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cy_units-instance-method">
+      <div class="signature">
+        
+        def <strong>cy_units</strong>
+
+        <a class="method-permalink" href="#cy_units-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L19" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="cy_units=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>cy_units=</strong>(val)
+
+        <a class="method-permalink" href="#cy_units%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L20" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
     <div class="entry-detail" id="draw(io:IO):Nil-instance-method">
       <div class="signature">
         
@@ -1614,7 +1874,199 @@
       <br/>
       <div>
         
-          [<a href="https://github.com/celestinecr/celestine/blob/0830d80e4561678929a395ebd063bcbe41ccfc2d/src/effects/gradients/radial_gradient.cr#L11" target="_blank">View source</a>]
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L37" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fx-instance-method">
+      <div class="signature">
+        
+        def <strong>fx</strong>
+
+        <a class="method-permalink" href="#fx-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fx=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>fx=</strong>(val)
+
+        <a class="method-permalink" href="#fx%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L23" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fx_units-instance-method">
+      <div class="signature">
+        
+        def <strong>fx_units</strong>
+
+        <a class="method-permalink" href="#fx_units-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L24" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fx_units=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>fx_units=</strong>(val)
+
+        <a class="method-permalink" href="#fx_units%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L25" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fy-instance-method">
+      <div class="signature">
+        
+        def <strong>fy</strong>
+
+        <a class="method-permalink" href="#fy-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L27" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fy=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>fy=</strong>(val)
+
+        <a class="method-permalink" href="#fy%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L28" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fy_units-instance-method">
+      <div class="signature">
+        
+        def <strong>fy_units</strong>
+
+        <a class="method-permalink" href="#fy_units-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L29" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="fy_units=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>fy_units=</strong>(val)
+
+        <a class="method-permalink" href="#fy_units%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L30" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="r-instance-method">
+      <div class="signature">
+        
+        def <strong>r</strong>
+
+        <a class="method-permalink" href="#r-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L32" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="r=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>r=</strong>(val)
+
+        <a class="method-permalink" href="#r%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L33" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="r_units-instance-method">
+      <div class="signature">
+        
+        def <strong>r_units</strong>
+
+        <a class="method-permalink" href="#r_units-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L34" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="r_units=(val)-instance-method">
+      <div class="signature">
+        
+        def <strong>r_units=</strong>(val)
+
+        <a class="method-permalink" href="#r_units%3D%28val%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/gradients/radial_gradient.cr#L35" target="_blank">View source</a>]
         
       </div>
     </div>

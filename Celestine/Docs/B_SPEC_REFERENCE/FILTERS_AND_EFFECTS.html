@@ -14,7 +14,7 @@
 <script type="text/javascript" src="../../../js/doc.js"></script>
 
   <meta name="repository-name" content="celestine">
-  <title>Celestine::Filter::Offset::Attrs - celestine main</title>
+  <title>Celestine::Docs::B_SPEC_REFERENCE::FILTERS_AND_EFFECTS - celestine main</title>
   <script type="text/javascript">
     CrystalDocs.base_path = "../../../";
   </script>
@@ -127,7 +127,7 @@
       
     </li>
   
-  <li class="parent " data-id="celestine/Celestine/Docs" data-name="celestine::docs">
+  <li class="parent open current" data-id="celestine/Celestine/Docs" data-name="celestine::docs">
       <a href="../../../Celestine/Docs.html">Docs</a>
       
         <ul>
@@ -152,12 +152,12 @@
       
     </li>
   
-  <li class="parent " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE" data-name="celestine::docs::b_spec_reference">
+  <li class="parent open current" data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE" data-name="celestine::docs::b_spec_reference">
       <a href="../../../Celestine/Docs/B_SPEC_REFERENCE.html">B_SPEC_REFERENCE</a>
       
         <ul>
   
-  <li class=" " data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS" data-name="celestine::docs::b_spec_reference::filters_and_effects">
+  <li class=" current" data-id="celestine/Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS" data-name="celestine::docs::b_spec_reference::filters_and_effects">
       <a href="../../../Celestine/Docs/B_SPEC_REFERENCE/FILTERS_AND_EFFECTS.html">FILTERS_AND_EFFECTS</a>
       
     </li>
@@ -207,7 +207,7 @@
       
     </li>
   
-  <li class="parent open current" data-id="celestine/Celestine/Filter" data-name="celestine::filter">
+  <li class="parent " data-id="celestine/Celestine/Filter" data-name="celestine::filter">
       <a href="../../../Celestine/Filter.html">Filter</a>
       
         <ul>
@@ -432,12 +432,12 @@
       
     </li>
   
-  <li class="parent open current" data-id="celestine/Celestine/Filter/Offset" data-name="celestine::filter::offset">
+  <li class="parent " data-id="celestine/Celestine/Filter/Offset" data-name="celestine::filter::offset">
       <a href="../../../Celestine/Filter/Offset.html">Offset</a>
       
         <ul>
   
-  <li class=" current" data-id="celestine/Celestine/Filter/Offset/Attrs" data-name="celestine::filter::offset::attrs">
+  <li class=" " data-id="celestine/Celestine/Filter/Offset/Attrs" data-name="celestine::filter::offset::attrs">
       <a href="../../../Celestine/Filter/Offset/Attrs.html">Attrs</a>
       
     </li>
@@ -1073,7 +1073,7 @@
 
   <span class="kind">
     module
-  </span> Celestine::<wbr>Filter::<wbr>Offset::<wbr>Attrs
+  </span> Celestine::<wbr>Docs::<wbr>B_SPEC_REFERENCE::<wbr>FILTERS_AND_EFFECTS
 
 </h1>
 
@@ -1090,9 +1090,54 @@
     Overview
   </h2>
 
-  <p>Moves the output to another location</p>
+  <h1><a id="filters-gradients-visual-effects" class="anchor" href="#filters-gradients-visual-effects">  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Filters, Gradients &amp; Visual Effects</h1>
+<p>Celestine provides first-class support for declarative SVG filter pipelines, color gradients,
+patterns, and SMIL animations. This guide covers how to construct complex graphical effects
+in pure Crystal.</p>
+<h3><a id="executive-summary-key-topics" class="anchor" href="#executive-summary-key-topics">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Executive Summary &amp; Key Topics</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Topic</th>
+      <th>Method / Anchor</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Filter Pipelines & fe* Primitives</strong></td>
+      <td><code>.topic_01_filter_primitives</code></td>
+      <td>Constructing multi-stage filter pipelines using feGaussianBlur, feColorMatrix, and more.</td>
+    </tr>
+    <tr>
+      <td><strong>Gradients & Patterns</strong></td>
+      <td><code>.topic_02_gradients_and_patterns</code></td>
+      <td>Configuring smooth color transitions and repeating visual fills.</td>
+    </tr>
+    <tr>
+      <td><strong>Declarative SMIL Animations</strong></td>
+      <td><code>.topic_03_smil_animations</code></td>
+      <td>Animating attributes, transforms, and motion paths without JavaScript.</td>
+    </tr>
+  </tbody>
+</table>
+<h3><a id="related-guides-source-references" class="anchor" href="#related-guides-source-references">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Related Guides &amp; Source References</h3>
 <ul>
-<li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element/feOffset">Mozilla SVG Docs</a></li>
+<li>src/effects/filter.cr</li>
+<li>src/effects/filters/</li>
+<li>src/effects/gradients/</li>
+<li>src/effects/animation/</li>
 </ul>
 
 
@@ -1100,20 +1145,6 @@
 
 
 
-
-  <h2>
-    <a id="included-modules" class="anchor" href="#included-modules">
-  <svg class="octicon-link" aria-hidden="true">
-    <use href="#octicon-link"/>
-  </svg>
-</a>
-    Included Modules
-  </h2>
-  <ul class="other-types-list">
-    
-      <li class="other-type"><a href="../../../Celestine/Filter/Basic/Attrs.html">Celestine::Filter::Basic::Attrs</a></li>
-    
-  </ul>
 
 
 
@@ -1134,15 +1165,8 @@
   </h2>
   
     
-      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/offset.cr#L4" target="_blank">
-        effects/filters/offset.cr:4
-      </a>
-    
-    <br/>
-  
-    
-      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/effects/filters/offset.cr#L39" target="_blank">
-        effects/filters/offset.cr:39
+      <a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/filters_and_effects.cr#L6" target="_blank">
+        docs/b_spec_reference/filters_and_effects.cr
       </a>
     
     <br/>
@@ -1150,35 +1174,44 @@
 
 
 
+
+
   
-    <h2>
-      <a id="constant-summary" class="anchor" href="#constant-summary">
+
+  
+  <h2>
+    <a id="class-method-summary" class="anchor" href="#class-method-summary">
   <svg class="octicon-link" aria-hidden="true">
     <use href="#octicon-link"/>
   </svg>
 </a>
-      Constant Summary
-    </h2>
-  
-  <dl>
+    Class Method Summary
+  </h2>
+  <ul class="list-summary">
     
-      <dt class="entry-const" id="DX">
-        <strong>DX</strong> = <code><span class="s">&quot;dx&quot;</span></code>
-      </dt>
-      
+      <li class="entry-summary">
+        <a href="#topic_01_filter_primitives%3ANil-class-method" class="signature"><strong>.topic_01_filter_primitives</strong> : Nil</a>
+        
+          <div class="summary"><p><em><em>Filter Pipelines &amp; fe</em> Primitives</em>*: Constructing multi-stage filter pipelines using feGaussianBlur, feColorMatrix, and more.</p></div>
+        
+      </li>
     
-      <dt class="entry-const" id="DY">
-        <strong>DY</strong> = <code><span class="s">&quot;dy&quot;</span></code>
-      </dt>
-      
+      <li class="entry-summary">
+        <a href="#topic_02_gradients_and_patterns%3ANil-class-method" class="signature"><strong>.topic_02_gradients_and_patterns</strong> : Nil</a>
+        
+          <div class="summary"><p><strong>Gradients &amp; Patterns</strong>: Configuring smooth color transitions and repeating visual fills.</p></div>
+        
+      </li>
     
-  </dl>
+      <li class="entry-summary">
+        <a href="#topic_03_smil_animations%3ANil-class-method" class="signature"><strong>.topic_03_smil_animations</strong> : Nil</a>
+        
+          <div class="summary"><p><strong>Declarative SMIL Animations</strong>: Animating attributes, transforms, and motion paths without JavaScript.</p></div>
+        
+      </li>
+    
+  </ul>
 
-
-
-  
-
-  
 
   
 
@@ -1187,37 +1220,215 @@
 
   <div class="methods-inherited">
     
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
-      
-
-
-      
-
-
-      
-
-
-      
-
-
-    
   </div>
 
   
 
   
+  <h2>
+    <a id="class-method-detail" class="anchor" href="#class-method-detail">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>
+    Class Method Detail
+  </h2>
+  
+    <div class="entry-detail" id="topic_01_filter_primitives:Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>topic_01_filter_primitives</strong> : Nil
+
+        <a class="method-permalink" href="#topic_01_filter_primitives%3ANil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><em><em>Filter Pipelines &amp; fe</em> Primitives</em>*: Constructing multi-stage filter pipelines using feGaussianBlur, feColorMatrix, and more.</p>
+<p>Celestine implements 16 W3C filter primitives under <code><a href="../../../Celestine/Filter.html">Celestine::Filter</a></code>. Filters are declared
+using <code>ctx.filter</code> (automatically placed into <code>&lt;defs&gt;</code>) and assigned to shapes using <code>.set_filter(id)</code>.</p>
+<table>
+  <thead>
+    <tr>
+      <th>Primitive</th>
+      <th>Celestine Method</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>`feGaussianBlur`</td>
+      <td>`f.blur`</td>
+      <td>Standard Gaussian blur with stdDeviation</td>
+    </tr>
+    <tr>
+      <td>`feColorMatrix`</td>
+      <td>`f.color_matrix`</td>
+      <td>Matrix, saturate, hueRotate, luminanceToAlpha</td>
+    </tr>
+    <tr>
+      <td>`feDropShadow`</td>
+      <td>`f.drop_shadow`</td>
+      <td>Combined blur and offset drop shadow</td>
+    </tr>
+    <tr>
+      <td>`feDisplacementMap`</td>
+      <td>`f.displacement_map`</td>
+      <td>Geometric distortion using map channels</td>
+    </tr>
+    <tr>
+      <td>`feTurbulence`</td>
+      <td>`f.turbulence`</td>
+      <td>Perlin noise and fractal noise generation</td>
+    </tr>
+    <tr>
+      <td>`feBlend`</td>
+      <td>`f.blend`</td>
+      <td>Blend modes (multiply, screen, overlay, etc.)</td>
+    </tr>
+    <tr>
+      <td>`feComposite`</td>
+      <td>`f.composite`</td>
+      <td>Porter-Duff compositing operators</td>
+    </tr>
+    <tr>
+      <td>`feComponentTransfer`</td>
+      <td>`f.component_transfer`</td>
+      <td>Linear, gamma, and table color curves</td>
+    </tr>
+    <tr>
+      <td>`feMorphology`</td>
+      <td>`f.morphology`</td>
+      <td>Erode and dilate operators</td>
+    </tr>
+    <tr>
+      <td>`feOffset`</td>
+      <td>`f.offset`</td>
+      <td>Spatial translation of graphic buffers</td>
+    </tr>
+    <tr>
+      <td>`feTile`</td>
+      <td>`f.tile`</td>
+      <td>Repeats input image to fill filter region</td>
+    </tr>
+    <tr>
+      <td>`feFlood`</td>
+      <td>`f.flood`</td>
+      <td>Solid color flood fill</td>
+    </tr>
+    <tr>
+      <td>`feSpecularLighting`</td>
+      <td>`f.specular_lighting`</td>
+      <td>Surface lighting bump-mapping</td>
+    </tr>
+  </tbody>
+</table>
+<h4><a id="working-examples" class="anchor" href="#working-examples">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Working Examples</h4>
+<pre><code class="language-crystal">svg <span class="o">=</span> <span class="t">Celestine</span>.draw <span class="k">do</span> <span class="o">|</span>ctx<span class="o">|</span>
+  ctx.filter <span class="k">do</span> <span class="o">|</span>f<span class="o">|</span>
+    f.id <span class="o">=</span> <span class="s">&quot;soft-glow&quot;</span>
+    f.blur <span class="k">do</span> <span class="o">|</span>b<span class="o">|</span>
+      b.input <span class="o">=</span> <span class="t">Celestine</span><span class="t">::</span><span class="t">Filter</span><span class="t">::</span><span class="t">SOURCE_GRAPHIC</span>
+      b.std_deviation <span class="o">=</span> <span class="n">5</span>
+      b.result <span class="o">=</span> <span class="s">&quot;blur-out&quot;</span>
+    <span class="k">end</span>
+    f.merge <span class="k">do</span> <span class="o">|</span>m<span class="o">|</span>
+      m.add_node(<span class="s">&quot;blur-out&quot;</span>)
+      m.add_node(<span class="t">Celestine</span><span class="t">::</span><span class="t">Filter</span><span class="t">::</span><span class="t">SOURCE_GRAPHIC</span>)
+    <span class="k">end</span>
+  <span class="k">end</span>
+
+  ctx.circle <span class="k">do</span> <span class="o">|</span>c<span class="o">|</span>
+    c.x <span class="o">=</span> <span class="n">100</span>
+    c.y <span class="o">=</span> <span class="n">100</span>
+    c.radius <span class="o">=</span> <span class="n">40</span>
+    c.fill <span class="o">=</span> <span class="s">&quot;#00f0ff&quot;</span>
+    c.set_filter(<span class="s">&quot;soft-glow&quot;</span>)
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/filters_and_effects.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="topic_02_gradients_and_patterns:Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>topic_02_gradients_and_patterns</strong> : Nil
+
+        <a class="method-permalink" href="#topic_02_gradients_and_patterns%3ANil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><strong>Gradients &amp; Patterns</strong>: Configuring smooth color transitions and repeating visual fills.</p>
+<p>Gradients define smooth color transitions across shapes. Celestine supports both linear and radial
+gradients, which can be bound directly via <code>shape.set_fill(gradient)</code>.</p>
+<h4><a id="working-examples" class="anchor" href="#working-examples">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Working Examples</h4>
+<pre><code class="language-crystal">svg <span class="o">=</span> <span class="t">Celestine</span>.draw <span class="k">do</span> <span class="o">|</span>ctx<span class="o">|</span>
+  grad <span class="o">=</span> ctx.linear_gradient <span class="k">do</span> <span class="o">|</span>g<span class="o">|</span>
+    g.id <span class="o">=</span> <span class="s">&quot;sunset&quot;</span>
+    g.stop(<span class="n">0</span>, color: <span class="s">&quot;#ff512f&quot;</span>)
+    g.stop(<span class="n">1</span>, color: <span class="s">&quot;#dd2476&quot;</span>)
+  <span class="k">end</span>
+
+  ctx.rectangle <span class="k">do</span> <span class="o">|</span>r<span class="o">|</span>
+    r.width <span class="o">=</span> <span class="n">200</span>
+    r.height <span class="o">=</span> <span class="n">100</span>
+    r.set_fill(grad)
+  <span class="k">end</span>
+<span class="k">end</span></code></pre>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/filters_and_effects.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="topic_03_smil_animations:Nil-class-method">
+      <div class="signature">
+        
+        def self.<strong>topic_03_smil_animations</strong> : Nil
+
+        <a class="method-permalink" href="#topic_03_smil_animations%3ANil-class-method">#</a>
+      </div>
+      
+        <div class="doc">
+          
+          <p><strong>Declarative SMIL Animations</strong>: Animating attributes, transforms, and motion paths without JavaScript.</p>
+<p>Every drawable can host SMIL animation tags:</p>
+<ul>
+<li><code>shape.animate</code>: Animates attributes like <code>opacity</code>, <code>fill</code>, <code>r</code>, <code>width</code>.</li>
+<li><code>shape.animate_motion</code>: Moves shapes along arbitrary SVG path trajectories.</li>
+<li><code>shape.animate_transform_*</code>: Hardware-accelerated rotations, scaling, and translations.</li>
+</ul>
+        </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/celestinecr/celestine/blob/9b20a86047d0754ae922976f7180ebe93c813416/src/docs/b_spec_reference/filters_and_effects.cr#L6" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
 
   
 
